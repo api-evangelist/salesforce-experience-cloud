@@ -1,0 +1,128 @@
+name: Salesforce Experience Cloud APIs
+description: APIs for building and managing Salesforce Experience Cloud sites, communities, and digital experiences
+image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
+url: https://www.salesforce.com/products/experience-cloud/overview/
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+apis:
+- name: Experience Cloud Sites API
+  description: Manage Experience Cloud sites, themes, and configurations
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0
+  tags:
+  - Sites
+  - Communities
+  - Digital Experiences
+  - CMS
+  properties:
+  - type: Documentation
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
+  - type: OpenAPI
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
+  - type: Authentication
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+- name: Connect REST API (Communities)
+  description: Access community data, feeds, topics, and user engagement features
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0/connect
+  tags:
+  - Chatter
+  - Feeds
+  - Communities
+  - Social
+  - Topics
+  properties:
+  - type: Documentation
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
+  - type: OpenAPI
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources.htm
+  - type: Postman Collection
+    url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
+- name: CMS Connect API
+  description: Manage content, channels, and media in Experience Cloud CMS
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0/connect/cms
+  tags:
+  - CMS
+  - Content
+  - Media
+  - Publishing
+  properties:
+  - type: Documentation
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+  - type: Reference
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+- name: Salesforce REST API
+  description: Core REST API for accessing Salesforce objects and data
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0
+  tags:
+  - REST
+  - Data
+  - Objects
+  - CRUD
+  properties:
+  - type: Documentation
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
+  - type: OpenAPI
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_list.htm
+  - type: Postman Collection
+    url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
+- name: Experience Cloud Templates API
+  description: Retrieve and manage Experience Cloud site templates
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0
+  tags:
+  - Templates
+  - Themes
+  - Branding
+  properties:
+  - type: Documentation
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
+- name: GraphQL API
+  description: Query Salesforce data using GraphQL for Experience Cloud
+  image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
+  baseURL: https://yourInstance.salesforce.com/services/data/v59.0/graphql
+  tags:
+  - GraphQL
+  - Query
+  - Data
+  properties:
+  - type: Documentation
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
+  - type: Schema
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+common:
+- type: Developer Portal
+  url: https://developer.salesforce.com/
+- type: Authentication
+  url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+- type: Rate Limits
+  url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/
+- type: Status Page
+  url: https://status.salesforce.com/
+- type: Trailhead Learning
+  url: https://trailhead.salesforce.com/
+- type: GitHub
+  url: https://github.com/salesforce
+- type: Support
+  url: https://help.salesforce.com/
+maintainers:
+- name: Salesforce
+  email: developer@salesforce.com
+  url: https://developer.salesforce.com/
+tags:
+- CRM
+- Experience Cloud
+- Communities
+- Digital Experience
+- CMS
+- Customer Portal
+- Partner Portal
