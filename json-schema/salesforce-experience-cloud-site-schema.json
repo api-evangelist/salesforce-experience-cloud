@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.salesforce.com/schemas/experience-cloud/site.json",
+  "title": "Experience Cloud Site",
+  "description": "Represents a Salesforce Experience Cloud site (community) with its configuration, status, and access settings.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique 18-character Salesforce identifier for the site"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the Experience Cloud site",
+      "maxLength": 80
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the site's purpose"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current operational status of the site",
+      "enum": ["Live", "Inactive", "DownForMaintenance", "UnderConstruction"]
+    },
+    "urlPathPrefix": {
+      "type": "string",
+      "description": "URL path prefix for the site, appended to the domain"
+    },
+    "siteUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Full URL of the Experience Cloud site"
+    },
+    "loginUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the site login page"
+    },
+    "templateName": {
+      "type": "string",
+      "description": "Name of the template used to create the site"
+    },
+    "allowChatterAccessWithoutLogin": {
+      "type": "boolean",
+      "description": "Whether guest users can access Chatter content without logging in",
+      "default": false
+    },
+    "allowMembersToFlag": {
+      "type": "boolean",
+      "description": "Whether community members can flag content for moderation",
+      "default": false
+    },
+    "invitationsEnabled": {
+      "type": "boolean",
+      "description": "Whether site administrators can send invitations to join",
+      "default": false
+    },
+    "knowledgeableEnabled": {
+      "type": "boolean",
+      "description": "Whether the knowledgeable people feature is enabled",
+      "default": false
+    },
+    "memberVisibilityEnabled": {
+      "type": "boolean",
+      "description": "Whether members can see other members in the site",
+      "default": true
+    },
+    "nicknameDisplayEnabled": {
+      "type": "boolean",
+      "description": "Whether nicknames are displayed instead of full names",
+      "default": false
+    },
+    "privateMessagesEnabled": {
+      "type": "boolean",
+      "description": "Whether private messaging between members is enabled",
+      "default": false
+    },
+    "reputationEnabled": {
+      "type": "boolean",
+      "description": "Whether the reputation and points system is enabled",
+      "default": false
+    },
+    "sendWelcomeEmail": {
+      "type": "boolean",
+      "description": "Whether welcome emails are sent to new members",
+      "default": true
+    },
+    "siteAsContainerEnabled": {
+      "type": "boolean",
+      "description": "Whether the site-as-container feature is enabled for embedding",
+      "default": false
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "API resource URL for this site"
+    }
+  },
+  "required": ["id", "name", "status"]
+}

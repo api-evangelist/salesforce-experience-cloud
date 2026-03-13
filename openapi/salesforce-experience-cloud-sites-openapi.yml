@@ -1,0 +1,511 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Sites API
+  description: >-
+    Manage Experience Cloud sites, themes, and configurations. Provides
+    programmatic access to create, update, and retrieve site settings, branding,
+    and navigation for digital experience portals. Part of the Salesforce
+    Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+  - url: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Instance
+    variables:
+      instance:
+        default: yourInstance
+        description: Your Salesforce instance name or custom domain
+security:
+  - oauth2: []
+  - bearerAuth: []
+tags:
+  - name: Sites
+    description: Experience Cloud site management operations
+  - name: Navigation
+    description: Site navigation menu operations
+  - name: Themes
+    description: Site theme and branding operations
+  - name: Publish
+    description: Site publishing operations
+paths:
+  /connect/communities:
+    get:
+      operationId: listExperienceCloudSites
+      summary: List Experience Cloud Sites
+      description: >-
+        Returns a list of all Experience Cloud sites (communities) available
+        to the context user. Includes site metadata such as name, status,
+        URL path prefix, and template information.
+      tags:
+        - Sites
+      parameters:
+        - $ref: '#/components/parameters/StatusFilter'
+      responses:
+        '200':
+          description: Successfully retrieved list of Experience Cloud sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      operationId: createExperienceCloudSite
+      summary: Create an Experience Cloud Site
+      description: >-
+        Creates a new Experience Cloud site with the specified name, template,
+        and URL path prefix. Requires the Create and Set Up Experiences
+        permission.
+      tags:
+        - Sites
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCommunityInput'
+      responses:
+        '201':
+          description: Experience Cloud site created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Community'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /connect/communities/{communityId}:
+    get:
+      operationId: getExperienceCloudSite
+      summary: Get an Experience Cloud Site
+      description: >-
+        Returns detailed information about a specific Experience Cloud site
+        including its name, description, status, URL path prefix, template
+        type, and login and self-registration URLs.
+      tags:
+        - Sites
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved Experience Cloud site details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Community'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateExperienceCloudSite
+      summary: Update an Experience Cloud Site
+      description: >-
+        Updates the properties of an existing Experience Cloud site such as
+        its name, description, and status.
+      tags:
+        - Sites
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCommunityInput'
+      responses:
+        '200':
+          description: Experience Cloud site updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Community'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connect/communities/{communityId}/publish:
+    post:
+      operationId: publishExperienceCloudSite
+      summary: Publish an Experience Cloud Site
+      description: >-
+        Publishes the specified Experience Cloud site, making all pending
+        changes live. Requires the Create and Set Up Experiences permission.
+      tags:
+        - Publish
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Experience Cloud site published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connect/communities/{communityId}/navigation-menu/navigation-menu-items:
+    get:
+      operationId: getNavigationMenuItems
+      summary: Get Navigation Menu Items
+      description: >-
+        Returns the navigation menu items configured for the specified
+        Experience Cloud site. Includes menu labels, target URLs, access
+        restrictions, and hierarchy structure.
+      tags:
+        - Navigation
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - name: navigationLinkSetId
+          in: query
+          description: The ID of the navigation link set to retrieve
+          schema:
+            type: string
+        - name: menuItemTypesToSkip
+          in: query
+          description: Comma-separated list of menu item types to exclude
+          schema:
+            type: string
+        - name: publishStatus
+          in: query
+          description: Filter by publish status of the navigation menu
+          schema:
+            type: string
+            enum:
+              - Draft
+              - Live
+      responses:
+        '200':
+          description: Successfully retrieved navigation menu items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NavigationMenuItemCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connect/communities/{communityId}/themes:
+    get:
+      operationId: getSiteThemes
+      summary: Get Site Themes
+      description: >-
+        Returns the available themes for the specified Experience Cloud site
+        including branding properties, colors, fonts, and images.
+      tags:
+        - Themes
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved site themes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            web: Access the web application
+            full: Full access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    StatusFilter:
+      name: status
+      in: query
+      description: >-
+        Filter sites by status. Valid values are Live, Inactive,
+        DownForMaintenance, UnderConstruction.
+      schema:
+        type: string
+        enum:
+          - Live
+          - Inactive
+          - DownForMaintenance
+          - UnderConstruction
+  schemas:
+    CommunityListResponse:
+      type: object
+      description: Response containing a list of Experience Cloud sites
+      properties:
+        communities:
+          type: array
+          description: List of Experience Cloud sites
+          items:
+            $ref: '#/components/schemas/Community'
+        total:
+          type: integer
+          description: Total number of sites available
+    Community:
+      type: object
+      description: Represents an Experience Cloud site (community)
+      properties:
+        allowChatterAccessWithoutLogin:
+          type: boolean
+          description: Whether guest users can access Chatter
+        allowMembersToFlag:
+          type: boolean
+          description: Whether community members can flag content
+        description:
+          type: string
+          description: Description of the Experience Cloud site
+        id:
+          type: string
+          description: Unique identifier of the site
+        invitationsEnabled:
+          type: boolean
+          description: Whether invitations are enabled for the site
+        knowledgeableEnabled:
+          type: boolean
+          description: Whether the knowledgeable people feature is enabled
+        loginUrl:
+          type: string
+          format: uri
+          description: URL for the site login page
+        memberVisibilityEnabled:
+          type: boolean
+          description: Whether members can see other members
+        name:
+          type: string
+          description: Name of the Experience Cloud site
+        nicknameDisplayEnabled:
+          type: boolean
+          description: Whether nicknames are displayed instead of full names
+        privateMessagesEnabled:
+          type: boolean
+          description: Whether private messaging is enabled
+        reputationEnabled:
+          type: boolean
+          description: Whether the reputation system is enabled
+        sendWelcomeEmail:
+          type: boolean
+          description: Whether welcome emails are sent to new members
+        siteAsContainerEnabled:
+          type: boolean
+          description: Whether the site-as-container feature is enabled
+        siteUrl:
+          type: string
+          format: uri
+          description: The URL of the Experience Cloud site
+        status:
+          type: string
+          description: Current status of the site
+          enum:
+            - Live
+            - Inactive
+            - DownForMaintenance
+            - UnderConstruction
+        templateName:
+          type: string
+          description: Name of the template used for the site
+        url:
+          type: string
+          format: uri
+          description: API resource URL for this site
+        urlPathPrefix:
+          type: string
+          description: URL path prefix for the site
+    CreateCommunityInput:
+      type: object
+      description: Input for creating a new Experience Cloud site
+      required:
+        - name
+        - templateName
+        - urlPathPrefix
+      properties:
+        description:
+          type: string
+          description: Description for the new site
+        name:
+          type: string
+          description: Name for the new site
+        templateName:
+          type: string
+          description: Template to use for the site
+        urlPathPrefix:
+          type: string
+          description: URL path prefix for the site
+    UpdateCommunityInput:
+      type: object
+      description: Input for updating an Experience Cloud site
+      properties:
+        description:
+          type: string
+          description: Updated description for the site
+        name:
+          type: string
+          description: Updated name for the site
+        status:
+          type: string
+          description: Updated status for the site
+          enum:
+            - Live
+            - Inactive
+            - DownForMaintenance
+    PublishStatus:
+      type: object
+      description: Status of a publish operation
+      properties:
+        id:
+          type: string
+          description: The ID of the publish operation
+        status:
+          type: string
+          description: Status of the publish operation
+    NavigationMenuItemCollection:
+      type: object
+      description: Collection of navigation menu items
+      properties:
+        menuItems:
+          type: array
+          description: List of navigation menu items
+          items:
+            $ref: '#/components/schemas/NavigationMenuItem'
+        totalMenuItems:
+          type: integer
+          description: Total number of menu items
+    NavigationMenuItem:
+      type: object
+      description: A navigation menu item in an Experience Cloud site
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the menu item
+        label:
+          type: string
+          description: Display label of the menu item
+        menuItemType:
+          type: string
+          description: Type of the menu item
+          enum:
+            - ExternalLink
+            - InternalLink
+            - MenuLabel
+            - NavigationalTopic
+            - SalesforceObject
+            - GlobalAction
+        position:
+          type: integer
+          description: Display position order
+        target:
+          type: string
+          description: Target URL or page reference
+        targetPreferences:
+          type: string
+          description: Target opening behavior
+        subMenu:
+          type: array
+          description: Nested submenu items
+          items:
+            $ref: '#/components/schemas/NavigationMenuItem'
+    ThemeCollection:
+      type: object
+      description: Collection of site themes
+      properties:
+        themes:
+          type: array
+          description: List of available themes
+          items:
+            $ref: '#/components/schemas/Theme'
+    Theme:
+      type: object
+      description: Theme configuration for an Experience Cloud site
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the theme
+        name:
+          type: string
+          description: Name of the theme
+        themeType:
+          type: string
+          description: Type of the theme
+        properties:
+          type: object
+          description: Theme properties including colors, fonts, and images
+          additionalProperties:
+            type: string
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+  responses:
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'

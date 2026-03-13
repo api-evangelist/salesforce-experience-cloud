@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.salesforce.com/schemas/experience-cloud/cms-channel.json",
+  "title": "CMS Channel",
+  "description": "Represents a CMS delivery channel used for publishing and delivering managed content to Experience Cloud sites or external applications.",
+  "type": "object",
+  "properties": {
+    "channelId": {
+      "type": "string",
+      "description": "Unique identifier of the CMS channel"
+    },
+    "channelName": {
+      "type": "string",
+      "description": "Display name of the channel"
+    },
+    "channelType": {
+      "type": "string",
+      "description": "Type of the delivery channel",
+      "enum": ["ExperienceCloudSite", "CustomChannel"]
+    },
+    "domain": {
+      "type": "string",
+      "description": "Domain associated with the channel for content delivery"
+    },
+    "domainName": {
+      "type": "string",
+      "description": "Fully qualified domain name of the channel"
+    },
+    "isDomainLocked": {
+      "type": "boolean",
+      "description": "Whether the domain is locked and cannot be changed",
+      "default": false
+    },
+    "isSearchable": {
+      "type": "boolean",
+      "description": "Whether content in this channel is searchable by site visitors",
+      "default": true
+    }
+  },
+  "required": ["channelId", "channelName", "channelType"]
+}

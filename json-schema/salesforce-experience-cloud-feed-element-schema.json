@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.salesforce.com/schemas/experience-cloud/feed-element.json",
+  "title": "Feed Element",
+  "description": "Represents a feed element (post, announcement, or bundle) in an Experience Cloud site community feed.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the feed element"
+    },
+    "feedElementType": {
+      "type": "string",
+      "description": "Type of the feed element",
+      "enum": ["FeedItem", "Bundle", "Recommendation"]
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the feed element was created"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the feed element was last modified"
+    },
+    "actor": {
+      "$ref": "#/$defs/ActorReference",
+      "description": "The user who created the feed element"
+    },
+    "parent": {
+      "$ref": "#/$defs/ActorReference",
+      "description": "The parent record or user of the feed element"
+    },
+    "body": {
+      "$ref": "#/$defs/MessageBody",
+      "description": "The rich text body of the feed element"
+    },
+    "header": {
+      "$ref": "#/$defs/MessageBody",
+      "description": "The header text of the feed element"
+    },
+    "capabilities": {
+      "type": "object",
+      "description": "Capabilities available on this feed element (comments, likes, etc.)",
+      "properties": {
+        "comments": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "type": "object",
+              "properties": {
+                "currentPageToken": { "type": "string" },
+                "currentPageUrl": { "type": "string", "format": "uri" },
+                "nextPageToken": { "type": "string" },
+                "nextPageUrl": { "type": "string", "format": "uri" },
+                "total": { "type": "integer" },
+                "comments": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/Comment" }
+                }
+              }
+            }
+          }
+        },
+        "chatterLikes": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "type": "object",
+              "properties": {
+                "total": { "type": "integer" },
+                "likes": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/Like" }
+                }
+              }
+            },
+            "myLike": {
+              "$ref": "#/$defs/Like"
+            }
+          }
+        },
+        "topics": {
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/TopicReference" }
+            }
+          }
+        },
+        "bookmarks": {
+          "type": "object",
+          "properties": {
+            "isBookmarkedByCurrentUser": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "API resource URL for this feed element"
+    }
+  },
+  "required": ["id", "feedElementType"],
+  "$defs": {
+    "ActorReference": {
+      "type": "object",
+      "description": "Reference to a user or record that acts as an actor",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "required": ["id"]
+    },
+    "MessageBody": {
+      "type": "object",
+      "description": "Rich text message body composed of typed segments",
+      "properties": {
+        "isRichText": {
+          "type": "boolean",
+          "description": "Whether the body contains rich text formatting"
+        },
+        "text": {
+          "type": "string",
+          "description": "Plain text representation of the body"
+        },
+        "messageSegments": {
+          "type": "array",
+          "description": "Typed segments composing the message body",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["Text", "Mention", "Hashtag", "Link", "MarkupBegin", "MarkupEnd", "InlineImage", "EntityLink"]
+              },
+              "text": { "type": "string" },
+              "name": { "type": "string" },
+              "id": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            },
+            "required": ["type"]
+          }
+        }
+      }
+    },
+    "Comment": {
+      "type": "object",
+      "description": "A comment on a feed element",
+      "properties": {
+        "id": { "type": "string" },
+        "body": { "$ref": "#/$defs/MessageBody" },
+        "createdDate": { "type": "string", "format": "date-time" },
+        "user": { "$ref": "#/$defs/ActorReference" },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "required": ["id"]
+    },
+    "Like": {
+      "type": "object",
+      "description": "A like on a feed element or comment",
+      "properties": {
+        "id": { "type": "string" },
+        "createdDate": { "type": "string", "format": "date-time" },
+        "user": { "$ref": "#/$defs/ActorReference" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "TopicReference": {
+      "type": "object",
+      "description": "Reference to a topic associated with the feed element",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

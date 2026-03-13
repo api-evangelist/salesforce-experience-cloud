@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.salesforce.com/schemas/experience-cloud/managed-content.json",
+  "title": "Managed Content Version",
+  "description": "Represents a published version of managed CMS content delivered through Experience Cloud channels.",
+  "type": "object",
+  "properties": {
+    "managedContentId": {
+      "type": "string",
+      "description": "Salesforce record ID of the managed content item"
+    },
+    "contentKey": {
+      "type": "string",
+      "description": "Unique content key used for content retrieval and referencing"
+    },
+    "contentUrlName": {
+      "type": "string",
+      "description": "URL-friendly name for the content, used in page URLs"
+    },
+    "title": {
+      "type": "string",
+      "description": "Display title of the content item"
+    },
+    "type": {
+      "type": "string",
+      "description": "Developer name of the content type (e.g., news, cms_image, cms_document)"
+    },
+    "typeLabel": {
+      "type": "string",
+      "description": "Human-readable label for the content type"
+    },
+    "language": {
+      "type": "string",
+      "description": "Language code of this content version (e.g., en_US)",
+      "pattern": "^[a-z]{2}(_[A-Z]{2})?$"
+    },
+    "publishedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when this content version was published"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current publication status of the content",
+      "enum": ["Draft", "Published", "Archived"]
+    },
+    "contentNodes": {
+      "type": "object",
+      "description": "Content field values organized as typed nodes, keyed by field name",
+      "additionalProperties": {
+        "$ref": "#/$defs/ContentNode"
+      }
+    },
+    "unauthenticatedUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public URL for accessing this content without authentication"
+    }
+  },
+  "required": ["managedContentId", "contentKey", "title", "type"],
+  "$defs": {
+    "ContentNode": {
+      "type": "object",
+      "description": "A typed content node representing a field value within managed content",
+      "properties": {
+        "nodeType": {
+          "type": "string",
+          "description": "Type of the content node determining how the value should be interpreted",
+          "enum": ["Media", "MediaSource", "MultilineText", "NameField", "RichText", "Text", "Url", "DateTime"]
+        },
+        "value": {
+          "type": "string",
+          "description": "Text or scalar value of the node"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL value for Media and Url node types"
+        },
+        "altText": {
+          "type": "string",
+          "description": "Alternative text for accessibility (Media node type)"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the content node"
+        },
+        "fileName": {
+          "type": "string",
+          "description": "Original file name for media content"
+        },
+        "mediaType": {
+          "type": "string",
+          "description": "Classification of media content (e.g., Image, Document, Video)"
+        },
+        "mimeType": {
+          "type": "string",
+          "description": "MIME type of the content (e.g., image/png, application/pdf)"
+        },
+        "referenceId": {
+          "type": "string",
+          "description": "Reference identifier for the content"
+        },
+        "contentKey": {
+          "type": "string",
+          "description": "Content key for referenced content items"
+        },
+        "unauthenticatedUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Public URL for unauthenticated access to the content"
+        }
+      },
+      "required": ["nodeType"]
+    }
+  }
+}

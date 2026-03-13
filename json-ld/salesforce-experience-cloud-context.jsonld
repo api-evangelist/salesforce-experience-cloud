@@ -1,0 +1,206 @@
+{
+  "@context": {
+    "@version": 1.1,
+
+    "sf": "https://developer.salesforce.com/schemas/experience-cloud/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "sioc": "http://rdfs.org/sioc/ns#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "as": "https://www.w3.org/ns/activitystreams#",
+
+    "ExperienceCloudSite": {
+      "@id": "sf:Site",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "description": "schema:description",
+        "url": "schema:url",
+        "siteUrl": "schema:url",
+        "loginUrl": {
+          "@id": "sf:loginUrl",
+          "@type": "@id"
+        },
+        "status": "schema:serverStatus",
+        "templateName": "sf:templateName",
+        "urlPathPrefix": "sf:urlPathPrefix",
+        "memberVisibilityEnabled": "sf:memberVisibilityEnabled",
+        "reputationEnabled": "sf:reputationEnabled"
+      }
+    },
+
+    "ManagedContent": {
+      "@id": "sf:ManagedContent",
+      "@context": {
+        "managedContentId": "@id",
+        "contentKey": "dcterms:identifier",
+        "title": "schema:headline",
+        "description": "schema:description",
+        "type": "dcterms:type",
+        "typeLabel": "schema:additionalType",
+        "language": "schema:inLanguage",
+        "publishedDate": "schema:datePublished",
+        "status": "schema:creativeWorkStatus",
+        "contentUrlName": "schema:urlTemplate",
+        "contentNodes": "schema:hasPart",
+        "unauthenticatedUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "ContentNode": {
+      "@id": "sf:ContentNode",
+      "@context": {
+        "nodeType": "dcterms:type",
+        "value": "schema:value",
+        "url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "altText": "schema:alternateName",
+        "title": "schema:name",
+        "fileName": "schema:name",
+        "mimeType": "schema:encodingFormat",
+        "mediaType": "dcterms:format"
+      }
+    },
+
+    "CmsChannel": {
+      "@id": "sf:CmsChannel",
+      "@context": {
+        "channelId": "@id",
+        "channelName": "schema:name",
+        "channelType": "dcterms:type",
+        "domain": "schema:url",
+        "domainName": "schema:name"
+      }
+    },
+
+    "FeedElement": {
+      "@id": "sf:FeedElement",
+      "@context": {
+        "id": "@id",
+        "feedElementType": "dcterms:type",
+        "createdDate": "schema:dateCreated",
+        "modifiedDate": "schema:dateModified",
+        "actor": "schema:author",
+        "parent": "schema:isPartOf",
+        "body": "schema:articleBody",
+        "url": {
+          "@id": "schema:url",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Comment": {
+      "@id": "as:Note",
+      "@context": {
+        "id": "@id",
+        "body": "schema:text",
+        "createdDate": "schema:dateCreated",
+        "user": "schema:author"
+      }
+    },
+
+    "Like": {
+      "@id": "as:Like",
+      "@context": {
+        "id": "@id",
+        "createdDate": "schema:dateCreated",
+        "user": "as:actor"
+      }
+    },
+
+    "Topic": {
+      "@id": "skos:Concept",
+      "@context": {
+        "id": "@id",
+        "name": "skos:prefLabel",
+        "description": "skos:definition",
+        "talkingAbout": "sf:talkingAbout"
+      }
+    },
+
+    "CommunityUser": {
+      "@id": "sf:CommunityUser",
+      "@context": {
+        "id": "@id",
+        "username": "schema:alternateName",
+        "name": "schema:name",
+        "firstName": "schema:givenName",
+        "lastName": "schema:familyName",
+        "displayName": "foaf:nick",
+        "communityNickname": "foaf:nick",
+        "email": "schema:email",
+        "title": "schema:jobTitle",
+        "companyName": "schema:worksFor",
+        "photo": "schema:image"
+      }
+    },
+
+    "SObjectRecord": {
+      "@id": "sf:SObjectRecord",
+      "@context": {
+        "Id": "@id",
+        "Name": "schema:name",
+        "CreatedDate": "schema:dateCreated",
+        "LastModifiedDate": "schema:dateModified",
+        "OwnerId": "sf:ownerId"
+      }
+    },
+
+    "NavigationMenuItem": {
+      "@id": "schema:SiteNavigationElement",
+      "@context": {
+        "id": "@id",
+        "label": "schema:name",
+        "target": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "position": "schema:position",
+        "menuItemType": "dcterms:type",
+        "subMenu": "schema:hasPart"
+      }
+    },
+
+    "Theme": {
+      "@id": "sf:Theme",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "description": "schema:description",
+        "isActive": "sf:isActive",
+        "themeType": "dcterms:type"
+      }
+    },
+
+    "Template": {
+      "@id": "sf:Template",
+      "@context": {
+        "id": "@id",
+        "label": "schema:name",
+        "developerName": "schema:identifier",
+        "description": "schema:description",
+        "templateCategory": "dcterms:type",
+        "publisher": "schema:publisher"
+      }
+    },
+
+    "RecordRepresentation": {
+      "@id": "sf:RecordRepresentation",
+      "@context": {
+        "id": "@id",
+        "apiName": "dcterms:type",
+        "fields": "schema:additionalProperty",
+        "lastModifiedDate": "schema:dateModified",
+        "recordTypeId": "sf:recordTypeId"
+      }
+    }
+  }
+}

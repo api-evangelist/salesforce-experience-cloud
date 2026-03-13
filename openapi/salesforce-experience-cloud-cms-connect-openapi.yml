@@ -1,0 +1,807 @@
+openapi: 3.1.0
+info:
+  title: Salesforce CMS Connect API
+  description: >-
+    Manage content, channels, and media in Experience Cloud CMS. Supports
+    creating, updating, and delivering managed content across channels for
+    headless content delivery and site publishing. Part of the Salesforce
+    Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+  - url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+    description: Salesforce Instance
+    variables:
+      instance:
+        default: yourInstance
+        description: Your Salesforce instance name or custom domain
+security:
+  - oauth2: []
+  - bearerAuth: []
+tags:
+  - name: Channels
+    description: CMS channel management
+  - name: Content
+    description: CMS content management operations
+  - name: Content Types
+    description: CMS content type operations
+  - name: Folders
+    description: CMS folder management
+  - name: Media
+    description: CMS media file operations
+paths:
+  /channels:
+    get:
+      operationId: listCmsChannels
+      summary: List CMS Channels
+      description: >-
+        Returns a list of CMS channels available to the context user. Channels
+        represent destinations where managed content can be published, such as
+        Experience Cloud sites or external applications.
+      tags:
+        - Channels
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully retrieved CMS channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /channels/{channelId}:
+    get:
+      operationId: getCmsChannel
+      summary: Get a CMS Channel
+      description: >-
+        Returns details about a specific CMS channel including its name,
+        type, domain, and the content types available in the channel.
+      tags:
+        - Channels
+      parameters:
+        - $ref: '#/components/parameters/ChannelId'
+      responses:
+        '200':
+          description: Successfully retrieved CMS channel details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /contents:
+    get:
+      operationId: listCmsContents
+      summary: List CMS Contents
+      description: >-
+        Returns a list of CMS content items. Supports filtering by content
+        type, language, and channel. Returns content metadata and body fields.
+      tags:
+        - Content
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageParam'
+        - name: managedContentType
+          in: query
+          description: Filter by managed content type developer name
+          schema:
+            type: string
+        - name: language
+          in: query
+          description: Language code to filter content (e.g., en_US)
+          schema:
+            type: string
+        - name: channelId
+          in: query
+          description: Filter content by channel ID
+          schema:
+            type: string
+        - name: folderId
+          in: query
+          description: Filter content by folder ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved CMS content list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCmsContent
+      summary: Create CMS Content
+      description: >-
+        Creates a new CMS content item in the specified workspace. Requires
+        the content type, title, and body fields defined for the content type.
+      tags:
+        - Content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentInput'
+      responses:
+        '201':
+          description: CMS content created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /contents/{contentId}:
+    get:
+      operationId: getCmsContent
+      summary: Get CMS Content
+      description: >-
+        Returns a specific CMS content item by its ID, including all
+        body fields, metadata, and version information.
+      tags:
+        - Content
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+        - name: language
+          in: query
+          description: Language variant to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved CMS content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateCmsContent
+      summary: Update CMS Content
+      description: >-
+        Updates an existing CMS content item. Supports updating the title,
+        body fields, and language variants.
+      tags:
+        - Content
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentInput'
+      responses:
+        '200':
+          description: CMS content updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteCmsContent
+      summary: Delete CMS Content
+      description: >-
+        Deletes the specified CMS content item. Content that is currently
+        published must be unpublished before deletion.
+      tags:
+        - Content
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      responses:
+        '204':
+          description: CMS content deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /contents/{contentId}/publish:
+    post:
+      operationId: publishCmsContent
+      summary: Publish CMS Content
+      description: >-
+        Publishes the specified CMS content item to its assigned channels,
+        making it available for delivery.
+      tags:
+        - Content
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channelIds:
+                  type: array
+                  description: Channel IDs to publish to
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: CMS content published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /contents/{contentId}/unpublish:
+    post:
+      operationId: unpublishCmsContent
+      summary: Unpublish CMS Content
+      description: >-
+        Unpublishes the specified CMS content item, removing it from
+        delivery channels.
+      tags:
+        - Content
+      parameters:
+        - $ref: '#/components/parameters/ContentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channelIds:
+                  type: array
+                  description: Channel IDs to unpublish from
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: CMS content unpublished successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /content-types:
+    get:
+      operationId: listContentTypes
+      summary: List Content Types
+      description: >-
+        Returns the CMS content types available in the org, including both
+        standard and custom content types with their field definitions.
+      tags:
+        - Content Types
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully retrieved content types
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentTypeCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /folders:
+    get:
+      operationId: listCmsFolders
+      summary: List CMS Folders
+      description: >-
+        Returns a list of CMS workspace folders used to organize content.
+      tags:
+        - Folders
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully retrieved CMS folders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FolderCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /media:
+    get:
+      operationId: listCmsMedia
+      summary: List CMS Media
+      description: >-
+        Returns a list of media files (images, documents) stored in the CMS
+        workspace.
+      tags:
+        - Media
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageParam'
+        - name: folderId
+          in: query
+          description: Filter media by folder ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved CMS media list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: uploadCmsMedia
+      summary: Upload CMS Media
+      description: >-
+        Uploads a media file (image, document, or video) to the CMS workspace.
+      tags:
+        - Media
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The media file to upload
+                title:
+                  type: string
+                  description: Title for the media file
+                folderId:
+                  type: string
+                  description: Folder to upload the media into
+      responses:
+        '201':
+          description: Media file uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaFile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /media/{mediaId}:
+    get:
+      operationId: getCmsMedia
+      summary: Get CMS Media
+      description: >-
+        Returns metadata about a specific media file including its URL,
+        dimensions, file type, and alt text.
+      tags:
+        - Media
+      parameters:
+        - name: mediaId
+          in: path
+          required: true
+          description: The ID of the media file
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved media details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaFile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteCmsMedia
+      summary: Delete CMS Media
+      description: >-
+        Deletes the specified media file from the CMS workspace.
+      tags:
+        - Media
+      parameters:
+        - name: mediaId
+          in: path
+          required: true
+          description: The ID of the media file
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Media file deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow
+  parameters:
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS channel
+      schema:
+        type: string
+    ContentId:
+      name: contentId
+      in: path
+      required: true
+      description: The ID of the CMS content item
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
+  schemas:
+    ChannelCollection:
+      type: object
+      description: Collection of CMS channels
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    Channel:
+      type: object
+      description: A CMS delivery channel
+      properties:
+        channelId:
+          type: string
+          description: Unique identifier of the channel
+        channelName:
+          type: string
+          description: Name of the channel
+        channelType:
+          type: string
+          description: Type of the channel
+          enum:
+            - ExperienceCloudSite
+            - CustomChannel
+        domain:
+          type: string
+          description: Domain associated with the channel
+        domainName:
+          type: string
+          description: Domain name of the channel
+        isDomainLocked:
+          type: boolean
+          description: Whether the domain is locked
+        isSearchable:
+          type: boolean
+          description: Whether content in this channel is searchable
+    ContentCollection:
+      type: object
+      description: Collection of CMS content items
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    Content:
+      type: object
+      description: A CMS content item
+      properties:
+        contentKey:
+          type: string
+          description: Unique key for the content
+        contentUrlName:
+          type: string
+          description: URL-friendly name for the content
+        language:
+          type: string
+          description: Language code of the content
+        managedContentId:
+          type: string
+          description: Managed content record ID
+        publishedDate:
+          type: string
+          format: date-time
+          description: When the content was published
+        status:
+          type: string
+          description: Current status of the content
+          enum:
+            - Draft
+            - Published
+            - Archived
+        title:
+          type: string
+          description: Title of the content
+        type:
+          type: string
+          description: Content type developer name
+        typeLabel:
+          type: string
+          description: Content type display label
+        body:
+          type: object
+          description: Content body fields (varies by content type)
+          additionalProperties: true
+        contentNodes:
+          type: object
+          description: Content nodes containing field values
+          additionalProperties:
+            $ref: '#/components/schemas/ContentNode'
+    ContentInput:
+      type: object
+      description: Input for creating or updating CMS content
+      required:
+        - title
+        - contentType
+      properties:
+        title:
+          type: string
+          description: Title for the content
+        contentType:
+          type: string
+          description: Developer name of the content type
+        language:
+          type: string
+          description: Language code (e.g., en_US)
+        contentBody:
+          type: object
+          description: Content body fields as defined by the content type
+          additionalProperties: true
+        urlName:
+          type: string
+          description: URL-friendly name for the content
+    ContentNode:
+      type: object
+      description: A content node representing a field value
+      properties:
+        nodeType:
+          type: string
+          description: Type of the content node
+          enum:
+            - Media
+            - MultilineText
+            - RichText
+            - Text
+            - Url
+            - DateTime
+            - NameField
+        value:
+          type: string
+          description: Text value of the node
+        url:
+          type: string
+          format: uri
+          description: URL value of the node (for Media and Url types)
+        altText:
+          type: string
+          description: Alternative text (for Media type)
+        title:
+          type: string
+          description: Title of the node
+    ContentTypeCollection:
+      type: object
+      description: Collection of content types
+      properties:
+        contentTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentType'
+        totalCount:
+          type: integer
+    ContentType:
+      type: object
+      description: A CMS content type definition
+      properties:
+        developerName:
+          type: string
+          description: Developer name of the content type
+        label:
+          type: string
+          description: Display label of the content type
+        fields:
+          type: array
+          description: Field definitions for the content type
+          items:
+            type: object
+            properties:
+              fieldName:
+                type: string
+              fieldType:
+                type: string
+              isRequired:
+                type: boolean
+              label:
+                type: string
+    PublishResult:
+      type: object
+      description: Result of a publish or unpublish operation
+      properties:
+        isSuccess:
+          type: boolean
+          description: Whether the operation succeeded
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              errorCode:
+                type: string
+              message:
+                type: string
+    FolderCollection:
+      type: object
+      description: Collection of CMS folders
+      properties:
+        folders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Folder'
+        totalCount:
+          type: integer
+    Folder:
+      type: object
+      description: A CMS workspace folder
+      properties:
+        folderId:
+          type: string
+          description: Unique identifier of the folder
+        name:
+          type: string
+          description: Name of the folder
+        parentFolderId:
+          type: string
+          description: ID of the parent folder
+    MediaCollection:
+      type: object
+      description: Collection of CMS media files
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaFile'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    MediaFile:
+      type: object
+      description: A CMS media file
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the media file
+        altText:
+          type: string
+          description: Alternative text for the media
+        fileName:
+          type: string
+          description: Original file name
+        mediaType:
+          type: string
+          description: Type of media
+          enum:
+            - Image
+            - Document
+            - Video
+        mimeType:
+          type: string
+          description: MIME type of the file
+        referenceId:
+          type: string
+          description: Reference ID for the media
+        title:
+          type: string
+          description: Display title of the media
+        url:
+          type: string
+          format: uri
+          description: URL to access the media file
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+  responses:
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'

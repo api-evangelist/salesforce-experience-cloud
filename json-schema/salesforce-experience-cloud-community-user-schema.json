@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.salesforce.com/schemas/experience-cloud/community-user.json",
+  "title": "Community User",
+  "description": "Represents a user within an Experience Cloud site, including profile details, reputation, and community membership information.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique 18-character Salesforce user ID"
+    },
+    "username": {
+      "type": "string",
+      "description": "Salesforce username (typically email format)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full display name of the user"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name of the user"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name of the user"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name shown in the community (may be nickname)"
+    },
+    "communityNickname": {
+      "type": "string",
+      "description": "Community-specific nickname for the user"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the user"
+    },
+    "title": {
+      "type": "string",
+      "description": "Professional title of the user"
+    },
+    "companyName": {
+      "type": "string",
+      "description": "Company or organization name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of user (e.g., Internal, Guest, External)",
+      "enum": ["Internal", "Guest", "External", "ChatterFree", "ChatterExternal"]
+    },
+    "photo": {
+      "type": "object",
+      "description": "User's profile photo URLs in various sizes",
+      "properties": {
+        "fullEmailPhotoUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Full-size photo URL for email"
+        },
+        "largePhotoUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Large profile photo URL"
+        },
+        "smallPhotoUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Small profile photo URL (thumbnail)"
+        },
+        "standardEmailPhotoUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Standard-size photo URL for email"
+        }
+      }
+    },
+    "reputation": {
+      "type": "object",
+      "description": "User's reputation information in the community",
+      "properties": {
+        "reputationPoints": {
+          "type": "number",
+          "description": "Total reputation points earned"
+        },
+        "reputationLevel": {
+          "type": "object",
+          "description": "Current reputation level",
+          "properties": {
+            "levelLabel": {
+              "type": "string",
+              "description": "Display label for the reputation level"
+            },
+            "levelNumber": {
+              "type": "integer",
+              "description": "Numeric level value"
+            }
+          }
+        }
+      }
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "API resource URL for this user"
+    }
+  },
+  "required": ["id", "name"]
+}
