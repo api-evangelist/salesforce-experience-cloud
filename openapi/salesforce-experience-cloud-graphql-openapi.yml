@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Salesforce GraphQL API
+  title: Salesforce Experience Cloud Salesforce GraphQL API
   description: >-
     Query Salesforce data using GraphQL for Experience Cloud. Offers a
     flexible query language for retrieving exactly the data needed, reducing
@@ -30,7 +30,7 @@ paths:
   /graphql:
     post:
       operationId: executeGraphqlQuery
-      summary: Execute a GraphQL Query or Mutation
+      summary: Salesforce Experience Cloud Execute a GraphQL Query or Mutation
       description: >-
         Executes a GraphQL query or mutation against the Salesforce UIAPI
         schema. The UIAPI schema provides access to records, object metadata,

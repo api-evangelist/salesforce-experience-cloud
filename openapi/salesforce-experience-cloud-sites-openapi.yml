@@ -36,7 +36,7 @@ paths:
   /connect/communities:
     get:
       operationId: listExperienceCloudSites
-      summary: List Experience Cloud Sites
+      summary: Salesforce Experience Cloud List Experience Cloud Sites
       description: >-
         Returns a list of all Experience Cloud sites (communities) available
         to the context user. Includes site metadata such as name, status,
@@ -58,7 +58,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
     post:
       operationId: createExperienceCloudSite
-      summary: Create an Experience Cloud Site
+      summary: Salesforce Experience Cloud Create an Experience Cloud Site
       description: >-
         Creates a new Experience Cloud site with the specified name, template,
         and URL path prefix. Requires the Create and Set Up Experiences
@@ -87,7 +87,7 @@ paths:
   /connect/communities/{communityId}:
     get:
       operationId: getExperienceCloudSite
-      summary: Get an Experience Cloud Site
+      summary: Salesforce Experience Cloud Get an Experience Cloud Site
       description: >-
         Returns detailed information about a specific Experience Cloud site
         including its name, description, status, URL path prefix, template
@@ -111,7 +111,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateExperienceCloudSite
-      summary: Update an Experience Cloud Site
+      summary: Salesforce Experience Cloud Update an Experience Cloud Site
       description: >-
         Updates the properties of an existing Experience Cloud site such as
         its name, description, and status.
@@ -141,7 +141,7 @@ paths:
   /connect/communities/{communityId}/publish:
     post:
       operationId: publishExperienceCloudSite
-      summary: Publish an Experience Cloud Site
+      summary: Salesforce Experience Cloud Publish an Experience Cloud Site
       description: >-
         Publishes the specified Experience Cloud site, making all pending
         changes live. Requires the Create and Set Up Experiences permission.
@@ -165,7 +165,7 @@ paths:
   /connect/communities/{communityId}/navigation-menu/navigation-menu-items:
     get:
       operationId: getNavigationMenuItems
-      summary: Get Navigation Menu Items
+      summary: Salesforce Experience Cloud Get Navigation Menu Items
       description: >-
         Returns the navigation menu items configured for the specified
         Experience Cloud site. Includes menu labels, target URLs, access
@@ -206,7 +206,7 @@ paths:
   /connect/communities/{communityId}/themes:
     get:
       operationId: getSiteThemes
-      summary: Get Site Themes
+      summary: Salesforce Experience Cloud Get Site Themes
       description: >-
         Returns the available themes for the specified Experience Cloud site
         including branding properties, colors, fonts, and images.

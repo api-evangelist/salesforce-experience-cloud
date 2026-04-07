@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Salesforce User Interface API
+  title: Salesforce Experience Cloud Salesforce User Interface API
   description: >-
     Access record data, layouts, list views, and navigation items for building
     custom user interfaces. Powers Lightning web components in Experience Cloud
@@ -40,7 +40,7 @@ paths:
   /record-ui/{recordIds}:
     get:
       operationId: getRecordUi
-      summary: Get Record UI
+      summary: Salesforce Experience Cloud Get Record UI
       description: >-
         Returns layout information, field data, and object metadata for one
         or more records. Provides everything needed to render a record detail
@@ -106,7 +106,7 @@ paths:
   /records/{recordId}:
     get:
       operationId: getRecord
-      summary: Get a Record
+      summary: Salesforce Experience Cloud Get a Record
       description: >-
         Returns field values and metadata for a specific record. Supports
         requesting specific fields or all fields from a layout. Returns
@@ -155,7 +155,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateRecord
-      summary: Update a Record
+      summary: Salesforce Experience Cloud Update a Record
       description: >-
         Updates the specified record with the provided field values. Returns
         the updated record representation including the new field values.
@@ -184,7 +184,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteRecord
-      summary: Delete a Record
+      summary: Salesforce Experience Cloud Delete a Record
       description: >-
         Deletes the specified record. The record is moved to the Recycle
         Bin.
@@ -202,7 +202,7 @@ paths:
   /records:
     post:
       operationId: createRecord
-      summary: Create a Record
+      summary: Salesforce Experience Cloud Create a Record
       description: >-
         Creates a new record of the specified sObject type. Returns the
         created record representation with all field values.
@@ -228,7 +228,7 @@ paths:
   /layout/{objectApiName}:
     get:
       operationId: getRecordLayout
-      summary: Get Record Layout
+      summary: Salesforce Experience Cloud Get Record Layout
       description: >-
         Returns layout metadata for the specified object type including
         sections, fields, and their display properties. Used to render
@@ -282,7 +282,7 @@ paths:
   /object-info/{objectApiName}:
     get:
       operationId: getObjectInfo
-      summary: Get Object Info
+      summary: Salesforce Experience Cloud Get Object Info
       description: >-
         Returns metadata about the specified object including fields, record
         types, child relationships, and theme information. Provides the
@@ -305,7 +305,7 @@ paths:
   /list-ui/{listViewId}:
     get:
       operationId: getListViewData
-      summary: Get List View Data
+      summary: Salesforce Experience Cloud Get List View Data
       description: >-
         Returns the records and metadata for a specific list view including
         columns, sorting, filtering, and the record data. Used to render
@@ -359,7 +359,7 @@ paths:
   /list-ui/{objectApiName}:
     get:
       operationId: getListViewsByObject
-      summary: Get List Views for Object
+      summary: Salesforce Experience Cloud Get List Views for Object
       description: >-
         Returns all available list views for the specified object type.
         Includes list view ID, label, and developer name.
@@ -397,7 +397,7 @@ paths:
   /actions/record/{recordId}:
     get:
       operationId: getRecordActions
-      summary: Get Record Actions
+      summary: Salesforce Experience Cloud Get Record Actions
       description: >-
         Returns the actions available for a specific record based on the
         current user's permissions and the record's state.
@@ -433,7 +433,7 @@ paths:
   /favorites:
     get:
       operationId: getFavorites
-      summary: Get Favorites
+      summary: Salesforce Experience Cloud Get Favorites
       description: >-
         Returns the list of favorites for the context user, including
         records, list views, and other favorited items.
@@ -450,7 +450,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: addFavorite
-      summary: Add a Favorite
+      summary: Salesforce Experience Cloud Add a Favorite
       description: >-
         Adds a record, list view, or other item to the user's favorites.
       tags:
@@ -475,7 +475,7 @@ paths:
   /favorites/{favoriteId}:
     delete:
       operationId: removeFavorite
-      summary: Remove a Favorite
+      summary: Salesforce Experience Cloud Remove a Favorite
       description: >-
         Removes the specified item from the user's favorites.
       tags:

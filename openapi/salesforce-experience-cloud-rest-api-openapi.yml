@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Salesforce REST API
+  title: Salesforce Experience Cloud Salesforce REST API
   description: >-
     Core REST API for accessing Salesforce objects and data. Provides CRUD
     operations on standard and custom objects, query execution via SOQL,
@@ -42,7 +42,7 @@ paths:
   /services/data:
     get:
       operationId: listApiVersions
-      summary: List Available API Versions
+      summary: Salesforce Experience Cloud List Available API Versions
       description: >-
         Returns a list of all available REST API versions, including the
         version number, label, and a link to each version's root resource.
@@ -62,7 +62,7 @@ paths:
   /:
     get:
       operationId: listResources
-      summary: List Available Resources
+      summary: Salesforce Experience Cloud List Available Resources
       description: >-
         Returns a list of resources available for the specified API version,
         providing the name and URI of each resource. Useful for discovering
@@ -84,7 +84,7 @@ paths:
   /sobjects:
     get:
       operationId: describeGlobal
-      summary: Describe Global
+      summary: Salesforce Experience Cloud Describe Global
       description: >-
         Returns a list of all sObjects available in the org, including
         metadata about each object such as label, name, key prefix,
@@ -112,7 +112,7 @@ paths:
   /sobjects/{sObjectName}:
     get:
       operationId: getSObjectBasicInfo
-      summary: Get sObject Basic Information
+      summary: Salesforce Experience Cloud Get sObject Basic Information
       description: >-
         Returns metadata about the specified sObject, including the object
         describe result and recently accessed records of that type.
@@ -133,7 +133,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createSObjectRecord
-      summary: Create an sObject Record
+      summary: Salesforce Experience Cloud Create an sObject Record
       description: >-
         Creates a new record for the specified sObject type. The request
         body must contain the field values for the new record.
@@ -163,7 +163,7 @@ paths:
   /sobjects/{sObjectName}/describe:
     get:
       operationId: describeSObject
-      summary: Describe an sObject
+      summary: Salesforce Experience Cloud Describe an sObject
       description: >-
         Returns complete metadata about the specified sObject, including
         all fields, record types, child relationships, URLs, and supported
@@ -195,7 +195,7 @@ paths:
   /sobjects/{sObjectName}/{recordId}:
     get:
       operationId: getSObjectRecord
-      summary: Get an sObject Record
+      summary: Salesforce Experience Cloud Get an sObject Record
       description: >-
         Returns the field values for the specified record. Use the fields
         parameter to specify which fields to return. If no fields are
@@ -223,7 +223,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateSObjectRecord
-      summary: Update an sObject Record
+      summary: Salesforce Experience Cloud Update an sObject Record
       description: >-
         Updates the specified record with the provided field values.
         Only fields included in the request body are updated.
@@ -251,7 +251,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteSObjectRecord
-      summary: Delete an sObject Record
+      summary: Salesforce Experience Cloud Delete an sObject Record
       description: >-
         Deletes the specified record. The record is moved to the Recycle
         Bin unless permanently deleted.
@@ -270,7 +270,7 @@ paths:
   /query:
     get:
       operationId: executeQuery
-      summary: Execute a SOQL Query
+      summary: Salesforce Experience Cloud Execute a SOQL Query
       description: >-
         Executes a SOQL query and returns the matching records. Supports
         standard SOQL syntax including SELECT, FROM, WHERE, ORDER BY,
@@ -306,7 +306,7 @@ paths:
   /queryAll:
     get:
       operationId: executeQueryAll
-      summary: Execute a SOQL Query Including Deleted Records
+      summary: Salesforce Experience Cloud Execute a SOQL Query Including Deleted Records
       description: >-
         Executes a SOQL query and returns matching records including
         deleted and archived records. Otherwise behaves identically to
@@ -340,7 +340,7 @@ paths:
   /query/{queryLocator}:
     get:
       operationId: getNextQueryPage
-      summary: Get Next Page of Query Results
+      summary: Salesforce Experience Cloud Get Next Page of Query Results
       description: >-
         Retrieves the next page of results for a previously executed SOQL
         query using the query locator from the nextRecordsUrl.
@@ -367,7 +367,7 @@ paths:
   /search:
     get:
       operationId: executeSearch
-      summary: Execute a SOSL Search
+      summary: Salesforce Experience Cloud Execute a SOSL Search
       description: >-
         Executes a SOSL search query and returns matching records across
         multiple objects. SOSL supports full-text search with wildcard
@@ -402,7 +402,7 @@ paths:
   /limits:
     get:
       operationId: getLimits
-      summary: Get Org Limits
+      summary: Salesforce Experience Cloud Get Org Limits
       description: >-
         Returns the current API usage limits for the org, including daily
         API request limits, data storage, file storage, and other

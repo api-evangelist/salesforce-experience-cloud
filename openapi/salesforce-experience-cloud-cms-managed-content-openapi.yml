@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Salesforce CMS Managed Content API
+  title: Salesforce Experience Cloud Salesforce CMS Managed Content API
   description: >-
     Retrieve and search published managed content versions for Experience Cloud
     sites. Provides endpoints for querying managed content delivery channels
@@ -34,7 +34,7 @@ paths:
   /cms/delivery/channels:
     get:
       operationId: listDeliveryChannels
-      summary: List CMS Delivery Channels
+      summary: Salesforce Experience Cloud List CMS Delivery Channels
       description: >-
         Returns a list of managed content delivery channels available to
         the context user. Channels are destinations where content is
@@ -57,7 +57,7 @@ paths:
   /cms/delivery/channels/{channelId}:
     get:
       operationId: getDeliveryChannel
-      summary: Get a Delivery Channel
+      summary: Salesforce Experience Cloud Get a Delivery Channel
       description: >-
         Returns details about a specific managed content delivery channel
         including its name, type, and available content types.
@@ -79,7 +79,7 @@ paths:
   /cms/delivery/channels/{channelId}/contents/query:
     get:
       operationId: queryChannelContent
-      summary: Query Channel Content
+      summary: Salesforce Experience Cloud Query Channel Content
       description: >-
         Returns published managed content versions for the specified delivery
         channel. Supports filtering by content type, language, and content
@@ -141,7 +141,7 @@ paths:
   /cms/delivery/channels/{channelId}/contents/search:
     get:
       operationId: searchChannelContent
-      summary: Search Channel Content
+      summary: Salesforce Experience Cloud Search Channel Content
       description: >-
         Searches published managed content in the specified delivery channel
         using a search term. Returns matching content with relevance
@@ -190,7 +190,7 @@ paths:
   /cms/delivery/channels/{channelId}/contents/{contentKeyOrId}:
     get:
       operationId: getChannelContentItem
-      summary: Get a Content Item from Channel
+      summary: Salesforce Experience Cloud Get a Content Item from Channel
       description: >-
         Returns a specific published managed content version from the
         specified delivery channel by content key or managed content ID.
@@ -229,7 +229,7 @@ paths:
   /communities/{communityId}/managed-content/delivery:
     get:
       operationId: queryCommunityManagedContent
-      summary: Query Community Managed Content
+      summary: Salesforce Experience Cloud Query Community Managed Content
       description: >-
         Returns published managed content for the specified Experience Cloud
         site. Similar to channel-based delivery but scoped to a specific
@@ -281,7 +281,7 @@ paths:
   /communities/{communityId}/managed-content/delivery/search:
     get:
       operationId: searchCommunityManagedContent
-      summary: Search Community Managed Content
+      summary: Salesforce Experience Cloud Search Community Managed Content
       description: >-
         Searches published managed content within the specified Experience
         Cloud site using a search term.

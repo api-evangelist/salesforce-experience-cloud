@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Salesforce CMS Delivery API
+  title: Salesforce Experience Cloud Salesforce CMS Delivery API
   description: >-
     Delivers CMS content to external applications and headless frontends.
     Enables content retrieval by channel, content type, and content key for
@@ -34,7 +34,7 @@ paths:
   /channels/{channelId}/contents/query:
     get:
       operationId: queryDeliveryContent
-      summary: Query Delivery Content by Channel
+      summary: Salesforce Experience Cloud Query Delivery Content by Channel
       description: >-
         Retrieves published CMS content from the specified delivery channel.
         Returns content items matching the specified content type and
@@ -96,7 +96,7 @@ paths:
   /channels/{channelId}/contents/search:
     get:
       operationId: searchDeliveryContent
-      summary: Search Delivery Content
+      summary: Salesforce Experience Cloud Search Delivery Content
       description: >-
         Searches published CMS content in the specified delivery channel
         using a full-text search term. Returns matching content items
@@ -145,7 +145,7 @@ paths:
   /channels/{channelId}/contents/{contentKeyOrId}:
     get:
       operationId: getDeliveryContentItem
-      summary: Get a Delivery Content Item
+      summary: Salesforce Experience Cloud Get a Delivery Content Item
       description: >-
         Retrieves a specific published content item from the delivery
         channel by its content key or managed content ID. Returns all
@@ -185,7 +185,7 @@ paths:
   /channels/{channelId}/contents/{contentKeyOrId}/binary:
     get:
       operationId: getDeliveryContentBinary
-      summary: Get Content Binary Stream
+      summary: Salesforce Experience Cloud Get Content Binary Stream
       description: >-
         Returns the binary stream of published managed content such as
         images, documents, or videos. Used for downloading or streaming
@@ -223,7 +223,7 @@ paths:
   /channels/{channelId}/collections:
     get:
       operationId: listDeliveryCollections
-      summary: List Content Collections
+      summary: Salesforce Experience Cloud List Content Collections
       description: >-
         Returns a list of published content collections available in the
         specified delivery channel. Collections group related content
@@ -248,7 +248,7 @@ paths:
   /channels/{channelId}/collections/{collectionKeyOrId}:
     get:
       operationId: getDeliveryCollection
-      summary: Get a Content Collection
+      summary: Salesforce Experience Cloud Get a Content Collection
       description: >-
         Retrieves a specific content collection and its items from the
         delivery channel. Returns the collection metadata and all

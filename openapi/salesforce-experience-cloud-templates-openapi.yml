@@ -34,7 +34,7 @@ paths:
   /connect/communities/templates:
     get:
       operationId: listSiteTemplates
-      summary: List Site Templates
+      summary: Salesforce Experience Cloud List Site Templates
       description: >-
         Returns a list of available Experience Cloud site templates that
         can be used when creating new sites. Includes both standard
@@ -64,7 +64,7 @@ paths:
   /connect/communities/{communityId}/template:
     get:
       operationId: getSiteTemplate
-      summary: Get Site Template
+      summary: Salesforce Experience Cloud Get Site Template
       description: >-
         Returns the template currently used by the specified Experience
         Cloud site, including template type, version, and default
@@ -87,7 +87,7 @@ paths:
   /connect/communities/{communityId}/themes:
     get:
       operationId: listSiteThemes
-      summary: List Site Themes
+      summary: Salesforce Experience Cloud List Site Themes
       description: >-
         Returns the themes available for the specified Experience Cloud
         site. Themes control the visual appearance including colors,
@@ -110,7 +110,7 @@ paths:
   /connect/communities/{communityId}/themes/active:
     get:
       operationId: getActiveTheme
-      summary: Get Active Theme
+      summary: Salesforce Experience Cloud Get Active Theme
       description: >-
         Returns the currently active theme for the specified Experience
         Cloud site with all its branding properties.
@@ -131,7 +131,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: setActiveTheme
-      summary: Set Active Theme
+      summary: Salesforce Experience Cloud Set Active Theme
       description: >-
         Sets the active theme for the specified Experience Cloud site.
         Changes take effect on the next publish.
@@ -165,7 +165,7 @@ paths:
   /connect/communities/{communityId}/branding-sets:
     get:
       operationId: listBrandingSets
-      summary: List Branding Sets
+      summary: Salesforce Experience Cloud List Branding Sets
       description: >-
         Returns the branding sets configured for the specified Experience
         Cloud site. Branding sets define reusable visual property groups
@@ -188,7 +188,7 @@ paths:
   /connect/communities/{communityId}/branding-sets/{brandingSetId}:
     get:
       operationId: getBrandingSet
-      summary: Get a Branding Set
+      summary: Salesforce Experience Cloud Get a Branding Set
       description: >-
         Returns the details of a specific branding set including all
         its property values for colors, fonts, and image references.
@@ -215,7 +215,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateBrandingSet
-      summary: Update a Branding Set
+      summary: Salesforce Experience Cloud Update a Branding Set
       description: >-
         Updates the properties of an existing branding set. Only the
         properties included in the request are updated.

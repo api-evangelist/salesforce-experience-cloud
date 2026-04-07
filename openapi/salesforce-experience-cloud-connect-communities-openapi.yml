@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Salesforce Connect REST API (Communities)
+  title: Salesforce Experience Cloud Salesforce Connect REST API (Communities)
   description: >-
     Access community data, feeds, topics, and user engagement features. The
     Connect REST API provides endpoints for social collaboration, content
@@ -38,7 +38,7 @@ paths:
   /communities/{communityId}/chatter/feeds/news/me/feed-elements:
     get:
       operationId: getNewsFeed
-      summary: Get News Feed
+      summary: Salesforce Experience Cloud Get News Feed
       description: >-
         Returns the news feed for the context user within the specified
         Experience Cloud site. Includes feed items from people and records
@@ -70,7 +70,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: postFeedElement
-      summary: Post a Feed Element
+      summary: Salesforce Experience Cloud Post a Feed Element
       description: >-
         Creates a new feed element (post) on the news feed of the specified
         Experience Cloud site. Supports text posts, link posts, and content
@@ -99,7 +99,7 @@ paths:
   /communities/{communityId}/chatter/feed-elements/{feedElementId}:
     get:
       operationId: getFeedElement
-      summary: Get a Feed Element
+      summary: Salesforce Experience Cloud Get a Feed Element
       description: >-
         Returns a specific feed element by its ID within the specified
         Experience Cloud site, including the body, comments, and likes.
@@ -121,7 +121,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteFeedElement
-      summary: Delete a Feed Element
+      summary: Salesforce Experience Cloud Delete a Feed Element
       description: >-
         Deletes the specified feed element from the Experience Cloud site.
         Requires ownership of the feed element or moderation permissions.
@@ -142,7 +142,7 @@ paths:
   /communities/{communityId}/chatter/feed-elements/{feedElementId}/capabilities/comments/items:
     get:
       operationId: getFeedElementComments
-      summary: Get Comments on a Feed Element
+      summary: Salesforce Experience Cloud Get Comments on a Feed Element
       description: >-
         Returns the comments on a specific feed element within the
         Experience Cloud site.
@@ -166,7 +166,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: postComment
-      summary: Post a Comment
+      summary: Salesforce Experience Cloud Post a Comment
       description: >-
         Creates a new comment on the specified feed element within the
         Experience Cloud site.
@@ -195,7 +195,7 @@ paths:
   /communities/{communityId}/chatter/feed-elements/{feedElementId}/capabilities/chatter-likes/items:
     get:
       operationId: getFeedElementLikes
-      summary: Get Likes on a Feed Element
+      summary: Salesforce Experience Cloud Get Likes on a Feed Element
       description: >-
         Returns the likes on a specific feed element within the Experience
         Cloud site.
@@ -219,7 +219,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: likeFeedElement
-      summary: Like a Feed Element
+      summary: Salesforce Experience Cloud Like a Feed Element
       description: >-
         Adds a like to the specified feed element in the Experience Cloud site
         on behalf of the context user.
@@ -240,7 +240,7 @@ paths:
   /communities/{communityId}/topics:
     get:
       operationId: getTopics
-      summary: List Topics
+      summary: Salesforce Experience Cloud List Topics
       description: >-
         Returns a list of topics in the specified Experience Cloud site.
         Topics organize content and enable community members to find
@@ -274,7 +274,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: createTopic
-      summary: Create a Topic
+      summary: Salesforce Experience Cloud Create a Topic
       description: >-
         Creates a new topic in the specified Experience Cloud site.
       tags:
@@ -301,7 +301,7 @@ paths:
   /communities/{communityId}/topics/{topicId}:
     get:
       operationId: getTopic
-      summary: Get a Topic
+      summary: Salesforce Experience Cloud Get a Topic
       description: >-
         Returns details about a specific topic in the Experience Cloud site,
         including name, description, and related feed items.
@@ -328,7 +328,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: updateTopic
-      summary: Update a Topic
+      summary: Salesforce Experience Cloud Update a Topic
       description: >-
         Updates the name or description of an existing topic in the
         Experience Cloud site.
@@ -363,7 +363,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteTopic
-      summary: Delete a Topic
+      summary: Salesforce Experience Cloud Delete a Topic
       description: >-
         Deletes the specified topic from the Experience Cloud site. Requires
         appropriate moderation permissions.
@@ -389,7 +389,7 @@ paths:
   /communities/{communityId}/chatter/users/me:
     get:
       operationId: getCurrentUser
-      summary: Get Current User
+      summary: Salesforce Experience Cloud Get Current User
       description: >-
         Returns information about the context user in the specified
         Experience Cloud site, including profile details, reputation,
@@ -410,7 +410,7 @@ paths:
   /communities/{communityId}/chatter/users:
     get:
       operationId: getCommunityMembers
-      summary: List Community Members
+      summary: Salesforce Experience Cloud List Community Members
       description: >-
         Returns a list of users in the specified Experience Cloud site.
         Supports pagination and filtering.
@@ -439,7 +439,7 @@ paths:
   /communities/{communityId}/chatter/users/{userId}/reputation:
     get:
       operationId: getUserReputation
-      summary: Get User Reputation
+      summary: Salesforce Experience Cloud Get User Reputation
       description: >-
         Returns the reputation score and level for a specific user within
         the Experience Cloud site.
@@ -467,7 +467,7 @@ paths:
   /communities/{communityId}/managed-content/delivery:
     get:
       operationId: getKnowledgeArticles
-      summary: Get Knowledge Articles
+      summary: Salesforce Experience Cloud Get Knowledge Articles
       description: >-
         Returns knowledge articles published to the specified Experience
         Cloud site. Supports filtering by category and language.
@@ -501,7 +501,7 @@ paths:
   /communities/{communityId}/moderation/flagged-elements:
     get:
       operationId: getFlaggedElements
-      summary: Get Flagged Elements
+      summary: Salesforce Experience Cloud Get Flagged Elements
       description: >-
         Returns content that has been flagged for moderation within the
         Experience Cloud site. Requires moderation permissions.
