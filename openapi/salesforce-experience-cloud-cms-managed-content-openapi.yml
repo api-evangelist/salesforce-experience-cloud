@@ -24,12 +24,10 @@ security:
   - oauth2: []
   - bearerAuth: []
 tags:
-  - name: Managed Content
-    description: Managed content retrieval and search
   - name: Delivery Channels
     description: Managed content delivery channel operations
-  - name: Content Versions
-    description: Managed content version operations
+  - name: Managed Content
+    description: Managed content retrieval and search
 paths:
   /cms/delivery/channels:
     get:

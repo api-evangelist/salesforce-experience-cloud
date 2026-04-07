@@ -24,20 +24,20 @@ security:
   - oauth2: []
   - bearerAuth: []
 tags:
-  - name: Versions
-    description: API version discovery
-  - name: Resources
-    description: Available REST resources
-  - name: sObjects
-    description: Salesforce object operations
-  - name: Query
-    description: SOQL query execution
-  - name: Search
-    description: SOSL search execution
-  - name: Limits
-    description: API usage limits and quotas
   - name: Describe
     description: Object and field metadata
+  - name: Limits
+    description: API usage limits and quotas
+  - name: Query
+    description: SOQL query execution
+  - name: Resources
+    description: Available REST resources
+  - name: Search
+    description: SOSL search execution
+  - name: sObjects
+    description: Salesforce object operations
+  - name: Versions
+    description: API version discovery
 paths:
   /services/data:
     get:

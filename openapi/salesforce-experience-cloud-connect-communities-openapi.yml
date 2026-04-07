@@ -26,14 +26,14 @@ security:
 tags:
   - name: Feeds
     description: Feed and feed item operations
-  - name: Topics
-    description: Topic management and assignments
-  - name: Members
-    description: Community member operations
   - name: Knowledge
     description: Knowledge article operations within communities
+  - name: Members
+    description: Community member operations
   - name: Moderation
     description: Content moderation operations
+  - name: Topics
+    description: Topic management and assignments
 paths:
   /communities/{communityId}/chatter/feeds/news/me/feed-elements:
     get:

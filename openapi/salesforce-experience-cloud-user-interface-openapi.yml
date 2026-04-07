@@ -24,18 +24,18 @@ security:
   - oauth2: []
   - bearerAuth: []
 tags:
-  - name: Records
-    description: Record data and UI operations
+  - name: Actions
+    description: Available actions for records and objects
+  - name: Favorites
+    description: User favorites management
   - name: Layouts
     description: Page layout metadata
   - name: List Views
     description: List view data and metadata
   - name: Object Info
     description: Object metadata for UI rendering
-  - name: Actions
-    description: Available actions for records and objects
-  - name: Favorites
-    description: User favorites management
+  - name: Records
+    description: Record data and UI operations
 paths:
   /record-ui/{recordIds}:
     get:

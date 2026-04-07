@@ -24,12 +24,12 @@ security:
   - oauth2: []
   - bearerAuth: []
 tags:
+  - name: Branding Sets
+    description: Branding set management
   - name: Templates
     description: Site template management
   - name: Themes
     description: Theme and branding configuration
-  - name: Branding Sets
-    description: Branding set management
 paths:
   /connect/communities/templates:
     get:

@@ -24,10 +24,10 @@ security:
   - oauth2: []
   - bearerAuth: []
 tags:
-  - name: Content Delivery
-    description: Content delivery operations for headless consumption
   - name: Collections
     description: Content collection delivery operations
+  - name: Content Delivery
+    description: Content delivery operations for headless consumption
   - name: Media Delivery
     description: Media content delivery operations
 paths:

@@ -24,14 +24,14 @@ security:
   - oauth2: []
   - bearerAuth: []
 tags:
-  - name: Sites
-    description: Experience Cloud site management operations
   - name: Navigation
     description: Site navigation menu operations
-  - name: Themes
-    description: Site theme and branding operations
   - name: Publish
     description: Site publishing operations
+  - name: Sites
+    description: Experience Cloud site management operations
+  - name: Themes
+    description: Site theme and branding operations
 paths:
   /connect/communities:
     get:
