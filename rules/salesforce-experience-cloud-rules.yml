@@ -1,0 +1,95 @@
+extends: spectral:oas
+rules:
+
+  experience-cloud-operation-id-required:
+    description: All operations must have an operationId.
+    message: "Operation is missing operationId."
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  experience-cloud-summary-not-empty:
+    description: All operations must have a non-empty summary.
+    message: "Operation must have a summary."
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: summary
+      function: truthy
+
+  experience-cloud-tags-required:
+    description: All operations must have at least one tag.
+    message: "Operation must have at least one tag."
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  experience-cloud-response-200-required:
+    description: All operations must define a 200 or 201 response.
+    message: "Operation must define a success response."
+    severity: error
+    given: "$.paths[*][*].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+
+  experience-cloud-oauth2-security:
+    description: All Salesforce APIs require OAuth2 authentication.
+    message: "API must declare OAuth2 security scheme."
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          required: ["oauth2"]
+
+  experience-cloud-versioned-server:
+    description: Server URL should include Salesforce API version.
+    message: "Server URL should include API version (e.g., /v59.0)."
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "/v[0-9]"
+
+  experience-cloud-path-kebab-case:
+    description: Path segments should use lowercase or camelCase (Salesforce convention).
+    message: "Path segments should be lowercase."
+    severity: hint
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-zA-Z0-9{}/._-]*)*$"
+
+  experience-cloud-description-required:
+    description: Operations should include descriptions.
+    message: "Operation should have a description."
+    severity: hint
+    given: "$.paths[*][*]"
+    then:
+      field: description
+      function: truthy
+
+  experience-cloud-content-type-json:
+    description: JSON request bodies should use application/json.
+    message: "Request body must declare application/json."
+    severity: warn
+    given: "$.paths[*][*].requestBody.content"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["application/json"]
+            - required: ["multipart/form-data"]

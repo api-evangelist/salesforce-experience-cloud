@@ -1,0 +1,44 @@
+{
+  "operation": "Create CMS Content",
+  "method": "POST",
+  "path": "/services/data/v59.0/connect/cms/contents",
+  "description": "Create a news article CMS content item for publishing to a customer portal.",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer <access_token>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "title": "Q2 2026 Product Updates",
+      "contentType": "sfdc_cms__news",
+      "languageCode": "en_US",
+      "body": {
+        "sfdc_cms__body": {
+          "value": "<p>We are excited to announce several new features launching in Q2 2026, including enhanced reporting dashboards, improved mobile experience, and new API capabilities.</p>",
+          "isDefault": true
+        },
+        "sfdc_cms__excerpt": {
+          "value": "Q2 2026 brings new reporting, mobile improvements, and API capabilities.",
+          "isDefault": true
+        },
+        "sfdc_cms__thumbnailImage": {
+          "mediaType": "Image",
+          "url": "https://storage.example.com/cms/q2-updates-thumbnail.jpg",
+          "fileName": "q2-updates-thumbnail.jpg"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "20YGg00000000001MAA",
+      "title": "Q2 2026 Product Updates",
+      "contentType": "sfdc_cms__news",
+      "status": "Draft",
+      "languageCode": "en_US",
+      "createdDate": "2026-05-02T10:15:00.000Z",
+      "lastModifiedDate": "2026-05-02T10:15:00.000Z"
+    }
+  }
+}

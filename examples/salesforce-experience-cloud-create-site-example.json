@@ -1,0 +1,30 @@
+{
+  "operation": "Create Experience Cloud Site",
+  "method": "POST",
+  "path": "/services/data/v59.0/connect/sites",
+  "description": "Create a new customer self-service portal using an LWR template.",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer <access_token>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "Customer Help Center",
+      "urlPathPrefix": "help",
+      "template": "Build Your Own (LWR)",
+      "description": "Self-service portal for customers to manage cases, view knowledge, and access account information."
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "0DB6g000000GnKgGAK",
+      "name": "Customer Help Center",
+      "urlPathPrefix": "help",
+      "status": "UnderConstruction",
+      "url": "https://mycompany.my.site.com/help",
+      "createdDate": "2026-05-02T10:00:00.000Z",
+      "lastModifiedDate": "2026-05-02T10:00:00.000Z"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Salesforce Experience Cloud Sites API"
+  description: >-
+    API for managing Experience Cloud sites, navigation, and themes.
+    Create, update, publish, and retrieve site configurations.
+  tags:
+    - Communities
+    - Configuration
+    - Digital Experiences
+    - Salesforce Experience Cloud
+    - Sites
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SALESFORCE_OAUTH2_TOKEN: SALESFORCE_OAUTH2_TOKEN
+      SALESFORCE_INSTANCE_URL: SALESFORCE_INSTANCE_URL
+
+capability:
+  consumes:
+    - type: http
+      namespace: exp-cloud-sites
+      baseUri: "{{env.SALESFORCE_INSTANCE_URL}}/services/data/v59.0"
+      description: "Salesforce Experience Cloud Sites API."
+      authentication:
+        type: bearer
+        token: "{{env.SALESFORCE_OAUTH2_TOKEN}}"
+      resources:
+        - name: sites
+          path: /connect/sites
+          description: "Experience Cloud site management."
+          operations:
+            - name: list-sites
+              method: GET
+              description: "List all Experience Cloud sites."
+              outputRawFormat: json
+              outputParameters:
+                - name: sites
+                  type: object
+                  value: "$."
+            - name: create-site
+              method: POST
+              description: "Create a new Experience Cloud site."
+              outputRawFormat: json
+              outputParameters:
+                - name: site
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  urlPathPrefix: "{{tools.urlPathPrefix}}"
+                  template: "{{tools.template}}"
+            - name: get-site
+              method: GET
+              description: "Get an Experience Cloud site by ID."
+              inputParameters:
+                - name: siteId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Site ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: site
+                  type: object
+                  value: "$."
+            - name: update-site
+              method: PATCH
+              description: "Update site configuration."
+              inputParameters:
+                - name: siteId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Site ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: site
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  status: "{{tools.status}}"
+            - name: publish-site
+              method: POST
+              description: "Publish an Experience Cloud site."
+              inputParameters:
+                - name: siteId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Site ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8105
+      namespace: exp-cloud-sites-api
+      resources:
+        - path: /v1/sites
+          name: sites
+          operations:
+            - method: GET
+              name: list-sites
+              description: "List Experience Cloud sites."
+              call: "exp-cloud-sites.list-sites"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9105
+      namespace: exp-cloud-sites-mcp
+      transport: http
+      tools:
+        - name: list-experience-cloud-sites
+          description: "List all Experience Cloud sites in the Salesforce org."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "exp-cloud-sites.list-sites"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-experience-cloud-site
+          description: "Create a new Experience Cloud digital experience site."
+          hints:
+            readOnly: false
+            destructive: false
+          call: "exp-cloud-sites.create-site"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: publish-experience-cloud-site
+          description: "Publish an Experience Cloud site to make it live."
+          hints:
+            readOnly: false
+            destructive: false
+          call: "exp-cloud-sites.publish-site"
+          with:
+            siteId: "tools.siteId"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,68 @@
+{
+  "name": "Salesforce Experience Cloud Data Structures",
+  "description": "Core data structures for the Salesforce Experience Cloud API collection.",
+  "version": "59.0",
+  "structures": [
+    {
+      "name": "Site",
+      "description": "A Salesforce Experience Cloud digital experience site.",
+      "fields": [
+        { "name": "id", "type": "string", "required": false, "description": "Site ID." },
+        { "name": "name", "type": "string", "required": false, "description": "Site name." },
+        { "name": "urlPathPrefix", "type": "string", "required": false, "description": "URL path prefix for the site." },
+        { "name": "status", "type": "string", "required": false, "description": "Site status: Live | UnderConstruction | Inactive." },
+        { "name": "template", "type": "string", "required": false, "description": "Template used to create the site." },
+        { "name": "url", "type": "string", "required": false, "description": "Full URL of the published site." },
+        { "name": "guestUser", "type": "object", "required": false, "description": "Guest/unauthenticated user configuration." }
+      ]
+    },
+    {
+      "name": "CMSContent",
+      "description": "A CMS content item in Experience Cloud.",
+      "fields": [
+        { "name": "id", "type": "string", "required": false, "description": "Content ID." },
+        { "name": "title", "type": "string", "required": false, "description": "Content title." },
+        { "name": "contentType", "type": "string", "required": false, "description": "Content type (Article, News, FAQ, etc.)." },
+        { "name": "status", "type": "string", "required": false, "description": "Content status: Draft | Published | Archived." },
+        { "name": "body", "type": "object", "required": false, "description": "Content body fields (varies by content type)." },
+        { "name": "channels", "type": "string[]", "required": false, "description": "Channels this content is published to." },
+        { "name": "createdDate", "type": "datetime", "required": false, "description": "Creation timestamp." },
+        { "name": "lastModifiedDate", "type": "datetime", "required": false, "description": "Last modified timestamp." }
+      ]
+    },
+    {
+      "name": "CMSChannel",
+      "description": "A CMS delivery channel for content publishing.",
+      "fields": [
+        { "name": "id", "type": "string", "required": false, "description": "Channel ID." },
+        { "name": "name", "type": "string", "required": false, "description": "Channel name." },
+        { "name": "channelType", "type": "string", "required": false, "description": "Channel type: ExperienceCloud | Headless." },
+        { "name": "domain", "type": "string", "required": false, "description": "Channel domain for headless delivery." }
+      ]
+    },
+    {
+      "name": "FeedElement",
+      "description": "A post in an Experience Cloud community feed.",
+      "fields": [
+        { "name": "id", "type": "string", "required": false, "description": "Feed element ID." },
+        { "name": "type", "type": "string", "required": false, "description": "Element type: TextPost | LinkPost | QuestionPost." },
+        { "name": "body", "type": "object", "required": false, "description": "Post body with message segments." },
+        { "name": "actor", "type": "object", "required": false, "description": "Author of the post." },
+        { "name": "likeCount", "type": "integer", "required": false, "description": "Number of likes." },
+        { "name": "commentCount", "type": "integer", "required": false, "description": "Number of comments." },
+        { "name": "createdDate", "type": "datetime", "required": false, "description": "Creation timestamp." }
+      ]
+    },
+    {
+      "name": "Topic",
+      "description": "A discussion topic in an Experience Cloud community.",
+      "fields": [
+        { "name": "id", "type": "string", "required": false, "description": "Topic ID." },
+        { "name": "name", "type": "string", "required": false, "description": "Topic name." },
+        { "name": "description", "type": "string", "required": false, "description": "Topic description." },
+        { "name": "talkingAbout", "type": "integer", "required": false, "description": "Count of recent posts and comments on this topic." },
+        { "name": "url", "type": "string", "required": false, "description": "URL to the topic page." }
+      ]
+    }
+  ]
+}

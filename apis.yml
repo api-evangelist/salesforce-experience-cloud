@@ -1,10 +1,13 @@
+aid: salesforce-experience-cloud
 name: Salesforce Experience Cloud
 description: APIs for building and managing Salesforce Experience Cloud sites, communities, and digital experiences including content management, theming, navigation, and Lightning Web Runtime powered portals.
 image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
-url: https://www.salesforce.com/products/experience-cloud/overview/
+url: https://raw.githubusercontent.com/api-evangelist/salesforce-experience-cloud/refs/heads/main/apis.yml
+type: Index
+x-type: company
 created: '2024'
-modified: '2026-03-04'
-specificationVersion: '0.18'
+modified: '2026-05-02'
+specificationVersion: '0.19'
 apis:
   - name: Experience Cloud Sites API
     description: Manage Experience Cloud sites, themes, and configurations. Provides programmatic access to create, update, and retrieve site settings, branding, and navigation for digital experience portals.
@@ -279,10 +282,17 @@ common:
     url: json-schema/salesforce-experience-cloud-cms-channel-schema.json
   - type: JSON Schema
     url: json-schema/salesforce-experience-cloud-sobject-record-schema.json
-maintainer:
-  name: Kin Lane
-  email: kin@apievangelist.com
-  url: https://apievangelist.com
+  - type: SpectralRules
+    url: rules/salesforce-experience-cloud-rules.yml
+  - type: Capabilities
+    url: capabilities/site-management.yaml
+  - type: Capabilities
+    url: capabilities/community-engagement.yaml
+  - type: Vocabulary
+    url: vocabulary/salesforce-experience-cloud-vocabulary.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
 tags:
   - CMS
   - Communities

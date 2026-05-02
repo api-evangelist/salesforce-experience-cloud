@@ -1,0 +1,141 @@
+vocabulary:
+  name: Salesforce Experience Cloud Vocabulary
+  description: >-
+    Operational vocabulary for Salesforce Experience Cloud covering digital
+    experience sites, CMS content management, communities, feeds, and
+    Lightning Web Runtime (LWR) development.
+  version: "1.0"
+  created: "2026-05-02"
+  modified: "2026-05-02"
+  tags:
+    - CMS
+    - Communities
+    - CRM
+    - Digital Experience
+    - Experience Cloud
+    - Salesforce
+
+  domains:
+    - name: Digital Experience Sites
+      description: "Core concepts for Experience Cloud site creation and management."
+      terms:
+        - term: Experience Cloud Site
+          definition: >-
+            A branded digital portal built on the Salesforce platform for customer
+            self-service, partner collaboration, or employee productivity.
+          aliases: [Community, Portal, Experience]
+          related: [LWR Site, Aura Site, Template]
+
+        - term: Lightning Web Runtime (LWR)
+          definition: >-
+            Salesforce's next-generation JavaScript framework for building high-performance
+            Experience Cloud sites with improved rendering and scalability.
+          aliases: [LWR, Lightning Web Runtime Site]
+          related: [Experience Cloud Site, Lightning Web Components]
+
+        - term: ExperienceBundle
+          definition: >-
+            A Salesforce Metadata API type representing the configuration and
+            content of an Experience Cloud site for deployment via SFDX/CI-CD.
+          related: [Metadata API, Deployment, Network]
+
+        - term: Network
+          definition: >-
+            The Salesforce object (Network__c) that represents an Experience Cloud
+            community or portal and its configuration settings.
+          related: [Experience Cloud Site, ExperienceBundle]
+
+        - term: Guest User
+          definition: >-
+            An unauthenticated visitor to a public-facing Experience Cloud site.
+            Guest users have limited access controlled by guest user profiles.
+          aliases: [Unauthenticated User, Public User]
+          related: [Experience Cloud Site, Profile]
+
+    - name: CMS & Content
+      description: "Salesforce CMS and content delivery concepts."
+      terms:
+        - term: CMS Content
+          definition: >-
+            Structured content items (news articles, FAQs, knowledge articles)
+            managed in Salesforce CMS and published to Experience Cloud sites
+            or headless frontends.
+          aliases: [Managed Content, CMS Item]
+          related: [Content Type, CMS Channel, Publishing]
+
+        - term: CMS Channel
+          definition: >-
+            A delivery endpoint for Salesforce CMS content. Channels can be
+            Experience Cloud sites (for on-platform delivery) or headless channels
+            (for decoupled/API-first delivery).
+          aliases: [Content Channel, Delivery Channel]
+          related: [CMS Content, Headless CMS, Delivery API]
+
+        - term: Content Type
+          definition: >-
+            A schema definition that specifies the fields available for a type
+            of CMS content (e.g., a News article has Title, Body, Image fields).
+          aliases: [Schema, Template]
+          related: [CMS Content, CMS Channel]
+
+        - term: Headless CMS
+          definition: >-
+            An architecture where CMS content is delivered via REST API to any
+            frontend, decoupled from the Salesforce platform UI rendering.
+          aliases: [API-first CMS, Decoupled CMS]
+          related: [CMS Delivery API, CMS Channel]
+
+    - name: Communities & Engagement
+      description: "Chatter and community engagement concepts."
+      terms:
+        - term: Community
+          definition: >-
+            A group of users in an Experience Cloud site with access to shared
+            feeds, topics, and collaboration tools.
+          aliases: [Experience Community, Chatter Group]
+          related: [Feed, Topic, Member]
+
+        - term: Feed
+          definition: >-
+            A chronological stream of posts, questions, and links shared within
+            a community. Each feed element can receive likes and comments.
+          aliases: [News Feed, Chatter Feed]
+          related: [Feed Element, Comment, Like]
+
+        - term: Feed Element
+          definition: >-
+            An individual post in a community feed (text post, link post,
+            question post, or file share).
+          aliases: [Post, Feed Post]
+          related: [Feed, Comment, Like]
+
+        - term: Topic
+          definition: >-
+            A keyword-based category organizing community discussions.
+            Users follow topics to see relevant content in their feeds.
+          related: [Feed, Community, Knowledge]
+
+    - name: Developer & Integration
+      description: "Vocabulary for developers building on Experience Cloud."
+      terms:
+        - term: Salesforce Instance URL
+          definition: >-
+            The base URL for a Salesforce org (e.g., https://myorg.salesforce.com).
+            Used as the base URI for all Experience Cloud API requests.
+          aliases: [Instance, Org URL]
+          related: [OAuth2, API]
+
+        - term: Connected App
+          definition: >-
+            A Salesforce metadata component enabling OAuth2 authentication for
+            external applications integrating with the Salesforce platform.
+          aliases: [OAuth App, Integration App]
+          related: [OAuth2, API, Authentication]
+
+        - term: Lightning Web Components (LWC)
+          definition: >-
+            A Salesforce JavaScript framework for building UI components used
+            in Experience Cloud sites, providing declarative data binding and
+            access to Salesforce data.
+          aliases: [LWC, Web Components]
+          related: [LWR, Experience Cloud Site]
