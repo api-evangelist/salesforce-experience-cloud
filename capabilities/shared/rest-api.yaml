@@ -1,0 +1,268 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Salesforce REST API"
+  description: >-
+    Core Salesforce REST API for accessing Salesforce objects and data. Provides
+    CRUD operations on standard and custom objects, SOQL query execution, SOSL
+    search, and metadata access used as the foundation for Experience Cloud
+    data integrations.
+  tags:
+    - CRM
+    - Data
+    - Objects
+    - Platform
+    - REST
+    - Salesforce Experience Cloud
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SALESFORCE_OAUTH2_TOKEN: SALESFORCE_OAUTH2_TOKEN
+      SALESFORCE_INSTANCE_URL: SALESFORCE_INSTANCE_URL
+
+capability:
+  consumes:
+    - type: http
+      namespace: sf-rest-api
+      baseUri: "{{env.SALESFORCE_INSTANCE_URL}}/services/data/v59.0"
+      description: "Salesforce Core REST API."
+      authentication:
+        type: bearer
+        token: "{{env.SALESFORCE_OAUTH2_TOKEN}}"
+      resources:
+        - name: sobjects
+          path: /sobjects
+          description: "Salesforce standard and custom objects."
+          operations:
+            - name: list-sobjects
+              method: GET
+              description: "List all available Salesforce objects."
+              outputRawFormat: json
+              outputParameters:
+                - name: sobjects
+                  type: object
+                  value: "$."
+            - name: describe-sobject
+              method: GET
+              description: "Get metadata for a specific Salesforce object."
+              inputParameters:
+                - name: sObjectName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Salesforce object API name."
+              outputRawFormat: json
+              outputParameters:
+                - name: describe
+                  type: object
+                  value: "$."
+            - name: create-record
+              method: POST
+              description: "Create a new Salesforce record."
+              inputParameters:
+                - name: sObjectName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Salesforce object API name."
+              outputRawFormat: json
+              outputParameters:
+                - name: record
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  fields: "{{tools.fields}}"
+            - name: get-record
+              method: GET
+              description: "Get a Salesforce record by ID."
+              inputParameters:
+                - name: sObjectName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Salesforce object API name."
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Record ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: record
+                  type: object
+                  value: "$."
+            - name: update-record
+              method: PATCH
+              description: "Update an existing Salesforce record."
+              inputParameters:
+                - name: sObjectName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Salesforce object API name."
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Record ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  fields: "{{tools.fields}}"
+            - name: delete-record
+              method: DELETE
+              description: "Delete a Salesforce record."
+              inputParameters:
+                - name: sObjectName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Salesforce object API name."
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Record ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: query
+          path: /query
+          description: "SOQL query execution."
+          operations:
+            - name: execute-query
+              method: GET
+              description: "Execute a SOQL query against Salesforce data."
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: true
+                  description: "SOQL query string."
+              outputRawFormat: json
+              outputParameters:
+                - name: queryResult
+                  type: object
+                  value: "$."
+
+        - name: search
+          path: /search
+          description: "SOSL search execution."
+          operations:
+            - name: execute-search
+              method: GET
+              description: "Execute a SOSL search across Salesforce objects."
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: true
+                  description: "SOSL search string."
+              outputRawFormat: json
+              outputParameters:
+                - name: searchResult
+                  type: object
+                  value: "$."
+
+        - name: limits
+          path: /limits
+          description: "API usage limits and quotas."
+          operations:
+            - name: get-limits
+              method: GET
+              description: "Get current API usage limits for the org."
+              outputRawFormat: json
+              outputParameters:
+                - name: limits
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8108
+      namespace: sf-rest-api-exposed
+      resources:
+        - path: /v1/sobjects
+          name: sobjects
+          operations:
+            - method: GET
+              name: list-sobjects
+              description: "List all Salesforce objects."
+              call: "sf-rest-api.list-sobjects"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/query
+          name: query
+          operations:
+            - method: GET
+              name: execute-query
+              description: "Execute a SOQL query."
+              call: "sf-rest-api.execute-query"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9108
+      namespace: sf-rest-api-mcp
+      transport: http
+      tools:
+        - name: query-salesforce-data
+          description: "Execute a SOQL query to retrieve Salesforce data."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "sf-rest-api.execute-query"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-salesforce
+          description: "Execute a SOSL search across Salesforce objects."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "sf-rest-api.execute-search"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-salesforce-limits
+          description: "Get current API usage limits for the Salesforce org."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "sf-rest-api.get-limits"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-record
+          description: "Get a specific Salesforce record by object type and ID."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "sf-rest-api.get-record"
+          with:
+            sObjectName: "tools.sObjectName"
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."

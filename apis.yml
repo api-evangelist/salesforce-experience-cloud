@@ -288,6 +288,8 @@ common:
     url: capabilities/site-management.yaml
   - type: Capabilities
     url: capabilities/community-engagement.yaml
+  - type: JSONStructure
+    url: json-structure/salesforce-experience-cloud-structure.json
   - type: Vocabulary
     url: vocabulary/salesforce-experience-cloud-vocabulary.yml
 maintainers:

@@ -127,7 +127,13 @@ Access record data and layouts for building custom user interfaces.
 |------|-------------|
 | [capabilities/shared/sites-api.yaml](capabilities/shared/sites-api.yaml) | Shared definition for Experience Cloud Sites API |
 | [capabilities/shared/cms-connect-api.yaml](capabilities/shared/cms-connect-api.yaml) | Shared definition for CMS Connect API |
-| [capabilities/shared/connect-communities-api.yaml](capabilities/shared/connect-communities-api.yaml) | Shared definition for Connect Communities API |
+| [capabilities/shared/connect-communities-api.yaml](capabilities/shared/connect-communities-api.yaml) | Shared definition for Connect REST API (Communities) |
+| [capabilities/shared/rest-api.yaml](capabilities/shared/rest-api.yaml) | Shared definition for Salesforce REST API |
+| [capabilities/shared/cms-delivery-api.yaml](capabilities/shared/cms-delivery-api.yaml) | Shared definition for CMS Delivery API |
+| [capabilities/shared/cms-managed-content-api.yaml](capabilities/shared/cms-managed-content-api.yaml) | Shared definition for CMS Managed Content API |
+| [capabilities/shared/templates-api.yaml](capabilities/shared/templates-api.yaml) | Shared definition for Experience Cloud Templates API |
+| [capabilities/shared/graphql-api.yaml](capabilities/shared/graphql-api.yaml) | Shared definition for Salesforce GraphQL API |
+| [capabilities/shared/user-interface-api.yaml](capabilities/shared/user-interface-api.yaml) | Shared definition for Salesforce User Interface API |
 
 ### Workflow Capabilities
 
@@ -140,6 +146,21 @@ Access record data and layouts for building custom user interfaces.
 
 | Artifact | Path |
 |----------|------|
+| OpenAPI (Sites) | [openapi/salesforce-experience-cloud-sites-openapi.yml](openapi/salesforce-experience-cloud-sites-openapi.yml) |
+| OpenAPI (Connect Communities) | [openapi/salesforce-experience-cloud-connect-communities-openapi.yml](openapi/salesforce-experience-cloud-connect-communities-openapi.yml) |
+| OpenAPI (CMS Connect) | [openapi/salesforce-experience-cloud-cms-connect-openapi.yml](openapi/salesforce-experience-cloud-cms-connect-openapi.yml) |
+| OpenAPI (REST API) | [openapi/salesforce-experience-cloud-rest-api-openapi.yml](openapi/salesforce-experience-cloud-rest-api-openapi.yml) |
+| OpenAPI (CMS Delivery) | [openapi/salesforce-experience-cloud-cms-delivery-openapi.yml](openapi/salesforce-experience-cloud-cms-delivery-openapi.yml) |
+| OpenAPI (CMS Managed Content) | [openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml](openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml) |
+| OpenAPI (GraphQL) | [openapi/salesforce-experience-cloud-graphql-openapi.yml](openapi/salesforce-experience-cloud-graphql-openapi.yml) |
+| OpenAPI (Templates) | [openapi/salesforce-experience-cloud-templates-openapi.yml](openapi/salesforce-experience-cloud-templates-openapi.yml) |
+| OpenAPI (User Interface) | [openapi/salesforce-experience-cloud-user-interface-openapi.yml](openapi/salesforce-experience-cloud-user-interface-openapi.yml) |
+| JSON Schema (Site) | [json-schema/salesforce-experience-cloud-site-schema.json](json-schema/salesforce-experience-cloud-site-schema.json) |
+| JSON Schema (Managed Content) | [json-schema/salesforce-experience-cloud-managed-content-schema.json](json-schema/salesforce-experience-cloud-managed-content-schema.json) |
+| JSON Schema (Feed Element) | [json-schema/salesforce-experience-cloud-feed-element-schema.json](json-schema/salesforce-experience-cloud-feed-element-schema.json) |
+| JSON Schema (Community User) | [json-schema/salesforce-experience-cloud-community-user-schema.json](json-schema/salesforce-experience-cloud-community-user-schema.json) |
+| JSON Schema (CMS Channel) | [json-schema/salesforce-experience-cloud-cms-channel-schema.json](json-schema/salesforce-experience-cloud-cms-channel-schema.json) |
+| JSON Schema (SObject Record) | [json-schema/salesforce-experience-cloud-sobject-record-schema.json](json-schema/salesforce-experience-cloud-sobject-record-schema.json) |
 | JSON-LD Context | [json-ld/salesforce-experience-cloud-context.jsonld](json-ld/salesforce-experience-cloud-context.jsonld) |
 | JSON Structure | [json-structure/salesforce-experience-cloud-structure.json](json-structure/salesforce-experience-cloud-structure.json) |
 | Spectral Rules | [rules/salesforce-experience-cloud-rules.yml](rules/salesforce-experience-cloud-rules.yml) |
