@@ -1,155 +1,335 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Salesforce Experience Cloud Community Engagement"
-  description: >-
-    Workflow capability for community engagement within Salesforce Experience Cloud.
-    Combines social feeds, topics, and CMS content delivery for community managers
-    and digital experience developers building customer portals and partner communities.
+  label: Salesforce Experience Cloud Community Engagement
+  description: Workflow capability for community engagement within Salesforce Experience Cloud. Combines social feeds, topics,
+    and CMS content delivery for community managers and digital experience developers building customer portals and partner
+    communities.
   tags:
-    - Chatter
-    - Communities
-    - Content Delivery
-    - Engagement
-    - Feeds
-    - Headless CMS
-    - Salesforce Experience Cloud
-    - Social
-    - Topics
-  created: "2026-05-02"
-  modified: "2026-05-02"
-
+  - Chatter
+  - Communities
+  - Content Delivery
+  - Engagement
+  - Feeds
+  - Headless CMS
+  - Salesforce Experience Cloud
+  - Social
+  - Topics
+  created: '2026-05-02'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      SALESFORCE_OAUTH2_TOKEN: SALESFORCE_OAUTH2_TOKEN
-      SALESFORCE_INSTANCE_URL: SALESFORCE_INSTANCE_URL
-
+- namespace: env
+  keys:
+    SALESFORCE_OAUTH2_TOKEN: SALESFORCE_OAUTH2_TOKEN
+    SALESFORCE_INSTANCE_URL: SALESFORCE_INSTANCE_URL
 capability:
   consumes:
-    - import: exp-cloud-communities
-      location: ./shared/connect-communities-api.yaml
-    - import: exp-cloud-cms
-      location: ./shared/cms-connect-api.yaml
-
+  - type: http
+    namespace: exp-cloud-communities
+    baseUri: '{{env.SALESFORCE_INSTANCE_URL}}/services/data/v59.0/connect/communities'
+    description: Salesforce Experience Cloud Connect Communities REST API.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_OAUTH2_TOKEN}}'
+    resources:
+    - name: feeds
+      path: /{communityId}/chatter/feeds/news
+      description: Community news feeds.
+      operations:
+      - name: get-news-feed
+        method: GET
+        description: Get the news feed for a community.
+        inputParameters:
+        - name: communityId
+          in: path
+          type: string
+          required: true
+          description: Community ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: feed
+          type: object
+          value: $.
+      - name: post-feed-element
+        method: POST
+        description: Post a feed element (text post, link, question).
+        inputParameters:
+        - name: communityId
+          in: path
+          type: string
+          required: true
+          description: Community ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: feedElement
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            body:
+              messageSegments: '{{tools.messageSegments}}'
+            feedElementType: '{{tools.feedElementType}}'
+    - name: topics
+      path: /{communityId}/chatter/topics
+      description: Community topics.
+      operations:
+      - name: list-topics
+        method: GET
+        description: List topics in a community.
+        inputParameters:
+        - name: communityId
+          in: path
+          type: string
+          required: true
+          description: Community ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: topics
+          type: object
+          value: $.
+      - name: create-topic
+        method: POST
+        description: Create a new community topic.
+        inputParameters:
+        - name: communityId
+          in: path
+          type: string
+          required: true
+          description: Community ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: topic
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            description: '{{tools.description}}'
+  - type: http
+    namespace: exp-cloud-cms
+    baseUri: '{{env.SALESFORCE_INSTANCE_URL}}/services/data/v59.0/connect/cms'
+    description: Salesforce CMS Connect API for content management.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_OAUTH2_TOKEN}}'
+    resources:
+    - name: channels
+      path: /channels
+      description: CMS content delivery channels.
+      operations:
+      - name: list-channels
+        method: GET
+        description: List all CMS channels.
+        outputRawFormat: json
+        outputParameters:
+        - name: channels
+          type: object
+          value: $.
+      - name: get-channel
+        method: GET
+        description: Get a CMS channel by ID.
+        inputParameters:
+        - name: channelId
+          in: path
+          type: string
+          required: true
+          description: CMS channel ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: channel
+          type: object
+          value: $.
+    - name: contents
+      path: /contents
+      description: CMS content items.
+      operations:
+      - name: list-contents
+        method: GET
+        description: List CMS content items.
+        outputRawFormat: json
+        outputParameters:
+        - name: contents
+          type: object
+          value: $.
+      - name: create-content
+        method: POST
+        description: Create a new CMS content item.
+        outputRawFormat: json
+        outputParameters:
+        - name: content
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            title: '{{tools.title}}'
+            contentType: '{{tools.contentType}}'
+            body: '{{tools.body}}'
+      - name: get-content
+        method: GET
+        description: Get a CMS content item by ID.
+        inputParameters:
+        - name: contentId
+          in: path
+          type: string
+          required: true
+          description: Content ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: content
+          type: object
+          value: $.
+      - name: update-content
+        method: PATCH
+        description: Update a CMS content item.
+        inputParameters:
+        - name: contentId
+          in: path
+          type: string
+          required: true
+          description: Content ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: content
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            title: '{{tools.title}}'
+            body: '{{tools.body}}'
+      - name: publish-content
+        method: POST
+        description: Publish a CMS content item.
+        inputParameters:
+        - name: contentId
+          in: path
+          type: string
+          required: true
+          description: Content ID.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8081
-      namespace: exp-cloud-community-engagement-api
-      description: "Unified REST API for Experience Cloud community engagement."
-      resources:
-        - path: /v1/communities/{communityId}/feed
-          name: community-feed
-          description: "Community social feed."
-          operations:
-            - method: GET
-              name: get-news-feed
-              description: "Get the news feed for a community."
-              call: "exp-cloud-communities.get-news-feed"
-              with:
-                communityId: "rest.communityId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: post-feed-element
-              description: "Post to the community feed."
-              call: "exp-cloud-communities.post-feed-element"
-              with:
-                communityId: "rest.communityId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/communities/{communityId}/topics
-          name: community-topics
-          description: "Community topics."
-          operations:
-            - method: GET
-              name: list-topics
-              description: "List community topics."
-              call: "exp-cloud-communities.list-topics"
-              with:
-                communityId: "rest.communityId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-topic
-              description: "Create a new community topic."
-              call: "exp-cloud-communities.create-topic"
-              with:
-                communityId: "rest.communityId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/cms/delivery/content
-          name: cms-delivery-content
-          description: "CMS content delivery for headless frontends."
-          operations:
-            - method: GET
-              name: list-delivery-content
-              description: "List CMS content for delivery."
-              call: "exp-cloud-cms.list-contents"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9081
-      namespace: exp-cloud-community-engagement-mcp
-      transport: http
-      description: "MCP server for AI-assisted Experience Cloud community engagement."
-      tools:
-        - name: get-community-news-feed
-          description: "Retrieve the latest news feed posts for an Experience Cloud community."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "exp-cloud-communities.get-news-feed"
-          with:
-            communityId: "tools.communityId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: post-to-community-feed
-          description: "Post a message or content to an Experience Cloud community feed."
-          hints:
-            readOnly: false
-            destructive: false
-          call: "exp-cloud-communities.post-feed-element"
-          with:
-            communityId: "tools.communityId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-community-topics
-          description: "List discussion topics in an Experience Cloud community."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "exp-cloud-communities.list-topics"
-          with:
-            communityId: "tools.communityId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-community-topic
-          description: "Create a new discussion topic in an Experience Cloud community."
-          hints:
-            readOnly: false
-            destructive: false
-          call: "exp-cloud-communities.create-topic"
-          with:
-            communityId: "tools.communityId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-cms-content-for-delivery
-          description: "List CMS content items for delivery to headless frontend applications."
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "exp-cloud-cms.list-contents"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8081
+    namespace: exp-cloud-community-engagement-api
+    description: Unified REST API for Experience Cloud community engagement.
+    resources:
+    - path: /v1/communities/{communityId}/feed
+      name: community-feed
+      description: Community social feed.
+      operations:
+      - method: GET
+        name: get-news-feed
+        description: Get the news feed for a community.
+        call: exp-cloud-communities.get-news-feed
+        with:
+          communityId: rest.communityId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post-feed-element
+        description: Post to the community feed.
+        call: exp-cloud-communities.post-feed-element
+        with:
+          communityId: rest.communityId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityId}/topics
+      name: community-topics
+      description: Community topics.
+      operations:
+      - method: GET
+        name: list-topics
+        description: List community topics.
+        call: exp-cloud-communities.list-topics
+        with:
+          communityId: rest.communityId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-topic
+        description: Create a new community topic.
+        call: exp-cloud-communities.create-topic
+        with:
+          communityId: rest.communityId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cms/delivery/content
+      name: cms-delivery-content
+      description: CMS content delivery for headless frontends.
+      operations:
+      - method: GET
+        name: list-delivery-content
+        description: List CMS content for delivery.
+        call: exp-cloud-cms.list-contents
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9081
+    namespace: exp-cloud-community-engagement-mcp
+    transport: http
+    description: MCP server for AI-assisted Experience Cloud community engagement.
+    tools:
+    - name: get-community-news-feed
+      description: Retrieve the latest news feed posts for an Experience Cloud community.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: exp-cloud-communities.get-news-feed
+      with:
+        communityId: tools.communityId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-to-community-feed
+      description: Post a message or content to an Experience Cloud community feed.
+      hints:
+        readOnly: false
+        destructive: false
+      call: exp-cloud-communities.post-feed-element
+      with:
+        communityId: tools.communityId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-community-topics
+      description: List discussion topics in an Experience Cloud community.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: exp-cloud-communities.list-topics
+      with:
+        communityId: tools.communityId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-community-topic
+      description: Create a new discussion topic in an Experience Cloud community.
+      hints:
+        readOnly: false
+        destructive: false
+      call: exp-cloud-communities.create-topic
+      with:
+        communityId: tools.communityId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-cms-content-for-delivery
+      description: List CMS content items for delivery to headless frontend applications.
+      hints:
+        readOnly: true
+        idempotent: true
+      call: exp-cloud-cms.list-contents
+      outputParameters:
+      - type: object
+        mapping: $.
