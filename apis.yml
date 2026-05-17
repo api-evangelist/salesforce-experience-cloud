@@ -4,7 +4,7 @@ description: APIs for building and managing Salesforce Experience Cloud sites, c
 image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/salesforce-experience-cloud/refs/heads/main/apis.yml
 type: Index
-x-type: company
+kind: company
 created: '2024'
 modified: '2026-05-02'
 specificationVersion: '0.19'
@@ -27,7 +27,7 @@ apis:
         url: openapi/salesforce-experience-cloud-sites-openapi.yml
       - type: Authentication
         url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - name: Connect REST API (Communities)
     description: Access community data, feeds, topics, and user engagement features. The Connect REST API provides endpoints for social collaboration, content sharing, and community management within Experience Cloud sites.
@@ -49,7 +49,7 @@ apis:
         url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
       - type: Reference
         url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - name: CMS Connect API
     description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing.
@@ -69,7 +69,7 @@ apis:
         url: openapi/salesforce-experience-cloud-cms-connect-openapi.yml
       - type: Reference
         url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - name: Salesforce REST API
     description: Core REST API for accessing Salesforce objects and data. Provides CRUD operations on standard and custom objects, query execution, and metadata access used as the foundation for Experience Cloud data integrations.
@@ -107,7 +107,7 @@ apis:
         url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
       - type: OpenAPI
         url: openapi/salesforce-experience-cloud-templates-openapi.yml
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - name: GraphQL API
     description: Query Salesforce data using GraphQL for Experience Cloud. Offers a flexible query language for retrieving exactly the data needed, reducing over-fetching and improving performance for digital experiences.
@@ -126,7 +126,7 @@ apis:
         url: openapi/salesforce-experience-cloud-graphql-openapi.yml
       - type: Schema
         url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - name: CMS Managed Content API
     description: Retrieve and search published managed content versions for Experience Cloud sites. Provides endpoints for querying managed content delivery channels and searching content across workspaces.
@@ -146,7 +146,7 @@ apis:
         url: openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml
       - type: Reference
         url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - name: CMS Delivery API
     description: Delivers CMS content to external applications and headless frontends. Enables content retrieval by channel, content type, and content key for building decoupled digital experiences.
@@ -183,7 +183,7 @@ apis:
         url: openapi/salesforce-experience-cloud-user-interface-openapi.yml
       - type: Reference
         url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - name: Metadata API (Experience Cloud)
     description: Deploy and retrieve Experience Cloud site configurations, navigation menus, and digital experience bundles. Enables programmatic management of ExperienceBundle and Network metadata types for CI/CD workflows.
@@ -205,7 +205,7 @@ apis:
         url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_digitalexperiencebundle.htm
       - type: Reference
         url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_network.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_types_list.htm
   - name: LWR Sites API
     description: Build and customize Lightning Web Runtime sites for Experience Cloud. Provides documentation for creating LWR-based digital experiences with custom components, page layouts, and theme configurations.
@@ -221,7 +221,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started.htm
       - type: Reference
         url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_navigation.htm
@@ -230,23 +230,23 @@ common:
     url: https://developer.salesforce.com/
   - type: Documentation
     url: https://developer.salesforce.com/docs
-  - type: Getting Started
+  - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Authentication
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: Blog
     url: https://developer.salesforce.com/blogs
-  - type: Change Log
+  - type: ChangeLog
     url: https://developer.salesforce.com/blogs/2026/01/developers-guide-to-the-spring-26-release
-  - type: Status
+  - type: StatusPage
     url: https://status.salesforce.com/
   - type: Support
     url: https://help.salesforce.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.salesforce.com/company/privacy/full_privacy/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/salesforce
   - type: Community
     url: https://trailhead.salesforce.com/trailblazer-community/topics/salesforcedeveloper
@@ -254,9 +254,9 @@ common:
     url: https://www.salesforce.com/products/experience-cloud/overview/
   - type: Login
     url: https://login.salesforce.com/
-  - type: Sign Up
+  - type: SignUp
     url: https://developer.salesforce.com/signup
-  - type: Rate Limits
+  - type: RateLimits
     url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/
   - type: SDKs
     url: https://developer.salesforce.com/developer-centers/lightning-web-components
