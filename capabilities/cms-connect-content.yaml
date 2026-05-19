@@ -1,0 +1,319 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce CMS Connect API — Content
+  description: 'Salesforce Experience Cloud Salesforce CMS Connect API — Content. 7 operations. Lead operation: Salesforce
+    Experience Cloud List CMS Contents. Self-contained Naftiko capability covering one Salesforce Experience Cloud business
+    surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Content
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cms-connect-content
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+    description: Salesforce Experience Cloud Salesforce CMS Connect API — Content business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: contents
+      path: /contents
+      operations:
+      - name: listcmscontents
+        method: GET
+        description: Salesforce Experience Cloud List CMS Contents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: managedContentType
+          in: query
+          type: string
+          description: Filter by managed content type developer name
+        - name: language
+          in: query
+          type: string
+          description: Language code to filter content (e.g., en_US)
+        - name: channelId
+          in: query
+          type: string
+          description: Filter content by channel ID
+        - name: folderId
+          in: query
+          type: string
+          description: Filter content by folder ID
+      - name: createcmscontent
+        method: POST
+        description: Salesforce Experience Cloud Create CMS Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: contents-contentId
+      path: /contents/{contentId}
+      operations:
+      - name: getcmscontent
+        method: GET
+        description: Salesforce Experience Cloud Get CMS Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: language
+          in: query
+          type: string
+          description: Language variant to retrieve
+      - name: updatecmscontent
+        method: PATCH
+        description: Salesforce Experience Cloud Update CMS Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecmscontent
+        method: DELETE
+        description: Salesforce Experience Cloud Delete CMS Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contents-contentId-publish
+      path: /contents/{contentId}/publish
+      operations:
+      - name: publishcmscontent
+        method: POST
+        description: Salesforce Experience Cloud Publish CMS Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: contents-contentId-unpublish
+      path: /contents/{contentId}/unpublish
+      operations:
+      - name: unpublishcmscontent
+        method: POST
+        description: Salesforce Experience Cloud Unpublish CMS Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cms-connect-content-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce CMS Connect API — Content. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/contents
+      name: contents
+      description: REST surface for contents.
+      operations:
+      - method: GET
+        name: listcmscontents
+        description: Salesforce Experience Cloud List CMS Contents
+        call: cms-connect-content.listcmscontents
+        with:
+          managedContentType: rest.managedContentType
+          language: rest.language
+          channelId: rest.channelId
+          folderId: rest.folderId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcmscontent
+        description: Salesforce Experience Cloud Create CMS Content
+        call: cms-connect-content.createcmscontent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contents/{contentid}
+      name: contents-contentid
+      description: REST surface for contents-contentId.
+      operations:
+      - method: GET
+        name: getcmscontent
+        description: Salesforce Experience Cloud Get CMS Content
+        call: cms-connect-content.getcmscontent
+        with:
+          language: rest.language
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecmscontent
+        description: Salesforce Experience Cloud Update CMS Content
+        call: cms-connect-content.updatecmscontent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecmscontent
+        description: Salesforce Experience Cloud Delete CMS Content
+        call: cms-connect-content.deletecmscontent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contents/{contentid}/publish
+      name: contents-contentid-publish
+      description: REST surface for contents-contentId-publish.
+      operations:
+      - method: POST
+        name: publishcmscontent
+        description: Salesforce Experience Cloud Publish CMS Content
+        call: cms-connect-content.publishcmscontent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contents/{contentid}/unpublish
+      name: contents-contentid-unpublish
+      description: REST surface for contents-contentId-unpublish.
+      operations:
+      - method: POST
+        name: unpublishcmscontent
+        description: Salesforce Experience Cloud Unpublish CMS Content
+        call: cms-connect-content.unpublishcmscontent
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cms-connect-content-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce CMS Connect API — Content. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-list-cms
+      description: Salesforce Experience Cloud List CMS Contents
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-connect-content.listcmscontents
+      with:
+        managedContentType: tools.managedContentType
+        language: tools.language
+        channelId: tools.channelId
+        folderId: tools.folderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-create-cms
+      description: Salesforce Experience Cloud Create CMS Content
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cms-connect-content.createcmscontent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-cms
+      description: Salesforce Experience Cloud Get CMS Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-connect-content.getcmscontent
+      with:
+        language: tools.language
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-update-cms
+      description: Salesforce Experience Cloud Update CMS Content
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cms-connect-content.updatecmscontent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-delete-cms
+      description: Salesforce Experience Cloud Delete CMS Content
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cms-connect-content.deletecmscontent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-publish-cms
+      description: Salesforce Experience Cloud Publish CMS Content
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cms-connect-content.publishcmscontent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-unpublish-cms
+      description: Salesforce Experience Cloud Unpublish CMS Content
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cms-connect-content.unpublishcmscontent
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

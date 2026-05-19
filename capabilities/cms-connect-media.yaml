@@ -1,0 +1,192 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce CMS Connect API — Media
+  description: 'Salesforce Experience Cloud Salesforce CMS Connect API — Media. 4 operations. Lead operation: Salesforce Experience
+    Cloud List CMS Media. Self-contained Naftiko capability covering one Salesforce Experience Cloud business surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Media
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cms-connect-media
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+    description: Salesforce Experience Cloud Salesforce CMS Connect API — Media business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: media
+      path: /media
+      operations:
+      - name: listcmsmedia
+        method: GET
+        description: Salesforce Experience Cloud List CMS Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: query
+          type: string
+          description: Filter media by folder ID
+      - name: uploadcmsmedia
+        method: POST
+        description: Salesforce Experience Cloud Upload CMS Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: media-mediaId
+      path: /media/{mediaId}
+      operations:
+      - name: getcmsmedia
+        method: GET
+        description: Salesforce Experience Cloud Get CMS Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mediaId
+          in: path
+          type: string
+          description: The ID of the media file
+          required: true
+      - name: deletecmsmedia
+        method: DELETE
+        description: Salesforce Experience Cloud Delete CMS Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mediaId
+          in: path
+          type: string
+          description: The ID of the media file
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cms-connect-media-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce CMS Connect API — Media. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/media
+      name: media
+      description: REST surface for media.
+      operations:
+      - method: GET
+        name: listcmsmedia
+        description: Salesforce Experience Cloud List CMS Media
+        call: cms-connect-media.listcmsmedia
+        with:
+          folderId: rest.folderId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: uploadcmsmedia
+        description: Salesforce Experience Cloud Upload CMS Media
+        call: cms-connect-media.uploadcmsmedia
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/media/{mediaid}
+      name: media-mediaid
+      description: REST surface for media-mediaId.
+      operations:
+      - method: GET
+        name: getcmsmedia
+        description: Salesforce Experience Cloud Get CMS Media
+        call: cms-connect-media.getcmsmedia
+        with:
+          mediaId: rest.mediaId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecmsmedia
+        description: Salesforce Experience Cloud Delete CMS Media
+        call: cms-connect-media.deletecmsmedia
+        with:
+          mediaId: rest.mediaId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cms-connect-media-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce CMS Connect API — Media. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-list-cms
+      description: Salesforce Experience Cloud List CMS Media
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-connect-media.listcmsmedia
+      with:
+        folderId: tools.folderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-upload-cms
+      description: Salesforce Experience Cloud Upload CMS Media
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cms-connect-media.uploadcmsmedia
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-cms
+      description: Salesforce Experience Cloud Get CMS Media
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-connect-media.getcmsmedia
+      with:
+        mediaId: tools.mediaId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-delete-cms
+      description: Salesforce Experience Cloud Delete CMS Media
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cms-connect-media.deletecmsmedia
+      with:
+        mediaId: tools.mediaId
+      outputParameters:
+      - type: object
+        mapping: $.

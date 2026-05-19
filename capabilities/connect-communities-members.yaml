@@ -1,0 +1,155 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Members
+  description: 'Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Members. 3 operations. Lead operation:
+    Salesforce Experience Cloud List Community Members. Self-contained Naftiko capability covering one Salesforce Experience
+    Cloud business surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Members
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: connect-communities-members
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/connect
+    description: Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Members business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: communities-communityId-chatter-users
+      path: /communities/{communityId}/chatter/users
+      operations:
+      - name: getcommunitymembers
+        method: GET
+        description: Salesforce Experience Cloud List Community Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search term to filter members by name
+    - name: communities-communityId-chatter-users-me
+      path: /communities/{communityId}/chatter/users/me
+      operations:
+      - name: getcurrentuser
+        method: GET
+        description: Salesforce Experience Cloud Get Current User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: communities-communityId-chatter-users-userId-reputation
+      path: /communities/{communityId}/chatter/users/{userId}/reputation
+      operations:
+      - name: getuserreputation
+        method: GET
+        description: Salesforce Experience Cloud Get User Reputation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          description: The ID of the user
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: connect-communities-members-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Members. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/communities/{communityid}/chatter/users
+      name: communities-communityid-chatter-users
+      description: REST surface for communities-communityId-chatter-users.
+      operations:
+      - method: GET
+        name: getcommunitymembers
+        description: Salesforce Experience Cloud List Community Members
+        call: connect-communities-members.getcommunitymembers
+        with:
+          q: rest.q
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityid}/chatter/users/me
+      name: communities-communityid-chatter-users-me
+      description: REST surface for communities-communityId-chatter-users-me.
+      operations:
+      - method: GET
+        name: getcurrentuser
+        description: Salesforce Experience Cloud Get Current User
+        call: connect-communities-members.getcurrentuser
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityid}/chatter/users/{userid}/reputation
+      name: communities-communityid-chatter-users-userid-reputation
+      description: REST surface for communities-communityId-chatter-users-userId-reputation.
+      operations:
+      - method: GET
+        name: getuserreputation
+        description: Salesforce Experience Cloud Get User Reputation
+        call: connect-communities-members.getuserreputation
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: connect-communities-members-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Members. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-list-community
+      description: Salesforce Experience Cloud List Community Members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-members.getcommunitymembers
+      with:
+        q: tools.q
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-current
+      description: Salesforce Experience Cloud Get Current User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-members.getcurrentuser
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-user
+      description: Salesforce Experience Cloud Get User Reputation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-members.getuserreputation
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.

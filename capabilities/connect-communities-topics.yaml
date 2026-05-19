@@ -1,0 +1,241 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Topics
+  description: 'Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Topics. 5 operations. Lead operation:
+    Salesforce Experience Cloud List Topics. Self-contained Naftiko capability covering one Salesforce Experience Cloud business
+    surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Topics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: connect-communities-topics
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/connect
+    description: Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Topics business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: communities-communityId-topics
+      path: /communities/{communityId}/topics
+      operations:
+      - name: gettopics
+        method: GET
+        description: Salesforce Experience Cloud List Topics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search term to filter topics by name
+        - name: exactMatch
+          in: query
+          type: boolean
+          description: Whether to match the search term exactly
+      - name: createtopic
+        method: POST
+        description: Salesforce Experience Cloud Create a Topic
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: communities-communityId-topics-topicId
+      path: /communities/{communityId}/topics/{topicId}
+      operations:
+      - name: gettopic
+        method: GET
+        description: Salesforce Experience Cloud Get a Topic
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: topicId
+          in: path
+          type: string
+          description: The ID of the topic
+          required: true
+      - name: updatetopic
+        method: PATCH
+        description: Salesforce Experience Cloud Update a Topic
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: topicId
+          in: path
+          type: string
+          description: The ID of the topic
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetopic
+        method: DELETE
+        description: Salesforce Experience Cloud Delete a Topic
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: topicId
+          in: path
+          type: string
+          description: The ID of the topic
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: connect-communities-topics-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Topics. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/communities/{communityid}/topics
+      name: communities-communityid-topics
+      description: REST surface for communities-communityId-topics.
+      operations:
+      - method: GET
+        name: gettopics
+        description: Salesforce Experience Cloud List Topics
+        call: connect-communities-topics.gettopics
+        with:
+          q: rest.q
+          exactMatch: rest.exactMatch
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtopic
+        description: Salesforce Experience Cloud Create a Topic
+        call: connect-communities-topics.createtopic
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityid}/topics/{topicid}
+      name: communities-communityid-topics-topicid
+      description: REST surface for communities-communityId-topics-topicId.
+      operations:
+      - method: GET
+        name: gettopic
+        description: Salesforce Experience Cloud Get a Topic
+        call: connect-communities-topics.gettopic
+        with:
+          topicId: rest.topicId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetopic
+        description: Salesforce Experience Cloud Update a Topic
+        call: connect-communities-topics.updatetopic
+        with:
+          topicId: rest.topicId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetopic
+        description: Salesforce Experience Cloud Delete a Topic
+        call: connect-communities-topics.deletetopic
+        with:
+          topicId: rest.topicId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: connect-communities-topics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Topics. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-list-topics
+      description: Salesforce Experience Cloud List Topics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-topics.gettopics
+      with:
+        q: tools.q
+        exactMatch: tools.exactMatch
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-create-topic
+      description: Salesforce Experience Cloud Create a Topic
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: connect-communities-topics.createtopic
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-topic
+      description: Salesforce Experience Cloud Get a Topic
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-topics.gettopic
+      with:
+        topicId: tools.topicId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-update-topic
+      description: Salesforce Experience Cloud Update a Topic
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: connect-communities-topics.updatetopic
+      with:
+        topicId: tools.topicId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-delete-topic
+      description: Salesforce Experience Cloud Delete a Topic
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: connect-communities-topics.deletetopic
+      with:
+        topicId: tools.topicId
+      outputParameters:
+      - type: object
+        mapping: $.

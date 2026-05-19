@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce User Interface API — Object Info
+  description: 'Salesforce Experience Cloud Salesforce User Interface API — Object Info. 1 operations. Lead operation: Salesforce
+    Experience Cloud Get Object Info. Self-contained Naftiko capability covering one Salesforce Experience Cloud business
+    surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Object Info
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: user-interface-object-info
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/ui-api
+    description: Salesforce Experience Cloud Salesforce User Interface API — Object Info business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: object-info-objectApiName
+      path: /object-info/{objectApiName}
+      operations:
+      - name: getobjectinfo
+        method: GET
+        description: Salesforce Experience Cloud Get Object Info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: user-interface-object-info-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce User Interface API — Object Info. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/object-info/{objectapiname}
+      name: object-info-objectapiname
+      description: REST surface for object-info-objectApiName.
+      operations:
+      - method: GET
+        name: getobjectinfo
+        description: Salesforce Experience Cloud Get Object Info
+        call: user-interface-object-info.getobjectinfo
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: user-interface-object-info-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce User Interface API — Object Info. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-get-object
+      description: Salesforce Experience Cloud Get Object Info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: user-interface-object-info.getobjectinfo
+      outputParameters:
+      - type: object
+        mapping: $.

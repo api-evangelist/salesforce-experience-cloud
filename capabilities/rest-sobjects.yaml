@@ -1,0 +1,208 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce REST API — sObjects
+  description: 'Salesforce Experience Cloud Salesforce REST API — sObjects. 5 operations. Lead operation: Salesforce Experience
+    Cloud Get sObject Basic Information. Self-contained Naftiko capability covering one Salesforce Experience Cloud business
+    surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - sObjects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-sobjects
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Experience Cloud Salesforce REST API — sObjects business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: sobjects-sObjectName
+      path: /sobjects/{sObjectName}
+      operations:
+      - name: getsobjectbasicinfo
+        method: GET
+        description: Salesforce Experience Cloud Get sObject Basic Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsobjectrecord
+        method: POST
+        description: Salesforce Experience Cloud Create an sObject Record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sobjects-sObjectName-recordId
+      path: /sobjects/{sObjectName}/{recordId}
+      operations:
+      - name: getsobjectrecord
+        method: GET
+        description: Salesforce Experience Cloud Get an sObject Record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fields
+          in: query
+          type: string
+          description: Comma-separated list of field names to return
+      - name: updatesobjectrecord
+        method: PATCH
+        description: Salesforce Experience Cloud Update an sObject Record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletesobjectrecord
+        method: DELETE
+        description: Salesforce Experience Cloud Delete an sObject Record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-sobjects-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce REST API — sObjects. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/sobjects/{sobjectname}
+      name: sobjects-sobjectname
+      description: REST surface for sobjects-sObjectName.
+      operations:
+      - method: GET
+        name: getsobjectbasicinfo
+        description: Salesforce Experience Cloud Get sObject Basic Information
+        call: rest-sobjects.getsobjectbasicinfo
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsobjectrecord
+        description: Salesforce Experience Cloud Create an sObject Record
+        call: rest-sobjects.createsobjectrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sobjects/{sobjectname}/{recordid}
+      name: sobjects-sobjectname-recordid
+      description: REST surface for sobjects-sObjectName-recordId.
+      operations:
+      - method: GET
+        name: getsobjectrecord
+        description: Salesforce Experience Cloud Get an sObject Record
+        call: rest-sobjects.getsobjectrecord
+        with:
+          fields: rest.fields
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatesobjectrecord
+        description: Salesforce Experience Cloud Update an sObject Record
+        call: rest-sobjects.updatesobjectrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesobjectrecord
+        description: Salesforce Experience Cloud Delete an sObject Record
+        call: rest-sobjects.deletesobjectrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-sobjects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce REST API — sObjects. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-get-sobject
+      description: Salesforce Experience Cloud Get sObject Basic Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-sobjects.getsobjectbasicinfo
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-create-sobject
+      description: Salesforce Experience Cloud Create an sObject Record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-sobjects.createsobjectrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-sobject-2
+      description: Salesforce Experience Cloud Get an sObject Record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-sobjects.getsobjectrecord
+      with:
+        fields: tools.fields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-update-sobject
+      description: Salesforce Experience Cloud Update an sObject Record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-sobjects.updatesobjectrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-delete-sobject
+      description: Salesforce Experience Cloud Delete an sObject Record
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-sobjects.deletesobjectrecord
+      outputParameters:
+      - type: object
+        mapping: $.

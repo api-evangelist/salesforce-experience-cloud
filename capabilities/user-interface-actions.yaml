@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce User Interface API — Actions
+  description: 'Salesforce Experience Cloud Salesforce User Interface API — Actions. 1 operations. Lead operation: Salesforce
+    Experience Cloud Get Record Actions. Self-contained Naftiko capability covering one Salesforce Experience Cloud business
+    surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Actions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: user-interface-actions
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/ui-api
+    description: Salesforce Experience Cloud Salesforce User Interface API — Actions business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: actions-record-recordId
+      path: /actions/record/{recordId}
+      operations:
+      - name: getrecordactions
+        method: GET
+        description: Salesforce Experience Cloud Get Record Actions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: formFactor
+          in: query
+          type: string
+          description: Form factor for filtering actions
+        - name: sections
+          in: query
+          type: string
+          description: Comma-separated list of action sections
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: user-interface-actions-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce User Interface API — Actions. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/actions/record/{recordid}
+      name: actions-record-recordid
+      description: REST surface for actions-record-recordId.
+      operations:
+      - method: GET
+        name: getrecordactions
+        description: Salesforce Experience Cloud Get Record Actions
+        call: user-interface-actions.getrecordactions
+        with:
+          formFactor: rest.formFactor
+          sections: rest.sections
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: user-interface-actions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce User Interface API — Actions. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-get-record
+      description: Salesforce Experience Cloud Get Record Actions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: user-interface-actions.getrecordactions
+      with:
+        formFactor: tools.formFactor
+        sections: tools.sections
+      outputParameters:
+      - type: object
+        mapping: $.

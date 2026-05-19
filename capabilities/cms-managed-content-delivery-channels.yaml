@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce CMS Managed Content API — Delivery Channels
+  description: 'Salesforce Experience Cloud Salesforce CMS Managed Content API — Delivery Channels. 2 operations. Lead operation:
+    Salesforce Experience Cloud List CMS Delivery Channels. Self-contained Naftiko capability covering one Salesforce Experience
+    Cloud business surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Delivery Channels
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cms-managed-content-delivery-channels
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/connect
+    description: Salesforce Experience Cloud Salesforce CMS Managed Content API — Delivery Channels business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: cms-delivery-channels
+      path: /cms/delivery/channels
+      operations:
+      - name: listdeliverychannels
+        method: GET
+        description: Salesforce Experience Cloud List CMS Delivery Channels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cms-delivery-channels-channelId
+      path: /cms/delivery/channels/{channelId}
+      operations:
+      - name: getdeliverychannel
+        method: GET
+        description: Salesforce Experience Cloud Get a Delivery Channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cms-managed-content-delivery-channels-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce CMS Managed Content API — Delivery Channels. One
+      Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/cms/delivery/channels
+      name: cms-delivery-channels
+      description: REST surface for cms-delivery-channels.
+      operations:
+      - method: GET
+        name: listdeliverychannels
+        description: Salesforce Experience Cloud List CMS Delivery Channels
+        call: cms-managed-content-delivery-channels.listdeliverychannels
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cms/delivery/channels/{channelid}
+      name: cms-delivery-channels-channelid
+      description: REST surface for cms-delivery-channels-channelId.
+      operations:
+      - method: GET
+        name: getdeliverychannel
+        description: Salesforce Experience Cloud Get a Delivery Channel
+        call: cms-managed-content-delivery-channels.getdeliverychannel
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cms-managed-content-delivery-channels-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce CMS Managed Content API — Delivery Channels. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-list-cms
+      description: Salesforce Experience Cloud List CMS Delivery Channels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-managed-content-delivery-channels.listdeliverychannels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-delivery
+      description: Salesforce Experience Cloud Get a Delivery Channel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-managed-content-delivery-channels.getdeliverychannel
+      outputParameters:
+      - type: object
+        mapping: $.

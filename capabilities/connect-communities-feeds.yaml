@@ -1,0 +1,297 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Feeds
+  description: 'Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Feeds. 8 operations. Lead operation:
+    Salesforce Experience Cloud Get a Feed Element. Self-contained Naftiko capability covering one Salesforce Experience Cloud
+    business surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Feeds
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: connect-communities-feeds
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/connect
+    description: Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Feeds business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: communities-communityId-chatter-feed-elements-feedElementId
+      path: /communities/{communityId}/chatter/feed-elements/{feedElementId}
+      operations:
+      - name: getfeedelement
+        method: GET
+        description: Salesforce Experience Cloud Get a Feed Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletefeedelement
+        method: DELETE
+        description: Salesforce Experience Cloud Delete a Feed Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: communities-communityId-chatter-feed-elements-feedElementId-capabilities-chatter
+      path: /communities/{communityId}/chatter/feed-elements/{feedElementId}/capabilities/chatter-likes/items
+      operations:
+      - name: getfeedelementlikes
+        method: GET
+        description: Salesforce Experience Cloud Get Likes on a Feed Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: likefeedelement
+        method: POST
+        description: Salesforce Experience Cloud Like a Feed Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: communities-communityId-chatter-feed-elements-feedElementId-capabilities-comment
+      path: /communities/{communityId}/chatter/feed-elements/{feedElementId}/capabilities/comments/items
+      operations:
+      - name: getfeedelementcomments
+        method: GET
+        description: Salesforce Experience Cloud Get Comments on a Feed Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: postcomment
+        method: POST
+        description: Salesforce Experience Cloud Post a Comment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: communities-communityId-chatter-feeds-news-me-feed-elements
+      path: /communities/{communityId}/chatter/feeds/news/me/feed-elements
+      operations:
+      - name: getnewsfeed
+        method: GET
+        description: Salesforce Experience Cloud Get News Feed
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sort
+          in: query
+          type: string
+          description: Sort order of feed elements
+      - name: postfeedelement
+        method: POST
+        description: Salesforce Experience Cloud Post a Feed Element
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: connect-communities-feeds-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Feeds. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/communities/{communityid}/chatter/feed-elements/{feedelementid}
+      name: communities-communityid-chatter-feed-elements-feedelementid
+      description: REST surface for communities-communityId-chatter-feed-elements-feedElementId.
+      operations:
+      - method: GET
+        name: getfeedelement
+        description: Salesforce Experience Cloud Get a Feed Element
+        call: connect-communities-feeds.getfeedelement
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefeedelement
+        description: Salesforce Experience Cloud Delete a Feed Element
+        call: connect-communities-feeds.deletefeedelement
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityid}/chatter/feed-elements/{feedelementid}/capabilities/chatter-likes/items
+      name: communities-communityid-chatter-feed-elements-feedelementid-capabilities-chatter
+      description: REST surface for communities-communityId-chatter-feed-elements-feedElementId-capabilities-chatter.
+      operations:
+      - method: GET
+        name: getfeedelementlikes
+        description: Salesforce Experience Cloud Get Likes on a Feed Element
+        call: connect-communities-feeds.getfeedelementlikes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: likefeedelement
+        description: Salesforce Experience Cloud Like a Feed Element
+        call: connect-communities-feeds.likefeedelement
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityid}/chatter/feed-elements/{feedelementid}/capabilities/comments/items
+      name: communities-communityid-chatter-feed-elements-feedelementid-capabilities-comment
+      description: REST surface for communities-communityId-chatter-feed-elements-feedElementId-capabilities-comment.
+      operations:
+      - method: GET
+        name: getfeedelementcomments
+        description: Salesforce Experience Cloud Get Comments on a Feed Element
+        call: connect-communities-feeds.getfeedelementcomments
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: postcomment
+        description: Salesforce Experience Cloud Post a Comment
+        call: connect-communities-feeds.postcomment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityid}/chatter/feeds/news/me/feed-elements
+      name: communities-communityid-chatter-feeds-news-me-feed-elements
+      description: REST surface for communities-communityId-chatter-feeds-news-me-feed-elements.
+      operations:
+      - method: GET
+        name: getnewsfeed
+        description: Salesforce Experience Cloud Get News Feed
+        call: connect-communities-feeds.getnewsfeed
+        with:
+          sort: rest.sort
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: postfeedelement
+        description: Salesforce Experience Cloud Post a Feed Element
+        call: connect-communities-feeds.postfeedelement
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: connect-communities-feeds-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Feeds. One tool per
+      consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-get-feed
+      description: Salesforce Experience Cloud Get a Feed Element
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-feeds.getfeedelement
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-delete-feed
+      description: Salesforce Experience Cloud Delete a Feed Element
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: connect-communities-feeds.deletefeedelement
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-likes
+      description: Salesforce Experience Cloud Get Likes on a Feed Element
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-feeds.getfeedelementlikes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-like-feed
+      description: Salesforce Experience Cloud Like a Feed Element
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: connect-communities-feeds.likefeedelement
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-comments
+      description: Salesforce Experience Cloud Get Comments on a Feed Element
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-feeds.getfeedelementcomments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-post-comment
+      description: Salesforce Experience Cloud Post a Comment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: connect-communities-feeds.postcomment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-news
+      description: Salesforce Experience Cloud Get News Feed
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-feeds.getnewsfeed
+      with:
+        sort: tools.sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-post-feed
+      description: Salesforce Experience Cloud Post a Feed Element
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: connect-communities-feeds.postfeedelement
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

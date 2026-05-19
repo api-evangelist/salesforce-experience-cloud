@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Knowledge
+  description: 'Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Knowledge. 1 operations. Lead operation:
+    Salesforce Experience Cloud Get Knowledge Articles. Self-contained Naftiko capability covering one Salesforce Experience
+    Cloud business surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Knowledge
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: connect-communities-knowledge
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/connect
+    description: Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Knowledge business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: communities-communityId-managed-content-delivery
+      path: /communities/{communityId}/managed-content/delivery
+      operations:
+      - name: getknowledgearticles
+        method: GET
+        description: Salesforce Experience Cloud Get Knowledge Articles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: language
+          in: query
+          type: string
+          description: Language code to filter articles
+        - name: managedContentType
+          in: query
+          type: string
+          description: Content type to filter by
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: connect-communities-knowledge-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Knowledge. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/communities/{communityid}/managed-content/delivery
+      name: communities-communityid-managed-content-delivery
+      description: REST surface for communities-communityId-managed-content-delivery.
+      operations:
+      - method: GET
+        name: getknowledgearticles
+        description: Salesforce Experience Cloud Get Knowledge Articles
+        call: connect-communities-knowledge.getknowledgearticles
+        with:
+          language: rest.language
+          managedContentType: rest.managedContentType
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: connect-communities-knowledge-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce Connect REST API (Communities) — Knowledge. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-get-knowledge
+      description: Salesforce Experience Cloud Get Knowledge Articles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: connect-communities-knowledge.getknowledgearticles
+      with:
+        language: tools.language
+        managedContentType: tools.managedContentType
+      outputParameters:
+      - type: object
+        mapping: $.

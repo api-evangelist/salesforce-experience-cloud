@@ -1,0 +1,354 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Salesforce CMS Managed Content API — Managed Content
+  description: 'Salesforce Experience Cloud Salesforce CMS Managed Content API — Managed Content. 5 operations. Lead operation:
+    Salesforce Experience Cloud Query Channel Content. Self-contained Naftiko capability covering one Salesforce Experience
+    Cloud business surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Managed Content
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cms-managed-content-managed-content
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0/connect
+    description: Salesforce Experience Cloud Salesforce CMS Managed Content API — Managed Content business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: cms-delivery-channels-channelId-contents-query
+      path: /cms/delivery/channels/{channelId}/contents/query
+      operations:
+      - name: querychannelcontent
+        method: GET
+        description: Salesforce Experience Cloud Query Channel Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: managedContentType
+          in: query
+          type: string
+          description: The developer name of the managed content type to query (e.g., news, cms_image, cms_document)
+          required: true
+        - name: language
+          in: query
+          type: string
+          description: Language code to filter content (e.g., en_US)
+        - name: contentKeys
+          in: query
+          type: string
+          description: Comma-separated list of content keys to retrieve
+        - name: managedContentIds
+          in: query
+          type: string
+          description: Comma-separated list of managed content IDs
+        - name: topics
+          in: query
+          type: string
+          description: Comma-separated list of topic names to filter by
+        - name: showAbsoluteUrl
+          in: query
+          type: boolean
+          description: Whether to return absolute URLs for media content
+    - name: cms-delivery-channels-channelId-contents-search
+      path: /cms/delivery/channels/{channelId}/contents/search
+      operations:
+      - name: searchchannelcontent
+        method: GET
+        description: Salesforce Experience Cloud Search Channel Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search term to find matching content
+          required: true
+        - name: managedContentType
+          in: query
+          type: string
+          description: Filter search results by content type
+        - name: language
+          in: query
+          type: string
+          description: Language code to filter results
+        - name: showAbsoluteUrl
+          in: query
+          type: boolean
+          description: Whether to return absolute URLs
+    - name: cms-delivery-channels-channelId-contents-contentKeyOrId
+      path: /cms/delivery/channels/{channelId}/contents/{contentKeyOrId}
+      operations:
+      - name: getchannelcontentitem
+        method: GET
+        description: Salesforce Experience Cloud Get a Content Item from Channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: contentKeyOrId
+          in: path
+          type: string
+          description: The content key or managed content ID
+          required: true
+        - name: language
+          in: query
+          type: string
+          description: Language variant to retrieve
+        - name: showAbsoluteUrl
+          in: query
+          type: boolean
+          description: Whether to return absolute URLs
+    - name: communities-communityId-managed-content-delivery
+      path: /communities/{communityId}/managed-content/delivery
+      operations:
+      - name: querycommunitymanagedcontent
+        method: GET
+        description: Salesforce Experience Cloud Query Community Managed Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: communityId
+          in: path
+          type: string
+          description: The ID of the Experience Cloud site
+          required: true
+        - name: managedContentType
+          in: query
+          type: string
+          description: Content type developer name to query
+          required: true
+        - name: language
+          in: query
+          type: string
+          description: Language code to filter content
+        - name: topics
+          in: query
+          type: string
+          description: Comma-separated list of topic names
+        - name: showAbsoluteUrl
+          in: query
+          type: boolean
+          description: Whether to return absolute URLs
+    - name: communities-communityId-managed-content-delivery-search
+      path: /communities/{communityId}/managed-content/delivery/search
+      operations:
+      - name: searchcommunitymanagedcontent
+        method: GET
+        description: Salesforce Experience Cloud Search Community Managed Content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: communityId
+          in: path
+          type: string
+          description: The ID of the Experience Cloud site
+          required: true
+        - name: q
+          in: query
+          type: string
+          description: Search term
+          required: true
+        - name: managedContentType
+          in: query
+          type: string
+          description: Filter by content type
+        - name: language
+          in: query
+          type: string
+          description: Language code
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cms-managed-content-managed-content-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Salesforce CMS Managed Content API — Managed Content. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/cms/delivery/channels/{channelid}/contents/query
+      name: cms-delivery-channels-channelid-contents-query
+      description: REST surface for cms-delivery-channels-channelId-contents-query.
+      operations:
+      - method: GET
+        name: querychannelcontent
+        description: Salesforce Experience Cloud Query Channel Content
+        call: cms-managed-content-managed-content.querychannelcontent
+        with:
+          managedContentType: rest.managedContentType
+          language: rest.language
+          contentKeys: rest.contentKeys
+          managedContentIds: rest.managedContentIds
+          topics: rest.topics
+          showAbsoluteUrl: rest.showAbsoluteUrl
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cms/delivery/channels/{channelid}/contents/search
+      name: cms-delivery-channels-channelid-contents-search
+      description: REST surface for cms-delivery-channels-channelId-contents-search.
+      operations:
+      - method: GET
+        name: searchchannelcontent
+        description: Salesforce Experience Cloud Search Channel Content
+        call: cms-managed-content-managed-content.searchchannelcontent
+        with:
+          q: rest.q
+          managedContentType: rest.managedContentType
+          language: rest.language
+          showAbsoluteUrl: rest.showAbsoluteUrl
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cms/delivery/channels/{channelid}/contents/{contentkeyorid}
+      name: cms-delivery-channels-channelid-contents-contentkeyorid
+      description: REST surface for cms-delivery-channels-channelId-contents-contentKeyOrId.
+      operations:
+      - method: GET
+        name: getchannelcontentitem
+        description: Salesforce Experience Cloud Get a Content Item from Channel
+        call: cms-managed-content-managed-content.getchannelcontentitem
+        with:
+          contentKeyOrId: rest.contentKeyOrId
+          language: rest.language
+          showAbsoluteUrl: rest.showAbsoluteUrl
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityid}/managed-content/delivery
+      name: communities-communityid-managed-content-delivery
+      description: REST surface for communities-communityId-managed-content-delivery.
+      operations:
+      - method: GET
+        name: querycommunitymanagedcontent
+        description: Salesforce Experience Cloud Query Community Managed Content
+        call: cms-managed-content-managed-content.querycommunitymanagedcontent
+        with:
+          communityId: rest.communityId
+          managedContentType: rest.managedContentType
+          language: rest.language
+          topics: rest.topics
+          showAbsoluteUrl: rest.showAbsoluteUrl
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/communities/{communityid}/managed-content/delivery/search
+      name: communities-communityid-managed-content-delivery-search
+      description: REST surface for communities-communityId-managed-content-delivery-search.
+      operations:
+      - method: GET
+        name: searchcommunitymanagedcontent
+        description: Salesforce Experience Cloud Search Community Managed Content
+        call: cms-managed-content-managed-content.searchcommunitymanagedcontent
+        with:
+          communityId: rest.communityId
+          q: rest.q
+          managedContentType: rest.managedContentType
+          language: rest.language
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cms-managed-content-managed-content-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Salesforce CMS Managed Content API — Managed Content. One tool
+      per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-query-channel
+      description: Salesforce Experience Cloud Query Channel Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-managed-content-managed-content.querychannelcontent
+      with:
+        managedContentType: tools.managedContentType
+        language: tools.language
+        contentKeys: tools.contentKeys
+        managedContentIds: tools.managedContentIds
+        topics: tools.topics
+        showAbsoluteUrl: tools.showAbsoluteUrl
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-search-channel
+      description: Salesforce Experience Cloud Search Channel Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-managed-content-managed-content.searchchannelcontent
+      with:
+        q: tools.q
+        managedContentType: tools.managedContentType
+        language: tools.language
+        showAbsoluteUrl: tools.showAbsoluteUrl
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-content
+      description: Salesforce Experience Cloud Get a Content Item from Channel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-managed-content-managed-content.getchannelcontentitem
+      with:
+        contentKeyOrId: tools.contentKeyOrId
+        language: tools.language
+        showAbsoluteUrl: tools.showAbsoluteUrl
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-query-community
+      description: Salesforce Experience Cloud Query Community Managed Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-managed-content-managed-content.querycommunitymanagedcontent
+      with:
+        communityId: tools.communityId
+        managedContentType: tools.managedContentType
+        language: tools.language
+        topics: tools.topics
+        showAbsoluteUrl: tools.showAbsoluteUrl
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-search-community
+      description: Salesforce Experience Cloud Search Community Managed Content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cms-managed-content-managed-content.searchcommunitymanagedcontent
+      with:
+        communityId: tools.communityId
+        q: tools.q
+        managedContentType: tools.managedContentType
+        language: tools.language
+      outputParameters:
+      - type: object
+        mapping: $.

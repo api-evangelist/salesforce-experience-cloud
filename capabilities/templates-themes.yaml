@@ -1,0 +1,137 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Salesforce Experience Cloud Templates API — Themes
+  description: 'Salesforce Experience Cloud Templates API — Themes. 3 operations. Lead operation: Salesforce Experience Cloud
+    List Site Themes. Self-contained Naftiko capability covering one Salesforce Experience Cloud business surface.'
+  tags:
+  - Salesforce Experience Cloud
+  - Themes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SALESFORCE_EXPERIENCE_CLOUD_API_KEY: SALESFORCE_EXPERIENCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: templates-themes
+    baseUri: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Experience Cloud Templates API — Themes business capability. Self-contained, no shared references.
+    resources:
+    - name: connect-communities-communityId-themes
+      path: /connect/communities/{communityId}/themes
+      operations:
+      - name: listsitethemes
+        method: GET
+        description: Salesforce Experience Cloud List Site Themes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: connect-communities-communityId-themes-active
+      path: /connect/communities/{communityId}/themes/active
+      operations:
+      - name: getactivetheme
+        method: GET
+        description: Salesforce Experience Cloud Get Active Theme
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: setactivetheme
+        method: PUT
+        description: Salesforce Experience Cloud Set Active Theme
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SALESFORCE_EXPERIENCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: templates-themes-rest
+    port: 8080
+    description: REST adapter for Salesforce Experience Cloud Templates API — Themes. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/connect/communities/{communityid}/themes
+      name: connect-communities-communityid-themes
+      description: REST surface for connect-communities-communityId-themes.
+      operations:
+      - method: GET
+        name: listsitethemes
+        description: Salesforce Experience Cloud List Site Themes
+        call: templates-themes.listsitethemes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connect/communities/{communityid}/themes/active
+      name: connect-communities-communityid-themes-active
+      description: REST surface for connect-communities-communityId-themes-active.
+      operations:
+      - method: GET
+        name: getactivetheme
+        description: Salesforce Experience Cloud Get Active Theme
+        call: templates-themes.getactivetheme
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: setactivetheme
+        description: Salesforce Experience Cloud Set Active Theme
+        call: templates-themes.setactivetheme
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: templates-themes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Salesforce Experience Cloud Templates API — Themes. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: salesforce-experience-cloud-list-site
+      description: Salesforce Experience Cloud List Site Themes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: templates-themes.listsitethemes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-get-active
+      description: Salesforce Experience Cloud Get Active Theme
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: templates-themes.getactivetheme
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: salesforce-experience-cloud-set-active
+      description: Salesforce Experience Cloud Set Active Theme
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: templates-themes.setactivetheme
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
