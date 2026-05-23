@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedElement",
+  "title": "FeedElement",
+  "type": "object",
+  "description": "A feed element such as a post or announcement",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the feed element"
+    },
+    "body": {
+      "$ref": "#/components/schemas/MessageBody"
+    },
+    "capabilities": {
+      "$ref": "#/components/schemas/FeedElementCapabilities"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the feed element was created"
+    },
+    "feedElementType": {
+      "type": "string",
+      "description": "Type of feed element",
+      "enum": [
+        "FeedItem",
+        "Bundle",
+        "Recommendation"
+      ]
+    },
+    "header": {
+      "$ref": "#/components/schemas/MessageBody"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the feed element was last modified"
+    },
+    "parent": {
+      "$ref": "#/components/schemas/ActorReference"
+    },
+    "actor": {
+      "$ref": "#/components/schemas/ActorReference"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "API resource URL"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManagedContentDeliveryPage",
+  "title": "ManagedContentDeliveryPage",
+  "type": "object",
+  "description": "Paginated managed content delivery results",
+  "properties": {
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contentKey": {
+            "type": "string"
+          },
+          "contentUrlName": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "managedContentId": {
+            "type": "string"
+          },
+          "publishedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "typeLabel": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContentTypeCollection",
+  "title": "ContentTypeCollection",
+  "type": "object",
+  "description": "Collection of content types",
+  "properties": {
+    "contentTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ContentType"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

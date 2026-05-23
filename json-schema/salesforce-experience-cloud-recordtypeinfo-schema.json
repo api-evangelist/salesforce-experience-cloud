@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordTypeInfo",
+  "title": "RecordTypeInfo",
+  "type": "object",
+  "description": "Record type information",
+  "properties": {
+    "active": {
+      "type": "boolean"
+    },
+    "available": {
+      "type": "boolean"
+    },
+    "defaultRecordTypeMapping": {
+      "type": "boolean"
+    },
+    "developerName": {
+      "type": "string"
+    },
+    "master": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "recordTypeId": {
+      "type": "string"
+    },
+    "urls": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManagedContentVersionCollection",
+  "title": "ManagedContentVersionCollection",
+  "type": "object",
+  "description": "Collection of managed content versions",
+  "properties": {
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ManagedContentVersion"
+      }
+    },
+    "managedContentTypes": {
+      "type": "object",
+      "description": "Map of content type developer names to labels",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "developerName": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "total": {
+      "type": "integer",
+      "description": "Total number of matching items"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

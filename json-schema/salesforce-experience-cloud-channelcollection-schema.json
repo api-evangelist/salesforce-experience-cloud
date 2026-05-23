@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChannelCollection",
+  "title": "ChannelCollection",
+  "type": "object",
+  "description": "Collection of CMS channels",
+  "properties": {
+    "channels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Channel"
+      }
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

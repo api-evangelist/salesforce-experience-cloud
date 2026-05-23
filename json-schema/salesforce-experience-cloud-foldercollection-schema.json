@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FolderCollection",
+  "title": "FolderCollection",
+  "type": "object",
+  "description": "Collection of CMS folders",
+  "properties": {
+    "folders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Folder"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

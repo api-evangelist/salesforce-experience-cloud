@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CommentInput",
+  "title": "CommentInput",
+  "type": "object",
+  "description": "Input for creating a comment",
+  "required": [
+    "body"
+  ],
+  "properties": {
+    "body": {
+      "$ref": "#/components/schemas/MessageBodyInput"
+    }
+  }
+}

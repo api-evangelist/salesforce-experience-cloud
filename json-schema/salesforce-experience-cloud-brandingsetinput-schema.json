@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BrandingSetInput",
+  "title": "BrandingSetInput",
+  "type": "object",
+  "description": "Input for updating a branding set",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Updated name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Updated description"
+    },
+    "properties": {
+      "type": "array",
+      "description": "Updated properties",
+      "items": {
+        "$ref": "#/components/schemas/BrandingProperty"
+      }
+    }
+  }
+}

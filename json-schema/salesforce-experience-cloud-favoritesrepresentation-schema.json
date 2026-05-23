@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FavoritesRepresentation",
+  "title": "FavoritesRepresentation",
+  "type": "object",
+  "description": "User's favorites",
+  "properties": {
+    "favorites": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Favorite"
+      }
+    }
+  }
+}

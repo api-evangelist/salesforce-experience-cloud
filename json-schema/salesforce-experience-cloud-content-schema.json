@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Content",
+  "title": "Content",
+  "type": "object",
+  "description": "A CMS content item",
+  "properties": {
+    "contentKey": {
+      "type": "string",
+      "description": "Unique key for the content"
+    },
+    "contentUrlName": {
+      "type": "string",
+      "description": "URL-friendly name for the content"
+    },
+    "language": {
+      "type": "string",
+      "description": "Language code of the content"
+    },
+    "managedContentId": {
+      "type": "string",
+      "description": "Managed content record ID"
+    },
+    "publishedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the content was published"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the content",
+      "enum": [
+        "Draft",
+        "Published",
+        "Archived"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the content"
+    },
+    "type": {
+      "type": "string",
+      "description": "Content type developer name"
+    },
+    "typeLabel": {
+      "type": "string",
+      "description": "Content type display label"
+    },
+    "body": {
+      "type": "object",
+      "description": "Content body fields (varies by content type)",
+      "additionalProperties": true
+    },
+    "contentNodes": {
+      "type": "object",
+      "description": "Content nodes containing field values",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/ContentNode"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CommunityListResponse",
+  "title": "CommunityListResponse",
+  "type": "object",
+  "description": "Response containing a list of Experience Cloud sites",
+  "properties": {
+    "communities": {
+      "type": "array",
+      "description": "List of Experience Cloud sites",
+      "items": {
+        "$ref": "#/components/schemas/Community"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "description": "Total number of sites available"
+    }
+  }
+}

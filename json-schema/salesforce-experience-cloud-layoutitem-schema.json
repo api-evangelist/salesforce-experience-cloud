@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LayoutItem",
+  "title": "LayoutItem",
+  "type": "object",
+  "description": "A field item within a layout section",
+  "properties": {
+    "editableForNew": {
+      "type": "boolean"
+    },
+    "editableForUpdate": {
+      "type": "boolean"
+    },
+    "label": {
+      "type": "string"
+    },
+    "layoutComponents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "apiName": {
+            "type": "string"
+          },
+          "componentType": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "lookupIdApiName": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "sortable": {
+      "type": "boolean"
+    }
+  }
+}

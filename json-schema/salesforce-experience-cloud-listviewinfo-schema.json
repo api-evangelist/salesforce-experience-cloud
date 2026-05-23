@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ListViewInfo",
+  "title": "ListViewInfo",
+  "type": "object",
+  "description": "Metadata about a list view",
+  "properties": {
+    "cloneable": {
+      "type": "boolean"
+    },
+    "createable": {
+      "type": "boolean"
+    },
+    "deletable": {
+      "type": "boolean"
+    },
+    "displayColumns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fieldApiName": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "sortable": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "eTag": {
+      "type": "string"
+    },
+    "filterLogicString": {
+      "type": "string"
+    },
+    "filteredByInfo": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "listReference": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "listViewApiName": {
+          "type": "string"
+        },
+        "objectApiName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "orderedByInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fieldApiName": {
+            "type": "string"
+          },
+          "isAscending": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "updateable": {
+      "type": "boolean"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "Private",
+        "Public"
+      ]
+    }
+  }
+}

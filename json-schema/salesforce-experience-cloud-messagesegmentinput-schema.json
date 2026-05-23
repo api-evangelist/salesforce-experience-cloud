@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageSegmentInput",
+  "title": "MessageSegmentInput",
+  "type": "object",
+  "description": "Input for a message segment",
+  "properties": {
+    "text": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Text",
+        "Mention",
+        "Hashtag"
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TopicInput",
+  "title": "TopicInput",
+  "type": "object",
+  "description": "Input for creating or updating a topic",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the topic"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the topic"
+    }
+  }
+}

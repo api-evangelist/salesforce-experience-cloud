@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLConnection",
+  "title": "GraphQLConnection",
+  "type": "object",
+  "description": "A Relay-style connection containing edges (records) and pagination information",
+  "properties": {
+    "edges": {
+      "type": "array",
+      "description": "List of edges containing record nodes",
+      "items": {
+        "$ref": "#/components/schemas/GraphQLEdge"
+      }
+    },
+    "pageInfo": {
+      "type": "object",
+      "description": "Pagination information",
+      "properties": {
+        "hasNextPage": {
+          "type": "boolean",
+          "description": "Whether more pages are available"
+        },
+        "hasPreviousPage": {
+          "type": "boolean",
+          "description": "Whether previous pages exist"
+        },
+        "startCursor": {
+          "type": "string",
+          "description": "Cursor for the first edge"
+        },
+        "endCursor": {
+          "type": "string",
+          "description": "Cursor for the last edge"
+        }
+      }
+    },
+    "totalCount": {
+      "type": "integer",
+      "description": "Total number of matching records"
+    }
+  }
+}

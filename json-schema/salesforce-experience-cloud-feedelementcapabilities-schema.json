@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedElementCapabilities",
+  "title": "FeedElementCapabilities",
+  "type": "object",
+  "description": "Capabilities available on a feed element",
+  "properties": {
+    "comments": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/components/schemas/CommentPage"
+        }
+      }
+    },
+    "chatterLikes": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "$ref": "#/components/schemas/LikePage"
+        },
+        "myLike": {
+          "$ref": "#/components/schemas/Like"
+        }
+      }
+    }
+  }
+}

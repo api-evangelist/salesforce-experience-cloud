@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ManagedContentVersion",
+  "title": "ManagedContentVersion",
+  "type": "object",
+  "description": "A published managed content version",
+  "properties": {
+    "contentKey": {
+      "type": "string",
+      "description": "Unique content key"
+    },
+    "contentNodes": {
+      "type": "object",
+      "description": "Map of field names to content nodes containing the content field values",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/ContentNode"
+      }
+    },
+    "contentUrlName": {
+      "type": "string",
+      "description": "URL-friendly name for the content"
+    },
+    "language": {
+      "type": "string",
+      "description": "Language code of this content version"
+    },
+    "managedContentId": {
+      "type": "string",
+      "description": "Salesforce record ID of the managed content"
+    },
+    "publishedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this version was published"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the content"
+    },
+    "type": {
+      "type": "string",
+      "description": "Content type developer name"
+    },
+    "typeLabel": {
+      "type": "string",
+      "description": "Content type display label"
+    },
+    "unauthenticatedUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public URL for unauthenticated access"
+    }
+  }
+}

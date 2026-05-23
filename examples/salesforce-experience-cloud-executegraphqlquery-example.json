@@ -1,0 +1,27 @@
+{
+  "operationId": "executeGraphqlQuery",
+  "method": "POST",
+  "path": "/graphql",
+  "summary": "Salesforce Experience Cloud Execute a GraphQL Query or Mutation",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "queryAccounts",
+      "example": {
+        "query": "query accounts {\n  uiapi {\n    query {\n      Account(first: 10) {\n        edges {\n          node {\n            Id\n            Name { value displayValue }\n            Industry { value displayValue }\n          }\n        }\n        totalCount\n      }\n    }\n  }\n}\n"
+      }
+    },
+    {
+      "contentType": "application/json",
+      "name": "queryWithVariables",
+      "example": {
+        "query": "query getAccount($id: ID!) {\n  uiapi {\n    query {\n      Account(where: { Id: { eq: $id } }) {\n        edges {\n          node {\n            Id\n            Name { value }\n          }\n        }\n      }\n    }\n  }\n}\n",
+        "variables": {
+          "id": "001XX000003GHP1"
+        },
+        "operationName": "getAccount"
+      }
+    }
+  ],
+  "responseExamples": []
+}

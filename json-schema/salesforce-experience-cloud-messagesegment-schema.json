@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageSegment",
+  "title": "MessageSegment",
+  "type": "object",
+  "description": "A segment of a message body",
+  "properties": {
+    "text": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Text",
+        "Mention",
+        "Hashtag",
+        "Link",
+        "MarkupBegin",
+        "MarkupEnd"
+      ]
+    }
+  }
+}

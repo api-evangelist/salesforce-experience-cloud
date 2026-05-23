@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ListViewRepresentation",
+  "title": "ListViewRepresentation",
+  "type": "object",
+  "description": "List view data and metadata",
+  "properties": {
+    "count": {
+      "type": "integer"
+    },
+    "currentPageToken": {
+      "type": "string"
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "info": {
+      "$ref": "#/components/schemas/ListViewInfo"
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "previousPageToken": {
+      "type": "string"
+    },
+    "previousPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/RecordRepresentation"
+      }
+    }
+  }
+}

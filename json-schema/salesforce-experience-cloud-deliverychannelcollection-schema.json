@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeliveryChannelCollection",
+  "title": "DeliveryChannelCollection",
+  "type": "object",
+  "description": "Collection of delivery channels",
+  "properties": {
+    "channels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeliveryChannel"
+      }
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageBodyInput",
+  "title": "MessageBodyInput",
+  "type": "object",
+  "description": "Input for a message body",
+  "properties": {
+    "messageSegments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MessageSegmentInput"
+      }
+    }
+  }
+}

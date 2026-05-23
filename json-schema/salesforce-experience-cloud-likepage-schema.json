@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LikePage",
+  "title": "LikePage",
+  "type": "object",
+  "description": "Paginated list of likes",
+  "properties": {
+    "currentPageToken": {
+      "type": "string"
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "likes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Like"
+      }
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "total": {
+      "type": "integer"
+    }
+  }
+}

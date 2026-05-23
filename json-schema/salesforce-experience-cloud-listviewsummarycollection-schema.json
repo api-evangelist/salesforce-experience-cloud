@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ListViewSummaryCollection",
+  "title": "ListViewSummaryCollection",
+  "type": "object",
+  "description": "Collection of list view summaries",
+  "properties": {
+    "count": {
+      "type": "integer"
+    },
+    "currentPageToken": {
+      "type": "string"
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "lists": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "apiName": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "listUiUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "objectApiName": {
+      "type": "string"
+    }
+  }
+}

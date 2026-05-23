@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ApiVersion",
+  "title": "ApiVersion",
+  "type": "object",
+  "description": "Information about an available API version",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Human-readable version label"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the version's root resource"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version number (e.g., 59.0)"
+    }
+  }
+}

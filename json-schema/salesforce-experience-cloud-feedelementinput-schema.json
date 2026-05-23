@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedElementInput",
+  "title": "FeedElementInput",
+  "type": "object",
+  "description": "Input for creating a feed element",
+  "required": [
+    "body",
+    "feedElementType",
+    "subjectId"
+  ],
+  "properties": {
+    "body": {
+      "$ref": "#/components/schemas/MessageBodyInput"
+    },
+    "feedElementType": {
+      "type": "string",
+      "description": "Type of feed element to create",
+      "enum": [
+        "FeedItem"
+      ]
+    },
+    "subjectId": {
+      "type": "string",
+      "description": "ID of the parent record for the post"
+    }
+  }
+}

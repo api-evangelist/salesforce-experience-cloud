@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrgLimits",
+  "title": "OrgLimits",
+  "type": "object",
+  "description": "Organization API limits",
+  "additionalProperties": {
+    "type": "object",
+    "properties": {
+      "Max": {
+        "type": "integer",
+        "description": "Maximum allowed value"
+      },
+      "Remaining": {
+        "type": "integer",
+        "description": "Remaining allowance"
+      }
+    }
+  }
+}

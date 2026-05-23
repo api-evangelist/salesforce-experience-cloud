@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Folder",
+  "title": "Folder",
+  "type": "object",
+  "description": "A CMS workspace folder",
+  "properties": {
+    "folderId": {
+      "type": "string",
+      "description": "Unique identifier of the folder"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the folder"
+    },
+    "parentFolderId": {
+      "type": "string",
+      "description": "ID of the parent folder"
+    }
+  }
+}

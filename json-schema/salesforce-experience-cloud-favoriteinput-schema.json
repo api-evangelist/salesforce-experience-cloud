@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FavoriteInput",
+  "title": "FavoriteInput",
+  "type": "object",
+  "description": "Input for adding a favorite",
+  "required": [
+    "name",
+    "target",
+    "targetType"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the favorite"
+    },
+    "sortOrder": {
+      "type": "integer",
+      "description": "Sort position"
+    },
+    "target": {
+      "type": "string",
+      "description": "ID or reference of the item to favorite"
+    },
+    "targetType": {
+      "type": "string",
+      "description": "Type of item being favorited",
+      "enum": [
+        "Record",
+        "ListView",
+        "Object"
+      ]
+    }
+  }
+}

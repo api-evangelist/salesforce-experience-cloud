@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Channel",
+  "title": "Channel",
+  "type": "object",
+  "description": "A CMS delivery channel",
+  "properties": {
+    "channelId": {
+      "type": "string",
+      "description": "Unique identifier of the channel"
+    },
+    "channelName": {
+      "type": "string",
+      "description": "Name of the channel"
+    },
+    "channelType": {
+      "type": "string",
+      "description": "Type of the channel",
+      "enum": [
+        "ExperienceCloudSite",
+        "CustomChannel"
+      ]
+    },
+    "domain": {
+      "type": "string",
+      "description": "Domain associated with the channel"
+    },
+    "domainName": {
+      "type": "string",
+      "description": "Domain name of the channel"
+    },
+    "isDomainLocked": {
+      "type": "boolean",
+      "description": "Whether the domain is locked"
+    },
+    "isSearchable": {
+      "type": "boolean",
+      "description": "Whether content in this channel is searchable"
+    }
+  }
+}

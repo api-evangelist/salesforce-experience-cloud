@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContentCollection",
+  "title": "ContentCollection",
+  "type": "object",
+  "description": "Collection of CMS content items",
+  "properties": {
+    "content": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Content"
+      }
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

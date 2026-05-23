@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordInput",
+  "title": "RecordInput",
+  "type": "object",
+  "description": "Input for creating or updating a record",
+  "properties": {
+    "apiName": {
+      "type": "string",
+      "description": "API name of the sObject type (required for create)"
+    },
+    "fields": {
+      "type": "object",
+      "description": "Map of field API names to values",
+      "additionalProperties": true
+    }
+  }
+}

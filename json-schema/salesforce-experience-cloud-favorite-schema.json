@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Favorite",
+  "title": "Favorite",
+  "type": "object",
+  "description": "A user favorite item",
+  "properties": {
+    "color": {
+      "type": "string"
+    },
+    "iconUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "target": {
+      "type": "string"
+    },
+    "targetType": {
+      "type": "string",
+      "enum": [
+        "Record",
+        "ListView",
+        "Object",
+        "Dashboard",
+        "Report"
+      ]
+    }
+  }
+}

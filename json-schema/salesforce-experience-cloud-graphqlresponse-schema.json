@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLResponse",
+  "title": "GraphQLResponse",
+  "type": "object",
+  "description": "Response from a GraphQL query execution",
+  "properties": {
+    "data": {
+      "type": "object",
+      "description": "The data returned by the query. Structure mirrors the query shape. Contains a uiapi root object with query results.",
+      "properties": {
+        "uiapi": {
+          "type": "object",
+          "description": "Root UIAPI namespace",
+          "properties": {
+            "query": {
+              "type": "object",
+              "description": "Contains the query results keyed by object name. Each object result uses Relay-style pagination with edges and nodes.",
+              "additionalProperties": {
+                "$ref": "#/components/schemas/GraphQLConnection"
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "errors": {
+      "type": "array",
+      "description": "Errors encountered during query execution. Present alongside data if some fields failed but others succeeded.",
+      "items": {
+        "$ref": "#/components/schemas/GraphQLError"
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Extension data provided by the server, including query cost and performance metrics.",
+      "additionalProperties": true
+    }
+  }
+}

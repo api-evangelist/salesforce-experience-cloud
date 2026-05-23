@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLFieldValue",
+  "title": "GraphQLFieldValue",
+  "type": "object",
+  "description": "A field value in a GraphQL response, providing both raw value and locale-formatted display value",
+  "properties": {
+    "value": {
+      "description": "Raw field value"
+    },
+    "displayValue": {
+      "type": "string",
+      "description": "Formatted display value (locale-aware)"
+    }
+  }
+}

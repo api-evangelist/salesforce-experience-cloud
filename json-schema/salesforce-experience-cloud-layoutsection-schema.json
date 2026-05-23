@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LayoutSection",
+  "title": "LayoutSection",
+  "type": "object",
+  "description": "A section within a layout",
+  "properties": {
+    "collapsible": {
+      "type": "boolean"
+    },
+    "columns": {
+      "type": "integer"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "layoutRows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "layoutItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LayoutItem"
+            }
+          }
+        }
+      }
+    },
+    "rows": {
+      "type": "integer"
+    },
+    "useHeading": {
+      "type": "boolean"
+    }
+  }
+}

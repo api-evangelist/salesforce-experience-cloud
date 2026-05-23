@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLRequest",
+  "title": "GraphQLRequest",
+  "type": "object",
+  "description": "A GraphQL request containing the query and optional parameters",
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "The GraphQL query or mutation string. Queries operate within the UIAPI namespace, accessing records via uiapi.query.{ObjectName}."
+    },
+    "variables": {
+      "type": "object",
+      "description": "Variables for parameterized queries. Keys correspond to variable names defined in the query.",
+      "additionalProperties": true
+    },
+    "operationName": {
+      "type": "string",
+      "description": "Name of the operation to execute when the query document contains multiple operations."
+    }
+  }
+}

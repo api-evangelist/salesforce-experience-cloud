@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContentType",
+  "title": "ContentType",
+  "type": "object",
+  "description": "A CMS content type definition",
+  "properties": {
+    "developerName": {
+      "type": "string",
+      "description": "Developer name of the content type"
+    },
+    "label": {
+      "type": "string",
+      "description": "Display label of the content type"
+    },
+    "fields": {
+      "type": "array",
+      "description": "Field definitions for the content type",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fieldName": {
+            "type": "string"
+          },
+          "fieldType": {
+            "type": "string"
+          },
+          "isRequired": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

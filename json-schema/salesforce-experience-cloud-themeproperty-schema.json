@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThemeProperty",
+  "title": "ThemeProperty",
+  "type": "object",
+  "description": "A property within a theme",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Property name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Property type",
+      "enum": [
+        "Color",
+        "Font",
+        "Image",
+        "String",
+        "Number"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "Property value"
+    },
+    "group": {
+      "type": "string",
+      "description": "Logical grouping of the property"
+    }
+  }
+}

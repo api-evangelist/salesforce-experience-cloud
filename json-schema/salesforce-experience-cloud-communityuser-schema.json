@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CommunityUser",
+  "title": "CommunityUser",
+  "type": "object",
+  "description": "A user within an Experience Cloud site",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "communityNickname": {
+      "type": "string"
+    },
+    "companyName": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "object",
+      "properties": {
+        "fullEmailPhotoUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "largePhotoUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "smallPhotoUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "standardEmailPhotoUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "reputation": {
+      "$ref": "#/components/schemas/Reputation"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "username": {
+      "type": "string"
+    }
+  }
+}

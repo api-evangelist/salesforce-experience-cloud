@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserPage",
+  "title": "UserPage",
+  "type": "object",
+  "description": "Paginated list of community users",
+  "properties": {
+    "currentPageToken": {
+      "type": "string"
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CommunityUser"
+      }
+    }
+  }
+}

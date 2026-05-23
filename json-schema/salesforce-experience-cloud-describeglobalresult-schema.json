@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DescribeGlobalResult",
+  "title": "DescribeGlobalResult",
+  "type": "object",
+  "description": "Result of a global describe call",
+  "properties": {
+    "encoding": {
+      "type": "string"
+    },
+    "maxBatchSize": {
+      "type": "integer"
+    },
+    "sobjects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SObjectDescribeBrief"
+      }
+    }
+  }
+}

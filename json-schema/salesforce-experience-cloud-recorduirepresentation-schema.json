@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordUiRepresentation",
+  "title": "RecordUiRepresentation",
+  "type": "object",
+  "description": "Complete UI representation for one or more records",
+  "properties": {
+    "layoutUserStates": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "layouts": {
+      "type": "object",
+      "description": "Map of object API names to layout representations",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "objectInfos": {
+      "type": "object",
+      "description": "Map of object API names to object info",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/ObjectInfoRepresentation"
+      }
+    },
+    "records": {
+      "type": "object",
+      "description": "Map of record IDs to record representations",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/RecordRepresentation"
+      }
+    }
+  }
+}

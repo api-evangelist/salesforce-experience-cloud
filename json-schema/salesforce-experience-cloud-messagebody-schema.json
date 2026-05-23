@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageBody",
+  "title": "MessageBody",
+  "type": "object",
+  "description": "Rich text body of a feed element or comment",
+  "properties": {
+    "isRichText": {
+      "type": "boolean"
+    },
+    "messageSegments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MessageSegment"
+      }
+    },
+    "text": {
+      "type": "string"
+    }
+  }
+}

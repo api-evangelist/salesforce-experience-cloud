@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordActionsRepresentation",
+  "title": "RecordActionsRepresentation",
+  "type": "object",
+  "description": "Available actions for a record",
+  "properties": {
+    "actions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "actionListContext": {
+                  "type": "string"
+                },
+                "actionTarget": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "actionTargetType": {
+                  "type": "string"
+                },
+                "apiName": {
+                  "type": "string"
+                },
+                "externalAction": {
+                  "type": "boolean"
+                },
+                "iconUrl": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "isMassAction": {
+                  "type": "boolean"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "primary": {
+                  "type": "boolean"
+                },
+                "relatedListRecordId": {
+                  "type": "string"
+                },
+                "relatedSourceObject": {
+                  "type": "string"
+                },
+                "subtype": {
+                  "type": "string"
+                },
+                "targetObject": {
+                  "type": "string"
+                },
+                "targetUrl": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

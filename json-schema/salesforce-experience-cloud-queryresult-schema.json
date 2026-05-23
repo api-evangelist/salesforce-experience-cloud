@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryResult",
+  "title": "QueryResult",
+  "type": "object",
+  "description": "Result of a SOQL query",
+  "properties": {
+    "done": {
+      "type": "boolean",
+      "description": "Whether all results have been returned"
+    },
+    "nextRecordsUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the next page of results (if done is false)"
+    },
+    "records": {
+      "type": "array",
+      "description": "Matching records",
+      "items": {
+        "$ref": "#/components/schemas/SObjectRecord"
+      }
+    },
+    "totalSize": {
+      "type": "integer",
+      "description": "Total number of matching records"
+    }
+  }
+}

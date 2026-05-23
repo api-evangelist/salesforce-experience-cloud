@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateResult",
+  "title": "CreateResult",
+  "type": "object",
+  "description": "Result of a record creation",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of the created record"
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether the creation was successful"
+    },
+    "errors": {
+      "type": "array",
+      "description": "Errors encountered during creation",
+      "items": {
+        "$ref": "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+}

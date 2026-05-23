@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordRepresentation",
+  "title": "RecordRepresentation",
+  "type": "object",
+  "description": "Representation of a record with field values",
+  "properties": {
+    "apiName": {
+      "type": "string",
+      "description": "API name of the sObject type"
+    },
+    "childRelationships": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "eTag": {
+      "type": "string",
+      "description": "Entity tag for optimistic concurrency"
+    },
+    "fields": {
+      "type": "object",
+      "description": "Map of field API names to field values",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/FieldValueRepresentation"
+      }
+    },
+    "id": {
+      "type": "string",
+      "description": "Record ID"
+    },
+    "lastModifiedById": {
+      "type": "string"
+    },
+    "lastModifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "recordTypeId": {
+      "type": "string"
+    },
+    "recordTypeInfo": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "defaultRecordTypeMapping": {
+          "type": "boolean"
+        },
+        "master": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "recordTypeId": {
+          "type": "string"
+        }
+      }
+    },
+    "systemModstamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "weakEtag": {
+      "type": "integer"
+    }
+  }
+}

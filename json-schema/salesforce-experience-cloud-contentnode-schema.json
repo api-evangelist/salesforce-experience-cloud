@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ContentNode",
+  "title": "ContentNode",
+  "type": "object",
+  "description": "A content node representing a field value",
+  "properties": {
+    "nodeType": {
+      "type": "string",
+      "description": "Type of the content node",
+      "enum": [
+        "Media",
+        "MultilineText",
+        "RichText",
+        "Text",
+        "Url",
+        "DateTime",
+        "NameField"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "Text value of the node"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL value of the node (for Media and Url types)"
+    },
+    "altText": {
+      "type": "string",
+      "description": "Alternative text (for Media type)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the node"
+    }
+  }
+}

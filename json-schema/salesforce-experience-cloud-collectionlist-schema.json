@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CollectionList",
+  "title": "CollectionList",
+  "type": "object",
+  "description": "List of content collections",
+  "properties": {
+    "collections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CollectionSummary"
+      }
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

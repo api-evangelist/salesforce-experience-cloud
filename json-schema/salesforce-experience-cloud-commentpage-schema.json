@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CommentPage",
+  "title": "CommentPage",
+  "type": "object",
+  "description": "Paginated list of comments",
+  "properties": {
+    "comments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Comment"
+      }
+    },
+    "currentPageToken": {
+      "type": "string"
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "total": {
+      "type": "integer"
+    }
+  }
+}

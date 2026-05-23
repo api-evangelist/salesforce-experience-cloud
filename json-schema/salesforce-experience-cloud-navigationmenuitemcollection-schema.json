@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NavigationMenuItemCollection",
+  "title": "NavigationMenuItemCollection",
+  "type": "object",
+  "description": "Collection of navigation menu items",
+  "properties": {
+    "menuItems": {
+      "type": "array",
+      "description": "List of navigation menu items",
+      "items": {
+        "$ref": "#/components/schemas/NavigationMenuItem"
+      }
+    },
+    "totalMenuItems": {
+      "type": "integer",
+      "description": "Total number of menu items"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Community",
+  "title": "Community",
+  "type": "object",
+  "description": "Represents an Experience Cloud site (community)",
+  "properties": {
+    "allowChatterAccessWithoutLogin": {
+      "type": "boolean",
+      "description": "Whether guest users can access Chatter"
+    },
+    "allowMembersToFlag": {
+      "type": "boolean",
+      "description": "Whether community members can flag content"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the Experience Cloud site"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the site"
+    },
+    "invitationsEnabled": {
+      "type": "boolean",
+      "description": "Whether invitations are enabled for the site"
+    },
+    "knowledgeableEnabled": {
+      "type": "boolean",
+      "description": "Whether the knowledgeable people feature is enabled"
+    },
+    "loginUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the site login page"
+    },
+    "memberVisibilityEnabled": {
+      "type": "boolean",
+      "description": "Whether members can see other members"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the Experience Cloud site"
+    },
+    "nicknameDisplayEnabled": {
+      "type": "boolean",
+      "description": "Whether nicknames are displayed instead of full names"
+    },
+    "privateMessagesEnabled": {
+      "type": "boolean",
+      "description": "Whether private messaging is enabled"
+    },
+    "reputationEnabled": {
+      "type": "boolean",
+      "description": "Whether the reputation system is enabled"
+    },
+    "sendWelcomeEmail": {
+      "type": "boolean",
+      "description": "Whether welcome emails are sent to new members"
+    },
+    "siteAsContainerEnabled": {
+      "type": "boolean",
+      "description": "Whether the site-as-container feature is enabled"
+    },
+    "siteUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the Experience Cloud site"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the site",
+      "enum": [
+        "Live",
+        "Inactive",
+        "DownForMaintenance",
+        "UnderConstruction"
+      ]
+    },
+    "templateName": {
+      "type": "string",
+      "description": "Name of the template used for the site"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "API resource URL for this site"
+    },
+    "urlPathPrefix": {
+      "type": "string",
+      "description": "URL path prefix for the site"
+    }
+  }
+}

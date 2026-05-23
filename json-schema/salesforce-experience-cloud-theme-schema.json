@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Theme",
+  "title": "Theme",
+  "type": "object",
+  "description": "Theme configuration for an Experience Cloud site",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the theme"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the theme"
+    },
+    "themeType": {
+      "type": "string",
+      "description": "Type of the theme"
+    },
+    "properties": {
+      "type": "object",
+      "description": "Theme properties including colors, fonts, and images",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UpdateCommunityInput",
+  "title": "UpdateCommunityInput",
+  "type": "object",
+  "description": "Input for updating an Experience Cloud site",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "Updated description for the site"
+    },
+    "name": {
+      "type": "string",
+      "description": "Updated name for the site"
+    },
+    "status": {
+      "type": "string",
+      "description": "Updated status for the site",
+      "enum": [
+        "Live",
+        "Inactive",
+        "DownForMaintenance"
+      ]
+    }
+  }
+}

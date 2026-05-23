@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MediaFile",
+  "title": "MediaFile",
+  "type": "object",
+  "description": "A CMS media file",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the media file"
+    },
+    "altText": {
+      "type": "string",
+      "description": "Alternative text for the media"
+    },
+    "fileName": {
+      "type": "string",
+      "description": "Original file name"
+    },
+    "mediaType": {
+      "type": "string",
+      "description": "Type of media",
+      "enum": [
+        "Image",
+        "Document",
+        "Video"
+      ]
+    },
+    "mimeType": {
+      "type": "string",
+      "description": "MIME type of the file"
+    },
+    "referenceId": {
+      "type": "string",
+      "description": "Reference ID for the media"
+    },
+    "title": {
+      "type": "string",
+      "description": "Display title of the media"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to access the media file"
+    }
+  }
+}

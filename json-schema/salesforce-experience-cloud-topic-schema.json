@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Topic",
+  "title": "Topic",
+  "type": "object",
+  "description": "A topic within an Experience Cloud site",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the topic"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string"
+    },
+    "images": {
+      "type": "object",
+      "properties": {
+        "coverImageUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the topic"
+    },
+    "talkingAbout": {
+      "type": "integer",
+      "description": "Number of people currently talking about this topic"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

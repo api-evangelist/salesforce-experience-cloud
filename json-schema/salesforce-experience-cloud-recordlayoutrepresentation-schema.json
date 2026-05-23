@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordLayoutRepresentation",
+  "title": "RecordLayoutRepresentation",
+  "type": "object",
+  "description": "Layout metadata for an object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Layout ID"
+    },
+    "layoutType": {
+      "type": "string",
+      "enum": [
+        "Compact",
+        "Full"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "Create",
+        "Edit",
+        "View"
+      ]
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LayoutSection"
+      }
+    }
+  }
+}

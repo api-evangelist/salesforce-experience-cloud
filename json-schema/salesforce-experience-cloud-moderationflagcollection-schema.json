@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ModerationFlagCollection",
+  "title": "ModerationFlagCollection",
+  "type": "object",
+  "description": "Collection of flagged elements for moderation",
+  "properties": {
+    "currentPageToken": {
+      "type": "string"
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "flaggedElements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "flagCount": {
+            "type": "integer"
+          },
+          "flaggedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "feedElement": {
+            "$ref": "#/components/schemas/FeedElement"
+          },
+          "moderationFlags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "FeedItemFlaggedAsSpam",
+                    "FeedItemFlaggedAsInappropriate"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PublishStatus",
+  "title": "PublishStatus",
+  "type": "object",
+  "description": "Status of a publish operation",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The ID of the publish operation"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the publish operation"
+    }
+  }
+}

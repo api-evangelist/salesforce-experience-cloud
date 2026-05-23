@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CollectionSummary",
+  "title": "CollectionSummary",
+  "type": "object",
+  "description": "Summary of a content collection",
+  "properties": {
+    "collectionKey": {
+      "type": "string",
+      "description": "Unique key for the collection"
+    },
+    "collectionType": {
+      "type": "string",
+      "description": "Type of collection"
+    },
+    "label": {
+      "type": "string",
+      "description": "Display label"
+    },
+    "name": {
+      "type": "string",
+      "description": "Developer name"
+    }
+  }
+}

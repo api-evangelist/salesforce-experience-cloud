@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FieldValueRepresentation",
+  "title": "FieldValueRepresentation",
+  "type": "object",
+  "description": "Field value with display formatting",
+  "properties": {
+    "displayValue": {
+      "type": "string",
+      "description": "Formatted display value (locale-aware)"
+    },
+    "value": {
+      "description": "Raw field value"
+    }
+  }
+}

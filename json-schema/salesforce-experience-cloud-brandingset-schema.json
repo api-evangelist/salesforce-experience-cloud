@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BrandingSet",
+  "title": "BrandingSet",
+  "type": "object",
+  "description": "A branding set with visual properties",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Branding set ID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the branding set"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the branding set"
+    },
+    "properties": {
+      "type": "array",
+      "description": "Branding properties",
+      "items": {
+        "$ref": "#/components/schemas/BrandingProperty"
+      }
+    }
+  }
+}

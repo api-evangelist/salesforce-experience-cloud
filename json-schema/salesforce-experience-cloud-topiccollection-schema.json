@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TopicCollection",
+  "title": "TopicCollection",
+  "type": "object",
+  "description": "Collection of topics",
+  "properties": {
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Topic"
+      }
+    }
+  }
+}

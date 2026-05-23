@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeedElementPage",
+  "title": "FeedElementPage",
+  "type": "object",
+  "description": "Paginated list of feed elements",
+  "properties": {
+    "currentPageToken": {
+      "type": "string",
+      "description": "Token for the current page"
+    },
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the current page"
+    },
+    "elements": {
+      "type": "array",
+      "description": "Feed elements on this page",
+      "items": {
+        "$ref": "#/components/schemas/FeedElement"
+      }
+    },
+    "isModifiedToken": {
+      "type": "string"
+    },
+    "isModifiedUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Token for the next page"
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the next page"
+    },
+    "updatesToken": {
+      "type": "string"
+    },
+    "updatesUrl": {
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

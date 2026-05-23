@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FieldDescribe",
+  "title": "FieldDescribe",
+  "type": "object",
+  "description": "Metadata about a field",
+  "properties": {
+    "aggregatable": {
+      "type": "boolean"
+    },
+    "aiPredictionField": {
+      "type": "boolean"
+    },
+    "autoNumber": {
+      "type": "boolean"
+    },
+    "byteLength": {
+      "type": "integer"
+    },
+    "calculated": {
+      "type": "boolean"
+    },
+    "calculatedFormula": {
+      "type": "string"
+    },
+    "cascadeDelete": {
+      "type": "boolean"
+    },
+    "caseSensitive": {
+      "type": "boolean"
+    },
+    "compoundFieldName": {
+      "type": "string"
+    },
+    "controllerName": {
+      "type": "string"
+    },
+    "createable": {
+      "type": "boolean"
+    },
+    "custom": {
+      "type": "boolean"
+    },
+    "defaultValue": {
+      "type": "string"
+    },
+    "defaultValueFormula": {
+      "type": "string"
+    },
+    "defaultedOnCreate": {
+      "type": "boolean"
+    },
+    "dependentPicklist": {
+      "type": "boolean"
+    },
+    "deprecatedAndHidden": {
+      "type": "boolean"
+    },
+    "digits": {
+      "type": "integer"
+    },
+    "displayLocationInDecimal": {
+      "type": "boolean"
+    },
+    "encrypted": {
+      "type": "boolean"
+    },
+    "externalId": {
+      "type": "boolean"
+    },
+    "extraTypeInfo": {
+      "type": "string"
+    },
+    "filterable": {
+      "type": "boolean"
+    },
+    "filteredLookupInfo": {
+      "type": "object"
+    },
+    "formulaTreatNullNumberAsZero": {
+      "type": "boolean"
+    },
+    "groupable": {
+      "type": "boolean"
+    },
+    "highScaleNumber": {
+      "type": "boolean"
+    },
+    "htmlFormatted": {
+      "type": "boolean"
+    },
+    "idLookup": {
+      "type": "boolean"
+    },
+    "inlineHelpText": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "length": {
+      "type": "integer"
+    },
+    "mask": {
+      "type": "string"
+    },
+    "maskType": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "nameField": {
+      "type": "boolean"
+    },
+    "namePointing": {
+      "type": "boolean"
+    },
+    "nillable": {
+      "type": "boolean"
+    },
+    "permissionable": {
+      "type": "boolean"
+    },
+    "picklistValues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "defaultValue": {
+            "type": "boolean"
+          },
+          "label": {
+            "type": "string"
+          },
+          "validFor": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "polymorphicForeignKey": {
+      "type": "boolean"
+    },
+    "precision": {
+      "type": "integer"
+    },
+    "queryByDistance": {
+      "type": "boolean"
+    },
+    "referenceTargetField": {
+      "type": "string"
+    },
+    "referenceTo": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "relationshipName": {
+      "type": "string"
+    },
+    "relationshipOrder": {
+      "type": "integer"
+    },
+    "restrictedDelete": {
+      "type": "boolean"
+    },
+    "restrictedPicklist": {
+      "type": "boolean"
+    },
+    "scale": {
+      "type": "integer"
+    },
+    "searchPrefilterable": {
+      "type": "boolean"
+    },
+    "soapType": {
+      "type": "string"
+    },
+    "sortable": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "id",
+        "boolean",
+        "currency",
+        "date",
+        "datetime",
+        "double",
+        "email",
+        "encryptedstring",
+        "int",
+        "long",
+        "multipicklist",
+        "percent",
+        "phone",
+        "picklist",
+        "reference",
+        "string",
+        "textarea",
+        "time",
+        "url"
+      ]
+    },
+    "unique": {
+      "type": "boolean"
+    },
+    "updateable": {
+      "type": "boolean"
+    },
+    "writeRequiresMasterRead": {
+      "type": "boolean"
+    }
+  }
+}

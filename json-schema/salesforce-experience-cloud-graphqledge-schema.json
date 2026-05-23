@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphQLEdge",
+  "title": "GraphQLEdge",
+  "type": "object",
+  "description": "An edge in a Relay-style connection containing a node",
+  "properties": {
+    "cursor": {
+      "type": "string",
+      "description": "Cursor for this edge (used for pagination)"
+    },
+    "node": {
+      "type": "object",
+      "description": "The record node containing field values. Each field returns an object with value and optional displayValue properties.",
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "Record ID"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/components/schemas/GraphQLFieldValue"
+      }
+    }
+  }
+}

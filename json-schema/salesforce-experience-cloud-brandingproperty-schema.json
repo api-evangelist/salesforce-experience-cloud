@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BrandingProperty",
+  "title": "BrandingProperty",
+  "type": "object",
+  "description": "A property within a branding set",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Property name (e.g., primaryColor, headerFont)"
+    },
+    "type": {
+      "type": "string",
+      "description": "Property type",
+      "enum": [
+        "Color",
+        "Font",
+        "Image",
+        "String"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "description": "Property value"
+    }
+  }
+}

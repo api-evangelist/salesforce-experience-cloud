@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeliveryCollection",
+  "title": "DeliveryCollection",
+  "type": "object",
+  "description": "A content collection with its items",
+  "properties": {
+    "collectionKey": {
+      "type": "string"
+    },
+    "collectionType": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeliveryContentItem"
+      }
+    },
+    "label": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

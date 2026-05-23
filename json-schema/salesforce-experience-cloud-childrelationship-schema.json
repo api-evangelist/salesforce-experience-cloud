@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChildRelationship",
+  "title": "ChildRelationship",
+  "type": "object",
+  "description": "Describes a child relationship",
+  "properties": {
+    "cascadeDelete": {
+      "type": "boolean"
+    },
+    "childSObject": {
+      "type": "string"
+    },
+    "deprecatedAndHidden": {
+      "type": "boolean"
+    },
+    "field": {
+      "type": "string"
+    },
+    "junctionIdListNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "junctionReferenceTo": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "relationshipName": {
+      "type": "string"
+    },
+    "restrictedDelete": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeliveryContentCollection",
+  "title": "DeliveryContentCollection",
+  "type": "object",
+  "description": "Collection of delivered content items",
+  "properties": {
+    "currentPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeliveryContentItem"
+      }
+    },
+    "managedContentTypes": {
+      "type": "object",
+      "description": "Map of content type names to type metadata",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "developerName": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "nextPageUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "total": {
+      "type": "integer"
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}
