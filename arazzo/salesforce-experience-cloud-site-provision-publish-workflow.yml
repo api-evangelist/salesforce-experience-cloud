@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Site Provision and Publish
+  summary: Create an Experience Cloud site, read it back, then publish it.
+  description: >-
+    An end-to-end site provisioning flow. The workflow creates a new Experience
+    Cloud site from a template and URL path prefix, retrieves the created site
+    to confirm its details, then publishes the site to make its initial
+    configuration live. Each step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: sitesApi
+  url: ../openapi/salesforce-experience-cloud-sites-openapi.yml
+  type: openapi
+workflows:
+- workflowId: site-provision-publish
+  summary: Provision a new Experience Cloud site and publish it.
+  description: >-
+    Creates a site from a template, reads it back to confirm its details, and
+    publishes it.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - name
+    - templateName
+    - urlPathPrefix
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      name:
+        type: string
+        description: Name for the new Experience Cloud site.
+      templateName:
+        type: string
+        description: Template to base the site on (e.g. Customer Service).
+      urlPathPrefix:
+        type: string
+        description: URL path prefix for the site.
+      description:
+        type: string
+        description: Description for the new site.
+  steps:
+  - stepId: createSite
+    description: Create a new Experience Cloud site from the supplied template and prefix.
+    operationId: createExperienceCloudSite
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        templateName: $inputs.templateName
+        urlPathPrefix: $inputs.urlPathPrefix
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      communityId: $response.body#/id
+  - stepId: getSite
+    description: Read the new site back to confirm its name, status, and URL.
+    operationId: getExperienceCloudSite
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $steps.createSite.outputs.communityId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      siteUrl: $response.body#/siteUrl
+  - stepId: publishSite
+    description: Publish the site to make its initial configuration live.
+    operationId: publishExperienceCloudSite
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $steps.createSite.outputs.communityId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      publishStatus: $response.body#/status
+  outputs:
+    communityId: $steps.createSite.outputs.communityId
+    siteUrl: $steps.getSite.outputs.siteUrl
+    publishStatus: $steps.publishSite.outputs.publishStatus

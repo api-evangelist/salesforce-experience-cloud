@@ -1,0 +1,104 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud CMS Content Publish
+  summary: Create a CMS content item, read it back, then publish it to channels.
+  description: >-
+    A content authoring and delivery flow for Experience Cloud. The workflow
+    creates a CMS content item of a given content type, reads it back to confirm
+    its draft state, then publishes it to one or more delivery channels so it is
+    available for delivery. Each step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cmsConnectApi
+  url: ../openapi/salesforce-experience-cloud-cms-connect-openapi.yml
+  type: openapi
+workflows:
+- workflowId: cms-content-publish
+  summary: Author a CMS content item and publish it to channels.
+  description: >-
+    Creates a CMS content item, reads it back to confirm its draft status, and
+    publishes it to the supplied channel IDs.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - title
+    - contentType
+    - channelIds
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      title:
+        type: string
+        description: Title for the new content item.
+      contentType:
+        type: string
+        description: Developer name of the content type.
+      language:
+        type: string
+        description: Language code for the content (e.g. en_US).
+      contentBody:
+        type: object
+        description: Content body fields as defined by the content type.
+      channelIds:
+        type: array
+        description: Channel IDs to publish the content to.
+        items:
+          type: string
+  steps:
+  - stepId: createContent
+    description: Create a new CMS content item with the supplied title, type, and body.
+    operationId: createCmsContent
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        title: $inputs.title
+        contentType: $inputs.contentType
+        language: $inputs.language
+        contentBody: $inputs.contentBody
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      contentKey: $response.body#/contentKey
+      managedContentId: $response.body#/managedContentId
+  - stepId: getContent
+    description: Read the content item back to confirm its draft status before publishing.
+    operationId: getCmsContent
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: contentId
+      in: path
+      value: $steps.createContent.outputs.managedContentId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+  - stepId: publishContent
+    description: Publish the content item to the supplied delivery channels.
+    operationId: publishCmsContent
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: contentId
+      in: path
+      value: $steps.createContent.outputs.managedContentId
+    requestBody:
+      contentType: application/json
+      payload:
+        channelIds: $inputs.channelIds
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      managedContentId: $steps.createContent.outputs.managedContentId
+  outputs:
+    contentKey: $steps.createContent.outputs.contentKey
+    managedContentId: $steps.createContent.outputs.managedContentId

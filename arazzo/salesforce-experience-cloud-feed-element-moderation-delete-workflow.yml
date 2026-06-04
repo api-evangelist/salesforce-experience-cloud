@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Feed Element Moderation Delete
+  summary: Fetch a feed element, inspect its comments, then delete it if it exists.
+  description: >-
+    A moderation cleanup flow on the Connect REST API. The workflow retrieves a
+    feed element to confirm it exists, reads its comments for context, then
+    deletes the feed element. The flow branches after the initial fetch so that
+    deletion only proceeds when the feed element was found. Each step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: connectCommunitiesApi
+  url: ../openapi/salesforce-experience-cloud-connect-communities-openapi.yml
+  type: openapi
+workflows:
+- workflowId: feed-element-moderation-delete
+  summary: Inspect and delete a feed element as part of moderation.
+  description: >-
+    Reads a feed element, fetches its comments, and deletes the feed element
+    when it exists.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - communityId
+    - feedElementId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      communityId:
+        type: string
+        description: ID of the Experience Cloud site (community).
+      feedElementId:
+        type: string
+        description: ID of the feed element to inspect and delete.
+  steps:
+  - stepId: getFeedElement
+    description: Read the feed element to confirm it exists before moderating.
+    operationId: getFeedElement
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: feedElementId
+      in: path
+      value: $inputs.feedElementId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      foundId: $response.body#/id
+    onSuccess:
+    - name: elementFound
+      type: goto
+      stepId: getComments
+      criteria:
+      - context: $response.body
+        condition: $.id != null
+        type: jsonpath
+  - stepId: getComments
+    description: Read the feed element's comments for moderation context.
+    operationId: getFeedElementComments
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: feedElementId
+      in: path
+      value: $inputs.feedElementId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      commentTotal: $response.body#/total
+  - stepId: deleteFeedElement
+    description: Delete the feed element. Returns no body on success.
+    operationId: deleteFeedElement
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: feedElementId
+      in: path
+      value: $inputs.feedElementId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deletedFeedElementId: $inputs.feedElementId
+  outputs:
+    deletedFeedElementId: $steps.deleteFeedElement.outputs.deletedFeedElementId
+    commentTotal: $steps.getComments.outputs.commentTotal

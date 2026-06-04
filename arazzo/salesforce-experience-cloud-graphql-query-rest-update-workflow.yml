@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud GraphQL Query and REST Update
+  summary: Resolve a record ID via a GraphQL query, then update it through the REST API.
+  description: >-
+    A cross-API flow that pairs the UIAPI GraphQL endpoint with the core REST
+    API. The workflow runs a GraphQL query to resolve a record's ID from the
+    uiapi namespace, then patches that record through the sObject REST endpoint.
+    Because the two operations live in separate OpenAPI descriptions, each step
+    references its operation through the source description form. Each step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: graphqlApi
+  url: ../openapi/salesforce-experience-cloud-graphql-openapi.yml
+  type: openapi
+- name: restApi
+  url: ../openapi/salesforce-experience-cloud-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: graphql-query-rest-update
+  summary: Resolve a record with GraphQL and update it with the REST API.
+  description: >-
+    Executes a GraphQL query that returns a record ID, then updates that record
+    via the sObject REST endpoint.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - graphqlQuery
+    - sObjectName
+    - recordId
+    - updateFields
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      graphqlQuery:
+        type: string
+        description: GraphQL query string targeting the uiapi namespace.
+      variables:
+        type: object
+        description: Variables for the parameterized GraphQL query.
+      sObjectName:
+        type: string
+        description: API name of the object to update.
+      recordId:
+        type: string
+        description: The record ID to update (resolved from the query results).
+      updateFields:
+        type: object
+        description: Field name/value pairs to apply to the record.
+  steps:
+  - stepId: runGraphql
+    description: Execute the GraphQL query against the UIAPI schema and capture any errors array.
+    operationId: executeGraphqlQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        query: $inputs.graphqlQuery
+        variables: $inputs.variables
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      data: $response.body#/data
+  - stepId: updateRecord
+    description: Patch the resolved record via the sObject REST endpoint. Returns no body on success.
+    operationId: updateSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: $inputs.sObjectName
+    - name: recordId
+      in: path
+      value: $inputs.recordId
+    requestBody:
+      contentType: application/json
+      payload: $inputs.updateFields
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      updatedRecordId: $inputs.recordId
+  outputs:
+    data: $steps.runGraphql.outputs.data
+    updatedRecordId: $steps.updateRecord.outputs.updatedRecordId

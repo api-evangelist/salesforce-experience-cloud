@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Site Theme Activate and Publish
+  summary: List a site's themes, activate one, then publish the site to apply it.
+  description: >-
+    A site branding flow that spans the Templates and Sites APIs. The workflow
+    lists the themes available for an Experience Cloud site, activates the
+    chosen theme, then publishes the site so the new theme takes effect. Because
+    the operations live in two different OpenAPI descriptions, each step
+    references its operation through the source description form. Each step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: templatesApi
+  url: ../openapi/salesforce-experience-cloud-templates-openapi.yml
+  type: openapi
+- name: sitesApi
+  url: ../openapi/salesforce-experience-cloud-sites-openapi.yml
+  type: openapi
+workflows:
+- workflowId: site-theme-activate-publish
+  summary: Activate a theme on an Experience Cloud site and publish it.
+  description: >-
+    Lists a site's available themes, sets the chosen theme as active, and
+    publishes the site so the theme change takes effect.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - communityId
+    - themeId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      communityId:
+        type: string
+        description: ID of the Experience Cloud site (community).
+      themeId:
+        type: string
+        description: ID of the theme to activate.
+  steps:
+  - stepId: listThemes
+    description: List the themes available for the site to confirm the chosen theme is present.
+    operationId: $sourceDescriptions.templatesApi.listSiteThemes
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstThemeId: $response.body#/themes/0/id
+  - stepId: setTheme
+    description: Set the chosen theme as the active theme for the site.
+    operationId: $sourceDescriptions.templatesApi.setActiveTheme
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    requestBody:
+      contentType: application/json
+      payload:
+        themeId: $inputs.themeId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      activeThemeId: $response.body#/id
+  - stepId: publishSite
+    description: Publish the site so the newly activated theme takes effect.
+    operationId: $sourceDescriptions.sitesApi.publishExperienceCloudSite
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      publishStatus: $response.body#/status
+  outputs:
+    activeThemeId: $steps.setTheme.outputs.activeThemeId
+    publishStatus: $steps.publishSite.outputs.publishStatus

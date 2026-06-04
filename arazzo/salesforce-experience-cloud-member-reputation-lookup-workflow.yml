@@ -1,0 +1,90 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Member Reputation Lookup
+  summary: Identify the current community user, search members, and read a member's reputation.
+  description: >-
+    A community engagement flow on the Connect REST API. The workflow confirms
+    the context user in an Experience Cloud site, searches the site's members by
+    name, then reads the reputation score and level for the first matched
+    member. Each step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: connectCommunitiesApi
+  url: ../openapi/salesforce-experience-cloud-connect-communities-openapi.yml
+  type: openapi
+workflows:
+- workflowId: member-reputation-lookup
+  summary: Search community members and read the first match's reputation.
+  description: >-
+    Reads the current user, searches members by name, and retrieves the
+    reputation of the first matched member.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - communityId
+    - memberQuery
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      communityId:
+        type: string
+        description: ID of the Experience Cloud site (community).
+      memberQuery:
+        type: string
+        description: Search term to filter members by name.
+  steps:
+  - stepId: getCurrentUser
+    description: Confirm the context user in the Experience Cloud site.
+    operationId: getCurrentUser
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentUserId: $response.body#/id
+  - stepId: searchMembers
+    description: Search the site's members by name and capture the first matched user ID.
+    operationId: getCommunityMembers
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: q
+      in: query
+      value: $inputs.memberQuery
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedUserId: $response.body#/users/0/id
+  - stepId: getReputation
+    description: Read the reputation score and level for the first matched member.
+    operationId: getUserReputation
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: userId
+      in: path
+      value: $steps.searchMembers.outputs.matchedUserId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reputation: $response.body
+  outputs:
+    currentUserId: $steps.getCurrentUser.outputs.currentUserId
+    matchedUserId: $steps.searchMembers.outputs.matchedUserId
+    reputation: $steps.getReputation.outputs.reputation

@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Contact and Case Intake
+  summary: Create a Contact, then open a support Case linked to that Contact.
+  description: >-
+    A standard community support intake pattern. The workflow creates a Contact
+    record, then creates a Case whose ContactId points at the new Contact, and
+    finally reads the Case back to confirm its status and case number. Each step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: restApi
+  url: ../openapi/salesforce-experience-cloud-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: contact-case-intake
+  summary: Create a Contact and open a linked Case in one flow.
+  description: >-
+    Creates a Contact, opens a Case referencing that Contact via ContactId, and
+    reads the Case back to confirm it persisted.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - contactFields
+    - subject
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      contactFields:
+        type: object
+        description: Field name/value pairs for the new Contact (e.g. LastName, Email).
+      subject:
+        type: string
+        description: Subject line for the new Case.
+      description:
+        type: string
+        description: Detailed description of the support issue.
+      origin:
+        type: string
+        description: Case origin channel (e.g. Web, Email, Community).
+  steps:
+  - stepId: createContact
+    description: Create the Contact record that the Case will be linked to.
+    operationId: createSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: Contact
+    requestBody:
+      contentType: application/json
+      payload: $inputs.contactFields
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      contactId: $response.body#/id
+  - stepId: createCase
+    description: Open a Case referencing the new Contact through the ContactId field.
+    operationId: createSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: Case
+    requestBody:
+      contentType: application/json
+      payload:
+        ContactId: $steps.createContact.outputs.contactId
+        Subject: $inputs.subject
+        Description: $inputs.description
+        Origin: $inputs.origin
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      caseId: $response.body#/id
+  - stepId: getCase
+    description: Read the Case back to confirm its status and case number.
+    operationId: getSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: Case
+    - name: recordId
+      in: path
+      value: $steps.createCase.outputs.caseId
+    - name: fields
+      in: query
+      value: Id,CaseNumber,Status,Subject,ContactId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      caseNumber: $response.body#/CaseNumber
+      status: $response.body#/Status
+  outputs:
+    contactId: $steps.createContact.outputs.contactId
+    caseId: $steps.createCase.outputs.caseId
+    caseNumber: $steps.getCase.outputs.caseNumber

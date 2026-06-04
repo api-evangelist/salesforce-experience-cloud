@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud UI API Record Lifecycle
+  summary: Create, read, and update a record through the User Interface API.
+  description: >-
+    The metadata-driven record pattern used by Lightning web components in
+    Experience Cloud sites. The workflow creates a record via the UI API, reads
+    it back with display-formatted values, then updates it and confirms the new
+    values in the returned representation. Each step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: userInterfaceApi
+  url: ../openapi/salesforce-experience-cloud-user-interface-openapi.yml
+  type: openapi
+workflows:
+- workflowId: ui-record-lifecycle
+  summary: Drive a record through create, read, and update using the UI API.
+  description: >-
+    Creates a record with apiName and fields, reads it back with formatted
+    values, and updates it, capturing the updated representation.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - apiName
+    - createFields
+    - updateFields
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      apiName:
+        type: string
+        description: API name of the sObject type for the new record.
+      createFields:
+        type: object
+        description: Map of field API names to values for the new record.
+      updateFields:
+        type: object
+        description: Map of field API names to values to apply on update.
+      readFields:
+        type: string
+        description: Comma-separated field API names to return when reading the record.
+  steps:
+  - stepId: createRecord
+    description: Create a record of the given apiName with the supplied field values.
+    operationId: createRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        apiName: $inputs.apiName
+        fields: $inputs.createFields
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      recordId: $response.body#/id
+  - stepId: getRecord
+    description: Read the new record back with the requested fields and display values.
+    operationId: getRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: recordId
+      in: path
+      value: $steps.createRecord.outputs.recordId
+    - name: fields
+      in: query
+      value: $inputs.readFields
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      eTag: $response.body#/eTag
+      apiName: $response.body#/apiName
+  - stepId: updateRecord
+    description: Update the record with new field values and capture the updated representation.
+    operationId: updateRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: recordId
+      in: path
+      value: $steps.createRecord.outputs.recordId
+    requestBody:
+      contentType: application/json
+      payload:
+        apiName: $inputs.apiName
+        fields: $inputs.updateFields
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lastModifiedDate: $response.body#/lastModifiedDate
+  outputs:
+    recordId: $steps.createRecord.outputs.recordId
+    lastModifiedDate: $steps.updateRecord.outputs.lastModifiedDate

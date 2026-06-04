@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Branding Set Revision
+  summary: Read a site branding set, then update its name, description, and properties.
+  description: >-
+    A branding maintenance flow for the Templates API. The workflow reads a
+    branding set for an Experience Cloud site to capture its current properties,
+    then applies a revised name, description, and property list. Each step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: templatesApi
+  url: ../openapi/salesforce-experience-cloud-templates-openapi.yml
+  type: openapi
+workflows:
+- workflowId: branding-set-revise
+  summary: Read and update a site's branding set.
+  description: >-
+    Reads a branding set, then updates its name, description, and branding
+    properties.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - communityId
+    - brandingSetId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      communityId:
+        type: string
+        description: ID of the Experience Cloud site (community).
+      brandingSetId:
+        type: string
+        description: ID of the branding set to revise.
+      name:
+        type: string
+        description: Updated name for the branding set.
+      description:
+        type: string
+        description: Updated description for the branding set.
+      properties:
+        type: array
+        description: Updated branding properties (each with name, type, and value).
+        items:
+          type: object
+  steps:
+  - stepId: getBrandingSet
+    description: Read the branding set to capture its current name before revising.
+    operationId: getBrandingSet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: brandingSetId
+      in: path
+      value: $inputs.brandingSetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentName: $response.body#/name
+  - stepId: updateBrandingSet
+    description: Apply the revised name, description, and properties to the branding set.
+    operationId: updateBrandingSet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: brandingSetId
+      in: path
+      value: $inputs.brandingSetId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        description: $inputs.description
+        properties: $inputs.properties
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      brandingSetId: $response.body#/id
+  outputs:
+    brandingSetId: $steps.updateBrandingSet.outputs.brandingSetId
+    previousName: $steps.getBrandingSet.outputs.currentName

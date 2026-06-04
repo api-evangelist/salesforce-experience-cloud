@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Case Escalation
+  summary: Find an open Case by number with SOQL, escalate it, and reload it.
+  description: >-
+    A case-management flow for community support teams. The workflow looks up a
+    Case by its CaseNumber using SOQL, branches on whether it was found, patches
+    the matched Case to an escalated status and higher priority, then reloads
+    the record to confirm the change. Each step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: restApi
+  url: ../openapi/salesforce-experience-cloud-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: case-escalation
+  summary: Look up a Case by number and escalate it.
+  description: >-
+    Resolves a Case by CaseNumber via SOQL, escalates the matched record, and
+    reloads it; ends without changes when no Case matches.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - caseNumber
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      caseNumber:
+        type: string
+        description: The CaseNumber of the Case to escalate.
+      escalatedStatus:
+        type: string
+        description: Status value to set on escalation (e.g. Escalated).
+      priority:
+        type: string
+        description: Priority value to set on escalation (e.g. High).
+  steps:
+  - stepId: findCase
+    description: Query for the Case by CaseNumber, returning its Id and current status.
+    operationId: executeQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: q
+      in: query
+      value: "SELECT Id, Status, Priority FROM Case WHERE CaseNumber = '$inputs.caseNumber'"
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      caseId: $response.body#/records/0/Id
+      totalSize: $response.body#/totalSize
+    onSuccess:
+    - name: caseFound
+      type: goto
+      stepId: escalateCase
+      criteria:
+      - context: $response.body
+        condition: $.totalSize > 0
+        type: jsonpath
+    - name: caseMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.totalSize == 0
+        type: jsonpath
+  - stepId: escalateCase
+    description: Patch the matched Case with an escalated status and priority. Returns no body on success.
+    operationId: updateSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: Case
+    - name: recordId
+      in: path
+      value: $steps.findCase.outputs.caseId
+    requestBody:
+      contentType: application/json
+      payload:
+        Status: $inputs.escalatedStatus
+        Priority: $inputs.priority
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      escalatedCaseId: $steps.findCase.outputs.caseId
+  - stepId: reloadCase
+    description: Reload the Case to confirm the escalated status and priority took effect.
+    operationId: getSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: Case
+    - name: recordId
+      in: path
+      value: $steps.findCase.outputs.caseId
+    - name: fields
+      in: query
+      value: Id,CaseNumber,Status,Priority
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/Status
+      priority: $response.body#/Priority
+  outputs:
+    caseId: $steps.findCase.outputs.caseId
+    status: $steps.reloadCase.outputs.status
+    priority: $steps.reloadCase.outputs.priority

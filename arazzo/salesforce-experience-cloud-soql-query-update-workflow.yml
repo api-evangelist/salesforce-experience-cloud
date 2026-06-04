@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud SOQL Query and Update
+  summary: Run a SOQL query to find a record, then update the first match.
+  description: >-
+    A common targeted-update pattern. The workflow executes a SOQL query to
+    locate a record by arbitrary criteria, branches on whether any rows were
+    returned, and patches the first matched record with new field values. When
+    no rows match, the flow ends without making changes. Each step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: restApi
+  url: ../openapi/salesforce-experience-cloud-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: soql-query-update
+  summary: Locate a record with SOQL and update the first match.
+  description: >-
+    Executes a SOQL query, and if at least one record is returned, updates the
+    first record with the supplied fields; otherwise ends without changes.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - soql
+    - sObjectName
+    - updateFields
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      soql:
+        type: string
+        description: SOQL query string (must SELECT Id) used to locate the target record.
+      sObjectName:
+        type: string
+        description: API name of the object whose record will be updated.
+      updateFields:
+        type: object
+        description: Field name/value pairs to apply to the matched record.
+  steps:
+  - stepId: runQuery
+    description: Execute the SOQL query and capture the first record's Id and the total match count.
+    operationId: executeQuery
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: q
+      in: query
+      value: $inputs.soql
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedRecordId: $response.body#/records/0/Id
+      totalSize: $response.body#/totalSize
+    onSuccess:
+    - name: hasMatch
+      type: goto
+      stepId: updateMatched
+      criteria:
+      - context: $response.body
+        condition: $.totalSize > 0
+        type: jsonpath
+    - name: noMatch
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.totalSize == 0
+        type: jsonpath
+  - stepId: updateMatched
+    description: Patch the first matched record with the supplied field values. Returns no body on success.
+    operationId: updateSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: $inputs.sObjectName
+    - name: recordId
+      in: path
+      value: $steps.runQuery.outputs.matchedRecordId
+    requestBody:
+      contentType: application/json
+      payload: $inputs.updateFields
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      updatedRecordId: $steps.runQuery.outputs.matchedRecordId
+  outputs:
+    matchedRecordId: $steps.runQuery.outputs.matchedRecordId
+    totalSize: $steps.runQuery.outputs.totalSize

@@ -1,0 +1,124 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Topic Upsert
+  summary: Search community topics by name and create one if it does not exist, else update it.
+  description: >-
+    A topic-curation flow for Experience Cloud sites. The workflow searches the
+    site's topics for an exact name match and branches: when no topic matches it
+    creates a new topic, and when a match is found it updates that topic's
+    description. Each step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: connectCommunitiesApi
+  url: ../openapi/salesforce-experience-cloud-connect-communities-openapi.yml
+  type: openapi
+workflows:
+- workflowId: topic-upsert
+  summary: Create a community topic by name or update the existing match.
+  description: >-
+    Searches topics for an exact name match, then either creates a new topic or
+    updates the matched topic's description.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - communityId
+    - topicName
+    - topicDescription
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      communityId:
+        type: string
+        description: ID of the Experience Cloud site (community).
+      topicName:
+        type: string
+        description: Name of the topic to create or update.
+      topicDescription:
+        type: string
+        description: Description to set on the topic.
+  steps:
+  - stepId: findTopic
+    description: Search the site's topics for an exact name match.
+    operationId: getTopics
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: q
+      in: query
+      value: $inputs.topicName
+    - name: exactMatch
+      in: query
+      value: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedTopicId: $response.body#/topics/0/id
+    onSuccess:
+    - name: topicExists
+      type: goto
+      stepId: updateTopic
+      criteria:
+      - context: $response.body
+        condition: $.topics.length > 0
+        type: jsonpath
+    - name: topicMissing
+      type: goto
+      stepId: createTopic
+      criteria:
+      - context: $response.body
+        condition: $.topics.length == 0
+        type: jsonpath
+  - stepId: updateTopic
+    description: Update the matched topic's description.
+    operationId: updateTopic
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: topicId
+      in: path
+      value: $steps.findTopic.outputs.matchedTopicId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.topicName
+        description: $inputs.topicDescription
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      topicId: $response.body#/id
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: createTopic
+    description: Create a new topic when no existing topic matched the name.
+    operationId: createTopic
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.topicName
+        description: $inputs.topicDescription
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      topicId: $response.body#/id
+  outputs:
+    updatedTopicId: $steps.updateTopic.outputs.topicId
+    createdTopicId: $steps.createTopic.outputs.topicId

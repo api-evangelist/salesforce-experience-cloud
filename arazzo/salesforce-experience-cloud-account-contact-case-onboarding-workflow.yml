@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Account Contact Case Onboarding
+  summary: Create an Account, add a Contact under it, then open a Case for that Contact.
+  description: >-
+    A full community onboarding chain on the REST API. The workflow creates an
+    Account, creates a Contact whose AccountId references the new Account, then
+    opens a Case linked to that Contact. Together these establish the standard
+    Account to Contact to Case relationship used across Experience Cloud support
+    portals. Each step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: restApi
+  url: ../openapi/salesforce-experience-cloud-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: account-contact-case-onboarding
+  summary: Chain Account, Contact, and Case creation in one onboarding flow.
+  description: >-
+    Creates an Account, a Contact linked to it via AccountId, and a Case linked
+    to the Contact via ContactId.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - accountName
+    - contactLastName
+    - subject
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      accountName:
+        type: string
+        description: Name for the new Account.
+      contactLastName:
+        type: string
+        description: Last name for the new Contact.
+      contactEmail:
+        type: string
+        description: Email address for the new Contact.
+      subject:
+        type: string
+        description: Subject line for the new Case.
+      description:
+        type: string
+        description: Detailed description of the support issue.
+  steps:
+  - stepId: createAccount
+    description: Create the Account that the Contact will belong to.
+    operationId: createSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: Account
+    requestBody:
+      contentType: application/json
+      payload:
+        Name: $inputs.accountName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      accountId: $response.body#/id
+  - stepId: createContact
+    description: Create a Contact linked to the new Account via AccountId.
+    operationId: createSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: Contact
+    requestBody:
+      contentType: application/json
+      payload:
+        LastName: $inputs.contactLastName
+        Email: $inputs.contactEmail
+        AccountId: $steps.createAccount.outputs.accountId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      contactId: $response.body#/id
+  - stepId: createCase
+    description: Open a Case linked to the new Contact via ContactId.
+    operationId: createSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: Case
+    requestBody:
+      contentType: application/json
+      payload:
+        ContactId: $steps.createContact.outputs.contactId
+        AccountId: $steps.createAccount.outputs.accountId
+        Subject: $inputs.subject
+        Description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      caseId: $response.body#/id
+  outputs:
+    accountId: $steps.createAccount.outputs.accountId
+    contactId: $steps.createContact.outputs.contactId
+    caseId: $steps.createCase.outputs.caseId

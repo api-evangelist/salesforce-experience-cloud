@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud sObject Record Lifecycle
+  summary: Create an sObject record, read it back, then update it via the REST API.
+  description: >-
+    The foundational data pattern for Experience Cloud integrations built on
+    the Salesforce REST API. The workflow creates a record for any standard or
+    custom object, retrieves the freshly created record to confirm its field
+    values, and then patches it with a set of updated fields. Each step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: restApi
+  url: ../openapi/salesforce-experience-cloud-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: sobject-record-lifecycle
+  summary: Create, retrieve, and update a single Salesforce sObject record.
+  description: >-
+    Drives a record through create, read-back, and update using the core
+    sObject endpoints, confirming the created record exists before applying
+    changes.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - sObjectName
+    - createFields
+    - updateFields
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      sObjectName:
+        type: string
+        description: API name of the Salesforce object (e.g. Account, Contact).
+      createFields:
+        type: object
+        description: Field name/value pairs for the new record.
+      updateFields:
+        type: object
+        description: Field name/value pairs to apply on update.
+      returnFields:
+        type: string
+        description: Comma-separated list of fields to return when reading the record back.
+  steps:
+  - stepId: createRecord
+    description: Create a new record of the given sObject type with the supplied fields.
+    operationId: createSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: $inputs.sObjectName
+    requestBody:
+      contentType: application/json
+      payload: $inputs.createFields
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      recordId: $response.body#/id
+      created: $response.body#/success
+  - stepId: getRecord
+    description: Read the newly created record back to confirm its persisted field values.
+    operationId: getSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: $inputs.sObjectName
+    - name: recordId
+      in: path
+      value: $steps.createRecord.outputs.recordId
+    - name: fields
+      in: query
+      value: $inputs.returnFields
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordType: $response.body#/attributes/type
+  - stepId: updateRecord
+    description: Patch the record with the supplied update fields. Returns no body on success.
+    operationId: updateSObjectRecord
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: sObjectName
+      in: path
+      value: $inputs.sObjectName
+    - name: recordId
+      in: path
+      value: $steps.createRecord.outputs.recordId
+    requestBody:
+      contentType: application/json
+      payload: $inputs.updateFields
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      updatedRecordId: $steps.createRecord.outputs.recordId
+  outputs:
+    recordId: $steps.createRecord.outputs.recordId
+    recordType: $steps.getRecord.outputs.recordType

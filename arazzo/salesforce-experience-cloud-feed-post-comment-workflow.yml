@@ -1,0 +1,113 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Feed Post and Comment
+  summary: Post a feed element to a community, read it back, and comment on it.
+  description: >-
+    A community engagement flow built on the Connect REST API. The workflow
+    publishes a feed element (post) against a parent record in an Experience
+    Cloud site, retrieves the created feed element, then adds a comment to it.
+    Each step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: connectCommunitiesApi
+  url: ../openapi/salesforce-experience-cloud-connect-communities-openapi.yml
+  type: openapi
+workflows:
+- workflowId: feed-post-comment
+  summary: Post a feed element and add a comment to it.
+  description: >-
+    Creates a text feed element on a community feed, reads it back, and posts a
+    comment on the new feed element.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - communityId
+    - subjectId
+    - postText
+    - commentText
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      communityId:
+        type: string
+        description: ID of the Experience Cloud site (community).
+      subjectId:
+        type: string
+        description: ID of the parent record the post is attached to.
+      postText:
+        type: string
+        description: Text body for the feed element.
+      commentText:
+        type: string
+        description: Text body for the comment.
+  steps:
+  - stepId: postFeedElement
+    description: Create a text feed element on the community news feed against the subject record.
+    operationId: postFeedElement
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    requestBody:
+      contentType: application/json
+      payload:
+        feedElementType: FeedItem
+        subjectId: $inputs.subjectId
+        body:
+          messageSegments:
+          - type: Text
+            text: $inputs.postText
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      feedElementId: $response.body#/id
+  - stepId: getFeedElement
+    description: Read the new feed element back to confirm it persisted with its body.
+    operationId: getFeedElement
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: feedElementId
+      in: path
+      value: $steps.postFeedElement.outputs.feedElementId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      createdDate: $response.body#/createdDate
+  - stepId: postComment
+    description: Add a comment to the new feed element.
+    operationId: postComment
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: communityId
+      in: path
+      value: $inputs.communityId
+    - name: feedElementId
+      in: path
+      value: $steps.postFeedElement.outputs.feedElementId
+    requestBody:
+      contentType: application/json
+      payload:
+        body:
+          messageSegments:
+          - type: Text
+            text: $inputs.commentText
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      commentId: $response.body#/id
+  outputs:
+    feedElementId: $steps.postFeedElement.outputs.feedElementId
+    commentId: $steps.postComment.outputs.commentId

@@ -1,0 +1,86 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Object List View Exploration
+  summary: Read object metadata, find its list views, and load the first list view's data.
+  description: >-
+    A metadata-driven discovery flow for building Experience Cloud list pages.
+    The workflow fetches object metadata to confirm the object is queryable,
+    retrieves the list views available for that object, then loads the records
+    and columns for the first list view. Each step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: userInterfaceApi
+  url: ../openapi/salesforce-experience-cloud-user-interface-openapi.yml
+  type: openapi
+workflows:
+- workflowId: object-listview-explore
+  summary: Resolve an object's list views and load the first one's data.
+  description: >-
+    Reads object info, lists the object's list views, and loads the first list
+    view's records and metadata.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - objectApiName
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      objectApiName:
+        type: string
+        description: API name of the object to explore (e.g. Account).
+      pageSize:
+        type: integer
+        description: Number of records to load for the list view.
+  steps:
+  - stepId: getObjectInfo
+    description: Read object metadata to confirm the object and capture its default record type.
+    operationId: getObjectInfo
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: objectApiName
+      in: path
+      value: $inputs.objectApiName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      defaultRecordTypeId: $response.body#/defaultRecordTypeId
+  - stepId: getListViews
+    description: List the available list views for the object and capture the first list view ID.
+    operationId: getListViewsByObject
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: objectApiName
+      in: path
+      value: $inputs.objectApiName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstListViewId: $response.body#/lists/0/id
+  - stepId: getListViewData
+    description: Load records and metadata for the first list view of the object.
+    operationId: getListViewData
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: listViewId
+      in: path
+      value: $steps.getListViews.outputs.firstListViewId
+    - name: pageSize
+      in: query
+      value: $inputs.pageSize
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      listViewId: $steps.getListViews.outputs.firstListViewId
+  outputs:
+    defaultRecordTypeId: $steps.getObjectInfo.outputs.defaultRecordTypeId
+    firstListViewId: $steps.getListViews.outputs.firstListViewId

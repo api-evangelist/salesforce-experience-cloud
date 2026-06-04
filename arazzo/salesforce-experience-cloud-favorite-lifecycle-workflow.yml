@@ -1,0 +1,91 @@
+arazzo: 1.0.1
+info:
+  title: Salesforce Experience Cloud Favorite Lifecycle
+  summary: Add a favorite, list the user's favorites, then remove the favorite.
+  description: >-
+    A user-personalization flow on the UI API. The workflow adds an item to the
+    context user's favorites, lists the favorites to confirm it was added, then
+    removes the favorite it created. Each step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: userInterfaceApi
+  url: ../openapi/salesforce-experience-cloud-user-interface-openapi.yml
+  type: openapi
+workflows:
+- workflowId: favorite-lifecycle
+  summary: Add, verify, and remove a user favorite.
+  description: >-
+    Adds a favorite for a record, list view, or object, lists favorites to
+    confirm, and removes the favorite that was created.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - favoriteName
+    - target
+    - targetType
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer token for the Salesforce instance.
+      favoriteName:
+        type: string
+        description: Name of the favorite to add.
+      target:
+        type: string
+        description: ID or reference of the item to favorite.
+      targetType:
+        type: string
+        description: Type of item being favorited (Record, ListView, or Object).
+      sortOrder:
+        type: integer
+        description: Sort position for the favorite.
+  steps:
+  - stepId: addFavorite
+    description: Add the target item to the context user's favorites.
+    operationId: addFavorite
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.favoriteName
+        target: $inputs.target
+        targetType: $inputs.targetType
+        sortOrder: $inputs.sortOrder
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      favoriteId: $response.body#/id
+  - stepId: listFavorites
+    description: List the user's favorites to confirm the new favorite is present.
+    operationId: getFavorites
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstFavoriteName: $response.body#/favorites/0/name
+  - stepId: removeFavorite
+    description: Remove the favorite that was created. Returns no body on success.
+    operationId: removeFavorite
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: favoriteId
+      in: path
+      value: $steps.addFavorite.outputs.favoriteId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      removedFavoriteId: $steps.addFavorite.outputs.favoriteId
+  outputs:
+    favoriteId: $steps.addFavorite.outputs.favoriteId
+    removedFavoriteId: $steps.removeFavorite.outputs.removedFavoriteId
