@@ -1,0 +1,271 @@
+{
+  "info": {
+    "_postman_id": "3248a463-c7d8-4c4a-94df-c913f4ff4a65",
+    "name": "Salesforce Experience Cloud Salesforce GraphQL API",
+    "description": "Query Salesforce data using GraphQL for Experience Cloud. Offers a flexible query language for retrieving exactly the data needed, reducing over-fetching and improving performance for digital experiences. Supports queries and mutations against the UIAPI schema.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:15:23.000Z",
+    "updatedAt": "2026-06-05T15:15:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3248a463-c7d8-4c4a-94df-c913f4ff4a65"
+  },
+  "item": [
+    {
+      "name": "graphql",
+      "item": [
+        {
+          "name": "Salesforce Experience Cloud Execute a GraphQL Query or Mutation",
+          "id": "c01d849c-9a15-4308-891a-cacad5bb8e60",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"mollitc\": 924901,\n    \"elit_3\": 73225769\n  },\n  \"operationName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/graphql",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "graphql"
+              ]
+            },
+            "description": "Executes a GraphQL query or mutation against the Salesforce UIAPI schema. The UIAPI schema provides access to records, object metadata, list views, and related data. Supports standard GraphQL features including variables, fragments, and operation names. Queries are scoped to the UIAPI namespace which provides formatted field values, layout-aware data access, and respects sharing rules."
+          },
+          "response": [
+            {
+              "id": "af7d2557-e144-4c2a-a79f-ff76bdb42599",
+              "name": "GraphQL query executed successfully. Note that GraphQL always returns HTTP 200, even when there are errors in the query. Check the errors array in the response body for any issues.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"mollitc\": 924901,\n    \"elit_3\": 73225769\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/graphql",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"uiapi\": {\n      \"query\": {\n        \"aliquip_6_a\": {\n          \"edges\": [\n            {\n              \"cursor\": \"<string>\",\n              \"node\": {\n                \"Id\": \"<string>\",\n                \"aliquip1\": {\n                  \"value\": {\n                    \"description\": \"Raw field value\"\n                  },\n                  \"displayValue\": \"<string>\"\n                }\n              }\n            },\n            {\n              \"cursor\": \"<string>\",\n              \"node\": {\n                \"Id\": \"<string>\",\n                \"est_\": {\n                  \"value\": {\n                    \"description\": \"Raw field value\"\n                  },\n                  \"displayValue\": \"<string>\"\n                }\n              }\n            }\n          ],\n          \"pageInfo\": {\n            \"hasNextPage\": \"<boolean>\",\n            \"hasPreviousPage\": \"<boolean>\",\n            \"startCursor\": \"<string>\",\n            \"endCursor\": \"<string>\"\n          },\n          \"totalCount\": \"<integer>\"\n        }\n      }\n    },\n    \"reprehenderit_8fc\": false\n  },\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"locations\": [\n        {\n          \"line\": \"<integer>\",\n          \"column\": \"<integer>\"\n        },\n        {\n          \"line\": \"<integer>\",\n          \"column\": \"<integer>\"\n        }\n      ],\n      \"path\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": {\n        \"errorCode\": \"<string>\",\n        \"classification\": \"<string>\"\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"locations\": [\n        {\n          \"line\": \"<integer>\",\n          \"column\": \"<integer>\"\n        },\n        {\n          \"line\": \"<integer>\",\n          \"column\": \"<integer>\"\n        }\n      ],\n      \"path\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"extensions\": {\n        \"errorCode\": \"<string>\",\n        \"classification\": \"<string>\",\n        \"nisi7\": -17466208,\n        \"Excepteur_7\": \"et est\",\n        \"irure_2\": -59177518\n      }\n    }\n  ],\n  \"extensions\": {\n    \"anime\": -85534276.16114719,\n    \"Excepteur_6\": \"enim consectetur irure\",\n    \"cupidatat__\": true,\n    \"labore_e92\": false\n  }\n}",
+              "createdAt": "2026-06-05T15:15:24.000Z",
+              "updatedAt": "2026-06-05T15:15:24.000Z",
+              "uid": "35240-af7d2557-e144-4c2a-a79f-ff76bdb42599"
+            },
+            {
+              "id": "12b1dfd4-f44d-405a-8795-0a70720c5f8e",
+              "name": "Malformed request (invalid JSON or missing query field)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"mollitc\": 924901,\n    \"elit_3\": 73225769\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/graphql",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:24.000Z",
+              "updatedAt": "2026-06-05T15:15:24.000Z",
+              "uid": "35240-12b1dfd4-f44d-405a-8795-0a70720c5f8e"
+            },
+            {
+              "id": "bcb7cec6-4d7e-475b-9f6b-cb470f8602d8",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"mollitc\": 924901,\n    \"elit_3\": 73225769\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/graphql",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "graphql"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:24.000Z",
+              "updatedAt": "2026-06-05T15:15:24.000Z",
+              "uid": "35240-bcb7cec6-4d7e-475b-9f6b-cb470f8602d8"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:24.000Z",
+          "updatedAt": "2026-06-05T15:15:24.000Z",
+          "uid": "35240-c01d849c-9a15-4308-891a-cacad5bb8e60"
+        }
+      ],
+      "id": "14dc8aae-6eb7-46ad-b244-f7fc91c7769c",
+      "createdAt": "2026-06-05T15:15:24.000Z",
+      "updatedAt": "2026-06-05T15:15:24.000Z",
+      "uid": "35240-14dc8aae-6eb7-46ad-b244-f7fc91c7769c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}

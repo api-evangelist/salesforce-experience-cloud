@@ -1,0 +1,3186 @@
+{
+  "info": {
+    "_postman_id": "a68bdb74-a2b5-4738-a177-bbe4fc74d361",
+    "name": "Salesforce Experience Cloud Salesforce User Interface API",
+    "description": "Access record data, layouts, list views, and navigation items for building custom user interfaces. Powers Lightning web components in Experience Cloud sites with metadata-driven UI rendering. Returns both data and metadata in a single response.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:15:28.000Z",
+    "updatedAt": "2026-06-05T15:15:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a68bdb74-a2b5-4738-a177-bbe4fc74d361"
+  },
+  "item": [
+    {
+      "name": "record-ui",
+      "item": [
+        {
+          "name": "{recordIds}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Get Record UI",
+              "id": "5dbc1760-5482-45c2-b33e-07d59f618787",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record-ui/:recordIds?childRelationships=<string>&formFactor=Medium&layoutTypes=Compact&modes=Create&optionalFields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record-ui",
+                    ":recordIds"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of child relationship names to include",
+                      "key": "childRelationships",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Form factor for the layout",
+                      "key": "formFactor",
+                      "value": "Medium"
+                    },
+                    {
+                      "description": "Comma-separated layout types to return",
+                      "key": "layoutTypes",
+                      "value": "Compact"
+                    },
+                    {
+                      "description": "Comma-separated modes for the layout",
+                      "key": "modes",
+                      "value": "Create"
+                    },
+                    {
+                      "description": "Comma-separated list of optional fields to include",
+                      "key": "optionalFields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "c07518f9-02eb-4575-abff-b8b11b362cc8",
+                      "key": "recordIds",
+                      "value": "<string>",
+                      "description": "(Required) One or more record IDs (comma-separated for multiple records, up to 200)"
+                    }
+                  ]
+                },
+                "description": "Returns layout information, field data, and object metadata for one or more records. Provides everything needed to render a record detail page including layout sections, field values, and display properties."
+              },
+              "response": [
+                {
+                  "id": "e263b413-fb5c-4039-9a11-02b77cf48ab8",
+                  "name": "Successfully retrieved record UI data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record-ui/:recordIds?childRelationships=<string>&formFactor=Medium&layoutTypes=Compact&modes=Create&optionalFields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record-ui",
+                        ":recordIds"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of child relationship names to include",
+                          "key": "childRelationships",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Form factor for the layout",
+                          "key": "formFactor",
+                          "value": "Medium"
+                        },
+                        {
+                          "description": "Comma-separated layout types to return",
+                          "key": "layoutTypes",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Comma-separated modes for the layout",
+                          "key": "modes",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Comma-separated list of optional fields to include",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordIds"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"layoutUserStates\": {\n    \"doloref2\": {}\n  },\n  \"layouts\": {\n    \"cupidatatf9\": {},\n    \"ex_c_\": {}\n  },\n  \"objectInfos\": {\n    \"nona5\": {\n      \"apiName\": \"<string>\",\n      \"associateEntityType\": \"<string>\",\n      \"associateParentEntity\": \"<string>\",\n      \"childRelationships\": [\n        {\n          \"childObjectApiName\": \"<string>\",\n          \"fieldName\": \"<string>\",\n          \"junctionIdListNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"junctionReferenceTo\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"relationshipName\": \"<string>\"\n        },\n        {\n          \"childObjectApiName\": \"<string>\",\n          \"fieldName\": \"<string>\",\n          \"junctionIdListNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"junctionReferenceTo\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"relationshipName\": \"<string>\"\n        }\n      ],\n      \"createable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"defaultRecordTypeId\": \"<string>\",\n      \"deletable\": \"<boolean>\",\n      \"feedEnabled\": \"<boolean>\",\n      \"fields\": {\n        \"ex70\": {\n          \"apiName\": \"<string>\",\n          \"compound\": \"<boolean>\",\n          \"compoundComponentName\": \"<string>\",\n          \"compoundFieldName\": \"<string>\",\n          \"controllerName\": \"<string>\",\n          \"controllingFields\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"createable\": \"<boolean>\",\n          \"custom\": \"<boolean>\",\n          \"dataType\": \"<string>\",\n          \"extraTypeInfo\": \"<string>\",\n          \"filterable\": \"<boolean>\",\n          \"filteredLookupInfo\": {},\n          \"highScaleNumber\": \"<boolean>\",\n          \"htmlFormatted\": \"<boolean>\",\n          \"inlineHelpText\": \"<string>\",\n          \"label\": \"<string>\",\n          \"length\": \"<integer>\",\n          \"nameField\": \"<boolean>\",\n          \"polymorphicForeignKey\": \"<boolean>\",\n          \"precision\": \"<integer>\",\n          \"reference\": \"<boolean>\",\n          \"referenceTargetField\": \"<string>\",\n          \"relationshipName\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"scale\": \"<integer>\",\n          \"searchPrefilterable\": \"<boolean>\",\n          \"sortable\": \"<boolean>\",\n          \"unique\": \"<boolean>\",\n          \"updateable\": \"<boolean>\"\n        }\n      },\n      \"keyPrefix\": \"<string>\",\n      \"label\": \"<string>\",\n      \"labelPlural\": \"<string>\",\n      \"layoutable\": \"<boolean>\",\n      \"mruEnabled\": \"<boolean>\",\n      \"nameFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"queryable\": \"<boolean>\",\n      \"recordTypeInfos\": {\n        \"consequat5d4\": {\n          \"available\": \"<boolean>\",\n          \"defaultRecordTypeMapping\": \"<boolean>\",\n          \"master\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"recordTypeId\": \"<string>\"\n        }\n      },\n      \"searchable\": \"<boolean>\",\n      \"themeInfo\": {\n        \"color\": \"<string>\",\n        \"iconUrl\": \"<uri>\"\n      },\n      \"updateable\": \"<boolean>\"\n    },\n    \"veniam_1c9\": {\n      \"apiName\": \"<string>\",\n      \"associateEntityType\": \"<string>\",\n      \"associateParentEntity\": \"<string>\",\n      \"childRelationships\": [\n        {\n          \"childObjectApiName\": \"<string>\",\n          \"fieldName\": \"<string>\",\n          \"junctionIdListNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"junctionReferenceTo\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"relationshipName\": \"<string>\"\n        },\n        {\n          \"childObjectApiName\": \"<string>\",\n          \"fieldName\": \"<string>\",\n          \"junctionIdListNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"junctionReferenceTo\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"relationshipName\": \"<string>\"\n        }\n      ],\n      \"createable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"defaultRecordTypeId\": \"<string>\",\n      \"deletable\": \"<boolean>\",\n      \"feedEnabled\": \"<boolean>\",\n      \"fields\": {\n        \"quis_a4e\": {\n          \"apiName\": \"<string>\",\n          \"compound\": \"<boolean>\",\n          \"compoundComponentName\": \"<string>\",\n          \"compoundFieldName\": \"<string>\",\n          \"controllerName\": \"<string>\",\n          \"controllingFields\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"createable\": \"<boolean>\",\n          \"custom\": \"<boolean>\",\n          \"dataType\": \"<string>\",\n          \"extraTypeInfo\": \"<string>\",\n          \"filterable\": \"<boolean>\",\n          \"filteredLookupInfo\": {},\n          \"highScaleNumber\": \"<boolean>\",\n          \"htmlFormatted\": \"<boolean>\",\n          \"inlineHelpText\": \"<string>\",\n          \"label\": \"<string>\",\n          \"length\": \"<integer>\",\n          \"nameField\": \"<boolean>\",\n          \"polymorphicForeignKey\": \"<boolean>\",\n          \"precision\": \"<integer>\",\n          \"reference\": \"<boolean>\",\n          \"referenceTargetField\": \"<string>\",\n          \"relationshipName\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"scale\": \"<integer>\",\n          \"searchPrefilterable\": \"<boolean>\",\n          \"sortable\": \"<boolean>\",\n          \"unique\": \"<boolean>\",\n          \"updateable\": \"<boolean>\"\n        },\n        \"culpac6\": {\n          \"apiName\": \"<string>\",\n          \"compound\": \"<boolean>\",\n          \"compoundComponentName\": \"<string>\",\n          \"compoundFieldName\": \"<string>\",\n          \"controllerName\": \"<string>\",\n          \"controllingFields\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"createable\": \"<boolean>\",\n          \"custom\": \"<boolean>\",\n          \"dataType\": \"<string>\",\n          \"extraTypeInfo\": \"<string>\",\n          \"filterable\": \"<boolean>\",\n          \"filteredLookupInfo\": {},\n          \"highScaleNumber\": \"<boolean>\",\n          \"htmlFormatted\": \"<boolean>\",\n          \"inlineHelpText\": \"<string>\",\n          \"label\": \"<string>\",\n          \"length\": \"<integer>\",\n          \"nameField\": \"<boolean>\",\n          \"polymorphicForeignKey\": \"<boolean>\",\n          \"precision\": \"<integer>\",\n          \"reference\": \"<boolean>\",\n          \"referenceTargetField\": \"<string>\",\n          \"relationshipName\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"scale\": \"<integer>\",\n          \"searchPrefilterable\": \"<boolean>\",\n          \"sortable\": \"<boolean>\",\n          \"unique\": \"<boolean>\",\n          \"updateable\": \"<boolean>\"\n        }\n      },\n      \"keyPrefix\": \"<string>\",\n      \"label\": \"<string>\",\n      \"labelPlural\": \"<string>\",\n      \"layoutable\": \"<boolean>\",\n      \"mruEnabled\": \"<boolean>\",\n      \"nameFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"queryable\": \"<boolean>\",\n      \"recordTypeInfos\": {\n        \"dolor_7d2\": {\n          \"available\": \"<boolean>\",\n          \"defaultRecordTypeMapping\": \"<boolean>\",\n          \"master\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"recordTypeId\": \"<string>\"\n        }\n      },\n      \"searchable\": \"<boolean>\",\n      \"themeInfo\": {\n        \"color\": \"<string>\",\n        \"iconUrl\": \"<uri>\"\n      },\n      \"updateable\": \"<boolean>\"\n    },\n    \"nisi5\": {\n      \"apiName\": \"<string>\",\n      \"associateEntityType\": \"<string>\",\n      \"associateParentEntity\": \"<string>\",\n      \"childRelationships\": [\n        {\n          \"childObjectApiName\": \"<string>\",\n          \"fieldName\": \"<string>\",\n          \"junctionIdListNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"junctionReferenceTo\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"relationshipName\": \"<string>\"\n        },\n        {\n          \"childObjectApiName\": \"<string>\",\n          \"fieldName\": \"<string>\",\n          \"junctionIdListNames\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"junctionReferenceTo\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"relationshipName\": \"<string>\"\n        }\n      ],\n      \"createable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"defaultRecordTypeId\": \"<string>\",\n      \"deletable\": \"<boolean>\",\n      \"feedEnabled\": \"<boolean>\",\n      \"fields\": {\n        \"culpa_9\": {\n          \"apiName\": \"<string>\",\n          \"compound\": \"<boolean>\",\n          \"compoundComponentName\": \"<string>\",\n          \"compoundFieldName\": \"<string>\",\n          \"controllerName\": \"<string>\",\n          \"controllingFields\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"createable\": \"<boolean>\",\n          \"custom\": \"<boolean>\",\n          \"dataType\": \"<string>\",\n          \"extraTypeInfo\": \"<string>\",\n          \"filterable\": \"<boolean>\",\n          \"filteredLookupInfo\": {},\n          \"highScaleNumber\": \"<boolean>\",\n          \"htmlFormatted\": \"<boolean>\",\n          \"inlineHelpText\": \"<string>\",\n          \"label\": \"<string>\",\n          \"length\": \"<integer>\",\n          \"nameField\": \"<boolean>\",\n          \"polymorphicForeignKey\": \"<boolean>\",\n          \"precision\": \"<integer>\",\n          \"reference\": \"<boolean>\",\n          \"referenceTargetField\": \"<string>\",\n          \"relationshipName\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"scale\": \"<integer>\",\n          \"searchPrefilterable\": \"<boolean>\",\n          \"sortable\": \"<boolean>\",\n          \"unique\": \"<boolean>\",\n          \"updateable\": \"<boolean>\"\n        },\n        \"aliquipd61\": {\n          \"apiName\": \"<string>\",\n          \"compound\": \"<boolean>\",\n          \"compoundComponentName\": \"<string>\",\n          \"compoundFieldName\": \"<string>\",\n          \"controllerName\": \"<string>\",\n          \"controllingFields\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"createable\": \"<boolean>\",\n          \"custom\": \"<boolean>\",\n          \"dataType\": \"<string>\",\n          \"extraTypeInfo\": \"<string>\",\n          \"filterable\": \"<boolean>\",\n          \"filteredLookupInfo\": {},\n          \"highScaleNumber\": \"<boolean>\",\n          \"htmlFormatted\": \"<boolean>\",\n          \"inlineHelpText\": \"<string>\",\n          \"label\": \"<string>\",\n          \"length\": \"<integer>\",\n          \"nameField\": \"<boolean>\",\n          \"polymorphicForeignKey\": \"<boolean>\",\n          \"precision\": \"<integer>\",\n          \"reference\": \"<boolean>\",\n          \"referenceTargetField\": \"<string>\",\n          \"relationshipName\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"scale\": \"<integer>\",\n          \"searchPrefilterable\": \"<boolean>\",\n          \"sortable\": \"<boolean>\",\n          \"unique\": \"<boolean>\",\n          \"updateable\": \"<boolean>\"\n        },\n        \"adipisicing_2\": {\n          \"apiName\": \"<string>\",\n          \"compound\": \"<boolean>\",\n          \"compoundComponentName\": \"<string>\",\n          \"compoundFieldName\": \"<string>\",\n          \"controllerName\": \"<string>\",\n          \"controllingFields\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"createable\": \"<boolean>\",\n          \"custom\": \"<boolean>\",\n          \"dataType\": \"<string>\",\n          \"extraTypeInfo\": \"<string>\",\n          \"filterable\": \"<boolean>\",\n          \"filteredLookupInfo\": {},\n          \"highScaleNumber\": \"<boolean>\",\n          \"htmlFormatted\": \"<boolean>\",\n          \"inlineHelpText\": \"<string>\",\n          \"label\": \"<string>\",\n          \"length\": \"<integer>\",\n          \"nameField\": \"<boolean>\",\n          \"polymorphicForeignKey\": \"<boolean>\",\n          \"precision\": \"<integer>\",\n          \"reference\": \"<boolean>\",\n          \"referenceTargetField\": \"<string>\",\n          \"relationshipName\": \"<string>\",\n          \"required\": \"<boolean>\",\n          \"scale\": \"<integer>\",\n          \"searchPrefilterable\": \"<boolean>\",\n          \"sortable\": \"<boolean>\",\n          \"unique\": \"<boolean>\",\n          \"updateable\": \"<boolean>\"\n        }\n      },\n      \"keyPrefix\": \"<string>\",\n      \"label\": \"<string>\",\n      \"labelPlural\": \"<string>\",\n      \"layoutable\": \"<boolean>\",\n      \"mruEnabled\": \"<boolean>\",\n      \"nameFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"queryable\": \"<boolean>\",\n      \"recordTypeInfos\": {\n        \"sedab\": {\n          \"available\": \"<boolean>\",\n          \"defaultRecordTypeMapping\": \"<boolean>\",\n          \"master\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"recordTypeId\": \"<string>\"\n        }\n      },\n      \"searchable\": \"<boolean>\",\n      \"themeInfo\": {\n        \"color\": \"<string>\",\n        \"iconUrl\": \"<uri>\"\n      },\n      \"updateable\": \"<boolean>\"\n    }\n  },\n  \"records\": {\n    \"tempor__f\": {\n      \"apiName\": \"<string>\",\n      \"childRelationships\": {\n        \"commodo22\": {},\n        \"sed__1f\": {}\n      },\n      \"eTag\": \"<string>\",\n      \"fields\": {\n        \"cillum42\": {\n          \"displayValue\": \"<string>\",\n          \"value\": {\n            \"description\": \"Raw field value\"\n          }\n        },\n        \"culpaf8c\": {\n          \"displayValue\": \"<string>\",\n          \"value\": {\n            \"description\": \"Raw field value\"\n          }\n        },\n        \"aliquaa65\": {\n          \"displayValue\": \"<string>\",\n          \"value\": {\n            \"description\": \"Raw field value\"\n          }\n        }\n      },\n      \"id\": \"<string>\",\n      \"lastModifiedById\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"recordTypeId\": \"<string>\",\n      \"recordTypeInfo\": {\n        \"available\": \"<boolean>\",\n        \"defaultRecordTypeMapping\": \"<boolean>\",\n        \"master\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"recordTypeId\": \"<string>\"\n      },\n      \"systemModstamp\": \"<dateTime>\",\n      \"weakEtag\": \"<integer>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-e263b413-fb5c-4039-9a11-02b77cf48ab8"
+                },
+                {
+                  "id": "8e4ac444-937f-4578-9e46-2a4a2fcefa3f",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record-ui/:recordIds?childRelationships=<string>&formFactor=Medium&layoutTypes=Compact&modes=Create&optionalFields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record-ui",
+                        ":recordIds"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of child relationship names to include",
+                          "key": "childRelationships",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Form factor for the layout",
+                          "key": "formFactor",
+                          "value": "Medium"
+                        },
+                        {
+                          "description": "Comma-separated layout types to return",
+                          "key": "layoutTypes",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Comma-separated modes for the layout",
+                          "key": "modes",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Comma-separated list of optional fields to include",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordIds"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-8e4ac444-937f-4578-9e46-2a4a2fcefa3f"
+                },
+                {
+                  "id": "007d5b92-44f0-478c-aae8-1b58baa145e9",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record-ui/:recordIds?childRelationships=<string>&formFactor=Medium&layoutTypes=Compact&modes=Create&optionalFields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record-ui",
+                        ":recordIds"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of child relationship names to include",
+                          "key": "childRelationships",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Form factor for the layout",
+                          "key": "formFactor",
+                          "value": "Medium"
+                        },
+                        {
+                          "description": "Comma-separated layout types to return",
+                          "key": "layoutTypes",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Comma-separated modes for the layout",
+                          "key": "modes",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Comma-separated list of optional fields to include",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordIds"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-007d5b92-44f0-478c-aae8-1b58baa145e9"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-5dbc1760-5482-45c2-b33e-07d59f618787"
+            }
+          ],
+          "id": "e51fe4cf-0529-4222-ac22-00b1088eb749",
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-e51fe4cf-0529-4222-ac22-00b1088eb749"
+        }
+      ],
+      "id": "99b9fdf7-5f59-483e-9ec9-408cad3af841",
+      "createdAt": "2026-06-05T15:15:28.000Z",
+      "updatedAt": "2026-06-05T15:15:28.000Z",
+      "uid": "35240-99b9fdf7-5f59-483e-9ec9-408cad3af841"
+    },
+    {
+      "name": "records",
+      "item": [
+        {
+          "name": "{recordId}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Get a Record",
+              "id": "e58c9c13-32ee-4c6c-87f1-16e9978732a3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/records/:recordId?fields=<string>&layoutTypes=Compact&modes=Create&optionalFields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "records",
+                    ":recordId"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field API names to return",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Layout type whose fields to include",
+                      "key": "layoutTypes",
+                      "value": "Compact"
+                    },
+                    {
+                      "description": "Layout mode",
+                      "key": "modes",
+                      "value": "Create"
+                    },
+                    {
+                      "description": "Optional fields to include if accessible",
+                      "key": "optionalFields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "ee0d9f22-b15d-455f-b240-51cec82e9318",
+                      "key": "recordId",
+                      "value": "<string>",
+                      "description": "(Required) The 18-character Salesforce record ID"
+                    }
+                  ]
+                },
+                "description": "Returns field values and metadata for a specific record. Supports requesting specific fields or all fields from a layout. Returns both raw values and display-formatted values."
+              },
+              "response": [
+                {
+                  "id": "f668fd05-92dd-455d-9281-eecbef31d037",
+                  "name": "Successfully retrieved the record",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId?fields=<string>&layoutTypes=Compact&modes=Create&optionalFields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of field API names to return",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Layout type whose fields to include",
+                          "key": "layoutTypes",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Layout mode",
+                          "key": "modes",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Optional fields to include if accessible",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"apiName\": \"<string>\",\n  \"childRelationships\": {\n    \"incididunt_2b6\": {}\n  },\n  \"eTag\": \"<string>\",\n  \"fields\": {\n    \"mollit_3dd\": {\n      \"displayValue\": \"<string>\",\n      \"value\": {\n        \"description\": \"Raw field value\"\n      }\n    }\n  },\n  \"id\": \"<string>\",\n  \"lastModifiedById\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"recordTypeId\": \"<string>\",\n  \"recordTypeInfo\": {\n    \"available\": \"<boolean>\",\n    \"defaultRecordTypeMapping\": \"<boolean>\",\n    \"master\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"recordTypeId\": \"<string>\"\n  },\n  \"systemModstamp\": \"<dateTime>\",\n  \"weakEtag\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-f668fd05-92dd-455d-9281-eecbef31d037"
+                },
+                {
+                  "id": "552d3eda-495d-4cde-9f01-142511f897a0",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId?fields=<string>&layoutTypes=Compact&modes=Create&optionalFields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of field API names to return",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Layout type whose fields to include",
+                          "key": "layoutTypes",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Layout mode",
+                          "key": "modes",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Optional fields to include if accessible",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-552d3eda-495d-4cde-9f01-142511f897a0"
+                },
+                {
+                  "id": "df7495a3-a908-444f-9747-7b9ac82459b4",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId?fields=<string>&layoutTypes=Compact&modes=Create&optionalFields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of field API names to return",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Layout type whose fields to include",
+                          "key": "layoutTypes",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Layout mode",
+                          "key": "modes",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Optional fields to include if accessible",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-df7495a3-a908-444f-9747-7b9ac82459b4"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-e58c9c13-32ee-4c6c-87f1-16e9978732a3"
+            },
+            {
+              "name": "Salesforce Experience Cloud Update a Record",
+              "id": "a3924289-2f12-4dad-ae82-93da36541cf4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/records/:recordId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "records",
+                    ":recordId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "299244f0-b869-41f5-9c74-c5f115dedd33",
+                      "key": "recordId",
+                      "value": "<string>",
+                      "description": "(Required) The 18-character Salesforce record ID"
+                    }
+                  ]
+                },
+                "description": "Updates the specified record with the provided field values. Returns the updated record representation including the new field values."
+              },
+              "response": [
+                {
+                  "id": "b75c64ae-cb96-48ab-9949-00518a257343",
+                  "name": "Record updated successfully",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"apiName\": \"<string>\",\n  \"childRelationships\": {\n    \"incididunt_2b6\": {}\n  },\n  \"eTag\": \"<string>\",\n  \"fields\": {\n    \"mollit_3dd\": {\n      \"displayValue\": \"<string>\",\n      \"value\": {\n        \"description\": \"Raw field value\"\n      }\n    }\n  },\n  \"id\": \"<string>\",\n  \"lastModifiedById\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"recordTypeId\": \"<string>\",\n  \"recordTypeInfo\": {\n    \"available\": \"<boolean>\",\n    \"defaultRecordTypeMapping\": \"<boolean>\",\n    \"master\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"recordTypeId\": \"<string>\"\n  },\n  \"systemModstamp\": \"<dateTime>\",\n  \"weakEtag\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-b75c64ae-cb96-48ab-9949-00518a257343"
+                },
+                {
+                  "id": "bd9f70b4-c7f5-4389-8603-75a95059f6a4",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-bd9f70b4-c7f5-4389-8603-75a95059f6a4"
+                },
+                {
+                  "id": "024f43fc-3a52-4765-9678-45b663dd4fdb",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-024f43fc-3a52-4765-9678-45b663dd4fdb"
+                },
+                {
+                  "id": "4b15eb6a-cfd2-402d-9736-5e481d32f53b",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-4b15eb6a-cfd2-402d-9736-5e481d32f53b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-a3924289-2f12-4dad-ae82-93da36541cf4"
+            },
+            {
+              "name": "Salesforce Experience Cloud Delete a Record",
+              "id": "eb20e92c-6e44-4e9f-958c-e9b34cee0556",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/records/:recordId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "records",
+                    ":recordId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "61a4740b-005a-471e-b6cf-0efb531fe676",
+                      "key": "recordId",
+                      "value": "<string>",
+                      "description": "(Required) The 18-character Salesforce record ID"
+                    }
+                  ]
+                },
+                "description": "Deletes the specified record. The record is moved to the Recycle Bin."
+              },
+              "response": [
+                {
+                  "id": "bf745b6c-8692-4b94-8615-10dffb09b7c5",
+                  "name": "Record deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-bf745b6c-8692-4b94-8615-10dffb09b7c5"
+                },
+                {
+                  "id": "d3c84c56-e8ee-4947-b404-56356617dd89",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-d3c84c56-e8ee-4947-b404-56356617dd89"
+                },
+                {
+                  "id": "344f81c5-a247-4adc-bf05-433437650b2e",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/records/:recordId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "records",
+                        ":recordId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "recordId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-344f81c5-a247-4adc-bf05-433437650b2e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-eb20e92c-6e44-4e9f-958c-e9b34cee0556"
+            }
+          ],
+          "id": "62de0546-3593-48eb-b8e5-0e8ddb3a45ad",
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-62de0546-3593-48eb-b8e5-0e8ddb3a45ad"
+        },
+        {
+          "name": "Salesforce Experience Cloud Create a Record",
+          "id": "4f784427-40cf-4923-a413-549d9c15bb16",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/records",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "records"
+              ]
+            },
+            "description": "Creates a new record of the specified sObject type. Returns the created record representation with all field values."
+          },
+          "response": [
+            {
+              "id": "10be5f20-18a3-4999-a152-8d68a59c3f6d",
+              "name": "Record created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "records"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"apiName\": \"<string>\",\n  \"childRelationships\": {\n    \"incididunt_2b6\": {}\n  },\n  \"eTag\": \"<string>\",\n  \"fields\": {\n    \"mollit_3dd\": {\n      \"displayValue\": \"<string>\",\n      \"value\": {\n        \"description\": \"Raw field value\"\n      }\n    }\n  },\n  \"id\": \"<string>\",\n  \"lastModifiedById\": \"<string>\",\n  \"lastModifiedDate\": \"<dateTime>\",\n  \"recordTypeId\": \"<string>\",\n  \"recordTypeInfo\": {\n    \"available\": \"<boolean>\",\n    \"defaultRecordTypeMapping\": \"<boolean>\",\n    \"master\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"recordTypeId\": \"<string>\"\n  },\n  \"systemModstamp\": \"<dateTime>\",\n  \"weakEtag\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-10be5f20-18a3-4999-a152-8d68a59c3f6d"
+            },
+            {
+              "id": "34c52e36-a508-4512-bb8c-a356fd0ab685",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "records"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-34c52e36-a508-4512-bb8c-a356fd0ab685"
+            },
+            {
+              "id": "8083c065-b7e8-46dd-a59f-813dcbda36e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"apiName\": \"<string>\",\n  \"fields\": {\n    \"quis0e5\": 93374348.63883182\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "records"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-8083c065-b7e8-46dd-a59f-813dcbda36e2"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-4f784427-40cf-4923-a413-549d9c15bb16"
+        }
+      ],
+      "id": "f05c6bc4-7357-402f-802a-96de02918747",
+      "createdAt": "2026-06-05T15:15:28.000Z",
+      "updatedAt": "2026-06-05T15:15:28.000Z",
+      "uid": "35240-f05c6bc4-7357-402f-802a-96de02918747"
+    },
+    {
+      "name": "layout",
+      "item": [
+        {
+          "name": "{objectApiName}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Get Record Layout",
+              "id": "19fb4efe-32f1-4ee1-920a-0d021f7b67d0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/layout/:objectApiName?formFactor=Medium&layoutType=Compact&mode=Create&recordTypeId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "layout",
+                    ":objectApiName"
+                  ],
+                  "query": [
+                    {
+                      "description": "Form factor for the layout",
+                      "key": "formFactor",
+                      "value": "Medium"
+                    },
+                    {
+                      "description": "Type of layout to retrieve",
+                      "key": "layoutType",
+                      "value": "Compact"
+                    },
+                    {
+                      "description": "Mode for the layout",
+                      "key": "mode",
+                      "value": "Create"
+                    },
+                    {
+                      "description": "Record type ID for the layout",
+                      "key": "recordTypeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "3b1bb35d-3ec4-447a-90e9-256f1030df7e",
+                      "key": "objectApiName",
+                      "value": "<string>",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    }
+                  ]
+                },
+                "description": "Returns layout metadata for the specified object type including sections, fields, and their display properties. Used to render record forms dynamically."
+              },
+              "response": [
+                {
+                  "id": "cd6378b8-ee07-4eec-b9e0-7496c29b4cb7",
+                  "name": "Successfully retrieved record layout",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/layout/:objectApiName?formFactor=Medium&layoutType=Compact&mode=Create&recordTypeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "layout",
+                        ":objectApiName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Form factor for the layout",
+                          "key": "formFactor",
+                          "value": "Medium"
+                        },
+                        {
+                          "description": "Type of layout to retrieve",
+                          "key": "layoutType",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Mode for the layout",
+                          "key": "mode",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Record type ID for the layout",
+                          "key": "recordTypeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"layoutType\": \"Full\",\n  \"mode\": \"Create\",\n  \"sections\": [\n    {\n      \"collapsible\": \"<boolean>\",\n      \"columns\": \"<integer>\",\n      \"heading\": \"<string>\",\n      \"id\": \"<string>\",\n      \"layoutRows\": [\n        {\n          \"layoutItems\": [\n            {\n              \"editableForNew\": \"<boolean>\",\n              \"editableForUpdate\": \"<boolean>\",\n              \"label\": \"<string>\",\n              \"layoutComponents\": [\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                },\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                }\n              ],\n              \"lookupIdApiName\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"sortable\": \"<boolean>\"\n            },\n            {\n              \"editableForNew\": \"<boolean>\",\n              \"editableForUpdate\": \"<boolean>\",\n              \"label\": \"<string>\",\n              \"layoutComponents\": [\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                },\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                }\n              ],\n              \"lookupIdApiName\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"sortable\": \"<boolean>\"\n            }\n          ]\n        },\n        {\n          \"layoutItems\": [\n            {\n              \"editableForNew\": \"<boolean>\",\n              \"editableForUpdate\": \"<boolean>\",\n              \"label\": \"<string>\",\n              \"layoutComponents\": [\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                },\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                }\n              ],\n              \"lookupIdApiName\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"sortable\": \"<boolean>\"\n            },\n            {\n              \"editableForNew\": \"<boolean>\",\n              \"editableForUpdate\": \"<boolean>\",\n              \"label\": \"<string>\",\n              \"layoutComponents\": [\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                },\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                }\n              ],\n              \"lookupIdApiName\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"sortable\": \"<boolean>\"\n            }\n          ]\n        }\n      ],\n      \"rows\": \"<integer>\",\n      \"useHeading\": \"<boolean>\"\n    },\n    {\n      \"collapsible\": \"<boolean>\",\n      \"columns\": \"<integer>\",\n      \"heading\": \"<string>\",\n      \"id\": \"<string>\",\n      \"layoutRows\": [\n        {\n          \"layoutItems\": [\n            {\n              \"editableForNew\": \"<boolean>\",\n              \"editableForUpdate\": \"<boolean>\",\n              \"label\": \"<string>\",\n              \"layoutComponents\": [\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                },\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                }\n              ],\n              \"lookupIdApiName\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"sortable\": \"<boolean>\"\n            },\n            {\n              \"editableForNew\": \"<boolean>\",\n              \"editableForUpdate\": \"<boolean>\",\n              \"label\": \"<string>\",\n              \"layoutComponents\": [\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                },\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                }\n              ],\n              \"lookupIdApiName\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"sortable\": \"<boolean>\"\n            }\n          ]\n        },\n        {\n          \"layoutItems\": [\n            {\n              \"editableForNew\": \"<boolean>\",\n              \"editableForUpdate\": \"<boolean>\",\n              \"label\": \"<string>\",\n              \"layoutComponents\": [\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                },\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                }\n              ],\n              \"lookupIdApiName\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"sortable\": \"<boolean>\"\n            },\n            {\n              \"editableForNew\": \"<boolean>\",\n              \"editableForUpdate\": \"<boolean>\",\n              \"label\": \"<string>\",\n              \"layoutComponents\": [\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                },\n                {\n                  \"apiName\": \"<string>\",\n                  \"componentType\": \"<string>\",\n                  \"label\": \"<string>\"\n                }\n              ],\n              \"lookupIdApiName\": \"<string>\",\n              \"required\": \"<boolean>\",\n              \"sortable\": \"<boolean>\"\n            }\n          ]\n        }\n      ],\n      \"rows\": \"<integer>\",\n      \"useHeading\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-cd6378b8-ee07-4eec-b9e0-7496c29b4cb7"
+                },
+                {
+                  "id": "c6f5f88c-4d90-4434-a6ec-2e29ae2697e7",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/layout/:objectApiName?formFactor=Medium&layoutType=Compact&mode=Create&recordTypeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "layout",
+                        ":objectApiName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Form factor for the layout",
+                          "key": "formFactor",
+                          "value": "Medium"
+                        },
+                        {
+                          "description": "Type of layout to retrieve",
+                          "key": "layoutType",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Mode for the layout",
+                          "key": "mode",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Record type ID for the layout",
+                          "key": "recordTypeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-c6f5f88c-4d90-4434-a6ec-2e29ae2697e7"
+                },
+                {
+                  "id": "6a864b88-04f9-46c9-8de4-dd2ebb257928",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/layout/:objectApiName?formFactor=Medium&layoutType=Compact&mode=Create&recordTypeId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "layout",
+                        ":objectApiName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Form factor for the layout",
+                          "key": "formFactor",
+                          "value": "Medium"
+                        },
+                        {
+                          "description": "Type of layout to retrieve",
+                          "key": "layoutType",
+                          "value": "Compact"
+                        },
+                        {
+                          "description": "Mode for the layout",
+                          "key": "mode",
+                          "value": "Create"
+                        },
+                        {
+                          "description": "Record type ID for the layout",
+                          "key": "recordTypeId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-6a864b88-04f9-46c9-8de4-dd2ebb257928"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-19fb4efe-32f1-4ee1-920a-0d021f7b67d0"
+            }
+          ],
+          "id": "03b829ff-21b5-4857-b084-9ffcaf87d3af",
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-03b829ff-21b5-4857-b084-9ffcaf87d3af"
+        }
+      ],
+      "id": "3a57303b-03be-4c41-b9a2-265012fd0846",
+      "createdAt": "2026-06-05T15:15:28.000Z",
+      "updatedAt": "2026-06-05T15:15:28.000Z",
+      "uid": "35240-3a57303b-03be-4c41-b9a2-265012fd0846"
+    },
+    {
+      "name": "object-info",
+      "item": [
+        {
+          "name": "{objectApiName}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Get Object Info",
+              "id": "7cf11ca9-2a07-4316-bf2c-f2fe414656e9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/object-info/:objectApiName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "object-info",
+                    ":objectApiName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f9280492-5d35-4895-a7e0-6d2138cf2cb3",
+                      "key": "objectApiName",
+                      "value": "<string>",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    }
+                  ]
+                },
+                "description": "Returns metadata about the specified object including fields, record types, child relationships, and theme information. Provides the information needed for metadata-driven UI construction."
+              },
+              "response": [
+                {
+                  "id": "91bc4a53-24d5-45d3-b445-bad715498660",
+                  "name": "Successfully retrieved object info",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/object-info/:objectApiName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "object-info",
+                        ":objectApiName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"apiName\": \"<string>\",\n  \"associateEntityType\": \"<string>\",\n  \"associateParentEntity\": \"<string>\",\n  \"childRelationships\": [\n    {\n      \"childObjectApiName\": \"<string>\",\n      \"fieldName\": \"<string>\",\n      \"junctionIdListNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"junctionReferenceTo\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"relationshipName\": \"<string>\"\n    },\n    {\n      \"childObjectApiName\": \"<string>\",\n      \"fieldName\": \"<string>\",\n      \"junctionIdListNames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"junctionReferenceTo\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"relationshipName\": \"<string>\"\n    }\n  ],\n  \"createable\": \"<boolean>\",\n  \"custom\": \"<boolean>\",\n  \"defaultRecordTypeId\": \"<string>\",\n  \"deletable\": \"<boolean>\",\n  \"feedEnabled\": \"<boolean>\",\n  \"fields\": {\n    \"amet3d9\": {\n      \"apiName\": \"<string>\",\n      \"compound\": \"<boolean>\",\n      \"compoundComponentName\": \"<string>\",\n      \"compoundFieldName\": \"<string>\",\n      \"controllerName\": \"<string>\",\n      \"controllingFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"createable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"dataType\": \"<string>\",\n      \"extraTypeInfo\": \"<string>\",\n      \"filterable\": \"<boolean>\",\n      \"filteredLookupInfo\": {},\n      \"highScaleNumber\": \"<boolean>\",\n      \"htmlFormatted\": \"<boolean>\",\n      \"inlineHelpText\": \"<string>\",\n      \"label\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nameField\": \"<boolean>\",\n      \"polymorphicForeignKey\": \"<boolean>\",\n      \"precision\": \"<integer>\",\n      \"reference\": \"<boolean>\",\n      \"referenceTargetField\": \"<string>\",\n      \"relationshipName\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"scale\": \"<integer>\",\n      \"searchPrefilterable\": \"<boolean>\",\n      \"sortable\": \"<boolean>\",\n      \"unique\": \"<boolean>\",\n      \"updateable\": \"<boolean>\"\n    },\n    \"reprehenderite\": {\n      \"apiName\": \"<string>\",\n      \"compound\": \"<boolean>\",\n      \"compoundComponentName\": \"<string>\",\n      \"compoundFieldName\": \"<string>\",\n      \"controllerName\": \"<string>\",\n      \"controllingFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"createable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"dataType\": \"<string>\",\n      \"extraTypeInfo\": \"<string>\",\n      \"filterable\": \"<boolean>\",\n      \"filteredLookupInfo\": {},\n      \"highScaleNumber\": \"<boolean>\",\n      \"htmlFormatted\": \"<boolean>\",\n      \"inlineHelpText\": \"<string>\",\n      \"label\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nameField\": \"<boolean>\",\n      \"polymorphicForeignKey\": \"<boolean>\",\n      \"precision\": \"<integer>\",\n      \"reference\": \"<boolean>\",\n      \"referenceTargetField\": \"<string>\",\n      \"relationshipName\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"scale\": \"<integer>\",\n      \"searchPrefilterable\": \"<boolean>\",\n      \"sortable\": \"<boolean>\",\n      \"unique\": \"<boolean>\",\n      \"updateable\": \"<boolean>\"\n    },\n    \"non_b8\": {\n      \"apiName\": \"<string>\",\n      \"compound\": \"<boolean>\",\n      \"compoundComponentName\": \"<string>\",\n      \"compoundFieldName\": \"<string>\",\n      \"controllerName\": \"<string>\",\n      \"controllingFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"createable\": \"<boolean>\",\n      \"custom\": \"<boolean>\",\n      \"dataType\": \"<string>\",\n      \"extraTypeInfo\": \"<string>\",\n      \"filterable\": \"<boolean>\",\n      \"filteredLookupInfo\": {},\n      \"highScaleNumber\": \"<boolean>\",\n      \"htmlFormatted\": \"<boolean>\",\n      \"inlineHelpText\": \"<string>\",\n      \"label\": \"<string>\",\n      \"length\": \"<integer>\",\n      \"nameField\": \"<boolean>\",\n      \"polymorphicForeignKey\": \"<boolean>\",\n      \"precision\": \"<integer>\",\n      \"reference\": \"<boolean>\",\n      \"referenceTargetField\": \"<string>\",\n      \"relationshipName\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"scale\": \"<integer>\",\n      \"searchPrefilterable\": \"<boolean>\",\n      \"sortable\": \"<boolean>\",\n      \"unique\": \"<boolean>\",\n      \"updateable\": \"<boolean>\"\n    }\n  },\n  \"keyPrefix\": \"<string>\",\n  \"label\": \"<string>\",\n  \"labelPlural\": \"<string>\",\n  \"layoutable\": \"<boolean>\",\n  \"mruEnabled\": \"<boolean>\",\n  \"nameFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"queryable\": \"<boolean>\",\n  \"recordTypeInfos\": {\n    \"cillum0c_\": {\n      \"available\": \"<boolean>\",\n      \"defaultRecordTypeMapping\": \"<boolean>\",\n      \"master\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"recordTypeId\": \"<string>\"\n    },\n    \"dolore_2\": {\n      \"available\": \"<boolean>\",\n      \"defaultRecordTypeMapping\": \"<boolean>\",\n      \"master\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"recordTypeId\": \"<string>\"\n    }\n  },\n  \"searchable\": \"<boolean>\",\n  \"themeInfo\": {\n    \"color\": \"<string>\",\n    \"iconUrl\": \"<uri>\"\n  },\n  \"updateable\": \"<boolean>\"\n}",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-91bc4a53-24d5-45d3-b445-bad715498660"
+                },
+                {
+                  "id": "58b811a7-6e19-4981-8979-01c79a6ee382",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/object-info/:objectApiName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "object-info",
+                        ":objectApiName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-58b811a7-6e19-4981-8979-01c79a6ee382"
+                },
+                {
+                  "id": "ad7a8510-945a-4326-9926-2ba8f913a7a3",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/object-info/:objectApiName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "object-info",
+                        ":objectApiName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-ad7a8510-945a-4326-9926-2ba8f913a7a3"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-7cf11ca9-2a07-4316-bf2c-f2fe414656e9"
+            }
+          ],
+          "id": "461883b0-317e-44b4-81b0-f505990d6350",
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-461883b0-317e-44b4-81b0-f505990d6350"
+        }
+      ],
+      "id": "1656c335-ff68-43bf-8d01-816d91a16433",
+      "createdAt": "2026-06-05T15:15:28.000Z",
+      "updatedAt": "2026-06-05T15:15:28.000Z",
+      "uid": "35240-1656c335-ff68-43bf-8d01-816d91a16433"
+    },
+    {
+      "name": "list-ui",
+      "item": [
+        {
+          "name": "{listViewId}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Get List View Data",
+              "id": "26ea38aa-5c76-4e60-b60e-67cf852a930c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list-ui/:listViewId?fields=<string>&optionalFields=<string>&pageSize=50&pageToken=<string>&sortBy=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-ui",
+                    ":listViewId"
+                  ],
+                  "query": [
+                    {
+                      "description": "Additional fields to include in list view records",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional fields to include if accessible",
+                      "key": "optionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of records per page",
+                      "key": "pageSize",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Token for the next page of records",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Field API name to sort by",
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "0d265ae3-bbc6-4013-beb6-1f195f3be9b2",
+                      "key": "listViewId",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the list view"
+                    }
+                  ]
+                },
+                "description": "Returns the records and metadata for a specific list view including columns, sorting, filtering, and the record data. Used to render list views in custom UIs."
+              },
+              "response": [
+                {
+                  "id": "0bc2a43f-06be-4750-87a4-190ce7fa26b3",
+                  "name": "Successfully retrieved list view data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list-ui/:listViewId?fields=<string>&optionalFields=<string>&pageSize=50&pageToken=<string>&sortBy=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list-ui",
+                        ":listViewId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Additional fields to include in list view records",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional fields to include if accessible",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records per page",
+                          "key": "pageSize",
+                          "value": "50"
+                        },
+                        {
+                          "description": "Token for the next page of records",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field API name to sort by",
+                          "key": "sortBy",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "listViewId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"currentPageToken\": \"<string>\",\n  \"currentPageUrl\": \"<uri>\",\n  \"info\": {\n    \"cloneable\": \"<boolean>\",\n    \"createable\": \"<boolean>\",\n    \"deletable\": \"<boolean>\",\n    \"displayColumns\": [\n      {\n        \"fieldApiName\": \"<string>\",\n        \"label\": \"<string>\",\n        \"sortable\": \"<boolean>\"\n      },\n      {\n        \"fieldApiName\": \"<string>\",\n        \"label\": \"<string>\",\n        \"sortable\": \"<boolean>\"\n      }\n    ],\n    \"eTag\": \"<string>\",\n    \"filterLogicString\": \"<string>\",\n    \"id\": \"<string>\",\n    \"label\": \"<string>\",\n    \"listReference\": {\n      \"id\": \"<string>\",\n      \"listViewApiName\": \"<string>\",\n      \"objectApiName\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    \"orderedByInfo\": [\n      {\n        \"fieldApiName\": \"<string>\",\n        \"isAscending\": \"<boolean>\",\n        \"label\": \"<string>\"\n      },\n      {\n        \"fieldApiName\": \"<string>\",\n        \"isAscending\": \"<boolean>\",\n        \"label\": \"<string>\"\n      }\n    ],\n    \"updateable\": \"<boolean>\",\n    \"visibility\": \"Public\"\n  },\n  \"nextPageToken\": \"<string>\",\n  \"nextPageUrl\": \"<uri>\",\n  \"previousPageToken\": \"<string>\",\n  \"previousPageUrl\": \"<uri>\",\n  \"records\": [\n    {\n      \"apiName\": \"<string>\",\n      \"childRelationships\": {\n        \"adipisicing_3\": {},\n        \"etc\": {}\n      },\n      \"eTag\": \"<string>\",\n      \"fields\": {\n        \"exercitation85f\": {\n          \"displayValue\": \"<string>\",\n          \"value\": {\n            \"description\": \"Raw field value\"\n          }\n        }\n      },\n      \"id\": \"<string>\",\n      \"lastModifiedById\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"recordTypeId\": \"<string>\",\n      \"recordTypeInfo\": {\n        \"available\": \"<boolean>\",\n        \"defaultRecordTypeMapping\": \"<boolean>\",\n        \"master\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"recordTypeId\": \"<string>\"\n      },\n      \"systemModstamp\": \"<dateTime>\",\n      \"weakEtag\": \"<integer>\"\n    },\n    {\n      \"apiName\": \"<string>\",\n      \"childRelationships\": {\n        \"voluptatea45\": {},\n        \"in_8a\": {},\n        \"qui_f_b\": {}\n      },\n      \"eTag\": \"<string>\",\n      \"fields\": {\n        \"mollit_76\": {\n          \"displayValue\": \"<string>\",\n          \"value\": {\n            \"description\": \"Raw field value\"\n          }\n        }\n      },\n      \"id\": \"<string>\",\n      \"lastModifiedById\": \"<string>\",\n      \"lastModifiedDate\": \"<dateTime>\",\n      \"recordTypeId\": \"<string>\",\n      \"recordTypeInfo\": {\n        \"available\": \"<boolean>\",\n        \"defaultRecordTypeMapping\": \"<boolean>\",\n        \"master\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"recordTypeId\": \"<string>\"\n      },\n      \"systemModstamp\": \"<dateTime>\",\n      \"weakEtag\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-0bc2a43f-06be-4750-87a4-190ce7fa26b3"
+                },
+                {
+                  "id": "043dfd64-b5b8-4d6b-a4cc-32ff6054056e",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list-ui/:listViewId?fields=<string>&optionalFields=<string>&pageSize=50&pageToken=<string>&sortBy=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list-ui",
+                        ":listViewId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Additional fields to include in list view records",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional fields to include if accessible",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records per page",
+                          "key": "pageSize",
+                          "value": "50"
+                        },
+                        {
+                          "description": "Token for the next page of records",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field API name to sort by",
+                          "key": "sortBy",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "listViewId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-043dfd64-b5b8-4d6b-a4cc-32ff6054056e"
+                },
+                {
+                  "id": "0131054a-cb1b-4d62-9b5c-343c38684a87",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list-ui/:listViewId?fields=<string>&optionalFields=<string>&pageSize=50&pageToken=<string>&sortBy=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list-ui",
+                        ":listViewId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Additional fields to include in list view records",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Optional fields to include if accessible",
+                          "key": "optionalFields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of records per page",
+                          "key": "pageSize",
+                          "value": "50"
+                        },
+                        {
+                          "description": "Token for the next page of records",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Field API name to sort by",
+                          "key": "sortBy",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "listViewId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-0131054a-cb1b-4d62-9b5c-343c38684a87"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-26ea38aa-5c76-4e60-b60e-67cf852a930c"
+            }
+          ],
+          "id": "8b13ccb5-d3e2-4a40-bc1a-046dd397dd9e",
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-8b13ccb5-d3e2-4a40-bc1a-046dd397dd9e"
+        },
+        {
+          "name": "{objectApiName}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Get List Views for Object",
+              "id": "85038060-e051-4f67-b251-737a27546071",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/list-ui/:objectApiName?pageSize=20&pageToken=<string>&q=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-ui",
+                    ":objectApiName"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of list views per page",
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Token for the next page",
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search term to filter list views by name",
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "6988581b-3648-433d-b90e-2a214bc43fb7",
+                      "key": "objectApiName",
+                      "value": "<string>",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    }
+                  ]
+                },
+                "description": "Returns all available list views for the specified object type. Includes list view ID, label, and developer name."
+              },
+              "response": [
+                {
+                  "id": "77702002-c27f-48d5-8f42-9ada156ea90d",
+                  "name": "Successfully retrieved list views",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list-ui/:objectApiName?pageSize=20&pageToken=<string>&q=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list-ui",
+                        ":objectApiName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of list views per page",
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Token for the next page",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Search term to filter list views by name",
+                          "key": "q",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"currentPageToken\": \"<string>\",\n  \"currentPageUrl\": \"<uri>\",\n  \"lists\": [\n    {\n      \"apiName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"label\": \"<string>\",\n      \"listUiUrl\": \"<uri>\"\n    },\n    {\n      \"apiName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"label\": \"<string>\",\n      \"listUiUrl\": \"<uri>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\",\n  \"nextPageUrl\": \"<uri>\",\n  \"objectApiName\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-77702002-c27f-48d5-8f42-9ada156ea90d"
+                },
+                {
+                  "id": "27c4cb0a-02e0-4b56-a4a3-cde39334d4db",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list-ui/:objectApiName?pageSize=20&pageToken=<string>&q=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list-ui",
+                        ":objectApiName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of list views per page",
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Token for the next page",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Search term to filter list views by name",
+                          "key": "q",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-27c4cb0a-02e0-4b56-a4a3-cde39334d4db"
+                },
+                {
+                  "id": "15ef5e8f-3044-4dd3-9349-c1dd06f3c991",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/list-ui/:objectApiName?pageSize=20&pageToken=<string>&q=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "list-ui",
+                        ":objectApiName"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of list views per page",
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Token for the next page",
+                          "key": "pageToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Search term to filter list views by name",
+                          "key": "q",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "objectApiName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-15ef5e8f-3044-4dd3-9349-c1dd06f3c991"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-85038060-e051-4f67-b251-737a27546071"
+            }
+          ],
+          "id": "5cd15a7a-0f3f-462e-846e-c444e4ab00a7",
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-5cd15a7a-0f3f-462e-846e-c444e4ab00a7"
+        }
+      ],
+      "id": "a68fe323-5b42-4129-a5b1-dca5cf100170",
+      "createdAt": "2026-06-05T15:15:28.000Z",
+      "updatedAt": "2026-06-05T15:15:28.000Z",
+      "uid": "35240-a68fe323-5b42-4129-a5b1-dca5cf100170"
+    },
+    {
+      "name": "actions",
+      "item": [
+        {
+          "name": "record",
+          "item": [
+            {
+              "name": "{recordId}",
+              "item": [
+                {
+                  "name": "Salesforce Experience Cloud Get Record Actions",
+                  "id": "c0984560-8ab7-4a3e-a858-8efedef58df7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/actions/record/:recordId?formFactor=Medium&sections=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "actions",
+                        "record",
+                        ":recordId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Form factor for filtering actions",
+                          "key": "formFactor",
+                          "value": "Medium"
+                        },
+                        {
+                          "description": "Comma-separated list of action sections",
+                          "key": "sections",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1b304a09-c9a9-4b67-8a27-f2024a76139c",
+                          "key": "recordId",
+                          "value": "<string>",
+                          "description": "(Required) The 18-character Salesforce record ID"
+                        }
+                      ]
+                    },
+                    "description": "Returns the actions available for a specific record based on the current user's permissions and the record's state."
+                  },
+                  "response": [
+                    {
+                      "id": "af2ec8d3-339a-493f-a245-9261ad78c79b",
+                      "name": "Successfully retrieved record actions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/record/:recordId?formFactor=Medium&sections=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "record",
+                            ":recordId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Form factor for filtering actions",
+                              "key": "formFactor",
+                              "value": "Medium"
+                            },
+                            {
+                              "description": "Comma-separated list of action sections",
+                              "key": "sections",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"actions\": {\n    \"occaecat_890\": {\n      \"actions\": [\n        {\n          \"actionListContext\": \"<string>\",\n          \"actionTarget\": \"<uri>\",\n          \"actionTargetType\": \"<string>\",\n          \"apiName\": \"<string>\",\n          \"externalAction\": \"<boolean>\",\n          \"iconUrl\": \"<uri>\",\n          \"id\": \"<string>\",\n          \"isMassAction\": \"<boolean>\",\n          \"label\": \"<string>\",\n          \"primary\": \"<boolean>\",\n          \"relatedListRecordId\": \"<string>\",\n          \"relatedSourceObject\": \"<string>\",\n          \"subtype\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetUrl\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"actionListContext\": \"<string>\",\n          \"actionTarget\": \"<uri>\",\n          \"actionTargetType\": \"<string>\",\n          \"apiName\": \"<string>\",\n          \"externalAction\": \"<boolean>\",\n          \"iconUrl\": \"<uri>\",\n          \"id\": \"<string>\",\n          \"isMassAction\": \"<boolean>\",\n          \"label\": \"<string>\",\n          \"primary\": \"<boolean>\",\n          \"relatedListRecordId\": \"<string>\",\n          \"relatedSourceObject\": \"<string>\",\n          \"subtype\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetUrl\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    \"nulla__7d\": {\n      \"actions\": [\n        {\n          \"actionListContext\": \"<string>\",\n          \"actionTarget\": \"<uri>\",\n          \"actionTargetType\": \"<string>\",\n          \"apiName\": \"<string>\",\n          \"externalAction\": \"<boolean>\",\n          \"iconUrl\": \"<uri>\",\n          \"id\": \"<string>\",\n          \"isMassAction\": \"<boolean>\",\n          \"label\": \"<string>\",\n          \"primary\": \"<boolean>\",\n          \"relatedListRecordId\": \"<string>\",\n          \"relatedSourceObject\": \"<string>\",\n          \"subtype\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetUrl\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"actionListContext\": \"<string>\",\n          \"actionTarget\": \"<uri>\",\n          \"actionTargetType\": \"<string>\",\n          \"apiName\": \"<string>\",\n          \"externalAction\": \"<boolean>\",\n          \"iconUrl\": \"<uri>\",\n          \"id\": \"<string>\",\n          \"isMassAction\": \"<boolean>\",\n          \"label\": \"<string>\",\n          \"primary\": \"<boolean>\",\n          \"relatedListRecordId\": \"<string>\",\n          \"relatedSourceObject\": \"<string>\",\n          \"subtype\": \"<string>\",\n          \"targetObject\": \"<string>\",\n          \"targetUrl\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:15:28.000Z",
+                      "updatedAt": "2026-06-05T15:15:28.000Z",
+                      "uid": "35240-af2ec8d3-339a-493f-a245-9261ad78c79b"
+                    },
+                    {
+                      "id": "e8bd03e8-ef5e-4174-a7a4-c1e94ed7c28b",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/record/:recordId?formFactor=Medium&sections=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "record",
+                            ":recordId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Form factor for filtering actions",
+                              "key": "formFactor",
+                              "value": "Medium"
+                            },
+                            {
+                              "description": "Comma-separated list of action sections",
+                              "key": "sections",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:28.000Z",
+                      "updatedAt": "2026-06-05T15:15:28.000Z",
+                      "uid": "35240-e8bd03e8-ef5e-4174-a7a4-c1e94ed7c28b"
+                    },
+                    {
+                      "id": "75d0df65-db3b-41b0-b29f-59b0cb173934",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/actions/record/:recordId?formFactor=Medium&sections=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "actions",
+                            "record",
+                            ":recordId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Form factor for filtering actions",
+                              "key": "formFactor",
+                              "value": "Medium"
+                            },
+                            {
+                              "description": "Comma-separated list of action sections",
+                              "key": "sections",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "recordId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:28.000Z",
+                      "updatedAt": "2026-06-05T15:15:28.000Z",
+                      "uid": "35240-75d0df65-db3b-41b0-b29f-59b0cb173934"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-c0984560-8ab7-4a3e-a858-8efedef58df7"
+                }
+              ],
+              "id": "88cb6e9e-75d5-4c79-85a8-59c5b37bcd8f",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-88cb6e9e-75d5-4c79-85a8-59c5b37bcd8f"
+            }
+          ],
+          "id": "f9caf2e3-15b4-4534-8af8-3c08ab9deac9",
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-f9caf2e3-15b4-4534-8af8-3c08ab9deac9"
+        }
+      ],
+      "id": "ca357580-ca03-496c-8262-fc8f6ce5d7c5",
+      "createdAt": "2026-06-05T15:15:28.000Z",
+      "updatedAt": "2026-06-05T15:15:28.000Z",
+      "uid": "35240-ca357580-ca03-496c-8262-fc8f6ce5d7c5"
+    },
+    {
+      "name": "favorites",
+      "item": [
+        {
+          "name": "{favoriteId}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Remove a Favorite",
+              "id": "8d5b0201-c1bd-4ee9-ac65-b749f64e34c1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/favorites/:favoriteId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "favorites",
+                    ":favoriteId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "85757593-5e53-4577-8583-83384fbecd25",
+                      "key": "favoriteId",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the favorite to remove"
+                    }
+                  ]
+                },
+                "description": "Removes the specified item from the user's favorites."
+              },
+              "response": [
+                {
+                  "id": "15ee2667-df1e-44d5-b966-7134af71c958",
+                  "name": "Favorite removed successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/favorites/:favoriteId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "favorites",
+                        ":favoriteId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "favoriteId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-15ee2667-df1e-44d5-b966-7134af71c958"
+                },
+                {
+                  "id": "c1d702f6-a230-463e-b002-c10a5067f132",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/favorites/:favoriteId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "favorites",
+                        ":favoriteId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "favoriteId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-c1d702f6-a230-463e-b002-c10a5067f132"
+                },
+                {
+                  "id": "444edfed-581e-4fbe-8811-dde4f35d976f",
+                  "name": "Not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/favorites/:favoriteId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "favorites",
+                        ":favoriteId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "favoriteId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:28.000Z",
+                  "updatedAt": "2026-06-05T15:15:28.000Z",
+                  "uid": "35240-444edfed-581e-4fbe-8811-dde4f35d976f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-8d5b0201-c1bd-4ee9-ac65-b749f64e34c1"
+            }
+          ],
+          "id": "08bc98e6-5a87-4915-b81b-553b192f7e1b",
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-08bc98e6-5a87-4915-b81b-553b192f7e1b"
+        },
+        {
+          "name": "Salesforce Experience Cloud Get Favorites",
+          "id": "449cfb1a-23f1-4560-a4bf-82dc48f1e03a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/favorites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "favorites"
+              ]
+            },
+            "description": "Returns the list of favorites for the context user, including records, list views, and other favorited items."
+          },
+          "response": [
+            {
+              "id": "c734ede0-bad0-4c96-b700-10039a0c83c4",
+              "name": "Successfully retrieved favorites",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/favorites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "favorites"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"favorites\": [\n    {\n      \"color\": \"<string>\",\n      \"iconUrl\": \"<uri>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"sortOrder\": \"<integer>\",\n      \"target\": \"<string>\",\n      \"targetType\": \"Dashboard\"\n    },\n    {\n      \"color\": \"<string>\",\n      \"iconUrl\": \"<uri>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"sortOrder\": \"<integer>\",\n      \"target\": \"<string>\",\n      \"targetType\": \"Object\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-c734ede0-bad0-4c96-b700-10039a0c83c4"
+            },
+            {
+              "id": "3c3b81d7-5014-4afb-88e3-a3efb171eeb6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/favorites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "favorites"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-3c3b81d7-5014-4afb-88e3-a3efb171eeb6"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-449cfb1a-23f1-4560-a4bf-82dc48f1e03a"
+        },
+        {
+          "name": "Salesforce Experience Cloud Add a Favorite",
+          "id": "ff0f2f9b-0bd0-4608-94c4-cdfb1c6de47d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"target\": \"<string>\",\n  \"targetType\": \"ListView\",\n  \"sortOrder\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/favorites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "favorites"
+              ]
+            },
+            "description": "Adds a record, list view, or other item to the user's favorites."
+          },
+          "response": [
+            {
+              "id": "9b34a6fa-8733-4c35-a058-69c642e3a9c2",
+              "name": "Favorite added successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"target\": \"<string>\",\n  \"targetType\": \"ListView\",\n  \"sortOrder\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/favorites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "favorites"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"color\": \"<string>\",\n  \"iconUrl\": \"<uri>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sortOrder\": \"<integer>\",\n  \"target\": \"<string>\",\n  \"targetType\": \"Object\"\n}",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-9b34a6fa-8733-4c35-a058-69c642e3a9c2"
+            },
+            {
+              "id": "ec7a5bd9-c290-46d0-8b55-956a3a1283a1",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"target\": \"<string>\",\n  \"targetType\": \"ListView\",\n  \"sortOrder\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/favorites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "favorites"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-ec7a5bd9-c290-46d0-8b55-956a3a1283a1"
+            },
+            {
+              "id": "0b316aca-1801-43db-ae9a-ed4619b22fe4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"target\": \"<string>\",\n  \"targetType\": \"ListView\",\n  \"sortOrder\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/favorites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "favorites"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:28.000Z",
+              "updatedAt": "2026-06-05T15:15:28.000Z",
+              "uid": "35240-0b316aca-1801-43db-ae9a-ed4619b22fe4"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:28.000Z",
+          "updatedAt": "2026-06-05T15:15:28.000Z",
+          "uid": "35240-ff0f2f9b-0bd0-4608-94c4-cdfb1c6de47d"
+        }
+      ],
+      "id": "995140e6-5f8b-439a-bf3c-2c6b4271097b",
+      "createdAt": "2026-06-05T15:15:28.000Z",
+      "updatedAt": "2026-06-05T15:15:28.000Z",
+      "uid": "35240-995140e6-5f8b-439a-bf3c-2c6b4271097b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/ui-api"
+    }
+  ]
+}

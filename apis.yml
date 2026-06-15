@@ -1,6 +1,7 @@
 aid: salesforce-experience-cloud
 name: Salesforce Experience Cloud
-description: APIs for building and managing Salesforce Experience Cloud sites, communities, and digital experiences including
+description: >-
+  APIs for building and managing Salesforce Experience Cloud sites, communities, and digital experiences including
   content management, theming, navigation, and Lightning Web Runtime powered portals.
 image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/salesforce-experience-cloud/refs/heads/main/apis.yml
@@ -11,8 +12,9 @@ modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
 - name: Experience Cloud Sites API
-  description: Manage Experience Cloud sites, themes, and configurations. Provides programmatic access to create, update,
-    and retrieve site settings, branding, and navigation for digital experience portals.
+  description: >-
+    Manage Experience Cloud sites, themes, and configurations. Provides programmatic access to create, update, and
+    retrieve site settings, branding, and navigation for digital experience portals.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0
@@ -30,18 +32,12 @@ apis:
   - type: Authentication
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
-  - type: NaftikoCapability
-    url: capabilities/sites-navigation.yaml
-  - type: NaftikoCapability
-    url: capabilities/sites-publish.yaml
-  - type: NaftikoCapability
-    url: capabilities/sites-sites.yaml
-  - type: NaftikoCapability
-    url: capabilities/sites-themes.yaml
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
 - name: Connect REST API (Communities)
-  description: Access community data, feeds, topics, and user engagement features. The Connect REST API provides endpoints
-    for social collaboration, content sharing, and community management within Experience Cloud sites.
+  description: >-
+    Access community data, feeds, topics, and user engagement features. The Connect REST API provides endpoints for
+    social collaboration, content sharing, and community management within Experience Cloud sites.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0/connect
@@ -62,18 +58,9 @@ apis:
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
-  - type: NaftikoCapability
-    url: capabilities/connect-communities-feeds.yaml
-  - type: NaftikoCapability
-    url: capabilities/connect-communities-knowledge.yaml
-  - type: NaftikoCapability
-    url: capabilities/connect-communities-members.yaml
-  - type: NaftikoCapability
-    url: capabilities/connect-communities-moderation.yaml
-  - type: NaftikoCapability
-    url: capabilities/connect-communities-topics.yaml
 - name: CMS Connect API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed
+  description: >-
+    Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed
     content across channels for headless content delivery and site publishing.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
@@ -93,18 +80,9 @@ apis:
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
-  - type: NaftikoCapability
-    url: capabilities/cms-connect-channels.yaml
-  - type: NaftikoCapability
-    url: capabilities/cms-connect-content.yaml
-  - type: NaftikoCapability
-    url: capabilities/cms-connect-content-types.yaml
-  - type: NaftikoCapability
-    url: capabilities/cms-connect-folders.yaml
-  - type: NaftikoCapability
-    url: capabilities/cms-connect-media.yaml
 - name: Salesforce REST API
-  description: Core REST API for accessing Salesforce objects and data. Provides CRUD operations on standard and custom objects,
+  description: >-
+    Core REST API for accessing Salesforce objects and data. Provides CRUD operations on standard and custom objects,
     query execution, and metadata access used as the foundation for Experience Cloud data integrations.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
@@ -124,22 +102,9 @@ apis:
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Authentication
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
-  - type: NaftikoCapability
-    url: capabilities/rest-describe.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-limits.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-query.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-resources.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-search.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-versions.yaml
-  - type: NaftikoCapability
-    url: capabilities/rest-sobjects.yaml
 - name: Experience Cloud Templates API
-  description: Retrieve and manage Experience Cloud site templates including Build Your Own and Microsite LWR templates. Supports
+  description: >-
+    Retrieve and manage Experience Cloud site templates including Build Your Own and Microsite LWR templates. Supports
     programmatic theme and branding configuration for digital experience portals.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
@@ -157,14 +122,9 @@ apis:
     url: openapi/salesforce-experience-cloud-templates-openapi.yml
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
-  - type: NaftikoCapability
-    url: capabilities/templates-branding-sets.yaml
-  - type: NaftikoCapability
-    url: capabilities/templates-templates.yaml
-  - type: NaftikoCapability
-    url: capabilities/templates-themes.yaml
 - name: GraphQL API
-  description: Query Salesforce data using GraphQL for Experience Cloud. Offers a flexible query language for retrieving exactly
+  description: >-
+    Query Salesforce data using GraphQL for Experience Cloud. Offers a flexible query language for retrieving exactly
     the data needed, reducing over-fetching and improving performance for digital experiences.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
@@ -183,13 +143,15 @@ apis:
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
-  - type: NaftikoCapability
-    url: capabilities/graphql-graphql.yaml
+  - url: graphql/salesforce-experience-cloud-graphql.md
+    type: GraphQL
 - name: CMS Managed Content API
-  description: Retrieve and search published managed content versions for Experience Cloud sites. Provides endpoints for querying
+  description: >-
+    Retrieve and search published managed content versions for Experience Cloud sites. Provides endpoints for querying
     managed content delivery channels and searching content across workspaces.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
-  humanURL: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+  humanURL: >-
+    https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0/connect/cms/delivery
   tags:
   - Channels
@@ -199,22 +161,23 @@ apis:
   - Managed Content
   properties:
   - type: Documentation
-    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: OpenAPI
     url: openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml
   - type: Reference
-    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
-  - type: NaftikoCapability
-    url: capabilities/cms-managed-content-delivery-channels.yaml
-  - type: NaftikoCapability
-    url: capabilities/cms-managed-content-managed-content.yaml
+    url: >-
+      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
 - name: CMS Delivery API
-  description: Delivers CMS content to external applications and headless frontends. Enables content retrieval by channel,
+  description: >-
+    Delivers CMS content to external applications and headless frontends. Enables content retrieval by channel,
     content type, and content key for building decoupled digital experiences.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
-  humanURL: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+  humanURL: >-
+    https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0/connect/cms/delivery
   tags:
   - Channels
@@ -223,20 +186,17 @@ apis:
   - Headless
   properties:
   - type: Documentation
-    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: OpenAPI
     url: openapi/salesforce-experience-cloud-cms-delivery-openapi.yml
   - type: Reference
-    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
-  - type: NaftikoCapability
-    url: capabilities/cms-delivery-collections.yaml
-  - type: NaftikoCapability
-    url: capabilities/cms-delivery-content-delivery.yaml
-  - type: NaftikoCapability
-    url: capabilities/cms-delivery-media-delivery.yaml
+    url: >-
+      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
 - name: User Interface API
-  description: Access record data, layouts, list views, and navigation items for building custom user interfaces. Powers Lightning
-    web components in Experience Cloud sites with metadata-driven UI rendering.
+  description: >-
+    Access record data, layouts, list views, and navigation items for building custom user interfaces. Powers
+    Lightning web components in Experience Cloud sites with metadata-driven UI rendering.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0/ui-api
@@ -255,20 +215,9 @@ apis:
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
-  - type: NaftikoCapability
-    url: capabilities/user-interface-actions.yaml
-  - type: NaftikoCapability
-    url: capabilities/user-interface-favorites.yaml
-  - type: NaftikoCapability
-    url: capabilities/user-interface-layouts.yaml
-  - type: NaftikoCapability
-    url: capabilities/user-interface-list-views.yaml
-  - type: NaftikoCapability
-    url: capabilities/user-interface-object-info.yaml
-  - type: NaftikoCapability
-    url: capabilities/user-interface-records.yaml
 - name: Metadata API (Experience Cloud)
-  description: Deploy and retrieve Experience Cloud site configurations, navigation menus, and digital experience bundles.
+  description: >-
+    Deploy and retrieve Experience Cloud site configurations, navigation menus, and digital experience bundles.
     Enables programmatic management of ExperienceBundle and Network metadata types for CI/CD workflows.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm
@@ -291,8 +240,9 @@ apis:
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_types_list.htm
 - name: LWR Sites API
-  description: Build and customize Lightning Web Runtime sites for Experience Cloud. Provides documentation for creating LWR-based
-    digital experiences with custom components, page layouts, and theme configurations.
+  description: >-
+    Build and customize Lightning Web Runtime sites for Experience Cloud. Provides documentation for creating
+    LWR-based digital experiences with custom components, page layouts, and theme configurations.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0
@@ -310,6 +260,8 @@ apis:
   - type: Reference
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_navigation.htm
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/salesforce-experience-cloud/overview
 - type: ArazzoWorkflows
   url: arazzo/
   workflows:
@@ -383,7 +335,8 @@ common:
 - type: Documentation
   url: https://developer.salesforce.com/docs
 - type: GettingStarted
-  url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+  url: >-
+    https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
 - type: Authentication
   url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
 - type: Blog
@@ -409,7 +362,8 @@ common:
 - type: SignUp
   url: https://developer.salesforce.com/signup
 - type: RateLimits
-  url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/
+  url: >-
+    https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/
 - type: SDKs
   url: https://developer.salesforce.com/developer-centers/lightning-web-components
 - type: Trailhead Learning

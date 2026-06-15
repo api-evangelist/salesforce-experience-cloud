@@ -1,0 +1,433 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List CMS Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/channels",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Returns a list of CMS channels available to the context user. Channels represent destinations where managed content can be published, such as Experience Cloud sites or external applications."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a CMS Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/channels/:channelId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS channel"
+              }
+            ]
+          },
+          "docs": "Returns details about a specific CMS channel including its name, type, domain, and the content types available in the channel."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List CMS Contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/contents",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              },
+              {
+                "name": "managedContentType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by managed content type developer name"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code to filter content (e.g., en_US)"
+              },
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "query",
+                "description": "Filter content by channel ID"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "query",
+                "description": "Filter content by folder ID"
+              }
+            ]
+          },
+          "docs": "Returns a list of CMS content items. Supports filtering by content type, language, and channel. Returns content metadata and body fields."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Create CMS Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/contents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new CMS content item in the specified workspace. Requires the content type, title, and body fields defined for the content type."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get CMS Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/contents/:contentId",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS content item"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language variant to retrieve"
+              }
+            ]
+          },
+          "docs": "Returns a specific CMS content item by its ID, including all body fields, metadata, and version information."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Update CMS Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/contents/:contentId",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS content item"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing CMS content item. Supports updating the title, body fields, and language variants."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Delete CMS Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/contents/:contentId",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS content item"
+              }
+            ]
+          },
+          "docs": "Deletes the specified CMS content item. Content that is currently published must be unpublished before deletion."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Publish CMS Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/contents/:contentId/publish",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS content item"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publishes the specified CMS content item to its assigned channels, making it available for delivery."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Unpublish CMS Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/contents/:contentId/unpublish",
+            "params": [
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS content item"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unpublishes the specified CMS content item, removing it from delivery channels."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Content Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List Content Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/content-types",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Returns the CMS content types available in the org, including both standard and custom content types with their field definitions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Folders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List CMS Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/folders",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Returns a list of CMS workspace folders used to organize content."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List CMS Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/media",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              },
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "query",
+                "description": "Filter media by folder ID"
+              }
+            ]
+          },
+          "docs": "Returns a list of media files (images, documents) stored in the CMS workspace."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Upload CMS Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/media",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "title",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "folderId",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Uploads a media file (image, document, or video) to the CMS workspace."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get CMS Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/media/:mediaId",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the media file"
+              }
+            ]
+          },
+          "docs": "Returns metadata about a specific media file including its URL, dimensions, file type, and alt text."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Delete CMS Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/media/:mediaId",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the media file"
+              }
+            ]
+          },
+          "docs": "Deletes the specified media file from the CMS workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

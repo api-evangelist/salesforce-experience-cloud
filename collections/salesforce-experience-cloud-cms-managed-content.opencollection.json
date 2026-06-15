@@ -1,0 +1,345 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Managed Content API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Delivery Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List CMS Delivery Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Returns a list of managed content delivery channels available to the context user. Channels are destinations where content is published for delivery to Experience Cloud sites or external applications."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Delivery Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              }
+            ]
+          },
+          "docs": "Returns details about a specific managed content delivery channel including its name, type, and available content types."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Managed Content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Query Channel Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/contents/query",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "managedContentType",
+                "value": "",
+                "type": "query",
+                "description": "The developer name of the managed content type to query (e.g., news, cms_image, cms_document)"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code to filter content (e.g., en_US)"
+              },
+              {
+                "name": "contentKeys",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of content keys to retrieve"
+              },
+              {
+                "name": "managedContentIds",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of managed content IDs"
+              },
+              {
+                "name": "topics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of topic names to filter by"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs for media content"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Returns published managed content versions for the specified delivery channel. Supports filtering by content type, language, and content keys. Used for headless content delivery to Experience Cloud sites and external applications."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Search Channel Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/contents/search",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term to find matching content"
+              },
+              {
+                "name": "managedContentType",
+                "value": "",
+                "type": "query",
+                "description": "Filter search results by content type"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code to filter results"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Searches published managed content in the specified delivery channel using a search term. Returns matching content with relevance scoring."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Content Item from Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/contents/:contentKeyOrId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "contentKeyOrId",
+                "value": "",
+                "type": "path",
+                "description": "The content key or managed content ID"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language variant to retrieve"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs"
+              }
+            ]
+          },
+          "docs": "Returns a specific published managed content version from the specified delivery channel by content key or managed content ID."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Query Community Managed Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/managed-content/delivery",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              },
+              {
+                "name": "managedContentType",
+                "value": "",
+                "type": "query",
+                "description": "Content type developer name to query"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code to filter content"
+              },
+              {
+                "name": "topics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of topic names"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Returns published managed content for the specified Experience Cloud site. Similar to channel-based delivery but scoped to a specific community context."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Search Community Managed Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/managed-content/delivery/search",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term"
+              },
+              {
+                "name": "managedContentType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by content type"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Searches published managed content within the specified Experience Cloud site using a search term."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

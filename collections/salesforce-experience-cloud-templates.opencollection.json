@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Templates API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List Site Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/templates",
+            "params": [
+              {
+                "name": "templateCategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter templates by category"
+              }
+            ]
+          },
+          "docs": "Returns a list of available Experience Cloud site templates that can be used when creating new sites. Includes both standard Salesforce templates (Build Your Own, Customer Service, Partner Central, etc.) and LWR-based templates."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Site Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/template",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ]
+          },
+          "docs": "Returns the template currently used by the specified Experience Cloud site, including template type, version, and default configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Themes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List Site Themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/themes",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ]
+          },
+          "docs": "Returns the themes available for the specified Experience Cloud site. Themes control the visual appearance including colors, fonts, spacing, and component styling."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Active Theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/themes/active",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ]
+          },
+          "docs": "Returns the currently active theme for the specified Experience Cloud site with all its branding properties."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Set Active Theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/themes/active",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the active theme for the specified Experience Cloud site. Changes take effect on the next publish."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Branding Sets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List Branding Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/branding-sets",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ]
+          },
+          "docs": "Returns the branding sets configured for the specified Experience Cloud site. Branding sets define reusable visual property groups for colors, fonts, and images."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Branding Set",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/branding-sets/:brandingSetId",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              },
+              {
+                "name": "brandingSetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the branding set"
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific branding set including all its property values for colors, fonts, and image references."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Update a Branding Set",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/communities/:communityId/branding-sets/:brandingSetId",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              },
+              {
+                "name": "brandingSetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the branding set"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the properties of an existing branding set. Only the properties included in the request are updated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

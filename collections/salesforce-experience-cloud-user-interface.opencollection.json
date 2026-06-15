@@ -1,0 +1,443 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce User Interface API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Record UI",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/record-ui/:recordIds",
+            "params": [
+              {
+                "name": "recordIds",
+                "value": "",
+                "type": "path",
+                "description": "One or more record IDs (comma-separated for multiple records, up to 200)"
+              },
+              {
+                "name": "childRelationships",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of child relationship names to include"
+              },
+              {
+                "name": "formFactor",
+                "value": "",
+                "type": "query",
+                "description": "Form factor for the layout"
+              },
+              {
+                "name": "layoutTypes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated layout types to return"
+              },
+              {
+                "name": "modes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated modes for the layout"
+              },
+              {
+                "name": "optionalFields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to include"
+              }
+            ]
+          },
+          "docs": "Returns layout information, field data, and object metadata for one or more records. Provides everything needed to render a record detail page including layout sections, field values, and display properties."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/records/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character Salesforce record ID"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field API names to return"
+              },
+              {
+                "name": "layoutTypes",
+                "value": "",
+                "type": "query",
+                "description": "Layout type whose fields to include"
+              },
+              {
+                "name": "modes",
+                "value": "",
+                "type": "query",
+                "description": "Layout mode"
+              },
+              {
+                "name": "optionalFields",
+                "value": "",
+                "type": "query",
+                "description": "Optional fields to include if accessible"
+              }
+            ]
+          },
+          "docs": "Returns field values and metadata for a specific record. Supports requesting specific fields or all fields from a layout. Returns both raw values and display-formatted values."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Update a Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/records/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character Salesforce record ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified record with the provided field values. Returns the updated record representation including the new field values."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Delete a Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/records/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character Salesforce record ID"
+              }
+            ]
+          },
+          "docs": "Deletes the specified record. The record is moved to the Recycle Bin."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Create a Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new record of the specified sObject type. Returns the created record representation with all field values."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Layouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Record Layout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/layout/:objectApiName",
+            "params": [
+              {
+                "name": "objectApiName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Salesforce object (e.g., Account, Contact)"
+              },
+              {
+                "name": "formFactor",
+                "value": "",
+                "type": "query",
+                "description": "Form factor for the layout"
+              },
+              {
+                "name": "layoutType",
+                "value": "",
+                "type": "query",
+                "description": "Type of layout to retrieve"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Mode for the layout"
+              },
+              {
+                "name": "recordTypeId",
+                "value": "",
+                "type": "query",
+                "description": "Record type ID for the layout"
+              }
+            ]
+          },
+          "docs": "Returns layout metadata for the specified object type including sections, fields, and their display properties. Used to render record forms dynamically."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Object Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Object Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/object-info/:objectApiName",
+            "params": [
+              {
+                "name": "objectApiName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Salesforce object (e.g., Account, Contact)"
+              }
+            ]
+          },
+          "docs": "Returns metadata about the specified object including fields, record types, child relationships, and theme information. Provides the information needed for metadata-driven UI construction."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "List Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get List View Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/list-ui/:listViewId",
+            "params": [
+              {
+                "name": "listViewId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the list view"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Additional fields to include in list view records"
+              },
+              {
+                "name": "optionalFields",
+                "value": "",
+                "type": "query",
+                "description": "Optional fields to include if accessible"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for the next page of records"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Field API name to sort by"
+              }
+            ]
+          },
+          "docs": "Returns the records and metadata for a specific list view including columns, sorting, filtering, and the record data. Used to render list views in custom UIs."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get List Views for Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/list-ui/:objectApiName",
+            "params": [
+              {
+                "name": "objectApiName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Salesforce object (e.g., Account, Contact)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of list views per page"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for the next page"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term to filter list views by name"
+              }
+            ]
+          },
+          "docs": "Returns all available list views for the specified object type. Includes list view ID, label, and developer name."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Record Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/actions/record/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character Salesforce record ID"
+              },
+              {
+                "name": "formFactor",
+                "value": "",
+                "type": "query",
+                "description": "Form factor for filtering actions"
+              },
+              {
+                "name": "sections",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of action sections"
+              }
+            ]
+          },
+          "docs": "Returns the actions available for a specific record based on the current user's permissions and the record's state."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Favorites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/favorites"
+          },
+          "docs": "Returns the list of favorites for the context user, including records, list views, and other favorited items."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Add a Favorite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/favorites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a record, list view, or other item to the user's favorites."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Remove a Favorite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/ui-api/favorites/:favoriteId",
+            "params": [
+              {
+                "name": "favoriteId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the favorite to remove"
+              }
+            ]
+          },
+          "docs": "Removes the specified item from the user's favorites."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

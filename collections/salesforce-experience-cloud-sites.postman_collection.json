@@ -1,0 +1,2042 @@
+{
+  "item": [
+    {
+      "id": "71e475a1-5b76-480f-97b8-64d757edc324",
+      "name": "Navigation",
+      "description": {
+        "content": "Site navigation menu operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d48c7514-cbe8-467b-b359-9caf5890a042",
+          "name": "Salesforce Experience Cloud Get Navigation Menu Items",
+          "request": {
+            "name": "Salesforce Experience Cloud Get Navigation Menu Items",
+            "description": {
+              "content": "Returns the navigation menu items configured for the specified Experience Cloud site. Includes menu labels, target URLs, access restrictions, and hierarchy structure.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connect",
+                "communities",
+                ":communityId",
+                "navigation-menu",
+                "navigation-menu-items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "navigationLinkSetId",
+                  "value": "<string>",
+                  "description": "The ID of the navigation link set to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "menuItemTypesToSkip",
+                  "value": "<string>",
+                  "description": "Comma-separated list of menu item types to exclude"
+                },
+                {
+                  "disabled": false,
+                  "key": "publishStatus",
+                  "value": "<string>",
+                  "description": "Filter by publish status of the navigation menu"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8dca2315-687a-403b-8247-e77fade1b7ca",
+              "name": "Successfully retrieved navigation menu items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "navigation-menu",
+                    "navigation-menu-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "navigationLinkSetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "menuItemTypesToSkip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "publishStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"menuItems\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"menuItemType\": \"ExternalLink\",\n      \"position\": 6036,\n      \"target\": \"string\",\n      \"targetPreferences\": \"string\",\n      \"subMenu\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/NavigationMenuItem detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/NavigationMenuItem detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"menuItemType\": \"NavigationalTopic\",\n      \"position\": 7450,\n      \"target\": \"string\",\n      \"targetPreferences\": \"string\",\n      \"subMenu\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/NavigationMenuItem detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/NavigationMenuItem detected>\"\n        }\n      ]\n    }\n  ],\n  \"totalMenuItems\": 1443\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40e2d8df-20ca-4c51-8650-f1abf0d572f7",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "navigation-menu",
+                    "navigation-menu-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "navigationLinkSetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "menuItemTypesToSkip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "publishStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9700c395-f64f-4e1d-8fa2-c505ed1c08f7",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "navigation-menu",
+                    "navigation-menu-items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "navigationLinkSetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "menuItemTypesToSkip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "publishStatus",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "65599ec0-c2bd-40cf-aa7a-f971d236915a",
+      "name": "Publish",
+      "description": {
+        "content": "Site publishing operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e987e81b-a5ae-45b2-ba77-d55aa1903f68",
+          "name": "Salesforce Experience Cloud Publish an Experience Cloud Site",
+          "request": {
+            "name": "Salesforce Experience Cloud Publish an Experience Cloud Site",
+            "description": {
+              "content": "Publishes the specified Experience Cloud site, making all pending changes live. Requires the Create and Set Up Experiences permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connect",
+                "communities",
+                ":communityId",
+                "publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57356769-bf3d-4610-affd-40cfd6619253",
+              "name": "Experience Cloud site published successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ac23b2e-eceb-4405-bb15-2515bd2c5376",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b82ed229-d039-4673-8ce0-5394648878d2",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9231b30f-d4ac-437f-a53b-0cf4ecf6ef58",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "02b467f7-6f53-42ca-bc0b-0eecfbfd3872",
+      "name": "Sites",
+      "description": {
+        "content": "Experience Cloud site management operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92d98af0-45d8-4b1c-b820-e001c1297e59",
+          "name": "Salesforce Experience Cloud List Experience Cloud Sites",
+          "request": {
+            "name": "Salesforce Experience Cloud List Experience Cloud Sites",
+            "description": {
+              "content": "Returns a list of all Experience Cloud sites (communities) available to the context user. Includes site metadata such as name, status, URL path prefix, and template information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connect",
+                "communities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter sites by status. Valid values are Live, Inactive, DownForMaintenance, UnderConstruction."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0abf0a6c-bfaa-4f44-8143-b18646c771a3",
+              "name": "Successfully retrieved list of Experience Cloud sites",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"communities\": [\n    {\n      \"allowChatterAccessWithoutLogin\": false,\n      \"allowMembersToFlag\": true,\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"invitationsEnabled\": true,\n      \"knowledgeableEnabled\": false,\n      \"loginUrl\": \"https://mhqKQtJRDWcx.flgoYSy1HZlkR9PdadSVfEGd5vy3aFBmsgaCSN+C8vVDuVUNP+l9xB6YPUyacFsU5ZlFyp5\",\n      \"memberVisibilityEnabled\": true,\n      \"name\": \"string\",\n      \"nicknameDisplayEnabled\": true,\n      \"privateMessagesEnabled\": true,\n      \"reputationEnabled\": false,\n      \"sendWelcomeEmail\": false,\n      \"siteAsContainerEnabled\": false,\n      \"siteUrl\": \"http://oBYCwdvhYPOHz.ymnhhJsulZFbd0ISgAObqV-iNmXONuzBOnHc3f,r1jM9Gts5HbhnwANh\",\n      \"status\": \"DownForMaintenance\",\n      \"templateName\": \"string\",\n      \"url\": \"https://UsmYQGXflNcCCxswIXhThWsao.stvfWpK3MMzm04Un4IIfG81iTrhhIjoyaFxki9mi,8R3KwLq2NWJOFX0nmNcbedTNMtN+kbv3bYu3+RepX\",\n      \"urlPathPrefix\": \"string\"\n    },\n    {\n      \"allowChatterAccessWithoutLogin\": false,\n      \"allowMembersToFlag\": false,\n      \"description\": \"string\",\n      \"id\": \"string\",\n      \"invitationsEnabled\": false,\n      \"knowledgeableEnabled\": false,\n      \"loginUrl\": \"https://cSjWGqtvnulgSkczqV.imFbom2Y+yI2p.Efl4VEFoXO-LAYWUH9S5YYbguYEX2difF\",\n      \"memberVisibilityEnabled\": true,\n      \"name\": \"string\",\n      \"nicknameDisplayEnabled\": false,\n      \"privateMessagesEnabled\": true,\n      \"reputationEnabled\": false,\n      \"sendWelcomeEmail\": false,\n      \"siteAsContainerEnabled\": true,\n      \"siteUrl\": \"http://EzQ.wsiwHC7sbQLjUg98DD-uE6COLZXQnhJRjeLgYEqZVdUOUbXZ851+d\",\n      \"status\": \"Inactive\",\n      \"templateName\": \"string\",\n      \"url\": \"http://whnBO.zhU.TVVivM3CSTKCUqzDQ9\",\n      \"urlPathPrefix\": \"string\"\n    }\n  ],\n  \"total\": 1459\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2c6c75a-f700-4679-b146-6bb16ac9f741",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a15da6c7-54a3-4f43-a53c-d5c2a136642c",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78e386ba-1e51-4016-a41a-8dc71aad9384",
+          "name": "Salesforce Experience Cloud Create an Experience Cloud Site",
+          "request": {
+            "name": "Salesforce Experience Cloud Create an Experience Cloud Site",
+            "description": {
+              "content": "Creates a new Experience Cloud site with the specified name, template, and URL path prefix. Requires the Create and Set Up Experiences permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connect",
+                "communities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"templateName\": \"<string>\",\n  \"urlPathPrefix\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7ed83ce8-0549-4929-9219-45addbbc347e",
+              "name": "Experience Cloud site created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"templateName\": \"<string>\",\n  \"urlPathPrefix\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"allowChatterAccessWithoutLogin\": true,\n  \"allowMembersToFlag\": true,\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"invitationsEnabled\": true,\n  \"knowledgeableEnabled\": false,\n  \"loginUrl\": \"http://mEyuwXdiX.sgyte,dQGuziEcC+9HbsWDSpCwSW9tXGskI\",\n  \"memberVisibilityEnabled\": true,\n  \"name\": \"string\",\n  \"nicknameDisplayEnabled\": false,\n  \"privateMessagesEnabled\": false,\n  \"reputationEnabled\": true,\n  \"sendWelcomeEmail\": false,\n  \"siteAsContainerEnabled\": true,\n  \"siteUrl\": \"https://WIOVATDCyLFuDzOejFtqzwClZIm.hyqv+JUHugKJg0Svujs,Pj.v98wiQD6SKI.8uTzUXrVtZfI\",\n  \"status\": \"Live\",\n  \"templateName\": \"string\",\n  \"url\": \"http://LknYlJJrIyUdNMGPUelPZgrcMftt.aafUyq2scLMCFWJR7nk5xMrg\",\n  \"urlPathPrefix\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84e1502b-f57b-4941-be4a-6a66638adc3f",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"templateName\": \"<string>\",\n  \"urlPathPrefix\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d6252c0-f91b-4fe9-9ccd-17f69f7f5475",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"templateName\": \"<string>\",\n  \"urlPathPrefix\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da0a65c9-9391-4c5d-a6c9-2631cb7a0e0b",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"templateName\": \"<string>\",\n  \"urlPathPrefix\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c7af14e-03d8-4abc-aac5-d9bba842936d",
+          "name": "Salesforce Experience Cloud Get an Experience Cloud Site",
+          "request": {
+            "name": "Salesforce Experience Cloud Get an Experience Cloud Site",
+            "description": {
+              "content": "Returns detailed information about a specific Experience Cloud site including its name, description, status, URL path prefix, template type, and login and self-registration URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connect",
+                "communities",
+                ":communityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6688688b-604f-4967-97b4-972b40eed114",
+              "name": "Successfully retrieved Experience Cloud site details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"allowChatterAccessWithoutLogin\": true,\n  \"allowMembersToFlag\": true,\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"invitationsEnabled\": true,\n  \"knowledgeableEnabled\": false,\n  \"loginUrl\": \"http://mEyuwXdiX.sgyte,dQGuziEcC+9HbsWDSpCwSW9tXGskI\",\n  \"memberVisibilityEnabled\": true,\n  \"name\": \"string\",\n  \"nicknameDisplayEnabled\": false,\n  \"privateMessagesEnabled\": false,\n  \"reputationEnabled\": true,\n  \"sendWelcomeEmail\": false,\n  \"siteAsContainerEnabled\": true,\n  \"siteUrl\": \"https://WIOVATDCyLFuDzOejFtqzwClZIm.hyqv+JUHugKJg0Svujs,Pj.v98wiQD6SKI.8uTzUXrVtZfI\",\n  \"status\": \"Live\",\n  \"templateName\": \"string\",\n  \"url\": \"http://LknYlJJrIyUdNMGPUelPZgrcMftt.aafUyq2scLMCFWJR7nk5xMrg\",\n  \"urlPathPrefix\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab0e1785-0eb5-4f9c-9024-01cb95e725e2",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3648c03-e42c-4516-9ce6-914fedfe3835",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e36a2789-6584-4ed6-a60b-d1a962fbac16",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ee93f00-df64-4548-842e-547584aca41b",
+          "name": "Salesforce Experience Cloud Update an Experience Cloud Site",
+          "request": {
+            "name": "Salesforce Experience Cloud Update an Experience Cloud Site",
+            "description": {
+              "content": "Updates the properties of an existing Experience Cloud site such as its name, description, and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connect",
+                "communities",
+                ":communityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "31b641be-2f21-46a3-a3ab-bcc57067b014",
+              "name": "Experience Cloud site updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"allowChatterAccessWithoutLogin\": true,\n  \"allowMembersToFlag\": true,\n  \"description\": \"string\",\n  \"id\": \"string\",\n  \"invitationsEnabled\": true,\n  \"knowledgeableEnabled\": false,\n  \"loginUrl\": \"http://mEyuwXdiX.sgyte,dQGuziEcC+9HbsWDSpCwSW9tXGskI\",\n  \"memberVisibilityEnabled\": true,\n  \"name\": \"string\",\n  \"nicknameDisplayEnabled\": false,\n  \"privateMessagesEnabled\": false,\n  \"reputationEnabled\": true,\n  \"sendWelcomeEmail\": false,\n  \"siteAsContainerEnabled\": true,\n  \"siteUrl\": \"https://WIOVATDCyLFuDzOejFtqzwClZIm.hyqv+JUHugKJg0Svujs,Pj.v98wiQD6SKI.8uTzUXrVtZfI\",\n  \"status\": \"Live\",\n  \"templateName\": \"string\",\n  \"url\": \"http://LknYlJJrIyUdNMGPUelPZgrcMftt.aafUyq2scLMCFWJR7nk5xMrg\",\n  \"urlPathPrefix\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f80b7f87-da62-48bc-a3cc-ef82ee845e40",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0a0803d-3cf0-4117-a9e0-88fcfae759b0",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a27cd425-12b7-4b72-b42b-dca0ab3903dc",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "409b5a6f-c661-458d-8ea0-37ff1f0409e0",
+      "name": "Themes",
+      "description": {
+        "content": "Site theme and branding operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09de91e5-19f3-4f6a-9c0a-9f500ff71a99",
+          "name": "Salesforce Experience Cloud Get Site Themes",
+          "request": {
+            "name": "Salesforce Experience Cloud Get Site Themes",
+            "description": {
+              "content": "Returns the available themes for the specified Experience Cloud site including branding properties, colors, fonts, and images.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connect",
+                "communities",
+                ":communityId",
+                "themes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6448a57-bef6-4cc7-9266-b60d012bbc05",
+              "name": "Successfully retrieved site themes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"themes\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"themeType\": \"string\",\n      \"properties\": {\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"themeType\": \"string\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dda5962d-766e-471d-b7e0-8594fc3dbfca",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "638587bc-a579-4c9b-8893-a937f60f4f43",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connect",
+                    "communities",
+                    ":communityId",
+                    "themes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance name or custom domain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api web full"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "59d8bd86-b8f5-42ee-8c63-45fcd9c4b4c5",
+    "name": "Salesforce Experience Cloud Sites API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage Experience Cloud sites, themes, and configurations. Provides programmatic access to create, update, and retrieve site settings, branding, and navigation for digital experience portals. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

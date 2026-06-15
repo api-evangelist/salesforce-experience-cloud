@@ -1,0 +1,298 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Delivery API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content Delivery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Query Delivery Content by Channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/contents/query",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "managedContentType",
+                "value": "",
+                "type": "query",
+                "description": "Developer name of the content type (e.g., news, cms_image, cms_document, custom content types)"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code for content variant (e.g., en_US, fr, de)"
+              },
+              {
+                "name": "contentKeys",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of content keys to retrieve"
+              },
+              {
+                "name": "managedContentIds",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of managed content record IDs"
+              },
+              {
+                "name": "topics",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of topic names to filter content"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs for media references"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Retrieves published CMS content from the specified delivery channel. Returns content items matching the specified content type and optional filters. Used for headless content delivery to external applications and decoupled frontends."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Search Delivery Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/contents/search",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search term"
+              },
+              {
+                "name": "managedContentType",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to a specific content type"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language code for content filtering"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Searches published CMS content in the specified delivery channel using a full-text search term. Returns matching content items with relevance-based ordering."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Delivery Content Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/contents/:contentKeyOrId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "contentKeyOrId",
+                "value": "",
+                "type": "path",
+                "description": "Content key or managed content record ID"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language variant to retrieve"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific published content item from the delivery channel by its content key or managed content ID. Returns all content nodes and metadata for the item."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Media Delivery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Content Binary Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/contents/:contentKeyOrId/binary",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "contentKeyOrId",
+                "value": "",
+                "type": "path",
+                "description": "Content key or managed content record ID"
+              }
+            ]
+          },
+          "docs": "Returns the binary stream of published managed content such as images, documents, or videos. Used for downloading or streaming media files associated with CMS content."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List Content Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/collections",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Returns a list of published content collections available in the specified delivery channel. Collections group related content items for organized delivery."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Content Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery/channels/:channelId/collections/:collectionKeyOrId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "collectionKeyOrId",
+                "value": "",
+                "type": "path",
+                "description": "Collection key or record ID"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language variant to retrieve"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific content collection and its items from the delivery channel. Returns the collection metadata and all content items within the collection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

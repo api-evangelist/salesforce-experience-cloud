@@ -1,0 +1,3227 @@
+{
+  "info": {
+    "_postman_id": "e0c2aeaf-0f59-49b2-81c0-41c8cc4a75aa",
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect API",
+    "description": "Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:15:19.000Z",
+    "updatedAt": "2026-06-05T15:15:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e0c2aeaf-0f59-49b2-81c0-41c8cc4a75aa"
+  },
+  "item": [
+    {
+      "name": "channels",
+      "item": [
+        {
+          "name": "{channelId}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Get a CMS Channel",
+              "id": "129f134f-0166-44d3-9dac-998dd4725fc3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/channels/:channelId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels",
+                    ":channelId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "63b58f8d-d7d7-4c0e-97b0-0221e79c6b0a",
+                      "key": "channelId",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the CMS channel"
+                    }
+                  ]
+                },
+                "description": "Returns details about a specific CMS channel including its name, type, domain, and the content types available in the channel."
+              },
+              "response": [
+                {
+                  "id": "fe4744cb-fd06-4661-bdbb-4b60c2e7af4a",
+                  "name": "Successfully retrieved CMS channel details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/channels/:channelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "channels",
+                        ":channelId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "channelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"channelId\": \"<string>\",\n  \"channelName\": \"<string>\",\n  \"channelType\": \"ExperienceCloudSite\",\n  \"domain\": \"<string>\",\n  \"domainName\": \"<string>\",\n  \"isDomainLocked\": \"<boolean>\",\n  \"isSearchable\": \"<boolean>\"\n}",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-fe4744cb-fd06-4661-bdbb-4b60c2e7af4a"
+                },
+                {
+                  "id": "0a87e331-a228-4312-a94e-e8ca4b499314",
+                  "name": "Unauthorized - invalid or expired OAuth token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/channels/:channelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "channels",
+                        ":channelId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "channelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-0a87e331-a228-4312-a94e-e8ca4b499314"
+                },
+                {
+                  "id": "6efadf86-fbd9-4950-a790-1eda4b4be4ae",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/channels/:channelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "channels",
+                        ":channelId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "channelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-6efadf86-fbd9-4950-a790-1eda4b4be4ae"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-129f134f-0166-44d3-9dac-998dd4725fc3"
+            }
+          ],
+          "id": "598216d1-24c4-4146-be91-9131a4cea166",
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-598216d1-24c4-4146-be91-9131a4cea166"
+        },
+        {
+          "name": "Salesforce Experience Cloud List CMS Channels",
+          "id": "1d3dff75-4a64-48b7-93e3-17e82a922acd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/channels?pageSize=25&page=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "channels"
+              ],
+              "query": [
+                {
+                  "description": "Number of items per page (default 25, max 250)",
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "description": "Page number to retrieve (0-indexed)",
+                  "key": "page",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns a list of CMS channels available to the context user. Channels represent destinations where managed content can be published, such as Experience Cloud sites or external applications."
+          },
+          "response": [
+            {
+              "id": "6d909259-f952-400f-ae67-4954168e65a3",
+              "name": "Successfully retrieved CMS channels",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/channels?pageSize=25&page=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"channels\": [\n    {\n      \"channelId\": \"<string>\",\n      \"channelName\": \"<string>\",\n      \"channelType\": \"ExperienceCloudSite\",\n      \"domain\": \"<string>\",\n      \"domainName\": \"<string>\",\n      \"isDomainLocked\": \"<boolean>\",\n      \"isSearchable\": \"<boolean>\"\n    },\n    {\n      \"channelId\": \"<string>\",\n      \"channelName\": \"<string>\",\n      \"channelType\": \"CustomChannel\",\n      \"domain\": \"<string>\",\n      \"domainName\": \"<string>\",\n      \"isDomainLocked\": \"<boolean>\",\n      \"isSearchable\": \"<boolean>\"\n    }\n  ],\n  \"currentPageUrl\": \"<uri>\",\n  \"nextPageUrl\": \"<uri>\",\n  \"totalCount\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-6d909259-f952-400f-ae67-4954168e65a3"
+            },
+            {
+              "id": "07bbaba0-f8eb-4f19-ac7c-530996bfcf50",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/channels?pageSize=25&page=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "channels"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-07bbaba0-f8eb-4f19-ac7c-530996bfcf50"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-1d3dff75-4a64-48b7-93e3-17e82a922acd"
+        }
+      ],
+      "id": "f3fe8b0f-c922-48a4-85a8-9720aff8ad8c",
+      "createdAt": "2026-06-05T15:15:19.000Z",
+      "updatedAt": "2026-06-05T15:15:19.000Z",
+      "uid": "35240-f3fe8b0f-c922-48a4-85a8-9720aff8ad8c"
+    },
+    {
+      "name": "contents",
+      "item": [
+        {
+          "name": "{contentId}",
+          "item": [
+            {
+              "name": "publish",
+              "item": [
+                {
+                  "name": "Salesforce Experience Cloud Publish CMS Content",
+                  "id": "d54a9892-e201-4e7a-a402-6cae0c5a4ce1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId/publish",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId",
+                        "publish"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3d8bf09a-fc14-470d-831f-153b80b1b946",
+                          "key": "contentId",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the CMS content item"
+                        }
+                      ]
+                    },
+                    "description": "Publishes the specified CMS content item to its assigned channels, making it available for delivery."
+                  },
+                  "response": [
+                    {
+                      "id": "dd784721-5956-4494-af4f-6a33d632772d",
+                      "name": "CMS content published successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/contents/:contentId/publish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contents",
+                            ":contentId",
+                            "publish"
+                          ],
+                          "variable": [
+                            {
+                              "key": "contentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"isSuccess\": \"<boolean>\",\n  \"errors\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:15:19.000Z",
+                      "updatedAt": "2026-06-05T15:15:19.000Z",
+                      "uid": "35240-dd784721-5956-4494-af4f-6a33d632772d"
+                    },
+                    {
+                      "id": "c3a63a90-fb30-4f67-ad26-f24dcc2cef3d",
+                      "name": "Bad request - invalid input parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/contents/:contentId/publish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contents",
+                            ":contentId",
+                            "publish"
+                          ],
+                          "variable": [
+                            {
+                              "key": "contentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:19.000Z",
+                      "updatedAt": "2026-06-05T15:15:19.000Z",
+                      "uid": "35240-c3a63a90-fb30-4f67-ad26-f24dcc2cef3d"
+                    },
+                    {
+                      "id": "f32fdba8-d524-47d6-b7f9-135665aa1432",
+                      "name": "Unauthorized - invalid or expired OAuth token",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/contents/:contentId/publish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contents",
+                            ":contentId",
+                            "publish"
+                          ],
+                          "variable": [
+                            {
+                              "key": "contentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:19.000Z",
+                      "updatedAt": "2026-06-05T15:15:19.000Z",
+                      "uid": "35240-f32fdba8-d524-47d6-b7f9-135665aa1432"
+                    },
+                    {
+                      "id": "9e49ab8d-c2a5-45cb-9bad-08ad014fe371",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/contents/:contentId/publish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contents",
+                            ":contentId",
+                            "publish"
+                          ],
+                          "variable": [
+                            {
+                              "key": "contentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:19.000Z",
+                      "updatedAt": "2026-06-05T15:15:19.000Z",
+                      "uid": "35240-9e49ab8d-c2a5-45cb-9bad-08ad014fe371"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-d54a9892-e201-4e7a-a402-6cae0c5a4ce1"
+                }
+              ],
+              "id": "00ef962f-4974-45cc-9f59-31fdddf64f75",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-00ef962f-4974-45cc-9f59-31fdddf64f75"
+            },
+            {
+              "name": "unpublish",
+              "item": [
+                {
+                  "name": "Salesforce Experience Cloud Unpublish CMS Content",
+                  "id": "91ae57f5-2655-40df-8fd7-5e71d33d8988",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId/unpublish",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId",
+                        "unpublish"
+                      ],
+                      "variable": [
+                        {
+                          "id": "518cf0bc-d78f-4719-81cf-c041655c298d",
+                          "key": "contentId",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the CMS content item"
+                        }
+                      ]
+                    },
+                    "description": "Unpublishes the specified CMS content item, removing it from delivery channels."
+                  },
+                  "response": [
+                    {
+                      "id": "fa7317e7-d4ca-4ffa-b753-d81e07321c48",
+                      "name": "CMS content unpublished successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/contents/:contentId/unpublish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contents",
+                            ":contentId",
+                            "unpublish"
+                          ],
+                          "variable": [
+                            {
+                              "key": "contentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"isSuccess\": \"<boolean>\",\n  \"errors\": [\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"errorCode\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:15:19.000Z",
+                      "updatedAt": "2026-06-05T15:15:19.000Z",
+                      "uid": "35240-fa7317e7-d4ca-4ffa-b753-d81e07321c48"
+                    },
+                    {
+                      "id": "0e5d6287-26e1-4df0-a342-8efd31fe0f96",
+                      "name": "Unauthorized - invalid or expired OAuth token",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/contents/:contentId/unpublish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contents",
+                            ":contentId",
+                            "unpublish"
+                          ],
+                          "variable": [
+                            {
+                              "key": "contentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:19.000Z",
+                      "updatedAt": "2026-06-05T15:15:19.000Z",
+                      "uid": "35240-0e5d6287-26e1-4df0-a342-8efd31fe0f96"
+                    },
+                    {
+                      "id": "beeb0a16-32cb-4b42-8883-9369a40bf99c",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channelIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/contents/:contentId/unpublish",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "contents",
+                            ":contentId",
+                            "unpublish"
+                          ],
+                          "variable": [
+                            {
+                              "key": "contentId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:19.000Z",
+                      "updatedAt": "2026-06-05T15:15:19.000Z",
+                      "uid": "35240-beeb0a16-32cb-4b42-8883-9369a40bf99c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-91ae57f5-2655-40df-8fd7-5e71d33d8988"
+                }
+              ],
+              "id": "181ecffc-dee1-49e5-a829-1b9031ff5fa8",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-181ecffc-dee1-49e5-a829-1b9031ff5fa8"
+            },
+            {
+              "name": "Salesforce Experience Cloud Get CMS Content",
+              "id": "83cd1d59-f90b-4608-af39-d88f26c0d81f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contents/:contentId?language=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents",
+                    ":contentId"
+                  ],
+                  "query": [
+                    {
+                      "description": "Language variant to retrieve",
+                      "key": "language",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "f0f64b7b-16c0-4ae1-9d52-78986f2ef85f",
+                      "key": "contentId",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the CMS content item"
+                    }
+                  ]
+                },
+                "description": "Returns a specific CMS content item by its ID, including all body fields, metadata, and version information."
+              },
+              "response": [
+                {
+                  "id": "979ab559-65ac-434d-93df-2702c76b334f",
+                  "name": "Successfully retrieved CMS content",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId?language=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Language variant to retrieve",
+                          "key": "language",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"contentKey\": \"<string>\",\n  \"contentUrlName\": \"<string>\",\n  \"language\": \"<string>\",\n  \"managedContentId\": \"<string>\",\n  \"publishedDate\": \"<dateTime>\",\n  \"status\": \"Published\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"typeLabel\": \"<string>\",\n  \"body\": {\n    \"reprehenderit_7\": 53465513,\n    \"adipisicing_1e\": 80545790.3717548\n  },\n  \"contentNodes\": {\n    \"enim5\": {\n      \"nodeType\": \"RichText\",\n      \"value\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"altText\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    \"voluptate2\": {\n      \"nodeType\": \"Media\",\n      \"value\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"altText\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-979ab559-65ac-434d-93df-2702c76b334f"
+                },
+                {
+                  "id": "fe198bf3-b88f-4e1e-bcfc-57e6aab6de2e",
+                  "name": "Unauthorized - invalid or expired OAuth token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId?language=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Language variant to retrieve",
+                          "key": "language",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-fe198bf3-b88f-4e1e-bcfc-57e6aab6de2e"
+                },
+                {
+                  "id": "75e9c9a1-9f22-46b3-ab6a-eca8776e8cbf",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId?language=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Language variant to retrieve",
+                          "key": "language",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-75e9c9a1-9f22-46b3-ab6a-eca8776e8cbf"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-83cd1d59-f90b-4608-af39-d88f26c0d81f"
+            },
+            {
+              "name": "Salesforce Experience Cloud Update CMS Content",
+              "id": "94fb1947-c3c6-4a77-b6f1-07e71024695a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contents/:contentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents",
+                    ":contentId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0fb60e53-fc15-4328-bb2e-8b350796278e",
+                      "key": "contentId",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the CMS content item"
+                    }
+                  ]
+                },
+                "description": "Updates an existing CMS content item. Supports updating the title, body fields, and language variants."
+              },
+              "response": [
+                {
+                  "id": "7f8321e2-47ac-4c5f-8451-3262a13df49f",
+                  "name": "CMS content updated successfully",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"contentKey\": \"<string>\",\n  \"contentUrlName\": \"<string>\",\n  \"language\": \"<string>\",\n  \"managedContentId\": \"<string>\",\n  \"publishedDate\": \"<dateTime>\",\n  \"status\": \"Published\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"typeLabel\": \"<string>\",\n  \"body\": {\n    \"reprehenderit_7\": 53465513,\n    \"adipisicing_1e\": 80545790.3717548\n  },\n  \"contentNodes\": {\n    \"enim5\": {\n      \"nodeType\": \"RichText\",\n      \"value\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"altText\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    \"voluptate2\": {\n      \"nodeType\": \"Media\",\n      \"value\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"altText\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  }\n}",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-7f8321e2-47ac-4c5f-8451-3262a13df49f"
+                },
+                {
+                  "id": "3db048ee-e394-4994-b358-0727e010be33",
+                  "name": "Bad request - invalid input parameters",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-3db048ee-e394-4994-b358-0727e010be33"
+                },
+                {
+                  "id": "1a4c9e82-87bb-49ed-b35d-b4ff69ce941e",
+                  "name": "Unauthorized - invalid or expired OAuth token",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-1a4c9e82-87bb-49ed-b35d-b4ff69ce941e"
+                },
+                {
+                  "id": "9903b233-526f-44d1-9075-f272c5245430",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-9903b233-526f-44d1-9075-f272c5245430"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-94fb1947-c3c6-4a77-b6f1-07e71024695a"
+            },
+            {
+              "name": "Salesforce Experience Cloud Delete CMS Content",
+              "id": "4038c9be-d58d-453a-af8e-107fab83ff64",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contents/:contentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents",
+                    ":contentId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1a9b4fb0-d3d9-4d92-9580-bf403d354ad6",
+                      "key": "contentId",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the CMS content item"
+                    }
+                  ]
+                },
+                "description": "Deletes the specified CMS content item. Content that is currently published must be unpublished before deletion."
+              },
+              "response": [
+                {
+                  "id": "305f39e4-92d9-4f6f-87a6-659597937abe",
+                  "name": "CMS content deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-305f39e4-92d9-4f6f-87a6-659597937abe"
+                },
+                {
+                  "id": "aadaf538-c2f9-464e-a0f1-d118ee267d24",
+                  "name": "Unauthorized - invalid or expired OAuth token",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-aadaf538-c2f9-464e-a0f1-d118ee267d24"
+                },
+                {
+                  "id": "28d60109-5e38-4e95-9c54-c714b915332a",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:contentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":contentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "contentId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-28d60109-5e38-4e95-9c54-c714b915332a"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-4038c9be-d58d-453a-af8e-107fab83ff64"
+            }
+          ],
+          "id": "26d701f9-837c-437b-97d1-f668eb505722",
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-26d701f9-837c-437b-97d1-f668eb505722"
+        },
+        {
+          "name": "Salesforce Experience Cloud List CMS Contents",
+          "id": "18554916-5e4c-4853-aa88-efd761cc265e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/contents?pageSize=25&page=0&managedContentType=<string>&language=<string>&channelId=<string>&folderId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contents"
+              ],
+              "query": [
+                {
+                  "description": "Number of items per page (default 25, max 250)",
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "description": "Page number to retrieve (0-indexed)",
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter by managed content type developer name",
+                  "key": "managedContentType",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Language code to filter content (e.g., en_US)",
+                  "key": "language",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter content by channel ID",
+                  "key": "channelId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter content by folder ID",
+                  "key": "folderId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of CMS content items. Supports filtering by content type, language, and channel. Returns content metadata and body fields."
+          },
+          "response": [
+            {
+              "id": "1867332f-346f-4b46-a440-f51d3f077c86",
+              "name": "Successfully retrieved CMS content list",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contents?pageSize=25&page=0&managedContentType=<string>&language=<string>&channelId=<string>&folderId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by managed content type developer name",
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Language code to filter content (e.g., en_US)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter content by channel ID",
+                      "key": "channelId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter content by folder ID",
+                      "key": "folderId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"content\": [\n    {\n      \"contentKey\": \"<string>\",\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"status\": \"Draft\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"body\": {\n        \"ut93\": false,\n        \"cillum9\": 23860600,\n        \"est_031\": true,\n        \"elit80c\": \"esse Lorem commodo qui\"\n      },\n      \"contentNodes\": {\n        \"occaecat_7e7\": {\n          \"nodeType\": \"Url\",\n          \"value\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"altText\": \"<string>\",\n          \"title\": \"<string>\"\n        },\n        \"ullamco_3\": {\n          \"nodeType\": \"Media\",\n          \"value\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"altText\": \"<string>\",\n          \"title\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"contentKey\": \"<string>\",\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"status\": \"Archived\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"body\": {\n        \"doc4\": -55711530.23902582,\n        \"est4\": -34641286\n      },\n      \"contentNodes\": {\n        \"cupidatatb3\": {\n          \"nodeType\": \"Text\",\n          \"value\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"altText\": \"<string>\",\n          \"title\": \"<string>\"\n        },\n        \"incididunt2\": {\n          \"nodeType\": \"DateTime\",\n          \"value\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"altText\": \"<string>\",\n          \"title\": \"<string>\"\n        },\n        \"idcde\": {\n          \"nodeType\": \"DateTime\",\n          \"value\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"altText\": \"<string>\",\n          \"title\": \"<string>\"\n        },\n        \"elit_7\": {\n          \"nodeType\": \"Url\",\n          \"value\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"altText\": \"<string>\",\n          \"title\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"currentPageUrl\": \"<uri>\",\n  \"nextPageUrl\": \"<uri>\",\n  \"totalCount\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-1867332f-346f-4b46-a440-f51d3f077c86"
+            },
+            {
+              "id": "1dca57a3-c624-49a0-b6d9-99a0f42bdee9",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contents?pageSize=25&page=0&managedContentType=<string>&language=<string>&channelId=<string>&folderId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by managed content type developer name",
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Language code to filter content (e.g., en_US)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter content by channel ID",
+                      "key": "channelId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter content by folder ID",
+                      "key": "folderId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-1dca57a3-c624-49a0-b6d9-99a0f42bdee9"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-18554916-5e4c-4853-aa88-efd761cc265e"
+        },
+        {
+          "name": "Salesforce Experience Cloud Create CMS Content",
+          "id": "2041ca66-7e2c-432c-8032-3d74cc9099e3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contents",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contents"
+              ]
+            },
+            "description": "Creates a new CMS content item in the specified workspace. Requires the content type, title, and body fields defined for the content type."
+          },
+          "response": [
+            {
+              "id": "ede8aa4d-4f6e-437f-8751-af31c4095ad9",
+              "name": "CMS content created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"contentKey\": \"<string>\",\n  \"contentUrlName\": \"<string>\",\n  \"language\": \"<string>\",\n  \"managedContentId\": \"<string>\",\n  \"publishedDate\": \"<dateTime>\",\n  \"status\": \"Published\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"typeLabel\": \"<string>\",\n  \"body\": {\n    \"reprehenderit_7\": 53465513,\n    \"adipisicing_1e\": 80545790.3717548\n  },\n  \"contentNodes\": {\n    \"enim5\": {\n      \"nodeType\": \"RichText\",\n      \"value\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"altText\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    \"voluptate2\": {\n      \"nodeType\": \"Media\",\n      \"value\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"altText\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-ede8aa4d-4f6e-437f-8751-af31c4095ad9"
+            },
+            {
+              "id": "2b548814-40de-4601-8928-409c848e926e",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-2b548814-40de-4601-8928-409c848e926e"
+            },
+            {
+              "id": "d9d35f6a-3133-4a17-9313-2fbbe13cb7f4",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"language\": \"<string>\",\n  \"contentBody\": {\n    \"aliqua_e3\": false,\n    \"nulla3\": true,\n    \"ex_2\": false\n  },\n  \"urlName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contents",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-d9d35f6a-3133-4a17-9313-2fbbe13cb7f4"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-2041ca66-7e2c-432c-8032-3d74cc9099e3"
+        }
+      ],
+      "id": "ea8a0e3e-c514-4b54-ba6f-1e564ff4618d",
+      "createdAt": "2026-06-05T15:15:19.000Z",
+      "updatedAt": "2026-06-05T15:15:19.000Z",
+      "uid": "35240-ea8a0e3e-c514-4b54-ba6f-1e564ff4618d"
+    },
+    {
+      "name": "content-types",
+      "item": [
+        {
+          "name": "Salesforce Experience Cloud List Content Types",
+          "id": "839635c5-b329-46b2-8741-53ae70b1076d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/content-types?pageSize=25&page=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "content-types"
+              ],
+              "query": [
+                {
+                  "description": "Number of items per page (default 25, max 250)",
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "description": "Page number to retrieve (0-indexed)",
+                  "key": "page",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns the CMS content types available in the org, including both standard and custom content types with their field definitions."
+          },
+          "response": [
+            {
+              "id": "7c13f8be-47c1-4489-b5f3-991872d2db17",
+              "name": "Successfully retrieved content types",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/content-types?pageSize=25&page=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "content-types"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"contentTypes\": [\n    {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"isRequired\": \"<boolean>\",\n          \"label\": \"<string>\"\n        },\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"isRequired\": \"<boolean>\",\n          \"label\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\",\n      \"fields\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"isRequired\": \"<boolean>\",\n          \"label\": \"<string>\"\n        },\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldType\": \"<string>\",\n          \"isRequired\": \"<boolean>\",\n          \"label\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-7c13f8be-47c1-4489-b5f3-991872d2db17"
+            },
+            {
+              "id": "cf240614-a0c8-4fbe-a029-6942c60531d5",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/content-types?pageSize=25&page=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "content-types"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-cf240614-a0c8-4fbe-a029-6942c60531d5"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-839635c5-b329-46b2-8741-53ae70b1076d"
+        }
+      ],
+      "id": "deee15f7-c2d6-41e8-9700-ae72c4d6bba5",
+      "createdAt": "2026-06-05T15:15:19.000Z",
+      "updatedAt": "2026-06-05T15:15:19.000Z",
+      "uid": "35240-deee15f7-c2d6-41e8-9700-ae72c4d6bba5"
+    },
+    {
+      "name": "folders",
+      "item": [
+        {
+          "name": "Salesforce Experience Cloud List CMS Folders",
+          "id": "61d08976-f3e3-4874-8862-1c2ec42588e6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/folders?pageSize=25&page=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "folders"
+              ],
+              "query": [
+                {
+                  "description": "Number of items per page (default 25, max 250)",
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "description": "Page number to retrieve (0-indexed)",
+                  "key": "page",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns a list of CMS workspace folders used to organize content."
+          },
+          "response": [
+            {
+              "id": "e5d388d0-d95a-4e61-981a-a1e439db04ee",
+              "name": "Successfully retrieved CMS folders",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/folders?pageSize=25&page=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "folders"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"folders\": [\n    {\n      \"folderId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"parentFolderId\": \"<string>\"\n    },\n    {\n      \"folderId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"parentFolderId\": \"<string>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-e5d388d0-d95a-4e61-981a-a1e439db04ee"
+            },
+            {
+              "id": "0cd4f673-b48d-406c-bd9a-9222122e63a4",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/folders?pageSize=25&page=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "folders"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-0cd4f673-b48d-406c-bd9a-9222122e63a4"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-61d08976-f3e3-4874-8862-1c2ec42588e6"
+        }
+      ],
+      "id": "ea14ba60-6639-41a9-8c33-41472e31bb33",
+      "createdAt": "2026-06-05T15:15:19.000Z",
+      "updatedAt": "2026-06-05T15:15:19.000Z",
+      "uid": "35240-ea14ba60-6639-41a9-8c33-41472e31bb33"
+    },
+    {
+      "name": "media",
+      "item": [
+        {
+          "name": "{mediaId}",
+          "item": [
+            {
+              "name": "Salesforce Experience Cloud Get CMS Media",
+              "id": "1c59efc2-2217-4bf4-a657-1a5df03a80fc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/media/:mediaId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media",
+                    ":mediaId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "dd152e23-da4e-40c2-8296-e22baac647c0",
+                      "key": "mediaId",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the media file"
+                    }
+                  ]
+                },
+                "description": "Returns metadata about a specific media file including its URL, dimensions, file type, and alt text."
+              },
+              "response": [
+                {
+                  "id": "9bbbe5e2-d29e-48c5-84d7-9d8b0ed9a8c8",
+                  "name": "Successfully retrieved media details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/media/:mediaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "media",
+                        ":mediaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "mediaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"altText\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"mediaType\": \"Document\",\n  \"mimeType\": \"<string>\",\n  \"referenceId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"url\": \"<uri>\"\n}",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-9bbbe5e2-d29e-48c5-84d7-9d8b0ed9a8c8"
+                },
+                {
+                  "id": "b60b9e87-f63d-495d-80e5-19d8a4f00433",
+                  "name": "Unauthorized - invalid or expired OAuth token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/media/:mediaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "media",
+                        ":mediaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "mediaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-b60b9e87-f63d-495d-80e5-19d8a4f00433"
+                },
+                {
+                  "id": "774a20b1-f9b1-460f-b12a-763eacd236ec",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/media/:mediaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "media",
+                        ":mediaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "mediaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-774a20b1-f9b1-460f-b12a-763eacd236ec"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-1c59efc2-2217-4bf4-a657-1a5df03a80fc"
+            },
+            {
+              "name": "Salesforce Experience Cloud Delete CMS Media",
+              "id": "efc062b0-55b9-4b49-bf87-23649636d88c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/media/:mediaId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media",
+                    ":mediaId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ad4a6a95-abf7-4f98-aa87-43567fc4100a",
+                      "key": "mediaId",
+                      "value": "<string>",
+                      "description": "(Required) The ID of the media file"
+                    }
+                  ]
+                },
+                "description": "Deletes the specified media file from the CMS workspace."
+              },
+              "response": [
+                {
+                  "id": "38923805-70a1-49a2-b9d6-bec9f12c43a3",
+                  "name": "Media file deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/media/:mediaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "media",
+                        ":mediaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "mediaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-38923805-70a1-49a2-b9d6-bec9f12c43a3"
+                },
+                {
+                  "id": "fc887932-2bed-4960-82e8-bc3ec52b95a6",
+                  "name": "Unauthorized - invalid or expired OAuth token",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/media/:mediaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "media",
+                        ":mediaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "mediaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-fc887932-2bed-4960-82e8-bc3ec52b95a6"
+                },
+                {
+                  "id": "ce32b685-2554-4fa6-95b6-df7aa57fb710",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/media/:mediaId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "media",
+                        ":mediaId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "mediaId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:15:19.000Z",
+                  "updatedAt": "2026-06-05T15:15:19.000Z",
+                  "uid": "35240-ce32b685-2554-4fa6-95b6-df7aa57fb710"
+                }
+              ],
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-efc062b0-55b9-4b49-bf87-23649636d88c"
+            }
+          ],
+          "id": "fd9744ea-1c7a-4ea8-bb33-ab7f21f3c559",
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-fd9744ea-1c7a-4ea8-bb33-ab7f21f3c559"
+        },
+        {
+          "name": "Salesforce Experience Cloud List CMS Media",
+          "id": "16bc73ee-6a34-4e08-b3bd-c30fe19bf621",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/media?pageSize=25&page=0&folderId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "media"
+              ],
+              "query": [
+                {
+                  "description": "Number of items per page (default 25, max 250)",
+                  "key": "pageSize",
+                  "value": "25"
+                },
+                {
+                  "description": "Page number to retrieve (0-indexed)",
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter media by folder ID",
+                  "key": "folderId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a list of media files (images, documents) stored in the CMS workspace."
+          },
+          "response": [
+            {
+              "id": "d629f1f3-9bb2-440a-a654-cad809883a6e",
+              "name": "Successfully retrieved CMS media list",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/media?pageSize=25&page=0&folderId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter media by folder ID",
+                      "key": "folderId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"altText\": \"<string>\",\n      \"fileName\": \"<string>\",\n      \"mediaType\": \"Image\",\n      \"mimeType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"altText\": \"<string>\",\n      \"fileName\": \"<string>\",\n      \"mediaType\": \"Document\",\n      \"mimeType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"currentPageUrl\": \"<uri>\",\n  \"nextPageUrl\": \"<uri>\",\n  \"totalCount\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-d629f1f3-9bb2-440a-a654-cad809883a6e"
+            },
+            {
+              "id": "365fa868-0591-45aa-acd5-f6a36771bf91",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/media?pageSize=25&page=0&folderId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items per page (default 25, max 250)",
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Page number to retrieve (0-indexed)",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter media by folder ID",
+                      "key": "folderId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-365fa868-0591-45aa-acd5-f6a36771bf91"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-16bc73ee-6a34-4e08-b3bd-c30fe19bf621"
+        },
+        {
+          "name": "Salesforce Experience Cloud Upload CMS Media",
+          "id": "989a9284-6dc4-4096-b6a0-65b0298cb33a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "description": "The media file to upload",
+                  "key": "file",
+                  "type": "file",
+                  "value": null
+                },
+                {
+                  "description": "Title for the media file",
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text"
+                },
+                {
+                  "description": "Folder to upload the media into",
+                  "key": "folderId",
+                  "value": "<string>",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/media",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "media"
+              ]
+            },
+            "description": "Uploads a media file (image, document, or video) to the CMS workspace."
+          },
+          "response": [
+            {
+              "id": "c6ffd593-3833-4ad4-9f29-ff609849a3ae",
+              "name": "Media file uploaded successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "The media file to upload",
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": "Title for the media file",
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Folder to upload the media into",
+                      "key": "folderId",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/media",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"altText\": \"<string>\",\n  \"fileName\": \"<string>\",\n  \"mediaType\": \"Document\",\n  \"mimeType\": \"<string>\",\n  \"referenceId\": \"<string>\",\n  \"title\": \"<string>\",\n  \"url\": \"<uri>\"\n}",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-c6ffd593-3833-4ad4-9f29-ff609849a3ae"
+            },
+            {
+              "id": "940e96d3-5978-4188-a925-a6802b93f9ef",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "The media file to upload",
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": "Title for the media file",
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Folder to upload the media into",
+                      "key": "folderId",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/media",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-940e96d3-5978-4188-a925-a6802b93f9ef"
+            },
+            {
+              "id": "f17bc070-cecf-4bd4-83f3-52218cef6265",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "The media file to upload",
+                      "key": "file",
+                      "type": "file"
+                    },
+                    {
+                      "description": "Title for the media file",
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Folder to upload the media into",
+                      "key": "folderId",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/media",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "media"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:15:19.000Z",
+              "updatedAt": "2026-06-05T15:15:19.000Z",
+              "uid": "35240-f17bc070-cecf-4bd4-83f3-52218cef6265"
+            }
+          ],
+          "createdAt": "2026-06-05T15:15:19.000Z",
+          "updatedAt": "2026-06-05T15:15:19.000Z",
+          "uid": "35240-989a9284-6dc4-4096-b6a0-65b0298cb33a"
+        }
+      ],
+      "id": "094cbc8d-c890-4e6e-b447-9fea4feabc09",
+      "createdAt": "2026-06-05T15:15:19.000Z",
+      "updatedAt": "2026-06-05T15:15:19.000Z",
+      "uid": "35240-094cbc8d-c890-4e6e-b447-9fea4feabc09"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api content",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect/cms"
+    }
+  ]
+}

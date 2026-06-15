@@ -1,0 +1,2276 @@
+{
+  "info": {
+    "_postman_id": "df26016d-8357-4a7a-9783-aac22c9bb52d",
+    "name": "Salesforce Experience Cloud Salesforce CMS Managed Content API",
+    "description": "Retrieve and search published managed content versions for Experience Cloud sites. Provides endpoints for querying managed content delivery channels and searching content across workspaces. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:15:26.000Z",
+    "updatedAt": "2026-06-05T15:15:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-df26016d-8357-4a7a-9783-aac22c9bb52d"
+  },
+  "item": [
+    {
+      "name": "cms",
+      "item": [
+        {
+          "name": "delivery",
+          "item": [
+            {
+              "name": "channels",
+              "item": [
+                {
+                  "name": "{channelId}",
+                  "item": [
+                    {
+                      "name": "contents",
+                      "item": [
+                        {
+                          "name": "query",
+                          "item": [
+                            {
+                              "name": "Salesforce Experience Cloud Query Channel Content",
+                              "id": "9d16d986-16ee-4d74-bf77-0a51e336c0bd",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/query?managedContentType=<string>&language=<string>&contentKeys=<string>&managedContentIds=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cms",
+                                    "delivery",
+                                    "channels",
+                                    ":channelId",
+                                    "contents",
+                                    "query"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The developer name of the managed content type to query (e.g., news, cms_image, cms_document)",
+                                      "key": "managedContentType",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Language code to filter content (e.g., en_US)",
+                                      "key": "language",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated list of content keys to retrieve",
+                                      "key": "contentKeys",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated list of managed content IDs",
+                                      "key": "managedContentIds",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Comma-separated list of topic names to filter by",
+                                      "key": "topics",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Whether to return absolute URLs for media content",
+                                      "key": "showAbsoluteUrl",
+                                      "value": "false"
+                                    },
+                                    {
+                                      "description": "Number of items per page (default 25, max 250)",
+                                      "key": "pageSize",
+                                      "value": "25"
+                                    },
+                                    {
+                                      "description": "Page number to retrieve (0-indexed)",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "152acf5e-96f6-49ec-9ea4-d74b320f2996",
+                                      "key": "channelId",
+                                      "value": "<string>",
+                                      "description": "(Required) The ID of the CMS delivery channel"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns published managed content versions for the specified delivery channel. Supports filtering by content type, language, and content keys. Used for headless content delivery to Experience Cloud sites and external applications."
+                              },
+                              "response": [
+                                {
+                                  "id": "a4efa7a9-c28e-4a11-8faa-96f0cfae4865",
+                                  "name": "Successfully retrieved managed content",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/query?managedContentType=<string>&language=<string>&contentKeys=<string>&managedContentIds=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        "query"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The developer name of the managed content type to query (e.g., news, cms_image, cms_document)",
+                                          "key": "managedContentType",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Language code to filter content (e.g., en_US)",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of content keys to retrieve",
+                                          "key": "contentKeys",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of managed content IDs",
+                                          "key": "managedContentIds",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of topic names to filter by",
+                                          "key": "topics",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs for media content",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        },
+                                        {
+                                          "description": "Number of items per page (default 25, max 250)",
+                                          "key": "pageSize",
+                                          "value": "25"
+                                        },
+                                        {
+                                          "description": "Page number to retrieve (0-indexed)",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"currentPageUrl\": \"<uri>\",\n  \"items\": [\n    {\n      \"contentKey\": \"<string>\",\n      \"contentNodes\": {\n        \"enimb7\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"Media\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\"\n    },\n    {\n      \"contentKey\": \"<string>\",\n      \"contentNodes\": {\n        \"ut03\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"Media\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        },\n        \"dolore7f\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"MultilineText\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        },\n        \"iruree\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"MultilineText\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\"\n    }\n  ],\n  \"managedContentTypes\": {\n    \"adipisicingd2e\": {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"cupidatat_969\": {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  },\n  \"nextPageUrl\": \"<uri>\",\n  \"total\": \"<integer>\",\n  \"totalCount\": \"<integer>\"\n}",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-a4efa7a9-c28e-4a11-8faa-96f0cfae4865"
+                                },
+                                {
+                                  "id": "c9b3a69b-0718-4078-80bf-cbd5e4e4ceb5",
+                                  "name": "Bad request - invalid input parameters",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/query?managedContentType=<string>&language=<string>&contentKeys=<string>&managedContentIds=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        "query"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The developer name of the managed content type to query (e.g., news, cms_image, cms_document)",
+                                          "key": "managedContentType",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Language code to filter content (e.g., en_US)",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of content keys to retrieve",
+                                          "key": "contentKeys",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of managed content IDs",
+                                          "key": "managedContentIds",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of topic names to filter by",
+                                          "key": "topics",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs for media content",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        },
+                                        {
+                                          "description": "Number of items per page (default 25, max 250)",
+                                          "key": "pageSize",
+                                          "value": "25"
+                                        },
+                                        {
+                                          "description": "Page number to retrieve (0-indexed)",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-c9b3a69b-0718-4078-80bf-cbd5e4e4ceb5"
+                                },
+                                {
+                                  "id": "cf055d12-4a04-437c-9573-7b2b4a6e02c6",
+                                  "name": "Unauthorized - invalid or expired OAuth token",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/query?managedContentType=<string>&language=<string>&contentKeys=<string>&managedContentIds=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        "query"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The developer name of the managed content type to query (e.g., news, cms_image, cms_document)",
+                                          "key": "managedContentType",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Language code to filter content (e.g., en_US)",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of content keys to retrieve",
+                                          "key": "contentKeys",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of managed content IDs",
+                                          "key": "managedContentIds",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of topic names to filter by",
+                                          "key": "topics",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs for media content",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        },
+                                        {
+                                          "description": "Number of items per page (default 25, max 250)",
+                                          "key": "pageSize",
+                                          "value": "25"
+                                        },
+                                        {
+                                          "description": "Page number to retrieve (0-indexed)",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-cf055d12-4a04-437c-9573-7b2b4a6e02c6"
+                                },
+                                {
+                                  "id": "fa763069-1d1b-4396-b477-48ca3a4ace1e",
+                                  "name": "Resource not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/query?managedContentType=<string>&language=<string>&contentKeys=<string>&managedContentIds=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        "query"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) The developer name of the managed content type to query (e.g., news, cms_image, cms_document)",
+                                          "key": "managedContentType",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Language code to filter content (e.g., en_US)",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of content keys to retrieve",
+                                          "key": "contentKeys",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of managed content IDs",
+                                          "key": "managedContentIds",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Comma-separated list of topic names to filter by",
+                                          "key": "topics",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs for media content",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        },
+                                        {
+                                          "description": "Number of items per page (default 25, max 250)",
+                                          "key": "pageSize",
+                                          "value": "25"
+                                        },
+                                        {
+                                          "description": "Page number to retrieve (0-indexed)",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-fa763069-1d1b-4396-b477-48ca3a4ace1e"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:15:26.000Z",
+                              "updatedAt": "2026-06-05T15:15:26.000Z",
+                              "uid": "35240-9d16d986-16ee-4d74-bf77-0a51e336c0bd"
+                            }
+                          ],
+                          "id": "4e8cf8dc-65ff-41ae-a5e5-59ff9b4e54c1",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-4e8cf8dc-65ff-41ae-a5e5-59ff9b4e54c1"
+                        },
+                        {
+                          "name": "search",
+                          "item": [
+                            {
+                              "name": "Salesforce Experience Cloud Search Channel Content",
+                              "id": "4fffc024-08ef-4507-9902-720c7f131f45",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/search?q=<string>&managedContentType=<string>&language=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cms",
+                                    "delivery",
+                                    "channels",
+                                    ":channelId",
+                                    "contents",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Search term to find matching content",
+                                      "key": "q",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter search results by content type",
+                                      "key": "managedContentType",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Language code to filter results",
+                                      "key": "language",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Whether to return absolute URLs",
+                                      "key": "showAbsoluteUrl",
+                                      "value": "false"
+                                    },
+                                    {
+                                      "description": "Number of items per page (default 25, max 250)",
+                                      "key": "pageSize",
+                                      "value": "25"
+                                    },
+                                    {
+                                      "description": "Page number to retrieve (0-indexed)",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e80c17db-ed1e-4f69-a510-9ac420a45fb8",
+                                      "key": "channelId",
+                                      "value": "<string>",
+                                      "description": "(Required) The ID of the CMS delivery channel"
+                                    }
+                                  ]
+                                },
+                                "description": "Searches published managed content in the specified delivery channel using a search term. Returns matching content with relevance scoring."
+                              },
+                              "response": [
+                                {
+                                  "id": "99974bfb-0e07-4ed1-8057-ea089cba598a",
+                                  "name": "Successfully searched managed content",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/search?q=<string>&managedContentType=<string>&language=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) Search term to find matching content",
+                                          "key": "q",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Filter search results by content type",
+                                          "key": "managedContentType",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Language code to filter results",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        },
+                                        {
+                                          "description": "Number of items per page (default 25, max 250)",
+                                          "key": "pageSize",
+                                          "value": "25"
+                                        },
+                                        {
+                                          "description": "Page number to retrieve (0-indexed)",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"currentPageUrl\": \"<uri>\",\n  \"items\": [\n    {\n      \"contentKey\": \"<string>\",\n      \"contentNodes\": {\n        \"enimb7\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"Media\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\"\n    },\n    {\n      \"contentKey\": \"<string>\",\n      \"contentNodes\": {\n        \"ut03\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"Media\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        },\n        \"dolore7f\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"MultilineText\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        },\n        \"iruree\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"MultilineText\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\"\n    }\n  ],\n  \"managedContentTypes\": {\n    \"adipisicingd2e\": {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"cupidatat_969\": {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  },\n  \"nextPageUrl\": \"<uri>\",\n  \"total\": \"<integer>\",\n  \"totalCount\": \"<integer>\"\n}",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-99974bfb-0e07-4ed1-8057-ea089cba598a"
+                                },
+                                {
+                                  "id": "bb29d31d-ffa9-411e-9a82-1c932fa46008",
+                                  "name": "Bad request - invalid input parameters",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/search?q=<string>&managedContentType=<string>&language=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) Search term to find matching content",
+                                          "key": "q",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Filter search results by content type",
+                                          "key": "managedContentType",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Language code to filter results",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        },
+                                        {
+                                          "description": "Number of items per page (default 25, max 250)",
+                                          "key": "pageSize",
+                                          "value": "25"
+                                        },
+                                        {
+                                          "description": "Page number to retrieve (0-indexed)",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-bb29d31d-ffa9-411e-9a82-1c932fa46008"
+                                },
+                                {
+                                  "id": "45b8136e-b0da-4ba0-8a08-50136fbaeacc",
+                                  "name": "Unauthorized - invalid or expired OAuth token",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/search?q=<string>&managedContentType=<string>&language=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) Search term to find matching content",
+                                          "key": "q",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Filter search results by content type",
+                                          "key": "managedContentType",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Language code to filter results",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        },
+                                        {
+                                          "description": "Number of items per page (default 25, max 250)",
+                                          "key": "pageSize",
+                                          "value": "25"
+                                        },
+                                        {
+                                          "description": "Page number to retrieve (0-indexed)",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-45b8136e-b0da-4ba0-8a08-50136fbaeacc"
+                                },
+                                {
+                                  "id": "796c2401-f6ce-4492-ad58-7f2bd9b8c34a",
+                                  "name": "Resource not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/search?q=<string>&managedContentType=<string>&language=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        "search"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) Search term to find matching content",
+                                          "key": "q",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Filter search results by content type",
+                                          "key": "managedContentType",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Language code to filter results",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        },
+                                        {
+                                          "description": "Number of items per page (default 25, max 250)",
+                                          "key": "pageSize",
+                                          "value": "25"
+                                        },
+                                        {
+                                          "description": "Page number to retrieve (0-indexed)",
+                                          "key": "page",
+                                          "value": "0"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-796c2401-f6ce-4492-ad58-7f2bd9b8c34a"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:15:26.000Z",
+                              "updatedAt": "2026-06-05T15:15:26.000Z",
+                              "uid": "35240-4fffc024-08ef-4507-9902-720c7f131f45"
+                            }
+                          ],
+                          "id": "72d7a6ca-c53e-4a25-8e76-3126a99a2a4d",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-72d7a6ca-c53e-4a25-8e76-3126a99a2a4d"
+                        },
+                        {
+                          "name": "{contentKeyOrId}",
+                          "item": [
+                            {
+                              "name": "Salesforce Experience Cloud Get a Content Item from Channel",
+                              "id": "7dab4748-0412-461d-87e7-988082b31f80",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/:contentKeyOrId?language=<string>&showAbsoluteUrl=false",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "cms",
+                                    "delivery",
+                                    "channels",
+                                    ":channelId",
+                                    "contents",
+                                    ":contentKeyOrId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Language variant to retrieve",
+                                      "key": "language",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Whether to return absolute URLs",
+                                      "key": "showAbsoluteUrl",
+                                      "value": "false"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "641e2a01-c050-4b4b-88ae-001556ede4bc",
+                                      "key": "channelId",
+                                      "value": "<string>",
+                                      "description": "(Required) The ID of the CMS delivery channel"
+                                    },
+                                    {
+                                      "id": "90bfc295-5ba3-4113-9ec1-f9518b99603c",
+                                      "key": "contentKeyOrId",
+                                      "value": "<string>",
+                                      "description": "(Required) The content key or managed content ID"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a specific published managed content version from the specified delivery channel by content key or managed content ID."
+                              },
+                              "response": [
+                                {
+                                  "id": "388ee84e-9a37-4e83-9b4c-d31cbdb2dabf",
+                                  "name": "Successfully retrieved content item",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/:contentKeyOrId?language=<string>&showAbsoluteUrl=false",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        ":contentKeyOrId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Language variant to retrieve",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        },
+                                        {
+                                          "key": "contentKeyOrId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"contentKey\": \"<string>\",\n  \"contentNodes\": {\n    \"ipsum_b3\": {\n      \"altText\": \"<string>\",\n      \"contentKey\": \"<string>\",\n      \"fileName\": \"<string>\",\n      \"mediaType\": \"<string>\",\n      \"mimeType\": \"<string>\",\n      \"nodeType\": \"NameField\",\n      \"referenceId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\",\n      \"url\": \"<uri>\",\n      \"value\": \"<string>\"\n    }\n  },\n  \"contentUrlName\": \"<string>\",\n  \"language\": \"<string>\",\n  \"managedContentId\": \"<string>\",\n  \"publishedDate\": \"<dateTime>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\",\n  \"typeLabel\": \"<string>\",\n  \"unauthenticatedUrl\": \"<uri>\"\n}",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-388ee84e-9a37-4e83-9b4c-d31cbdb2dabf"
+                                },
+                                {
+                                  "id": "0297b335-eda9-4491-b1a2-1c8b992bac5d",
+                                  "name": "Unauthorized - invalid or expired OAuth token",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/:contentKeyOrId?language=<string>&showAbsoluteUrl=false",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        ":contentKeyOrId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Language variant to retrieve",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        },
+                                        {
+                                          "key": "contentKeyOrId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-0297b335-eda9-4491-b1a2-1c8b992bac5d"
+                                },
+                                {
+                                  "id": "68acbe60-4b90-4002-9e60-4c9f5d2ab6f2",
+                                  "name": "Resource not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/cms/delivery/channels/:channelId/contents/:contentKeyOrId?language=<string>&showAbsoluteUrl=false",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "cms",
+                                        "delivery",
+                                        "channels",
+                                        ":channelId",
+                                        "contents",
+                                        ":contentKeyOrId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Language variant to retrieve",
+                                          "key": "language",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "Whether to return absolute URLs",
+                                          "key": "showAbsoluteUrl",
+                                          "value": "false"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "channelId"
+                                        },
+                                        {
+                                          "key": "contentKeyOrId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-06-05T15:15:26.000Z",
+                                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                                  "uid": "35240-68acbe60-4b90-4002-9e60-4c9f5d2ab6f2"
+                                }
+                              ],
+                              "createdAt": "2026-06-05T15:15:26.000Z",
+                              "updatedAt": "2026-06-05T15:15:26.000Z",
+                              "uid": "35240-7dab4748-0412-461d-87e7-988082b31f80"
+                            }
+                          ],
+                          "id": "0dd37dca-337a-427c-8ad5-454be4ac5750",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-0dd37dca-337a-427c-8ad5-454be4ac5750"
+                        }
+                      ],
+                      "id": "99847a80-48d5-411d-ba1b-367e0e771dce",
+                      "createdAt": "2026-06-05T15:15:26.000Z",
+                      "updatedAt": "2026-06-05T15:15:26.000Z",
+                      "uid": "35240-99847a80-48d5-411d-ba1b-367e0e771dce"
+                    },
+                    {
+                      "name": "Salesforce Experience Cloud Get a Delivery Channel",
+                      "id": "ad1515bc-1696-4f90-866b-5bda1dc68f2b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cms/delivery/channels/:channelId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cms",
+                            "delivery",
+                            "channels",
+                            ":channelId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3e03bacd-105b-46b5-9ece-3aaf2a201d11",
+                              "key": "channelId",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the CMS delivery channel"
+                            }
+                          ]
+                        },
+                        "description": "Returns details about a specific managed content delivery channel including its name, type, and available content types."
+                      },
+                      "response": [
+                        {
+                          "id": "99407af4-9806-417f-af85-e069e91933eb",
+                          "name": "Successfully retrieved delivery channel",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cms/delivery/channels/:channelId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cms",
+                                "delivery",
+                                "channels",
+                                ":channelId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "channelId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"channelId\": \"<string>\",\n  \"channelName\": \"<string>\",\n  \"channelType\": \"ExperienceCloudSite\",\n  \"domain\": \"<string>\",\n  \"isDomainLocked\": \"<boolean>\",\n  \"isSearchable\": \"<boolean>\"\n}",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-99407af4-9806-417f-af85-e069e91933eb"
+                        },
+                        {
+                          "id": "7e7a8535-4da3-48dd-a0d1-d3c851c32e40",
+                          "name": "Unauthorized - invalid or expired OAuth token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cms/delivery/channels/:channelId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cms",
+                                "delivery",
+                                "channels",
+                                ":channelId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "channelId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-7e7a8535-4da3-48dd-a0d1-d3c851c32e40"
+                        },
+                        {
+                          "id": "7d775f16-664a-4271-9be8-3aaf05cafec0",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/cms/delivery/channels/:channelId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "cms",
+                                "delivery",
+                                "channels",
+                                ":channelId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "channelId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-7d775f16-664a-4271-9be8-3aaf05cafec0"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:15:26.000Z",
+                      "updatedAt": "2026-06-05T15:15:26.000Z",
+                      "uid": "35240-ad1515bc-1696-4f90-866b-5bda1dc68f2b"
+                    }
+                  ],
+                  "id": "06b05f73-12e5-4b8c-85b0-268fa095d6d2",
+                  "createdAt": "2026-06-05T15:15:26.000Z",
+                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                  "uid": "35240-06b05f73-12e5-4b8c-85b0-268fa095d6d2"
+                },
+                {
+                  "name": "Salesforce Experience Cloud List CMS Delivery Channels",
+                  "id": "fa081c5e-5015-4358-9839-2b7339b9df7a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cms/delivery/channels?pageSize=25&page=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cms",
+                        "delivery",
+                        "channels"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items per page (default 25, max 250)",
+                          "key": "pageSize",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Page number to retrieve (0-indexed)",
+                          "key": "page",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of managed content delivery channels available to the context user. Channels are destinations where content is published for delivery to Experience Cloud sites or external applications."
+                  },
+                  "response": [
+                    {
+                      "id": "2c85e0d7-d3be-44b6-a3ab-f9799888d93f",
+                      "name": "Successfully retrieved delivery channels",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cms/delivery/channels?pageSize=25&page=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cms",
+                            "delivery",
+                            "channels"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of items per page (default 25, max 250)",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Page number to retrieve (0-indexed)",
+                              "key": "page",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"channels\": [\n    {\n      \"channelId\": \"<string>\",\n      \"channelName\": \"<string>\",\n      \"channelType\": \"CustomChannel\",\n      \"domain\": \"<string>\",\n      \"isDomainLocked\": \"<boolean>\",\n      \"isSearchable\": \"<boolean>\"\n    },\n    {\n      \"channelId\": \"<string>\",\n      \"channelName\": \"<string>\",\n      \"channelType\": \"ExperienceCloudSite\",\n      \"domain\": \"<string>\",\n      \"isDomainLocked\": \"<boolean>\",\n      \"isSearchable\": \"<boolean>\"\n    }\n  ],\n  \"currentPageUrl\": \"<uri>\",\n  \"nextPageUrl\": \"<uri>\",\n  \"totalCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:15:26.000Z",
+                      "updatedAt": "2026-06-05T15:15:26.000Z",
+                      "uid": "35240-2c85e0d7-d3be-44b6-a3ab-f9799888d93f"
+                    },
+                    {
+                      "id": "38c77643-e333-411d-9616-608f2b7ce4dc",
+                      "name": "Unauthorized - invalid or expired OAuth token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/cms/delivery/channels?pageSize=25&page=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "cms",
+                            "delivery",
+                            "channels"
+                          ],
+                          "query": [
+                            {
+                              "description": "Number of items per page (default 25, max 250)",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Page number to retrieve (0-indexed)",
+                              "key": "page",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:26.000Z",
+                      "updatedAt": "2026-06-05T15:15:26.000Z",
+                      "uid": "35240-38c77643-e333-411d-9616-608f2b7ce4dc"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:15:26.000Z",
+                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                  "uid": "35240-fa081c5e-5015-4358-9839-2b7339b9df7a"
+                }
+              ],
+              "id": "ca80d131-a161-4a26-b90e-52860fb731ba",
+              "createdAt": "2026-06-05T15:15:26.000Z",
+              "updatedAt": "2026-06-05T15:15:26.000Z",
+              "uid": "35240-ca80d131-a161-4a26-b90e-52860fb731ba"
+            }
+          ],
+          "id": "ca820b6d-645e-42fb-ba28-9c099113a9dc",
+          "createdAt": "2026-06-05T15:15:26.000Z",
+          "updatedAt": "2026-06-05T15:15:26.000Z",
+          "uid": "35240-ca820b6d-645e-42fb-ba28-9c099113a9dc"
+        }
+      ],
+      "id": "930c3438-d675-4364-8502-9a98201a15c4",
+      "createdAt": "2026-06-05T15:15:26.000Z",
+      "updatedAt": "2026-06-05T15:15:26.000Z",
+      "uid": "35240-930c3438-d675-4364-8502-9a98201a15c4"
+    },
+    {
+      "name": "communities",
+      "item": [
+        {
+          "name": "{communityId}",
+          "item": [
+            {
+              "name": "managed-content",
+              "item": [
+                {
+                  "name": "delivery",
+                  "item": [
+                    {
+                      "name": "search",
+                      "item": [
+                        {
+                          "name": "Salesforce Experience Cloud Search Community Managed Content",
+                          "id": "edb729ba-a1c4-4ccb-b290-cafa14a13198",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/communities/:communityId/managed-content/delivery/search?q=<string>&managedContentType=<string>&language=<string>&pageSize=25&page=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "communities",
+                                ":communityId",
+                                "managed-content",
+                                "delivery",
+                                "search"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Search term",
+                                  "key": "q",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by content type",
+                                  "key": "managedContentType",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Language code",
+                                  "key": "language",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Number of items per page (default 25, max 250)",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Page number to retrieve (0-indexed)",
+                                  "key": "page",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2ccdb7a4-6980-4af4-8265-ec7c56d55467",
+                                  "key": "communityId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the Experience Cloud site"
+                                }
+                              ]
+                            },
+                            "description": "Searches published managed content within the specified Experience Cloud site using a search term."
+                          },
+                          "response": [
+                            {
+                              "id": "77098a1b-5dd0-454a-baeb-6b153b6e0309",
+                              "name": "Successfully searched community content",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/communities/:communityId/managed-content/delivery/search?q=<string>&managedContentType=<string>&language=<string>&pageSize=25&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "communities",
+                                    ":communityId",
+                                    "managed-content",
+                                    "delivery",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Search term",
+                                      "key": "q",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter by content type",
+                                      "key": "managedContentType",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Language code",
+                                      "key": "language",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Number of items per page (default 25, max 250)",
+                                      "key": "pageSize",
+                                      "value": "25"
+                                    },
+                                    {
+                                      "description": "Page number to retrieve (0-indexed)",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"currentPageUrl\": \"<uri>\",\n  \"items\": [\n    {\n      \"contentKey\": \"<string>\",\n      \"contentNodes\": {\n        \"enimb7\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"Media\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\"\n    },\n    {\n      \"contentKey\": \"<string>\",\n      \"contentNodes\": {\n        \"ut03\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"Media\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        },\n        \"dolore7f\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"MultilineText\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        },\n        \"iruree\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"MultilineText\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\"\n    }\n  ],\n  \"managedContentTypes\": {\n    \"adipisicingd2e\": {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"cupidatat_969\": {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  },\n  \"nextPageUrl\": \"<uri>\",\n  \"total\": \"<integer>\",\n  \"totalCount\": \"<integer>\"\n}",
+                              "createdAt": "2026-06-05T15:15:26.000Z",
+                              "updatedAt": "2026-06-05T15:15:26.000Z",
+                              "uid": "35240-77098a1b-5dd0-454a-baeb-6b153b6e0309"
+                            },
+                            {
+                              "id": "c1d8513a-7418-446a-93a1-974930342de7",
+                              "name": "Unauthorized - invalid or expired OAuth token",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/communities/:communityId/managed-content/delivery/search?q=<string>&managedContentType=<string>&language=<string>&pageSize=25&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "communities",
+                                    ":communityId",
+                                    "managed-content",
+                                    "delivery",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Search term",
+                                      "key": "q",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter by content type",
+                                      "key": "managedContentType",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Language code",
+                                      "key": "language",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Number of items per page (default 25, max 250)",
+                                      "key": "pageSize",
+                                      "value": "25"
+                                    },
+                                    {
+                                      "description": "Page number to retrieve (0-indexed)",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:26.000Z",
+                              "updatedAt": "2026-06-05T15:15:26.000Z",
+                              "uid": "35240-c1d8513a-7418-446a-93a1-974930342de7"
+                            },
+                            {
+                              "id": "f955eea1-28a9-4640-9aa3-05b874838e26",
+                              "name": "Resource not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/communities/:communityId/managed-content/delivery/search?q=<string>&managedContentType=<string>&language=<string>&pageSize=25&page=0",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "communities",
+                                    ":communityId",
+                                    "managed-content",
+                                    "delivery",
+                                    "search"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) Search term",
+                                      "key": "q",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter by content type",
+                                      "key": "managedContentType",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Language code",
+                                      "key": "language",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Number of items per page (default 25, max 250)",
+                                      "key": "pageSize",
+                                      "value": "25"
+                                    },
+                                    {
+                                      "description": "Page number to retrieve (0-indexed)",
+                                      "key": "page",
+                                      "value": "0"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:26.000Z",
+                              "updatedAt": "2026-06-05T15:15:26.000Z",
+                              "uid": "35240-f955eea1-28a9-4640-9aa3-05b874838e26"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-edb729ba-a1c4-4ccb-b290-cafa14a13198"
+                        }
+                      ],
+                      "id": "2758836e-7f2f-4ebe-8147-617b3f1e4ed0",
+                      "createdAt": "2026-06-05T15:15:26.000Z",
+                      "updatedAt": "2026-06-05T15:15:26.000Z",
+                      "uid": "35240-2758836e-7f2f-4ebe-8147-617b3f1e4ed0"
+                    },
+                    {
+                      "name": "Salesforce Experience Cloud Query Community Managed Content",
+                      "id": "75b4d1d7-2400-4b60-8df0-38f0a40d4546",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/communities/:communityId/managed-content/delivery?managedContentType=<string>&language=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "communities",
+                            ":communityId",
+                            "managed-content",
+                            "delivery"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Content type developer name to query",
+                              "key": "managedContentType",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Language code to filter content",
+                              "key": "language",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated list of topic names",
+                              "key": "topics",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Whether to return absolute URLs",
+                              "key": "showAbsoluteUrl",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Number of items per page (default 25, max 250)",
+                              "key": "pageSize",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Page number to retrieve (0-indexed)",
+                              "key": "page",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e8e065a4-07bc-4291-b896-dab8abb186d5",
+                              "key": "communityId",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the Experience Cloud site"
+                            }
+                          ]
+                        },
+                        "description": "Returns published managed content for the specified Experience Cloud site. Similar to channel-based delivery but scoped to a specific community context."
+                      },
+                      "response": [
+                        {
+                          "id": "05126110-e91c-4963-bf5e-b41f0752364e",
+                          "name": "Successfully retrieved community managed content",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/communities/:communityId/managed-content/delivery?managedContentType=<string>&language=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "communities",
+                                ":communityId",
+                                "managed-content",
+                                "delivery"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Content type developer name to query",
+                                  "key": "managedContentType",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Language code to filter content",
+                                  "key": "language",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Comma-separated list of topic names",
+                                  "key": "topics",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Whether to return absolute URLs",
+                                  "key": "showAbsoluteUrl",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "Number of items per page (default 25, max 250)",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Page number to retrieve (0-indexed)",
+                                  "key": "page",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"currentPageUrl\": \"<uri>\",\n  \"items\": [\n    {\n      \"contentKey\": \"<string>\",\n      \"contentNodes\": {\n        \"enimb7\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"Media\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\"\n    },\n    {\n      \"contentKey\": \"<string>\",\n      \"contentNodes\": {\n        \"ut03\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"Media\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        },\n        \"dolore7f\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"MultilineText\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        },\n        \"iruree\": {\n          \"altText\": \"<string>\",\n          \"contentKey\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"mediaType\": \"<string>\",\n          \"mimeType\": \"<string>\",\n          \"nodeType\": \"MultilineText\",\n          \"referenceId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"unauthenticatedUrl\": \"<uri>\",\n          \"url\": \"<uri>\",\n          \"value\": \"<string>\"\n        }\n      },\n      \"contentUrlName\": \"<string>\",\n      \"language\": \"<string>\",\n      \"managedContentId\": \"<string>\",\n      \"publishedDate\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"typeLabel\": \"<string>\",\n      \"unauthenticatedUrl\": \"<uri>\"\n    }\n  ],\n  \"managedContentTypes\": {\n    \"adipisicingd2e\": {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    \"cupidatat_969\": {\n      \"developerName\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  },\n  \"nextPageUrl\": \"<uri>\",\n  \"total\": \"<integer>\",\n  \"totalCount\": \"<integer>\"\n}",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-05126110-e91c-4963-bf5e-b41f0752364e"
+                        },
+                        {
+                          "id": "84c16d92-451f-46b5-90b0-0c5c0f58f37a",
+                          "name": "Unauthorized - invalid or expired OAuth token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/communities/:communityId/managed-content/delivery?managedContentType=<string>&language=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "communities",
+                                ":communityId",
+                                "managed-content",
+                                "delivery"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Content type developer name to query",
+                                  "key": "managedContentType",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Language code to filter content",
+                                  "key": "language",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Comma-separated list of topic names",
+                                  "key": "topics",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Whether to return absolute URLs",
+                                  "key": "showAbsoluteUrl",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "Number of items per page (default 25, max 250)",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Page number to retrieve (0-indexed)",
+                                  "key": "page",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-84c16d92-451f-46b5-90b0-0c5c0f58f37a"
+                        },
+                        {
+                          "id": "0083aa43-cc64-47a5-8bf7-be4e5704e408",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/communities/:communityId/managed-content/delivery?managedContentType=<string>&language=<string>&topics=<string>&showAbsoluteUrl=false&pageSize=25&page=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "communities",
+                                ":communityId",
+                                "managed-content",
+                                "delivery"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Content type developer name to query",
+                                  "key": "managedContentType",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Language code to filter content",
+                                  "key": "language",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Comma-separated list of topic names",
+                                  "key": "topics",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Whether to return absolute URLs",
+                                  "key": "showAbsoluteUrl",
+                                  "value": "false"
+                                },
+                                {
+                                  "description": "Number of items per page (default 25, max 250)",
+                                  "key": "pageSize",
+                                  "value": "25"
+                                },
+                                {
+                                  "description": "Page number to retrieve (0-indexed)",
+                                  "key": "page",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:26.000Z",
+                          "updatedAt": "2026-06-05T15:15:26.000Z",
+                          "uid": "35240-0083aa43-cc64-47a5-8bf7-be4e5704e408"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:15:26.000Z",
+                      "updatedAt": "2026-06-05T15:15:26.000Z",
+                      "uid": "35240-75b4d1d7-2400-4b60-8df0-38f0a40d4546"
+                    }
+                  ],
+                  "id": "aa2aa0aa-fc36-4906-92e3-d5d7a3dd72c6",
+                  "createdAt": "2026-06-05T15:15:26.000Z",
+                  "updatedAt": "2026-06-05T15:15:26.000Z",
+                  "uid": "35240-aa2aa0aa-fc36-4906-92e3-d5d7a3dd72c6"
+                }
+              ],
+              "id": "b49a9052-9bf2-4abd-96f9-82ef0a8a87ab",
+              "createdAt": "2026-06-05T15:15:26.000Z",
+              "updatedAt": "2026-06-05T15:15:26.000Z",
+              "uid": "35240-b49a9052-9bf2-4abd-96f9-82ef0a8a87ab"
+            }
+          ],
+          "id": "10f48351-fe3d-44c6-ad6b-ca8603d74f04",
+          "createdAt": "2026-06-05T15:15:26.000Z",
+          "updatedAt": "2026-06-05T15:15:26.000Z",
+          "uid": "35240-10f48351-fe3d-44c6-ad6b-ca8603d74f04"
+        }
+      ],
+      "id": "cc498308-29e4-43be-9d79-9b2adb0e2f15",
+      "createdAt": "2026-06-05T15:15:26.000Z",
+      "updatedAt": "2026-06-05T15:15:26.000Z",
+      "uid": "35240-cc498308-29e4-43be-9d79-9b2adb0e2f15"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect"
+    }
+  ]
+}

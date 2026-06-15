@@ -1,0 +1,1907 @@
+{
+  "info": {
+    "_postman_id": "2d92e6aa-7e3e-4ded-be4f-c20b04e2254e",
+    "name": "Salesforce Experience Cloud Templates API",
+    "description": "Retrieve and manage Experience Cloud site templates including Build Your Own and Microsite LWR templates. Supports programmatic theme and branding configuration for digital experience portals. Templates define the structure, navigation, and default styling for Experience Cloud sites.\n\nContact Support:\n Name: Salesforce Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:15:22.000Z",
+    "updatedAt": "2026-06-05T15:15:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2d92e6aa-7e3e-4ded-be4f-c20b04e2254e"
+  },
+  "item": [
+    {
+      "name": "connect",
+      "item": [
+        {
+          "name": "communities",
+          "item": [
+            {
+              "name": "templates",
+              "item": [
+                {
+                  "name": "Salesforce Experience Cloud List Site Templates",
+                  "id": "c43674b9-038c-41c2-b9f7-544c52b3d2e8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/connect/communities/templates?templateCategory=Aura",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "connect",
+                        "communities",
+                        "templates"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter templates by category",
+                          "key": "templateCategory",
+                          "value": "Aura"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of available Experience Cloud site templates that can be used when creating new sites. Includes both standard Salesforce templates (Build Your Own, Customer Service, Partner Central, etc.) and LWR-based templates."
+                  },
+                  "response": [
+                    {
+                      "id": "4f07e104-369d-4eb4-9b21-0984f694464a",
+                      "name": "Successfully retrieved site templates",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connect/communities/templates?templateCategory=Aura",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connect",
+                            "communities",
+                            "templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter templates by category",
+                              "key": "templateCategory",
+                              "value": "Aura"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"templates\": [\n    {\n      \"developerName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"label\": \"<string>\",\n      \"publisher\": \"<string>\",\n      \"templateCategory\": \"Aura\",\n      \"templateType\": \"Customer Account Portal\",\n      \"description\": \"<string>\",\n      \"iconUrl\": \"<uri>\",\n      \"previewUrl\": \"<uri>\"\n    },\n    {\n      \"developerName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"label\": \"<string>\",\n      \"publisher\": \"<string>\",\n      \"templateCategory\": \"Aura\",\n      \"templateType\": \"Microsite (LWR)\",\n      \"description\": \"<string>\",\n      \"iconUrl\": \"<uri>\",\n      \"previewUrl\": \"<uri>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:15:23.000Z",
+                      "updatedAt": "2026-06-05T15:15:23.000Z",
+                      "uid": "35240-4f07e104-369d-4eb4-9b21-0984f694464a"
+                    },
+                    {
+                      "id": "91ed88f7-1a47-4877-affe-e09d61061b7a",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connect/communities/templates?templateCategory=Aura",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connect",
+                            "communities",
+                            "templates"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter templates by category",
+                              "key": "templateCategory",
+                              "value": "Aura"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:15:23.000Z",
+                      "updatedAt": "2026-06-05T15:15:23.000Z",
+                      "uid": "35240-91ed88f7-1a47-4877-affe-e09d61061b7a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:15:23.000Z",
+                  "updatedAt": "2026-06-05T15:15:23.000Z",
+                  "uid": "35240-c43674b9-038c-41c2-b9f7-544c52b3d2e8"
+                }
+              ],
+              "id": "e7abfc99-129d-453d-a389-af482f527885",
+              "createdAt": "2026-06-05T15:15:23.000Z",
+              "updatedAt": "2026-06-05T15:15:23.000Z",
+              "uid": "35240-e7abfc99-129d-453d-a389-af482f527885"
+            },
+            {
+              "name": "{communityId}",
+              "item": [
+                {
+                  "name": "template",
+                  "item": [
+                    {
+                      "name": "Salesforce Experience Cloud Get Site Template",
+                      "id": "ba6c7550-c550-448b-93ac-a03ec19e30e3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connect/communities/:communityId/template",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connect",
+                            "communities",
+                            ":communityId",
+                            "template"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1ff2d94f-9f4a-49a1-9f61-3b6ab3272c58",
+                              "key": "communityId",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the Experience Cloud site"
+                            }
+                          ]
+                        },
+                        "description": "Returns the template currently used by the specified Experience Cloud site, including template type, version, and default configuration."
+                      },
+                      "response": [
+                        {
+                          "id": "5717d0ff-360f-4c93-9594-648ebe8bc4a0",
+                          "name": "Successfully retrieved site template",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/template",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "template"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"developerName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"label\": \"<string>\",\n  \"publisher\": \"<string>\",\n  \"templateCategory\": \"Aura\",\n  \"templateType\": \"Customer Account Portal\",\n  \"description\": \"<string>\",\n  \"iconUrl\": \"<uri>\",\n  \"previewUrl\": \"<uri>\"\n}",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-5717d0ff-360f-4c93-9594-648ebe8bc4a0"
+                        },
+                        {
+                          "id": "ee07435a-4665-4e46-9b8c-e74fb23eff0e",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/template",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "template"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-ee07435a-4665-4e46-9b8c-e74fb23eff0e"
+                        },
+                        {
+                          "id": "a7fb21ca-4dac-44f6-9aff-7736e51bcc67",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/template",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "template"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-a7fb21ca-4dac-44f6-9aff-7736e51bcc67"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:15:23.000Z",
+                      "updatedAt": "2026-06-05T15:15:23.000Z",
+                      "uid": "35240-ba6c7550-c550-448b-93ac-a03ec19e30e3"
+                    }
+                  ],
+                  "id": "9559c78b-fc49-4a17-bf5a-6ca1ada99d43",
+                  "createdAt": "2026-06-05T15:15:23.000Z",
+                  "updatedAt": "2026-06-05T15:15:23.000Z",
+                  "uid": "35240-9559c78b-fc49-4a17-bf5a-6ca1ada99d43"
+                },
+                {
+                  "name": "themes",
+                  "item": [
+                    {
+                      "name": "active",
+                      "item": [
+                        {
+                          "name": "Salesforce Experience Cloud Get Active Theme",
+                          "id": "b2f377f9-b987-4e7f-8455-dbf733ac215b",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "themes",
+                                "active"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "212f6f24-c2f0-4fc5-b450-32ae5ad1344c",
+                                  "key": "communityId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the Experience Cloud site"
+                                }
+                              ]
+                            },
+                            "description": "Returns the currently active theme for the specified Experience Cloud site with all its branding properties."
+                          },
+                          "response": [
+                            {
+                              "id": "35ea77af-66e6-48ab-a3d4-64a0cb709856",
+                              "name": "Successfully retrieved active theme",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "themes",
+                                    "active"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isActive\": \"<boolean>\",\n  \"themeType\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Font\",\n      \"value\": \"<string>\",\n      \"group\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Color\",\n      \"value\": \"<string>\",\n      \"group\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-35ea77af-66e6-48ab-a3d4-64a0cb709856"
+                            },
+                            {
+                              "id": "656b0762-7d9a-4964-9b88-9032f2fa211b",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "themes",
+                                    "active"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-656b0762-7d9a-4964-9b88-9032f2fa211b"
+                            },
+                            {
+                              "id": "2d3e8b86-978a-417d-9b9e-f0c8d97859e7",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "themes",
+                                    "active"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-2d3e8b86-978a-417d-9b9e-f0c8d97859e7"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-b2f377f9-b987-4e7f-8455-dbf733ac215b"
+                        },
+                        {
+                          "name": "Salesforce Experience Cloud Set Active Theme",
+                          "id": "a7d5f0a2-2fe4-4e61-9b03-e5bf38118d67",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"themeId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "themes",
+                                "active"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "84b967f9-ff7c-491c-b879-4b1daca1586f",
+                                  "key": "communityId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the Experience Cloud site"
+                                }
+                              ]
+                            },
+                            "description": "Sets the active theme for the specified Experience Cloud site. Changes take effect on the next publish."
+                          },
+                          "response": [
+                            {
+                              "id": "932cb348-8e06-4262-ab37-830c7ab8d00d",
+                              "name": "Active theme set successfully",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"themeId\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "themes",
+                                    "active"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"isActive\": \"<boolean>\",\n  \"themeType\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Font\",\n      \"value\": \"<string>\",\n      \"group\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Color\",\n      \"value\": \"<string>\",\n      \"group\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-932cb348-8e06-4262-ab37-830c7ab8d00d"
+                            },
+                            {
+                              "id": "77e0be1e-2d0c-470d-8ec9-0b6116e8d67a",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"themeId\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "themes",
+                                    "active"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-77e0be1e-2d0c-470d-8ec9-0b6116e8d67a"
+                            },
+                            {
+                              "id": "ad293c5f-4f14-4b6a-8aba-5b6fe5c94b05",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"themeId\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "themes",
+                                    "active"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-ad293c5f-4f14-4b6a-8aba-5b6fe5c94b05"
+                            },
+                            {
+                              "id": "928552b2-eb7b-4066-8a43-25832cca87a9",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"themeId\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/themes/active",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "themes",
+                                    "active"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-928552b2-eb7b-4066-8a43-25832cca87a9"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-a7d5f0a2-2fe4-4e61-9b03-e5bf38118d67"
+                        }
+                      ],
+                      "id": "a09e7878-2679-485d-adcc-bb575d4006e5",
+                      "createdAt": "2026-06-05T15:15:23.000Z",
+                      "updatedAt": "2026-06-05T15:15:23.000Z",
+                      "uid": "35240-a09e7878-2679-485d-adcc-bb575d4006e5"
+                    },
+                    {
+                      "name": "Salesforce Experience Cloud List Site Themes",
+                      "id": "391b5cb4-fca1-4711-ae14-807124ca2c72",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connect/communities/:communityId/themes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connect",
+                            "communities",
+                            ":communityId",
+                            "themes"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8a35176d-039d-4d4c-bcc7-858c47160d7e",
+                              "key": "communityId",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the Experience Cloud site"
+                            }
+                          ]
+                        },
+                        "description": "Returns the themes available for the specified Experience Cloud site. Themes control the visual appearance including colors, fonts, spacing, and component styling."
+                      },
+                      "response": [
+                        {
+                          "id": "174c2882-fbb0-4f7a-bd58-8c071f7dd57f",
+                          "name": "Successfully retrieved themes",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/themes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "themes"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"themes\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"isActive\": \"<boolean>\",\n      \"themeType\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"Number\",\n          \"value\": \"<string>\",\n          \"group\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"Font\",\n          \"value\": \"<string>\",\n          \"group\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"isActive\": \"<boolean>\",\n      \"themeType\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"Color\",\n          \"value\": \"<string>\",\n          \"group\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"Image\",\n          \"value\": \"<string>\",\n          \"group\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-174c2882-fbb0-4f7a-bd58-8c071f7dd57f"
+                        },
+                        {
+                          "id": "02b79483-3fff-4549-9711-09baf2ea70c6",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/themes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "themes"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-02b79483-3fff-4549-9711-09baf2ea70c6"
+                        },
+                        {
+                          "id": "6fd9d8cc-ad92-42c0-b57a-6faee9587288",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/themes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "themes"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-6fd9d8cc-ad92-42c0-b57a-6faee9587288"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:15:23.000Z",
+                      "updatedAt": "2026-06-05T15:15:23.000Z",
+                      "uid": "35240-391b5cb4-fca1-4711-ae14-807124ca2c72"
+                    }
+                  ],
+                  "id": "6a1fcfc7-fe29-4ff8-bccc-39a40ba98883",
+                  "createdAt": "2026-06-05T15:15:23.000Z",
+                  "updatedAt": "2026-06-05T15:15:23.000Z",
+                  "uid": "35240-6a1fcfc7-fe29-4ff8-bccc-39a40ba98883"
+                },
+                {
+                  "name": "branding-sets",
+                  "item": [
+                    {
+                      "name": "{brandingSetId}",
+                      "item": [
+                        {
+                          "name": "Salesforce Experience Cloud Get a Branding Set",
+                          "id": "acc14796-f1d1-45c9-ac2e-b8e089b84c50",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "branding-sets",
+                                ":brandingSetId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0dc5e0c9-f314-4edd-9f99-994e8c4f9500",
+                                  "key": "communityId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the Experience Cloud site"
+                                },
+                                {
+                                  "id": "abae94bb-cfd8-477d-9356-04f3218198de",
+                                  "key": "brandingSetId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the branding set"
+                                }
+                              ]
+                            },
+                            "description": "Returns the details of a specific branding set including all its property values for colors, fonts, and image references."
+                          },
+                          "response": [
+                            {
+                              "id": "f2efe67e-6493-459f-8d22-e6127fc48157",
+                              "name": "Successfully retrieved branding set",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "branding-sets",
+                                    ":brandingSetId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    },
+                                    {
+                                      "key": "brandingSetId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Font\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Font\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-f2efe67e-6493-459f-8d22-e6127fc48157"
+                            },
+                            {
+                              "id": "ca3f3238-9e3c-4fea-aa2b-118d294399dd",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "branding-sets",
+                                    ":brandingSetId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    },
+                                    {
+                                      "key": "brandingSetId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-ca3f3238-9e3c-4fea-aa2b-118d294399dd"
+                            },
+                            {
+                              "id": "a5498406-5658-4c01-9f17-b316c0c8435b",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "branding-sets",
+                                    ":brandingSetId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    },
+                                    {
+                                      "key": "brandingSetId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-a5498406-5658-4c01-9f17-b316c0c8435b"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-acc14796-f1d1-45c9-ac2e-b8e089b84c50"
+                        },
+                        {
+                          "name": "Salesforce Experience Cloud Update a Branding Set",
+                          "id": "9a622501-cece-40d4-8e33-d924f6daadfb",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "branding-sets",
+                                ":brandingSetId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "21dc6f55-635f-45a5-8df8-60a6c75ad9ef",
+                                  "key": "communityId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the Experience Cloud site"
+                                },
+                                {
+                                  "id": "ce87b2af-95e3-4ef4-89e2-aca36dd13468",
+                                  "key": "brandingSetId",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the branding set"
+                                }
+                              ]
+                            },
+                            "description": "Updates the properties of an existing branding set. Only the properties included in the request are updated."
+                          },
+                          "response": [
+                            {
+                              "id": "e0878519-3b26-4445-9d03-d9430865d41a",
+                              "name": "Branding set updated successfully",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "branding-sets",
+                                    ":brandingSetId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    },
+                                    {
+                                      "key": "brandingSetId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Font\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Font\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-e0878519-3b26-4445-9d03-d9430865d41a"
+                            },
+                            {
+                              "id": "b7857dc2-5518-436b-bea4-01b799247f61",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "branding-sets",
+                                    ":brandingSetId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    },
+                                    {
+                                      "key": "brandingSetId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-b7857dc2-5518-436b-bea4-01b799247f61"
+                            },
+                            {
+                              "id": "243b51a5-a2ea-48d1-83b9-ecd379bba099",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "branding-sets",
+                                    ":brandingSetId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    },
+                                    {
+                                      "key": "brandingSetId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-243b51a5-a2ea-48d1-83b9-ecd379bba099"
+                            },
+                            {
+                              "id": "3818131e-6cc7-4681-b9f5-0ecf478ea14e",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"Image\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets/:brandingSetId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "connect",
+                                    "communities",
+                                    ":communityId",
+                                    "branding-sets",
+                                    ":brandingSetId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "communityId"
+                                    },
+                                    {
+                                      "key": "brandingSetId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:15:23.000Z",
+                              "updatedAt": "2026-06-05T15:15:23.000Z",
+                              "uid": "35240-3818131e-6cc7-4681-b9f5-0ecf478ea14e"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-9a622501-cece-40d4-8e33-d924f6daadfb"
+                        }
+                      ],
+                      "id": "0d4e2c35-4ddc-418e-9697-93e19fd738f7",
+                      "createdAt": "2026-06-05T15:15:23.000Z",
+                      "updatedAt": "2026-06-05T15:15:23.000Z",
+                      "uid": "35240-0d4e2c35-4ddc-418e-9697-93e19fd738f7"
+                    },
+                    {
+                      "name": "Salesforce Experience Cloud List Branding Sets",
+                      "id": "1ead3392-6abb-41d7-ad06-3ac4717160c3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "connect",
+                            "communities",
+                            ":communityId",
+                            "branding-sets"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d11c61d1-8e9d-4ac8-8e5a-844407f6c40c",
+                              "key": "communityId",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the Experience Cloud site"
+                            }
+                          ]
+                        },
+                        "description": "Returns the branding sets configured for the specified Experience Cloud site. Branding sets define reusable visual property groups for colors, fonts, and images."
+                      },
+                      "response": [
+                        {
+                          "id": "de3fb544-ca46-4200-889f-2ae2c1ba5976",
+                          "name": "Successfully retrieved branding sets",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "branding-sets"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"brandingSets\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"Color\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"Font\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"properties\": [\n        {\n          \"name\": \"<string>\",\n          \"type\": \"Font\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"type\": \"String\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-de3fb544-ca46-4200-889f-2ae2c1ba5976"
+                        },
+                        {
+                          "id": "9c57b06a-19dc-4f85-9d03-c48999131c63",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "branding-sets"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-9c57b06a-19dc-4f85-9d03-c48999131c63"
+                        },
+                        {
+                          "id": "7817f3b1-34b8-4692-8e25-288f02cfcd96",
+                          "name": "Not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/connect/communities/:communityId/branding-sets",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "connect",
+                                "communities",
+                                ":communityId",
+                                "branding-sets"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "communityId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  {\n    \"errorCode\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:15:23.000Z",
+                          "updatedAt": "2026-06-05T15:15:23.000Z",
+                          "uid": "35240-7817f3b1-34b8-4692-8e25-288f02cfcd96"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:15:23.000Z",
+                      "updatedAt": "2026-06-05T15:15:23.000Z",
+                      "uid": "35240-1ead3392-6abb-41d7-ad06-3ac4717160c3"
+                    }
+                  ],
+                  "id": "ba1d20dd-3d26-43ef-b8c7-fd7a382c3c34",
+                  "createdAt": "2026-06-05T15:15:23.000Z",
+                  "updatedAt": "2026-06-05T15:15:23.000Z",
+                  "uid": "35240-ba1d20dd-3d26-43ef-b8c7-fd7a382c3c34"
+                }
+              ],
+              "id": "90b8648c-0b0d-415e-b2c7-6392c1442525",
+              "createdAt": "2026-06-05T15:15:23.000Z",
+              "updatedAt": "2026-06-05T15:15:23.000Z",
+              "uid": "35240-90b8648c-0b0d-415e-b2c7-6392c1442525"
+            }
+          ],
+          "id": "a9bee7b1-16ea-4874-9665-742f003fb7c2",
+          "createdAt": "2026-06-05T15:15:23.000Z",
+          "updatedAt": "2026-06-05T15:15:23.000Z",
+          "uid": "35240-a9bee7b1-16ea-4874-9665-742f003fb7c2"
+        }
+      ],
+      "id": "d6eaa5fb-310c-4bdb-9438-02af147bea78",
+      "createdAt": "2026-06-05T15:15:23.000Z",
+      "updatedAt": "2026-06-05T15:15:23.000Z",
+      "uid": "35240-d6eaa5fb-310c-4bdb-9438-02af147bea78"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "instance",
+      "value": "yourInstance"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0"
+    }
+  ]
+}
