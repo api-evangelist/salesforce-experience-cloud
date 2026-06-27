@@ -52,7 +52,7 @@ apis:
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: OpenAPI
     url: openapi/salesforce-experience-cloud-connect-communities-openapi.yml
-  - type: Postman Collection
+  - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
@@ -98,7 +98,7 @@ apis:
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: OpenAPI
     url: openapi/salesforce-experience-cloud-rest-api-openapi.yml
-  - type: Postman Collection
+  - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Authentication
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
@@ -262,72 +262,69 @@ apis:
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/salesforce-experience-cloud/overview
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/salesforce-experience-cloud-account-contact-case-onboarding-workflow.yml
-    name: Salesforce Experience Cloud Account Contact Case Onboarding
-    summary: Create an Account, add a Contact under it, then open a Case for that Contact.
-  - url: arazzo/salesforce-experience-cloud-branding-set-revise-workflow.yml
-    name: Salesforce Experience Cloud Branding Set Revision
-    summary: Read a site branding set, then update its name, description, and properties.
-  - url: arazzo/salesforce-experience-cloud-case-escalation-workflow.yml
-    name: Salesforce Experience Cloud Case Escalation
-    summary: Find an open Case by number with SOQL, escalate it, and reload it.
-  - url: arazzo/salesforce-experience-cloud-cms-content-publish-workflow.yml
-    name: Salesforce Experience Cloud CMS Content Publish
-    summary: Create a CMS content item, read it back, then publish it to channels.
-  - url: arazzo/salesforce-experience-cloud-cms-content-revise-republish-workflow.yml
-    name: Salesforce Experience Cloud CMS Content Revise and Republish
-    summary: Update an existing CMS content item, then republish it to channels.
-  - url: arazzo/salesforce-experience-cloud-contact-case-intake-workflow.yml
-    name: Salesforce Experience Cloud Contact and Case Intake
-    summary: Create a Contact, then open a support Case linked to that Contact.
-  - url: arazzo/salesforce-experience-cloud-favorite-lifecycle-workflow.yml
-    name: Salesforce Experience Cloud Favorite Lifecycle
-    summary: Add a favorite, list the user's favorites, then remove the favorite.
-  - url: arazzo/salesforce-experience-cloud-feed-element-moderation-delete-workflow.yml
-    name: Salesforce Experience Cloud Feed Element Moderation Delete
-    summary: Fetch a feed element, inspect its comments, then delete it if it exists.
-  - url: arazzo/salesforce-experience-cloud-feed-post-comment-workflow.yml
-    name: Salesforce Experience Cloud Feed Post and Comment
-    summary: Post a feed element to a community, read it back, and comment on it.
-  - url: arazzo/salesforce-experience-cloud-feed-post-like-workflow.yml
-    name: Salesforce Experience Cloud Feed Post and Like
-    summary: Post a feed element to a community and like it on behalf of the user.
-  - url: arazzo/salesforce-experience-cloud-graphql-query-rest-update-workflow.yml
-    name: Salesforce Experience Cloud GraphQL Query and REST Update
-    summary: Resolve a record ID via a GraphQL query, then update it through the REST API.
-  - url: arazzo/salesforce-experience-cloud-headless-content-delivery-workflow.yml
-    name: Salesforce Experience Cloud Headless Content Delivery
-    summary: Resolve a delivery channel, query its published content, then fetch one item.
-  - url: arazzo/salesforce-experience-cloud-member-reputation-lookup-workflow.yml
-    name: Salesforce Experience Cloud Member Reputation Lookup
-    summary: Identify the current community user, search members, and read a member's reputation.
-  - url: arazzo/salesforce-experience-cloud-object-listview-explore-workflow.yml
-    name: Salesforce Experience Cloud Object List View Exploration
-    summary: Read object metadata, find its list views, and load the first list view's data.
-  - url: arazzo/salesforce-experience-cloud-site-provision-publish-workflow.yml
-    name: Salesforce Experience Cloud Site Provision and Publish
-    summary: Create an Experience Cloud site, read it back, then publish it.
-  - url: arazzo/salesforce-experience-cloud-site-theme-activate-publish-workflow.yml
-    name: Salesforce Experience Cloud Site Theme Activate and Publish
-    summary: List a site's themes, activate one, then publish the site to apply it.
-  - url: arazzo/salesforce-experience-cloud-site-update-publish-workflow.yml
-    name: Salesforce Experience Cloud Site Update and Publish
-    summary: Update an Experience Cloud site's settings, then publish the changes.
-  - url: arazzo/salesforce-experience-cloud-sobject-record-lifecycle-workflow.yml
-    name: Salesforce Experience Cloud sObject Record Lifecycle
-    summary: Create an sObject record, read it back, then update it via the REST API.
-  - url: arazzo/salesforce-experience-cloud-soql-query-update-workflow.yml
-    name: Salesforce Experience Cloud SOQL Query and Update
-    summary: Run a SOQL query to find a record, then update the first match.
-  - url: arazzo/salesforce-experience-cloud-topic-upsert-workflow.yml
-    name: Salesforce Experience Cloud Topic Upsert
-    summary: Search community topics by name and create one if it does not exist, else update it.
-  - url: arazzo/salesforce-experience-cloud-ui-record-lifecycle-workflow.yml
-    name: Salesforce Experience Cloud UI API Record Lifecycle
-    summary: Create, read, and update a record through the User Interface API.
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-account-contact-case-onboarding-workflow.yml
+  name: Salesforce Experience Cloud Account Contact Case Onboarding
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-branding-set-revise-workflow.yml
+  name: Salesforce Experience Cloud Branding Set Revision
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-case-escalation-workflow.yml
+  name: Salesforce Experience Cloud Case Escalation
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-cms-content-publish-workflow.yml
+  name: Salesforce Experience Cloud CMS Content Publish
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-cms-content-revise-republish-workflow.yml
+  name: Salesforce Experience Cloud CMS Content Revise and Republish
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-contact-case-intake-workflow.yml
+  name: Salesforce Experience Cloud Contact and Case Intake
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-favorite-lifecycle-workflow.yml
+  name: Salesforce Experience Cloud Favorite Lifecycle
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-feed-element-moderation-delete-workflow.yml
+  name: Salesforce Experience Cloud Feed Element Moderation Delete
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-feed-post-comment-workflow.yml
+  name: Salesforce Experience Cloud Feed Post and Comment
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-feed-post-like-workflow.yml
+  name: Salesforce Experience Cloud Feed Post and Like
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-graphql-query-rest-update-workflow.yml
+  name: Salesforce Experience Cloud GraphQL Query and REST Update
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-headless-content-delivery-workflow.yml
+  name: Salesforce Experience Cloud Headless Content Delivery
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-member-reputation-lookup-workflow.yml
+  name: Salesforce Experience Cloud Member Reputation Lookup
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-object-listview-explore-workflow.yml
+  name: Salesforce Experience Cloud Object List View Exploration
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-site-provision-publish-workflow.yml
+  name: Salesforce Experience Cloud Site Provision and Publish
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-site-theme-activate-publish-workflow.yml
+  name: Salesforce Experience Cloud Site Theme Activate and Publish
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-site-update-publish-workflow.yml
+  name: Salesforce Experience Cloud Site Update and Publish
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-sobject-record-lifecycle-workflow.yml
+  name: Salesforce Experience Cloud sObject Record Lifecycle
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-soql-query-update-workflow.yml
+  name: Salesforce Experience Cloud SOQL Query and Update
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-topic-upsert-workflow.yml
+  name: Salesforce Experience Cloud Topic Upsert
+- type: Arazzo
+  url: arazzo/salesforce-experience-cloud-ui-record-lifecycle-workflow.yml
+  name: Salesforce Experience Cloud UI API Record Lifecycle
 - type: LinkedIn
   url: https://www.linkedin.com/showcase/salesforce-experience-cloud
 - type: Portal
@@ -359,7 +356,7 @@ common:
   url: https://www.salesforce.com/products/experience-cloud/overview/
 - type: Login
   url: https://login.salesforce.com/
-- type: SignUp
+- type: Signup
   url: https://developer.salesforce.com/signup
 - type: RateLimits
   url: >-
@@ -368,25 +365,25 @@ common:
   url: https://developer.salesforce.com/developer-centers/lightning-web-components
 - type: Trailhead Learning
   url: https://trailhead.salesforce.com/
-- type: Postman Collection
+- type: PostmanCollection
   url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
 - type: API Library
   url: https://developer.salesforce.com/docs/apis
 - type: Developer Center
   url: https://developer.salesforce.com/developer-centers/experience-cloud
-- type: JSON-LD Context
+- type: JSONLDContext
   url: json-ld/salesforce-experience-cloud-context.jsonld
-- type: JSON Schema
+- type: JSONSchema
   url: json-schema/salesforce-experience-cloud-site-schema.json
-- type: JSON Schema
+- type: JSONSchema
   url: json-schema/salesforce-experience-cloud-managed-content-schema.json
-- type: JSON Schema
+- type: JSONSchema
   url: json-schema/salesforce-experience-cloud-feed-element-schema.json
-- type: JSON Schema
+- type: JSONSchema
   url: json-schema/salesforce-experience-cloud-community-user-schema.json
-- type: JSON Schema
+- type: JSONSchema
   url: json-schema/salesforce-experience-cloud-cms-channel-schema.json
-- type: JSON Schema
+- type: JSONSchema
   url: json-schema/salesforce-experience-cloud-sobject-record-schema.json
 - type: SpectralRules
   url: rules/salesforce-experience-cloud-rules.yml
