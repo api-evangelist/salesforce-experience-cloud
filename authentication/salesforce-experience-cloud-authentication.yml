@@ -1,0 +1,47 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/salesforce-experience-cloud-cms-connect-openapi.yml, openapi/salesforce-experience-cloud-cms-delivery-openapi.yml,
+  openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml, openapi/salesforce-experience-cloud-connect-communities-openapi.yml,
+  openapi/salesforce-experience-cloud-graphql-openapi.yml, openapi/salesforce-experience-cloud-rest-api-openapi.yml,
+  openapi/salesforce-experience-cloud-sites-openapi.yml, openapi/salesforce-experience-cloud-templates-openapi.yml,
+  openapi/salesforce-experience-cloud-user-interface-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+    tokenUrl: https://login.salesforce.com/services/oauth2/token
+    scopes: 2
+  description: Salesforce OAuth 2.0 authentication
+  sources:
+  - openapi/salesforce-experience-cloud-cms-connect-openapi.yml
+  - openapi/salesforce-experience-cloud-cms-delivery-openapi.yml
+  - openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml
+  - openapi/salesforce-experience-cloud-connect-communities-openapi.yml
+  - openapi/salesforce-experience-cloud-graphql-openapi.yml
+  - openapi/salesforce-experience-cloud-rest-api-openapi.yml
+  - openapi/salesforce-experience-cloud-sites-openapi.yml
+  - openapi/salesforce-experience-cloud-templates-openapi.yml
+  - openapi/salesforce-experience-cloud-user-interface-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: OAuth2
+  description: Bearer token obtained through OAuth 2.0 flow
+  sources:
+  - openapi/salesforce-experience-cloud-cms-connect-openapi.yml
+  - openapi/salesforce-experience-cloud-cms-delivery-openapi.yml
+  - openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml
+  - openapi/salesforce-experience-cloud-connect-communities-openapi.yml
+  - openapi/salesforce-experience-cloud-graphql-openapi.yml
+  - openapi/salesforce-experience-cloud-rest-api-openapi.yml
+  - openapi/salesforce-experience-cloud-sites-openapi.yml
+  - openapi/salesforce-experience-cloud-templates-openapi.yml
+  - openapi/salesforce-experience-cloud-user-interface-openapi.yml

@@ -260,6 +260,8 @@ apis:
   - type: Reference
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_navigation.htm
 common:
+- type: DomainSecurity
+  url: security/salesforce-experience-cloud-domain-security.yml
 - type: Authentication
   url: authentication/salesforce-experience-cloud-authentication.yml
 - type: OAuthScopes
