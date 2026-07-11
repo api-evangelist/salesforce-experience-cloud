@@ -260,6 +260,10 @@ apis:
   - type: Reference
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_navigation.htm
 common:
+- type: Authentication
+  url: authentication/salesforce-experience-cloud-authentication.yml
+- type: OAuthScopes
+  url: scopes/salesforce-experience-cloud-scopes.yml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/salesforce-experience-cloud/overview
 - type: Arazzo
