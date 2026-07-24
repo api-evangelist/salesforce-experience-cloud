@@ -1,0 +1,162 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Navigation API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Navigation
+  description: Site navigation menu operations
+paths:
+  /connect/communities/{communityId}/navigation-menu/navigation-menu-items:
+    get:
+      operationId: getNavigationMenuItems
+      summary: Salesforce Experience Cloud Get Navigation Menu Items
+      description: Returns the navigation menu items configured for the specified Experience Cloud site. Includes menu labels, target URLs, access restrictions, and hierarchy structure.
+      tags:
+      - Navigation
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      - name: navigationLinkSetId
+        in: query
+        description: The ID of the navigation link set to retrieve
+        schema:
+          type: string
+      - name: menuItemTypesToSkip
+        in: query
+        description: Comma-separated list of menu item types to exclude
+        schema:
+          type: string
+      - name: publishStatus
+        in: query
+        description: Filter by publish status of the navigation menu
+        schema:
+          type: string
+          enum:
+          - Draft
+          - Live
+      responses:
+        '200':
+          description: Successfully retrieved navigation menu items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NavigationMenuItemCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    NavigationMenuItem:
+      type: object
+      description: A navigation menu item in an Experience Cloud site
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the menu item
+        label:
+          type: string
+          description: Display label of the menu item
+        menuItemType:
+          type: string
+          description: Type of the menu item
+          enum:
+          - ExternalLink
+          - InternalLink
+          - MenuLabel
+          - NavigationalTopic
+          - SalesforceObject
+          - GlobalAction
+        position:
+          type: integer
+          description: Display position order
+        target:
+          type: string
+          description: Target URL or page reference
+        targetPreferences:
+          type: string
+          description: Target opening behavior
+        subMenu:
+          type: array
+          description: Nested submenu items
+          items:
+            $ref: '#/components/schemas/NavigationMenuItem'
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    NavigationMenuItemCollection:
+      type: object
+      description: Collection of navigation menu items
+      properties:
+        menuItems:
+          type: array
+          description: List of navigation menu items
+          items:
+            $ref: '#/components/schemas/NavigationMenuItem'
+        totalMenuItems:
+          type: integer
+          description: Total number of menu items
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

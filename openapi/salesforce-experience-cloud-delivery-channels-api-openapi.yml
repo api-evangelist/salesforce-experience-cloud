@@ -1,0 +1,171 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Delivery Channels API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Delivery Channels
+  description: Managed content delivery channel operations
+paths:
+  /cms/delivery/channels:
+    get:
+      operationId: listDeliveryChannels
+      summary: Salesforce Experience Cloud List CMS Delivery Channels
+      description: Returns a list of managed content delivery channels available to the context user. Channels are destinations where content is published for delivery to Experience Cloud sites or external applications.
+      tags:
+      - Delivery Channels
+      parameters:
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully retrieved delivery channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryChannelCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /cms/delivery/channels/{channelId}:
+    get:
+      operationId: getDeliveryChannel
+      summary: Salesforce Experience Cloud Get a Delivery Channel
+      description: Returns details about a specific managed content delivery channel including its name, type, and available content types.
+      tags:
+      - Delivery Channels
+      parameters:
+      - $ref: '#/components/parameters/ChannelId'
+      responses:
+        '200':
+          description: Successfully retrieved delivery channel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryChannel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
+  schemas:
+    DeliveryChannelCollection:
+      type: object
+      description: Collection of delivery channels
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryChannel'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    DeliveryChannel:
+      type: object
+      description: A managed content delivery channel
+      properties:
+        channelId:
+          type: string
+          description: Unique identifier for the channel
+        channelName:
+          type: string
+          description: Display name of the channel
+        channelType:
+          type: string
+          description: Type of channel
+          enum:
+          - ExperienceCloudSite
+          - CustomChannel
+        domain:
+          type: string
+          description: Domain associated with the channel
+        isDomainLocked:
+          type: boolean
+          description: Whether the domain is locked
+        isSearchable:
+          type: boolean
+          description: Whether content is searchable
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

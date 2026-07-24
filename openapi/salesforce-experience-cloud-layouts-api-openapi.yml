@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Layouts API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Layouts
+  description: Page layout metadata
+paths:
+  /layout/{objectApiName}:
+    get:
+      operationId: getRecordLayout
+      summary: Salesforce Experience Cloud Get Record Layout
+      description: Returns layout metadata for the specified object type including sections, fields, and their display properties. Used to render record forms dynamically.
+      tags:
+      - Layouts
+      parameters:
+      - $ref: '#/components/parameters/ObjectApiName'
+      - name: formFactor
+        in: query
+        description: Form factor for the layout
+        schema:
+          type: string
+          enum:
+          - Large
+          - Medium
+          - Small
+      - name: layoutType
+        in: query
+        description: Type of layout to retrieve
+        schema:
+          type: string
+          enum:
+          - Compact
+          - Full
+      - name: mode
+        in: query
+        description: Mode for the layout
+        schema:
+          type: string
+          enum:
+          - Create
+          - Edit
+          - View
+      - name: recordTypeId
+        in: query
+        description: Record type ID for the layout
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved record layout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordLayoutRepresentation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    RecordLayoutRepresentation:
+      type: object
+      description: Layout metadata for an object
+      properties:
+        id:
+          type: string
+          description: Layout ID
+        layoutType:
+          type: string
+          enum:
+          - Compact
+          - Full
+        mode:
+          type: string
+          enum:
+          - Create
+          - Edit
+          - View
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/LayoutSection'
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    LayoutItem:
+      type: object
+      description: A field item within a layout section
+      properties:
+        editableForNew:
+          type: boolean
+        editableForUpdate:
+          type: boolean
+        label:
+          type: string
+        layoutComponents:
+          type: array
+          items:
+            type: object
+            properties:
+              apiName:
+                type: string
+              componentType:
+                type: string
+              label:
+                type: string
+        lookupIdApiName:
+          type: string
+        required:
+          type: boolean
+        sortable:
+          type: boolean
+    LayoutSection:
+      type: object
+      description: A section within a layout
+      properties:
+        collapsible:
+          type: boolean
+        columns:
+          type: integer
+        heading:
+          type: string
+        id:
+          type: string
+        layoutRows:
+          type: array
+          items:
+            type: object
+            properties:
+              layoutItems:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LayoutItem'
+        rows:
+          type: integer
+        useHeading:
+          type: boolean
+  parameters:
+    ObjectApiName:
+      name: objectApiName
+      in: path
+      required: true
+      description: The API name of the Salesforce object (e.g., Account, Contact)
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

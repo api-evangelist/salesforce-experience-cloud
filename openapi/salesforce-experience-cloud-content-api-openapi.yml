@@ -1,0 +1,422 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Content API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Content
+  description: CMS content management operations
+paths:
+  /contents:
+    get:
+      operationId: listCmsContents
+      summary: Salesforce Experience Cloud List CMS Contents
+      description: Returns a list of CMS content items. Supports filtering by content type, language, and channel. Returns content metadata and body fields.
+      tags:
+      - Content
+      parameters:
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageParam'
+      - name: managedContentType
+        in: query
+        description: Filter by managed content type developer name
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Language code to filter content (e.g., en_US)
+        schema:
+          type: string
+      - name: channelId
+        in: query
+        description: Filter content by channel ID
+        schema:
+          type: string
+      - name: folderId
+        in: query
+        description: Filter content by folder ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved CMS content list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCmsContent
+      summary: Salesforce Experience Cloud Create CMS Content
+      description: Creates a new CMS content item in the specified workspace. Requires the content type, title, and body fields defined for the content type.
+      tags:
+      - Content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentInput'
+      responses:
+        '201':
+          description: CMS content created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /contents/{contentId}:
+    get:
+      operationId: getCmsContent
+      summary: Salesforce Experience Cloud Get CMS Content
+      description: Returns a specific CMS content item by its ID, including all body fields, metadata, and version information.
+      tags:
+      - Content
+      parameters:
+      - $ref: '#/components/parameters/ContentId'
+      - name: language
+        in: query
+        description: Language variant to retrieve
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved CMS content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateCmsContent
+      summary: Salesforce Experience Cloud Update CMS Content
+      description: Updates an existing CMS content item. Supports updating the title, body fields, and language variants.
+      tags:
+      - Content
+      parameters:
+      - $ref: '#/components/parameters/ContentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentInput'
+      responses:
+        '200':
+          description: CMS content updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Content'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteCmsContent
+      summary: Salesforce Experience Cloud Delete CMS Content
+      description: Deletes the specified CMS content item. Content that is currently published must be unpublished before deletion.
+      tags:
+      - Content
+      parameters:
+      - $ref: '#/components/parameters/ContentId'
+      responses:
+        '204':
+          description: CMS content deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /contents/{contentId}/publish:
+    post:
+      operationId: publishCmsContent
+      summary: Salesforce Experience Cloud Publish CMS Content
+      description: Publishes the specified CMS content item to its assigned channels, making it available for delivery.
+      tags:
+      - Content
+      parameters:
+      - $ref: '#/components/parameters/ContentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channelIds:
+                  type: array
+                  description: Channel IDs to publish to
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: CMS content published successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /contents/{contentId}/unpublish:
+    post:
+      operationId: unpublishCmsContent
+      summary: Salesforce Experience Cloud Unpublish CMS Content
+      description: Unpublishes the specified CMS content item, removing it from delivery channels.
+      tags:
+      - Content
+      parameters:
+      - $ref: '#/components/parameters/ContentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channelIds:
+                  type: array
+                  description: Channel IDs to unpublish from
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: CMS content unpublished successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    PublishResult:
+      type: object
+      description: Result of a publish or unpublish operation
+      properties:
+        isSuccess:
+          type: boolean
+          description: Whether the operation succeeded
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              errorCode:
+                type: string
+              message:
+                type: string
+    ContentNode:
+      type: object
+      description: A content node representing a field value
+      properties:
+        nodeType:
+          type: string
+          description: Type of the content node
+          enum:
+          - Media
+          - MultilineText
+          - RichText
+          - Text
+          - Url
+          - DateTime
+          - NameField
+        value:
+          type: string
+          description: Text value of the node
+        url:
+          type: string
+          format: uri
+          description: URL value of the node (for Media and Url types)
+        altText:
+          type: string
+          description: Alternative text (for Media type)
+        title:
+          type: string
+          description: Title of the node
+    Content:
+      type: object
+      description: A CMS content item
+      properties:
+        contentKey:
+          type: string
+          description: Unique key for the content
+        contentUrlName:
+          type: string
+          description: URL-friendly name for the content
+        language:
+          type: string
+          description: Language code of the content
+        managedContentId:
+          type: string
+          description: Managed content record ID
+        publishedDate:
+          type: string
+          format: date-time
+          description: When the content was published
+        status:
+          type: string
+          description: Current status of the content
+          enum:
+          - Draft
+          - Published
+          - Archived
+        title:
+          type: string
+          description: Title of the content
+        type:
+          type: string
+          description: Content type developer name
+        typeLabel:
+          type: string
+          description: Content type display label
+        body:
+          type: object
+          description: Content body fields (varies by content type)
+          additionalProperties: true
+        contentNodes:
+          type: object
+          description: Content nodes containing field values
+          additionalProperties:
+            $ref: '#/components/schemas/ContentNode'
+    ContentCollection:
+      type: object
+      description: Collection of CMS content items
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    ContentInput:
+      type: object
+      description: Input for creating or updating CMS content
+      required:
+      - title
+      - contentType
+      properties:
+        title:
+          type: string
+          description: Title for the content
+        contentType:
+          type: string
+          description: Developer name of the content type
+        language:
+          type: string
+          description: Language code (e.g., en_US)
+        contentBody:
+          type: object
+          description: Content body fields as defined by the content type
+          additionalProperties: true
+        urlName:
+          type: string
+          description: URL-friendly name for the content
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    ContentId:
+      name: contentId
+      in: path
+      required: true
+      description: The ID of the CMS content item
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

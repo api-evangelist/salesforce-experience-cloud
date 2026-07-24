@@ -1,0 +1,174 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Channels API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Channels
+  description: CMS channel management
+paths:
+  /channels:
+    get:
+      operationId: listCmsChannels
+      summary: Salesforce Experience Cloud List CMS Channels
+      description: Returns a list of CMS channels available to the context user. Channels represent destinations where managed content can be published, such as Experience Cloud sites or external applications.
+      tags:
+      - Channels
+      parameters:
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully retrieved CMS channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /channels/{channelId}:
+    get:
+      operationId: getCmsChannel
+      summary: Salesforce Experience Cloud Get a CMS Channel
+      description: Returns details about a specific CMS channel including its name, type, domain, and the content types available in the channel.
+      tags:
+      - Channels
+      parameters:
+      - $ref: '#/components/parameters/ChannelId'
+      responses:
+        '200':
+          description: Successfully retrieved CMS channel details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS channel
+      schema:
+        type: string
+  schemas:
+    ChannelCollection:
+      type: object
+      description: Collection of CMS channels
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    Channel:
+      type: object
+      description: A CMS delivery channel
+      properties:
+        channelId:
+          type: string
+          description: Unique identifier of the channel
+        channelName:
+          type: string
+          description: Name of the channel
+        channelType:
+          type: string
+          description: Type of the channel
+          enum:
+          - ExperienceCloudSite
+          - CustomChannel
+        domain:
+          type: string
+          description: Domain associated with the channel
+        domainName:
+          type: string
+          description: Domain name of the channel
+        isDomainLocked:
+          type: boolean
+          description: Whether the domain is locked
+        isSearchable:
+          type: boolean
+          description: Whether content in this channel is searchable
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

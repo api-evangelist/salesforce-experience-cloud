@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Versions API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Versions
+  description: API version discovery
+paths:
+  /services/data:
+    get:
+      operationId: listApiVersions
+      summary: Salesforce Experience Cloud List Available API Versions
+      description: Returns a list of all available REST API versions, including the version number, label, and a link to each version's root resource. This endpoint does not require authentication.
+      tags:
+      - Versions
+      security: []
+      responses:
+        '200':
+          description: Successfully retrieved API versions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiVersion'
+components:
+  schemas:
+    ApiVersion:
+      type: object
+      description: Information about an available API version
+      properties:
+        label:
+          type: string
+          description: Human-readable version label
+        url:
+          type: string
+          format: uri
+          description: URL to the version's root resource
+        version:
+          type: string
+          description: Version number (e.g., 59.0)
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

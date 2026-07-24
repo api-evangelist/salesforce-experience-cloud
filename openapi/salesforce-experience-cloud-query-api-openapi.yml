@@ -1,0 +1,199 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Query API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Query
+  description: SOQL query execution
+paths:
+  /query:
+    get:
+      operationId: executeQuery
+      summary: Salesforce Experience Cloud Execute a SOQL Query
+      description: Executes a SOQL query and returns the matching records. Supports standard SOQL syntax including SELECT, FROM, WHERE, ORDER BY, LIMIT, and OFFSET clauses. Returns paginated results with a nextRecordsUrl for large result sets.
+      tags:
+      - Query
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: The SOQL query string to execute
+        schema:
+          type: string
+        example: SELECT Id, Name FROM Account LIMIT 10
+      responses:
+        '200':
+          description: Successfully executed query
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Invalid SOQL query syntax
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /queryAll:
+    get:
+      operationId: executeQueryAll
+      summary: Salesforce Experience Cloud Execute a SOQL Query Including Deleted Records
+      description: Executes a SOQL query and returns matching records including deleted and archived records. Otherwise behaves identically to the standard query endpoint.
+      tags:
+      - Query
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: The SOQL query string to execute
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully executed query
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Invalid SOQL query syntax
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /query/{queryLocator}:
+    get:
+      operationId: getNextQueryPage
+      summary: Salesforce Experience Cloud Get Next Page of Query Results
+      description: Retrieves the next page of results for a previously executed SOQL query using the query locator from the nextRecordsUrl.
+      tags:
+      - Query
+      parameters:
+      - name: queryLocator
+        in: path
+        required: true
+        description: Query locator from the previous query result
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved next page of results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    SObjectRecord:
+      type: object
+      description: A Salesforce sObject record with field values
+      properties:
+        attributes:
+          type: object
+          properties:
+            type:
+              type: string
+              description: sObject type name
+            url:
+              type: string
+              format: uri
+              description: REST API URL for this record
+        Id:
+          type: string
+          description: The 18-character record ID
+      additionalProperties: true
+    QueryResult:
+      type: object
+      description: Result of a SOQL query
+      properties:
+        done:
+          type: boolean
+          description: Whether all results have been returned
+        nextRecordsUrl:
+          type: string
+          format: uri
+          description: URL for the next page of results (if done is false)
+        records:
+          type: array
+          description: Matching records
+          items:
+            $ref: '#/components/schemas/SObjectRecord'
+        totalSize:
+          type: integer
+          description: Total number of matching records
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        fields:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

@@ -1,0 +1,445 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Managed Content API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Managed Content
+  description: Managed content retrieval and search
+paths:
+  /cms/delivery/channels/{channelId}/contents/query:
+    get:
+      operationId: queryChannelContent
+      summary: Salesforce Experience Cloud Query Channel Content
+      description: Returns published managed content versions for the specified delivery channel. Supports filtering by content type, language, and content keys. Used for headless content delivery to Experience Cloud sites and external applications.
+      tags:
+      - Managed Content
+      parameters:
+      - $ref: '#/components/parameters/ChannelId'
+      - name: managedContentType
+        in: query
+        required: true
+        description: The developer name of the managed content type to query (e.g., news, cms_image, cms_document)
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Language code to filter content (e.g., en_US)
+        schema:
+          type: string
+      - name: contentKeys
+        in: query
+        description: Comma-separated list of content keys to retrieve
+        schema:
+          type: string
+      - name: managedContentIds
+        in: query
+        description: Comma-separated list of managed content IDs
+        schema:
+          type: string
+      - name: topics
+        in: query
+        description: Comma-separated list of topic names to filter by
+        schema:
+          type: string
+      - name: showAbsoluteUrl
+        in: query
+        description: Whether to return absolute URLs for media content
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully retrieved managed content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedContentVersionCollection'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /cms/delivery/channels/{channelId}/contents/search:
+    get:
+      operationId: searchChannelContent
+      summary: Salesforce Experience Cloud Search Channel Content
+      description: Searches published managed content in the specified delivery channel using a search term. Returns matching content with relevance scoring.
+      tags:
+      - Managed Content
+      parameters:
+      - $ref: '#/components/parameters/ChannelId'
+      - name: q
+        in: query
+        required: true
+        description: Search term to find matching content
+        schema:
+          type: string
+      - name: managedContentType
+        in: query
+        description: Filter search results by content type
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Language code to filter results
+        schema:
+          type: string
+      - name: showAbsoluteUrl
+        in: query
+        description: Whether to return absolute URLs
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully searched managed content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedContentVersionCollection'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /cms/delivery/channels/{channelId}/contents/{contentKeyOrId}:
+    get:
+      operationId: getChannelContentItem
+      summary: Salesforce Experience Cloud Get a Content Item from Channel
+      description: Returns a specific published managed content version from the specified delivery channel by content key or managed content ID.
+      tags:
+      - Managed Content
+      parameters:
+      - $ref: '#/components/parameters/ChannelId'
+      - name: contentKeyOrId
+        in: path
+        required: true
+        description: The content key or managed content ID
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Language variant to retrieve
+        schema:
+          type: string
+      - name: showAbsoluteUrl
+        in: query
+        description: Whether to return absolute URLs
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successfully retrieved content item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedContentVersion'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/managed-content/delivery:
+    get:
+      operationId: queryCommunityManagedContent
+      summary: Salesforce Experience Cloud Query Community Managed Content
+      description: Returns published managed content for the specified Experience Cloud site. Similar to channel-based delivery but scoped to a specific community context.
+      tags:
+      - Managed Content
+      parameters:
+      - name: communityId
+        in: path
+        required: true
+        description: The ID of the Experience Cloud site
+        schema:
+          type: string
+      - name: managedContentType
+        in: query
+        required: true
+        description: Content type developer name to query
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Language code to filter content
+        schema:
+          type: string
+      - name: topics
+        in: query
+        description: Comma-separated list of topic names
+        schema:
+          type: string
+      - name: showAbsoluteUrl
+        in: query
+        description: Whether to return absolute URLs
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully retrieved community managed content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedContentVersionCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/managed-content/delivery/search:
+    get:
+      operationId: searchCommunityManagedContent
+      summary: Salesforce Experience Cloud Search Community Managed Content
+      description: Searches published managed content within the specified Experience Cloud site using a search term.
+      tags:
+      - Managed Content
+      parameters:
+      - name: communityId
+        in: path
+        required: true
+        description: The ID of the Experience Cloud site
+        schema:
+          type: string
+      - name: q
+        in: query
+        required: true
+        description: Search term
+        schema:
+          type: string
+      - name: managedContentType
+        in: query
+        description: Filter by content type
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Language code
+        schema:
+          type: string
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully searched community content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedContentVersionCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    ManagedContentVersionCollection:
+      type: object
+      description: Collection of managed content versions
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedContentVersion'
+        managedContentTypes:
+          type: object
+          description: Map of content type developer names to labels
+          additionalProperties:
+            type: object
+            properties:
+              developerName:
+                type: string
+              label:
+                type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+          description: Total number of matching items
+        totalCount:
+          type: integer
+    ContentNode:
+      type: object
+      description: A content node representing a field value in managed content
+      properties:
+        altText:
+          type: string
+          description: Alternative text (for media nodes)
+        contentKey:
+          type: string
+          description: Content key for referenced content
+        fileName:
+          type: string
+          description: File name (for media nodes)
+        mediaType:
+          type: string
+          description: Media type (for media nodes)
+        mimeType:
+          type: string
+          description: MIME type (for media nodes)
+        nodeType:
+          type: string
+          description: Type of content node
+          enum:
+          - Media
+          - MediaSource
+          - MultilineText
+          - NameField
+          - RichText
+          - Text
+          - Url
+          - DateTime
+        referenceId:
+          type: string
+          description: Reference ID for the content
+        title:
+          type: string
+          description: Title of the node
+        unauthenticatedUrl:
+          type: string
+          format: uri
+          description: Public URL for unauthenticated access
+        url:
+          type: string
+          format: uri
+          description: URL value of the node
+        value:
+          type: string
+          description: Text or value content of the node
+    ManagedContentVersion:
+      type: object
+      description: A published managed content version
+      properties:
+        contentKey:
+          type: string
+          description: Unique content key
+        contentNodes:
+          type: object
+          description: Map of field names to content nodes containing the content field values
+          additionalProperties:
+            $ref: '#/components/schemas/ContentNode'
+        contentUrlName:
+          type: string
+          description: URL-friendly name for the content
+        language:
+          type: string
+          description: Language code of this content version
+        managedContentId:
+          type: string
+          description: Salesforce record ID of the managed content
+        publishedDate:
+          type: string
+          format: date-time
+          description: When this version was published
+        title:
+          type: string
+          description: Title of the content
+        type:
+          type: string
+          description: Content type developer name
+        typeLabel:
+          type: string
+          description: Content type display label
+        unauthenticatedUrl:
+          type: string
+          format: uri
+          description: Public URL for unauthenticated access
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

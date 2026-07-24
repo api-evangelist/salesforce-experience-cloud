@@ -1,0 +1,497 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Describe API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Describe
+  description: Object and field metadata
+paths:
+  /sobjects:
+    get:
+      operationId: describeGlobal
+      summary: Salesforce Experience Cloud Describe Global
+      description: Returns a list of all sObjects available in the org, including metadata about each object such as label, name, key prefix, and available operations (createable, queryable, etc.).
+      tags:
+      - Describe
+      parameters:
+      - name: If-Modified-Since
+        in: header
+        description: Return objects modified since this date
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Successfully retrieved global describe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeGlobalResult'
+        '304':
+          description: No objects modified since the specified date
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sobjects/{sObjectName}/describe:
+    get:
+      operationId: describeSObject
+      summary: Salesforce Experience Cloud Describe an sObject
+      description: Returns complete metadata about the specified sObject, including all fields, record types, child relationships, URLs, and supported operations. Includes field-level details such as type, length, picklist values, and relationship information.
+      tags:
+      - Describe
+      parameters:
+      - $ref: '#/components/parameters/SObjectName'
+      - name: If-Modified-Since
+        in: header
+        description: Return describe only if modified since this date
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Successfully retrieved sObject describe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeSObjectResult'
+        '304':
+          description: sObject not modified since the specified date
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    SObjectDescribeBrief:
+      type: object
+      description: Brief description of an sObject from global describe
+      properties:
+        activateable:
+          type: boolean
+        createable:
+          type: boolean
+        custom:
+          type: boolean
+        customSetting:
+          type: boolean
+        deepCloneable:
+          type: boolean
+        deletable:
+          type: boolean
+        deprecatedAndHidden:
+          type: boolean
+        feedEnabled:
+          type: boolean
+        hasSubtypes:
+          type: boolean
+        isInterface:
+          type: boolean
+        isSubtype:
+          type: boolean
+        keyPrefix:
+          type: string
+        label:
+          type: string
+        labelPlural:
+          type: string
+        layoutable:
+          type: boolean
+        mergeable:
+          type: boolean
+        mruEnabled:
+          type: boolean
+        name:
+          type: string
+        queryable:
+          type: boolean
+        replicateable:
+          type: boolean
+        retrieveable:
+          type: boolean
+        searchable:
+          type: boolean
+        triggerable:
+          type: boolean
+        undeletable:
+          type: boolean
+        updateable:
+          type: boolean
+        urls:
+          type: object
+          additionalProperties:
+            type: string
+    DescribeGlobalResult:
+      type: object
+      description: Result of a global describe call
+      properties:
+        encoding:
+          type: string
+        maxBatchSize:
+          type: integer
+        sobjects:
+          type: array
+          items:
+            $ref: '#/components/schemas/SObjectDescribeBrief'
+    ChildRelationship:
+      type: object
+      description: Describes a child relationship
+      properties:
+        cascadeDelete:
+          type: boolean
+        childSObject:
+          type: string
+        deprecatedAndHidden:
+          type: boolean
+        field:
+          type: string
+        junctionIdListNames:
+          type: array
+          items:
+            type: string
+        junctionReferenceTo:
+          type: array
+          items:
+            type: string
+        relationshipName:
+          type: string
+        restrictedDelete:
+          type: boolean
+    RecordTypeInfo:
+      type: object
+      description: Record type information
+      properties:
+        active:
+          type: boolean
+        available:
+          type: boolean
+        defaultRecordTypeMapping:
+          type: boolean
+        developerName:
+          type: string
+        master:
+          type: boolean
+        name:
+          type: string
+        recordTypeId:
+          type: string
+        urls:
+          type: object
+          additionalProperties:
+            type: string
+    FieldDescribe:
+      type: object
+      description: Metadata about a field
+      properties:
+        aggregatable:
+          type: boolean
+        aiPredictionField:
+          type: boolean
+        autoNumber:
+          type: boolean
+        byteLength:
+          type: integer
+        calculated:
+          type: boolean
+        calculatedFormula:
+          type: string
+        cascadeDelete:
+          type: boolean
+        caseSensitive:
+          type: boolean
+        compoundFieldName:
+          type: string
+        controllerName:
+          type: string
+        createable:
+          type: boolean
+        custom:
+          type: boolean
+        defaultValue:
+          type: string
+        defaultValueFormula:
+          type: string
+        defaultedOnCreate:
+          type: boolean
+        dependentPicklist:
+          type: boolean
+        deprecatedAndHidden:
+          type: boolean
+        digits:
+          type: integer
+        displayLocationInDecimal:
+          type: boolean
+        encrypted:
+          type: boolean
+        externalId:
+          type: boolean
+        extraTypeInfo:
+          type: string
+        filterable:
+          type: boolean
+        filteredLookupInfo:
+          type: object
+        formulaTreatNullNumberAsZero:
+          type: boolean
+        groupable:
+          type: boolean
+        highScaleNumber:
+          type: boolean
+        htmlFormatted:
+          type: boolean
+        idLookup:
+          type: boolean
+        inlineHelpText:
+          type: string
+        label:
+          type: string
+        length:
+          type: integer
+        mask:
+          type: string
+        maskType:
+          type: string
+        name:
+          type: string
+        nameField:
+          type: boolean
+        namePointing:
+          type: boolean
+        nillable:
+          type: boolean
+        permissionable:
+          type: boolean
+        picklistValues:
+          type: array
+          items:
+            type: object
+            properties:
+              active:
+                type: boolean
+              defaultValue:
+                type: boolean
+              label:
+                type: string
+              validFor:
+                type: string
+              value:
+                type: string
+        polymorphicForeignKey:
+          type: boolean
+        precision:
+          type: integer
+        queryByDistance:
+          type: boolean
+        referenceTargetField:
+          type: string
+        referenceTo:
+          type: array
+          items:
+            type: string
+        relationshipName:
+          type: string
+        relationshipOrder:
+          type: integer
+        restrictedDelete:
+          type: boolean
+        restrictedPicklist:
+          type: boolean
+        scale:
+          type: integer
+        searchPrefilterable:
+          type: boolean
+        soapType:
+          type: string
+        sortable:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - id
+          - boolean
+          - currency
+          - date
+          - datetime
+          - double
+          - email
+          - encryptedstring
+          - int
+          - long
+          - multipicklist
+          - percent
+          - phone
+          - picklist
+          - reference
+          - string
+          - textarea
+          - time
+          - url
+        unique:
+          type: boolean
+        updateable:
+          type: boolean
+        writeRequiresMasterRead:
+          type: boolean
+    DescribeSObjectResult:
+      type: object
+      description: Complete describe result for an sObject
+      properties:
+        actionOverrides:
+          type: array
+          items:
+            type: object
+        activateable:
+          type: boolean
+        childRelationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChildRelationship'
+        compactLayoutable:
+          type: boolean
+        createable:
+          type: boolean
+        custom:
+          type: boolean
+        customSetting:
+          type: boolean
+        deletable:
+          type: boolean
+        deprecatedAndHidden:
+          type: boolean
+        feedEnabled:
+          type: boolean
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldDescribe'
+        hasSubtypes:
+          type: boolean
+        isSubtype:
+          type: boolean
+        keyPrefix:
+          type: string
+        label:
+          type: string
+        labelPlural:
+          type: string
+        layoutable:
+          type: boolean
+        listviewable:
+          type: boolean
+        lookupLayoutable:
+          type: boolean
+        mergeable:
+          type: boolean
+        mruEnabled:
+          type: boolean
+        name:
+          type: string
+        namedLayoutInfos:
+          type: array
+          items:
+            type: object
+        networkScopeFieldName:
+          type: string
+        queryable:
+          type: boolean
+        recordTypeInfos:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordTypeInfo'
+        replicateable:
+          type: boolean
+        retrieveable:
+          type: boolean
+        searchLayoutable:
+          type: boolean
+        searchable:
+          type: boolean
+        supportedScopes:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              name:
+                type: string
+        triggerable:
+          type: boolean
+        undeletable:
+          type: boolean
+        updateable:
+          type: boolean
+        urls:
+          type: object
+          additionalProperties:
+            type: string
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        fields:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    SObjectName:
+      name: sObjectName
+      in: path
+      required: true
+      description: The API name of the Salesforce object (e.g., Account, Contact)
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

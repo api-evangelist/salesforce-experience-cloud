@@ -1,0 +1,300 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Topics API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Topics
+  description: Topic management and assignments
+paths:
+  /communities/{communityId}/topics:
+    get:
+      operationId: getTopics
+      summary: Salesforce Experience Cloud List Topics
+      description: Returns a list of topics in the specified Experience Cloud site. Topics organize content and enable community members to find relevant discussions and knowledge.
+      tags:
+      - Topics
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageToken'
+      - name: q
+        in: query
+        description: Search term to filter topics by name
+        schema:
+          type: string
+      - name: exactMatch
+        in: query
+        description: Whether to match the search term exactly
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successfully retrieved topics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createTopic
+      summary: Salesforce Experience Cloud Create a Topic
+      description: Creates a new topic in the specified Experience Cloud site.
+      tags:
+      - Topics
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopicInput'
+      responses:
+        '201':
+          description: Topic created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /communities/{communityId}/topics/{topicId}:
+    get:
+      operationId: getTopic
+      summary: Salesforce Experience Cloud Get a Topic
+      description: Returns details about a specific topic in the Experience Cloud site, including name, description, and related feed items.
+      tags:
+      - Topics
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      - name: topicId
+        in: path
+        required: true
+        description: The ID of the topic
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved topic
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateTopic
+      summary: Salesforce Experience Cloud Update a Topic
+      description: Updates the name or description of an existing topic in the Experience Cloud site.
+      tags:
+      - Topics
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      - name: topicId
+        in: path
+        required: true
+        description: The ID of the topic
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopicInput'
+      responses:
+        '200':
+          description: Topic updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTopic
+      summary: Salesforce Experience Cloud Delete a Topic
+      description: Deletes the specified topic from the Experience Cloud site. Requires appropriate moderation permissions.
+      tags:
+      - Topics
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      - name: topicId
+        in: path
+        required: true
+        description: The ID of the topic
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Topic deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
+  schemas:
+    TopicCollection:
+      type: object
+      description: Collection of topics
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    TopicInput:
+      type: object
+      description: Input for creating or updating a topic
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Name of the topic
+        description:
+          type: string
+          description: Description of the topic
+    Topic:
+      type: object
+      description: A topic within an Experience Cloud site
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the topic
+        createdDate:
+          type: string
+          format: date-time
+        description:
+          type: string
+        images:
+          type: object
+          properties:
+            coverImageUrl:
+              type: string
+              format: uri
+        name:
+          type: string
+          description: Name of the topic
+        talkingAbout:
+          type: integer
+          description: Number of people currently talking about this topic
+        url:
+          type: string
+          format: uri
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

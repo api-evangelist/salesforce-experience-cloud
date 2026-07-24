@@ -1,0 +1,313 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions sObjects API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: sObjects
+  description: Salesforce object operations
+paths:
+  /sobjects/{sObjectName}:
+    get:
+      operationId: getSObjectBasicInfo
+      summary: Salesforce Experience Cloud Get sObject Basic Information
+      description: Returns metadata about the specified sObject, including the object describe result and recently accessed records of that type.
+      tags:
+      - sObjects
+      parameters:
+      - $ref: '#/components/parameters/SObjectName'
+      responses:
+        '200':
+          description: Successfully retrieved sObject basic information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SObjectBasicInfo'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createSObjectRecord
+      summary: Salesforce Experience Cloud Create an sObject Record
+      description: Creates a new record for the specified sObject type. The request body must contain the field values for the new record.
+      tags:
+      - sObjects
+      parameters:
+      - $ref: '#/components/parameters/SObjectName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Field values for the new record
+              additionalProperties: true
+      responses:
+        '201':
+          description: Record created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sobjects/{sObjectName}/{recordId}:
+    get:
+      operationId: getSObjectRecord
+      summary: Salesforce Experience Cloud Get an sObject Record
+      description: Returns the field values for the specified record. Use the fields parameter to specify which fields to return. If no fields are specified, all accessible fields are returned.
+      tags:
+      - sObjects
+      parameters:
+      - $ref: '#/components/parameters/SObjectName'
+      - $ref: '#/components/parameters/RecordId'
+      - name: fields
+        in: query
+        description: Comma-separated list of field names to return
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved the record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SObjectRecord'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateSObjectRecord
+      summary: Salesforce Experience Cloud Update an sObject Record
+      description: Updates the specified record with the provided field values. Only fields included in the request body are updated.
+      tags:
+      - sObjects
+      parameters:
+      - $ref: '#/components/parameters/SObjectName'
+      - $ref: '#/components/parameters/RecordId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Field values to update
+              additionalProperties: true
+      responses:
+        '204':
+          description: Record updated successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSObjectRecord
+      summary: Salesforce Experience Cloud Delete an sObject Record
+      description: Deletes the specified record. The record is moved to the Recycle Bin unless permanently deleted.
+      tags:
+      - sObjects
+      parameters:
+      - $ref: '#/components/parameters/SObjectName'
+      - $ref: '#/components/parameters/RecordId'
+      responses:
+        '204':
+          description: Record deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    SObjectBasicInfo:
+      type: object
+      description: Basic information about an sObject
+      properties:
+        objectDescribe:
+          $ref: '#/components/schemas/SObjectDescribeBrief'
+        recentItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/SObjectRecord'
+    SObjectRecord:
+      type: object
+      description: A Salesforce sObject record with field values
+      properties:
+        attributes:
+          type: object
+          properties:
+            type:
+              type: string
+              description: sObject type name
+            url:
+              type: string
+              format: uri
+              description: REST API URL for this record
+        Id:
+          type: string
+          description: The 18-character record ID
+      additionalProperties: true
+    SObjectDescribeBrief:
+      type: object
+      description: Brief description of an sObject from global describe
+      properties:
+        activateable:
+          type: boolean
+        createable:
+          type: boolean
+        custom:
+          type: boolean
+        customSetting:
+          type: boolean
+        deepCloneable:
+          type: boolean
+        deletable:
+          type: boolean
+        deprecatedAndHidden:
+          type: boolean
+        feedEnabled:
+          type: boolean
+        hasSubtypes:
+          type: boolean
+        isInterface:
+          type: boolean
+        isSubtype:
+          type: boolean
+        keyPrefix:
+          type: string
+        label:
+          type: string
+        labelPlural:
+          type: string
+        layoutable:
+          type: boolean
+        mergeable:
+          type: boolean
+        mruEnabled:
+          type: boolean
+        name:
+          type: string
+        queryable:
+          type: boolean
+        replicateable:
+          type: boolean
+        retrieveable:
+          type: boolean
+        searchable:
+          type: boolean
+        triggerable:
+          type: boolean
+        undeletable:
+          type: boolean
+        updateable:
+          type: boolean
+        urls:
+          type: object
+          additionalProperties:
+            type: string
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        fields:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message
+    CreateResult:
+      type: object
+      description: Result of a record creation
+      properties:
+        id:
+          type: string
+          description: ID of the created record
+        success:
+          type: boolean
+          description: Whether the creation was successful
+        errors:
+          type: array
+          description: Errors encountered during creation
+          items:
+            $ref: '#/components/schemas/ErrorResponse'
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    RecordId:
+      name: recordId
+      in: path
+      required: true
+      description: The 15 or 18 character Salesforce record ID
+      schema:
+        type: string
+    SObjectName:
+      name: sObjectName
+      in: path
+      required: true
+      description: The API name of the Salesforce object (e.g., Account, Contact)
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

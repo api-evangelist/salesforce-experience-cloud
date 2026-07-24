@@ -1,0 +1,158 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Actions
+  description: Available actions for records and objects
+paths:
+  /actions/record/{recordId}:
+    get:
+      operationId: getRecordActions
+      summary: Salesforce Experience Cloud Get Record Actions
+      description: Returns the actions available for a specific record based on the current user's permissions and the record's state.
+      tags:
+      - Actions
+      parameters:
+      - $ref: '#/components/parameters/RecordId'
+      - name: formFactor
+        in: query
+        description: Form factor for filtering actions
+        schema:
+          type: string
+          enum:
+          - Large
+          - Medium
+          - Small
+      - name: sections
+        in: query
+        description: Comma-separated list of action sections
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved record actions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordActionsRepresentation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    RecordId:
+      name: recordId
+      in: path
+      required: true
+      description: The 18-character Salesforce record ID
+      schema:
+        type: string
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    RecordActionsRepresentation:
+      type: object
+      description: Available actions for a record
+      properties:
+        actions:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              actions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    actionListContext:
+                      type: string
+                    actionTarget:
+                      type: string
+                      format: uri
+                    actionTargetType:
+                      type: string
+                    apiName:
+                      type: string
+                    externalAction:
+                      type: boolean
+                    iconUrl:
+                      type: string
+                      format: uri
+                    id:
+                      type: string
+                    isMassAction:
+                      type: boolean
+                    label:
+                      type: string
+                    primary:
+                      type: boolean
+                    relatedListRecordId:
+                      type: string
+                    relatedSourceObject:
+                      type: string
+                    subtype:
+                      type: string
+                    targetObject:
+                      type: string
+                    targetUrl:
+                      type: string
+                    type:
+                      type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

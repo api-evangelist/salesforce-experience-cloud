@@ -1,0 +1,286 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Collections API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Collections
+  description: Content collection delivery operations
+paths:
+  /channels/{channelId}/collections:
+    get:
+      operationId: listDeliveryCollections
+      summary: Salesforce Experience Cloud List Content Collections
+      description: Returns a list of published content collections available in the specified delivery channel. Collections group related content items for organized delivery.
+      tags:
+      - Collections
+      parameters:
+      - $ref: '#/components/parameters/ChannelId'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageParam'
+      responses:
+        '200':
+          description: Successfully retrieved content collections
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /channels/{channelId}/collections/{collectionKeyOrId}:
+    get:
+      operationId: getDeliveryCollection
+      summary: Salesforce Experience Cloud Get a Content Collection
+      description: Retrieves a specific content collection and its items from the delivery channel. Returns the collection metadata and all content items within the collection.
+      tags:
+      - Collections
+      parameters:
+      - $ref: '#/components/parameters/ChannelId'
+      - name: collectionKeyOrId
+        in: path
+        required: true
+        description: Collection key or record ID
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Language variant to retrieve
+        schema:
+          type: string
+      - name: showAbsoluteUrl
+        in: query
+        description: Whether to return absolute URLs
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successfully retrieved collection
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    ContentNode:
+      type: object
+      description: A content node representing a field value
+      properties:
+        altText:
+          type: string
+          description: Alternative text for media content
+        contentKey:
+          type: string
+          description: Content key for referenced content
+        fileName:
+          type: string
+          description: File name for media content
+        mediaType:
+          type: string
+          description: Media type classification
+        mimeType:
+          type: string
+          description: MIME type of the content
+        nodeType:
+          type: string
+          description: Type of content node
+          enum:
+          - Media
+          - MediaSource
+          - MultilineText
+          - NameField
+          - RichText
+          - Text
+          - Url
+          - DateTime
+        referenceId:
+          type: string
+          description: Reference ID for the content
+        title:
+          type: string
+          description: Title of the node
+        unauthenticatedUrl:
+          type: string
+          format: uri
+          description: Public URL
+        url:
+          type: string
+          format: uri
+          description: URL value
+        value:
+          type: string
+          description: Text or value content
+    DeliveryContentItem:
+      type: object
+      description: A delivered CMS content item
+      properties:
+        contentKey:
+          type: string
+          description: Unique content key for the item
+        contentNodes:
+          type: object
+          description: Content field values organized as nodes
+          additionalProperties:
+            $ref: '#/components/schemas/ContentNode'
+        contentUrlName:
+          type: string
+          description: URL-safe name for the content
+        language:
+          type: string
+          description: Language code of this content version
+        managedContentId:
+          type: string
+          description: Salesforce record ID
+        publishedDate:
+          type: string
+          format: date-time
+          description: When this content was published
+        title:
+          type: string
+          description: Title of the content
+        type:
+          type: string
+          description: Content type developer name
+        typeLabel:
+          type: string
+          description: Content type display label
+        unauthenticatedUrl:
+          type: string
+          format: uri
+          description: Public URL for unauthenticated access
+    DeliveryCollection:
+      type: object
+      description: A content collection with its items
+      properties:
+        collectionKey:
+          type: string
+        collectionType:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryContentItem'
+        label:
+          type: string
+        name:
+          type: string
+        totalCount:
+          type: integer
+    CollectionList:
+      type: object
+      description: List of content collections
+      properties:
+        collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionSummary'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    CollectionSummary:
+      type: object
+      description: Summary of a content collection
+      properties:
+        collectionKey:
+          type: string
+          description: Unique key for the collection
+        collectionType:
+          type: string
+          description: Type of collection
+        label:
+          type: string
+          description: Display label
+        name:
+          type: string
+          description: Developer name
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      description: Page number (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

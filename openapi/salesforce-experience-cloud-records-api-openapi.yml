@@ -1,0 +1,501 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Records API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Records
+  description: Record data and UI operations
+paths:
+  /record-ui/{recordIds}:
+    get:
+      operationId: getRecordUi
+      summary: Salesforce Experience Cloud Get Record UI
+      description: Returns layout information, field data, and object metadata for one or more records. Provides everything needed to render a record detail page including layout sections, field values, and display properties.
+      tags:
+      - Records
+      parameters:
+      - name: recordIds
+        in: path
+        required: true
+        description: One or more record IDs (comma-separated for multiple records, up to 200)
+        schema:
+          type: string
+      - name: childRelationships
+        in: query
+        description: Comma-separated list of child relationship names to include
+        schema:
+          type: string
+      - name: formFactor
+        in: query
+        description: Form factor for the layout
+        schema:
+          type: string
+          enum:
+          - Large
+          - Medium
+          - Small
+      - name: layoutTypes
+        in: query
+        description: Comma-separated layout types to return
+        schema:
+          type: string
+          enum:
+          - Compact
+          - Full
+      - name: modes
+        in: query
+        description: Comma-separated modes for the layout
+        schema:
+          type: string
+          enum:
+          - Create
+          - Edit
+          - View
+      - name: optionalFields
+        in: query
+        description: Comma-separated list of optional fields to include
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved record UI data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordUiRepresentation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /records/{recordId}:
+    get:
+      operationId: getRecord
+      summary: Salesforce Experience Cloud Get a Record
+      description: Returns field values and metadata for a specific record. Supports requesting specific fields or all fields from a layout. Returns both raw values and display-formatted values.
+      tags:
+      - Records
+      parameters:
+      - $ref: '#/components/parameters/RecordId'
+      - name: fields
+        in: query
+        description: Comma-separated list of field API names to return
+        schema:
+          type: string
+      - name: layoutTypes
+        in: query
+        description: Layout type whose fields to include
+        schema:
+          type: string
+          enum:
+          - Compact
+          - Full
+      - name: modes
+        in: query
+        description: Layout mode
+        schema:
+          type: string
+          enum:
+          - Create
+          - Edit
+          - View
+      - name: optionalFields
+        in: query
+        description: Optional fields to include if accessible
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved the record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordRepresentation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateRecord
+      summary: Salesforce Experience Cloud Update a Record
+      description: Updates the specified record with the provided field values. Returns the updated record representation including the new field values.
+      tags:
+      - Records
+      parameters:
+      - $ref: '#/components/parameters/RecordId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordInput'
+      responses:
+        '200':
+          description: Record updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordRepresentation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteRecord
+      summary: Salesforce Experience Cloud Delete a Record
+      description: Deletes the specified record. The record is moved to the Recycle Bin.
+      tags:
+      - Records
+      parameters:
+      - $ref: '#/components/parameters/RecordId'
+      responses:
+        '204':
+          description: Record deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /records:
+    post:
+      operationId: createRecord
+      summary: Salesforce Experience Cloud Create a Record
+      description: Creates a new record of the specified sObject type. Returns the created record representation with all field values.
+      tags:
+      - Records
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordInput'
+      responses:
+        '201':
+          description: Record created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordRepresentation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    FieldValueRepresentation:
+      type: object
+      description: Field value with display formatting
+      properties:
+        displayValue:
+          type: string
+          description: Formatted display value (locale-aware)
+        value:
+          description: Raw field value
+    RecordUiRepresentation:
+      type: object
+      description: Complete UI representation for one or more records
+      properties:
+        layoutUserStates:
+          type: object
+          additionalProperties:
+            type: object
+        layouts:
+          type: object
+          description: Map of object API names to layout representations
+          additionalProperties:
+            type: object
+        objectInfos:
+          type: object
+          description: Map of object API names to object info
+          additionalProperties:
+            $ref: '#/components/schemas/ObjectInfoRepresentation'
+        records:
+          type: object
+          description: Map of record IDs to record representations
+          additionalProperties:
+            $ref: '#/components/schemas/RecordRepresentation'
+    RecordInput:
+      type: object
+      description: Input for creating or updating a record
+      properties:
+        apiName:
+          type: string
+          description: API name of the sObject type (required for create)
+        fields:
+          type: object
+          description: Map of field API names to values
+          additionalProperties: true
+    RecordRepresentation:
+      type: object
+      description: Representation of a record with field values
+      properties:
+        apiName:
+          type: string
+          description: API name of the sObject type
+        childRelationships:
+          type: object
+          additionalProperties:
+            type: object
+        eTag:
+          type: string
+          description: Entity tag for optimistic concurrency
+        fields:
+          type: object
+          description: Map of field API names to field values
+          additionalProperties:
+            $ref: '#/components/schemas/FieldValueRepresentation'
+        id:
+          type: string
+          description: Record ID
+        lastModifiedById:
+          type: string
+        lastModifiedDate:
+          type: string
+          format: date-time
+        recordTypeId:
+          type: string
+        recordTypeInfo:
+          type: object
+          properties:
+            available:
+              type: boolean
+            defaultRecordTypeMapping:
+              type: boolean
+            master:
+              type: boolean
+            name:
+              type: string
+            recordTypeId:
+              type: string
+        systemModstamp:
+          type: string
+          format: date-time
+        weakEtag:
+          type: integer
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    ObjectInfoRepresentation:
+      type: object
+      description: Object metadata for UI rendering
+      properties:
+        apiName:
+          type: string
+          description: API name of the object
+        associateEntityType:
+          type: string
+        associateParentEntity:
+          type: string
+        childRelationships:
+          type: array
+          items:
+            type: object
+            properties:
+              childObjectApiName:
+                type: string
+              fieldName:
+                type: string
+              junctionIdListNames:
+                type: array
+                items:
+                  type: string
+              junctionReferenceTo:
+                type: array
+                items:
+                  type: string
+              relationshipName:
+                type: string
+        createable:
+          type: boolean
+        custom:
+          type: boolean
+        defaultRecordTypeId:
+          type: string
+        deletable:
+          type: boolean
+        feedEnabled:
+          type: boolean
+        fields:
+          type: object
+          description: Map of field API names to field metadata
+          additionalProperties:
+            type: object
+            properties:
+              apiName:
+                type: string
+              compound:
+                type: boolean
+              compoundComponentName:
+                type: string
+              compoundFieldName:
+                type: string
+              controllerName:
+                type: string
+              controllingFields:
+                type: array
+                items:
+                  type: string
+              createable:
+                type: boolean
+              custom:
+                type: boolean
+              dataType:
+                type: string
+              extraTypeInfo:
+                type: string
+              filterable:
+                type: boolean
+              filteredLookupInfo:
+                type: object
+              highScaleNumber:
+                type: boolean
+              htmlFormatted:
+                type: boolean
+              inlineHelpText:
+                type: string
+              label:
+                type: string
+              length:
+                type: integer
+              nameField:
+                type: boolean
+              polymorphicForeignKey:
+                type: boolean
+              precision:
+                type: integer
+              reference:
+                type: boolean
+              referenceTargetField:
+                type: string
+              referenceToInfos:
+                type: array
+                items:
+                  type: object
+              relationshipName:
+                type: string
+              required:
+                type: boolean
+              scale:
+                type: integer
+              searchPrefilterable:
+                type: boolean
+              sortable:
+                type: boolean
+              unique:
+                type: boolean
+              updateable:
+                type: boolean
+        keyPrefix:
+          type: string
+        label:
+          type: string
+        labelPlural:
+          type: string
+        layoutable:
+          type: boolean
+        mruEnabled:
+          type: boolean
+        nameFields:
+          type: array
+          items:
+            type: string
+        queryable:
+          type: boolean
+        recordTypeInfos:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              available:
+                type: boolean
+              defaultRecordTypeMapping:
+                type: boolean
+              master:
+                type: boolean
+              name:
+                type: string
+              recordTypeId:
+                type: string
+        searchable:
+          type: boolean
+        themeInfo:
+          type: object
+          properties:
+            color:
+              type: string
+            iconUrl:
+              type: string
+              format: uri
+        updateable:
+          type: boolean
+  parameters:
+    RecordId:
+      name: recordId
+      in: path
+      required: true
+      description: The 18-character Salesforce record ID
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

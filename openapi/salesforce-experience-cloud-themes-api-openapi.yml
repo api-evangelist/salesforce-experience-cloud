@@ -1,0 +1,261 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Themes API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Themes
+  description: Site theme and branding operations
+paths:
+  /connect/communities/{communityId}/themes:
+    get:
+      operationId: getSiteThemes
+      summary: Salesforce Experience Cloud Get Site Themes
+      description: Returns the available themes for the specified Experience Cloud site including branding properties, colors, fonts, and images.
+      tags:
+      - Themes
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved site themes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connect/communities/{communityId}/themes/active:
+    get:
+      operationId: getActiveTheme
+      summary: Salesforce Experience Cloud Get Active Theme
+      description: Returns the currently active theme for the specified Experience Cloud site with all its branding properties.
+      tags:
+      - Themes
+      parameters:
+      - $ref: '#/components/parameters/CommunityId_2'
+      responses:
+        '200':
+          description: Successfully retrieved active theme
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme_2'
+        '401':
+          $ref: '#/components/responses/Unauthorized_2'
+        '404':
+          $ref: '#/components/responses/NotFound_2'
+    put:
+      operationId: setActiveTheme
+      summary: Salesforce Experience Cloud Set Active Theme
+      description: Sets the active theme for the specified Experience Cloud site. Changes take effect on the next publish.
+      tags:
+      - Themes
+      parameters:
+      - $ref: '#/components/parameters/CommunityId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                themeId:
+                  type: string
+                  description: ID of the theme to activate
+      responses:
+        '200':
+          description: Active theme set successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme_2'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized_2'
+        '404':
+          $ref: '#/components/responses/NotFound_2'
+components:
+  responses:
+    Unauthorized_2:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse_2'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse_2'
+    NotFound_2:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse_2'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Theme:
+      type: object
+      description: Theme configuration for an Experience Cloud site
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the theme
+        name:
+          type: string
+          description: Name of the theme
+        themeType:
+          type: string
+          description: Type of the theme
+        properties:
+          type: object
+          description: Theme properties including colors, fonts, and images
+          additionalProperties:
+            type: string
+    ErrorResponse_2:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    ThemeCollection:
+      type: object
+      description: Collection of site themes
+      properties:
+        themes:
+          type: array
+          description: List of available themes
+          items:
+            $ref: '#/components/schemas/Theme'
+    ThemeProperty:
+      type: object
+      description: A property within a theme
+      properties:
+        name:
+          type: string
+          description: Property name
+        type:
+          type: string
+          description: Property type
+          enum:
+          - Color
+          - Font
+          - Image
+          - String
+          - Number
+        value:
+          type: string
+          description: Property value
+        group:
+          type: string
+          description: Logical grouping of the property
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    Theme_2:
+      type: object
+      description: A site theme configuration
+      properties:
+        id:
+          type: string
+          description: Theme ID
+        name:
+          type: string
+          description: Name of the theme
+        description:
+          type: string
+          description: Description of the theme
+        isActive:
+          type: boolean
+          description: Whether this is the currently active theme
+        themeType:
+          type: string
+          description: Type of theme
+        properties:
+          type: array
+          description: Theme property values
+          items:
+            $ref: '#/components/schemas/ThemeProperty'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    CommunityId_2:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

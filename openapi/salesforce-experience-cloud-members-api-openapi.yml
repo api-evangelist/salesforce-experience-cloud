@@ -1,0 +1,241 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Members API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Members
+  description: Community member operations
+paths:
+  /communities/{communityId}/chatter/users/me:
+    get:
+      operationId: getCurrentUser
+      summary: Salesforce Experience Cloud Get Current User
+      description: Returns information about the context user in the specified Experience Cloud site, including profile details, reputation, and community membership information.
+      tags:
+      - Members
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved current user info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /communities/{communityId}/chatter/users:
+    get:
+      operationId: getCommunityMembers
+      summary: Salesforce Experience Cloud List Community Members
+      description: Returns a list of users in the specified Experience Cloud site. Supports pagination and filtering.
+      tags:
+      - Members
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageToken'
+      - name: q
+        in: query
+        description: Search term to filter members by name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved community members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/chatter/users/{userId}/reputation:
+    get:
+      operationId: getUserReputation
+      summary: Salesforce Experience Cloud Get User Reputation
+      description: Returns the reputation score and level for a specific user within the Experience Cloud site.
+      tags:
+      - Members
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      - name: userId
+        in: path
+        required: true
+        description: The ID of the user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved user reputation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reputation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    UserPage:
+      type: object
+      description: Paginated list of community users
+      properties:
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommunityUser'
+    CommunityUser:
+      type: object
+      description: A user within an Experience Cloud site
+      properties:
+        id:
+          type: string
+        communityNickname:
+          type: string
+        companyName:
+          type: string
+        displayName:
+          type: string
+        email:
+          type: string
+          format: email
+        firstName:
+          type: string
+        lastName:
+          type: string
+        name:
+          type: string
+        photo:
+          type: object
+          properties:
+            fullEmailPhotoUrl:
+              type: string
+              format: uri
+            largePhotoUrl:
+              type: string
+              format: uri
+            smallPhotoUrl:
+              type: string
+              format: uri
+            standardEmailPhotoUrl:
+              type: string
+              format: uri
+        reputation:
+          $ref: '#/components/schemas/Reputation'
+        title:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+          format: uri
+        username:
+          type: string
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    Reputation:
+      type: object
+      description: User reputation information
+      properties:
+        reputationLevel:
+          type: object
+          properties:
+            levelLabel:
+              type: string
+            levelNumber:
+              type: integer
+        reputationPoints:
+          type: number
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

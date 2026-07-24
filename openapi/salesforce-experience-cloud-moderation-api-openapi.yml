@@ -1,0 +1,326 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Moderation API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Moderation
+  description: Content moderation operations
+paths:
+  /communities/{communityId}/moderation/flagged-elements:
+    get:
+      operationId: getFlaggedElements
+      summary: Salesforce Experience Cloud Get Flagged Elements
+      description: Returns content that has been flagged for moderation within the Experience Cloud site. Requires moderation permissions.
+      tags:
+      - Moderation
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/PageToken'
+      - name: visibility
+        in: query
+        description: Filter by flagged element visibility
+        schema:
+          type: string
+          enum:
+          - ModeratorOnly
+          - SelfOnly
+      responses:
+        '200':
+          description: Successfully retrieved flagged elements
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModerationFlagCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+components:
+  responses:
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    CommentPage:
+      type: object
+      description: Paginated list of comments
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+    ActorReference:
+      type: object
+      description: Reference to a user or record
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+          format: uri
+    LikePage:
+      type: object
+      description: Paginated list of likes
+      properties:
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        likes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Like'
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+    Comment:
+      type: object
+      description: A comment on a feed element
+      properties:
+        id:
+          type: string
+        body:
+          $ref: '#/components/schemas/MessageBody'
+        createdDate:
+          type: string
+          format: date-time
+        feedElement:
+          $ref: '#/components/schemas/ActorReference'
+        likes:
+          $ref: '#/components/schemas/LikePage'
+        user:
+          $ref: '#/components/schemas/ActorReference'
+        url:
+          type: string
+          format: uri
+    FeedElement:
+      type: object
+      description: A feed element such as a post or announcement
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the feed element
+        body:
+          $ref: '#/components/schemas/MessageBody'
+        capabilities:
+          $ref: '#/components/schemas/FeedElementCapabilities'
+        createdDate:
+          type: string
+          format: date-time
+          description: When the feed element was created
+        feedElementType:
+          type: string
+          description: Type of feed element
+          enum:
+          - FeedItem
+          - Bundle
+          - Recommendation
+        header:
+          $ref: '#/components/schemas/MessageBody'
+        modifiedDate:
+          type: string
+          format: date-time
+          description: When the feed element was last modified
+        parent:
+          $ref: '#/components/schemas/ActorReference'
+        actor:
+          $ref: '#/components/schemas/ActorReference'
+        url:
+          type: string
+          format: uri
+          description: API resource URL
+    MessageBody:
+      type: object
+      description: Rich text body of a feed element or comment
+      properties:
+        isRichText:
+          type: boolean
+        messageSegments:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageSegment'
+        text:
+          type: string
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    FeedElementCapabilities:
+      type: object
+      description: Capabilities available on a feed element
+      properties:
+        comments:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/CommentPage'
+        chatterLikes:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/LikePage'
+            myLike:
+              $ref: '#/components/schemas/Like'
+    ModerationFlagCollection:
+      type: object
+      description: Collection of flagged elements for moderation
+      properties:
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        flaggedElements:
+          type: array
+          items:
+            type: object
+            properties:
+              flagCount:
+                type: integer
+              flaggedDate:
+                type: string
+                format: date-time
+              feedElement:
+                $ref: '#/components/schemas/FeedElement'
+              moderationFlags:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    type:
+                      type: string
+                      enum:
+                      - FeedItemFlaggedAsSpam
+                      - FeedItemFlaggedAsInappropriate
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+    MessageSegment:
+      type: object
+      description: A segment of a message body
+      properties:
+        text:
+          type: string
+        type:
+          type: string
+          enum:
+          - Text
+          - Mention
+          - Hashtag
+          - Link
+          - MarkupBegin
+          - MarkupEnd
+    Like:
+      type: object
+      description: A like on a feed element or comment
+      properties:
+        id:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        url:
+          type: string
+          format: uri
+        user:
+          $ref: '#/components/schemas/ActorReference'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

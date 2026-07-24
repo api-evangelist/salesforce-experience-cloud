@@ -1,0 +1,317 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Sites API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Sites
+  description: Experience Cloud site management operations
+paths:
+  /connect/communities:
+    get:
+      operationId: listExperienceCloudSites
+      summary: Salesforce Experience Cloud List Experience Cloud Sites
+      description: Returns a list of all Experience Cloud sites (communities) available to the context user. Includes site metadata such as name, status, URL path prefix, and template information.
+      tags:
+      - Sites
+      parameters:
+      - $ref: '#/components/parameters/StatusFilter'
+      responses:
+        '200':
+          description: Successfully retrieved list of Experience Cloud sites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      operationId: createExperienceCloudSite
+      summary: Salesforce Experience Cloud Create an Experience Cloud Site
+      description: Creates a new Experience Cloud site with the specified name, template, and URL path prefix. Requires the Create and Set Up Experiences permission.
+      tags:
+      - Sites
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCommunityInput'
+      responses:
+        '201':
+          description: Experience Cloud site created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Community'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /connect/communities/{communityId}:
+    get:
+      operationId: getExperienceCloudSite
+      summary: Salesforce Experience Cloud Get an Experience Cloud Site
+      description: Returns detailed information about a specific Experience Cloud site including its name, description, status, URL path prefix, template type, and login and self-registration URLs.
+      tags:
+      - Sites
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved Experience Cloud site details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Community'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateExperienceCloudSite
+      summary: Salesforce Experience Cloud Update an Experience Cloud Site
+      description: Updates the properties of an existing Experience Cloud site such as its name, description, and status.
+      tags:
+      - Sites
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCommunityInput'
+      responses:
+        '200':
+          description: Experience Cloud site updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Community'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    CreateCommunityInput:
+      type: object
+      description: Input for creating a new Experience Cloud site
+      required:
+      - name
+      - templateName
+      - urlPathPrefix
+      properties:
+        description:
+          type: string
+          description: Description for the new site
+        name:
+          type: string
+          description: Name for the new site
+        templateName:
+          type: string
+          description: Template to use for the site
+        urlPathPrefix:
+          type: string
+          description: URL path prefix for the site
+    UpdateCommunityInput:
+      type: object
+      description: Input for updating an Experience Cloud site
+      properties:
+        description:
+          type: string
+          description: Updated description for the site
+        name:
+          type: string
+          description: Updated name for the site
+        status:
+          type: string
+          description: Updated status for the site
+          enum:
+          - Live
+          - Inactive
+          - DownForMaintenance
+    CommunityListResponse:
+      type: object
+      description: Response containing a list of Experience Cloud sites
+      properties:
+        communities:
+          type: array
+          description: List of Experience Cloud sites
+          items:
+            $ref: '#/components/schemas/Community'
+        total:
+          type: integer
+          description: Total number of sites available
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    Community:
+      type: object
+      description: Represents an Experience Cloud site (community)
+      properties:
+        allowChatterAccessWithoutLogin:
+          type: boolean
+          description: Whether guest users can access Chatter
+        allowMembersToFlag:
+          type: boolean
+          description: Whether community members can flag content
+        description:
+          type: string
+          description: Description of the Experience Cloud site
+        id:
+          type: string
+          description: Unique identifier of the site
+        invitationsEnabled:
+          type: boolean
+          description: Whether invitations are enabled for the site
+        knowledgeableEnabled:
+          type: boolean
+          description: Whether the knowledgeable people feature is enabled
+        loginUrl:
+          type: string
+          format: uri
+          description: URL for the site login page
+        memberVisibilityEnabled:
+          type: boolean
+          description: Whether members can see other members
+        name:
+          type: string
+          description: Name of the Experience Cloud site
+        nicknameDisplayEnabled:
+          type: boolean
+          description: Whether nicknames are displayed instead of full names
+        privateMessagesEnabled:
+          type: boolean
+          description: Whether private messaging is enabled
+        reputationEnabled:
+          type: boolean
+          description: Whether the reputation system is enabled
+        sendWelcomeEmail:
+          type: boolean
+          description: Whether welcome emails are sent to new members
+        siteAsContainerEnabled:
+          type: boolean
+          description: Whether the site-as-container feature is enabled
+        siteUrl:
+          type: string
+          format: uri
+          description: The URL of the Experience Cloud site
+        status:
+          type: string
+          description: Current status of the site
+          enum:
+          - Live
+          - Inactive
+          - DownForMaintenance
+          - UnderConstruction
+        templateName:
+          type: string
+          description: Name of the template used for the site
+        url:
+          type: string
+          format: uri
+          description: API resource URL for this site
+        urlPathPrefix:
+          type: string
+          description: URL path prefix for the site
+  responses:
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    StatusFilter:
+      name: status
+      in: query
+      description: Filter sites by status. Valid values are Live, Inactive, DownForMaintenance, UnderConstruction.
+      schema:
+        type: string
+        enum:
+        - Live
+        - Inactive
+        - DownForMaintenance
+        - UnderConstruction
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow

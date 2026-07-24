@@ -1,0 +1,176 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Templates API
+  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+  description: Salesforce Instance
+  variables:
+    instance:
+      default: yourInstance
+      description: Your Salesforce instance name or custom domain
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: Templates
+  description: Site template management
+paths:
+  /connect/communities/templates:
+    get:
+      operationId: listSiteTemplates
+      summary: Salesforce Experience Cloud List Site Templates
+      description: Returns a list of available Experience Cloud site templates that can be used when creating new sites. Includes both standard Salesforce templates (Build Your Own, Customer Service, Partner Central, etc.) and LWR-based templates.
+      tags:
+      - Templates
+      parameters:
+      - name: templateCategory
+        in: query
+        description: Filter templates by category
+        schema:
+          type: string
+          enum:
+          - LWR
+          - Aura
+          - All
+      responses:
+        '200':
+          description: Successfully retrieved site templates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /connect/communities/{communityId}/template:
+    get:
+      operationId: getSiteTemplate
+      summary: Salesforce Experience Cloud Get Site Template
+      description: Returns the template currently used by the specified Experience Cloud site, including template type, version, and default configuration.
+      tags:
+      - Templates
+      parameters:
+      - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved site template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    Template:
+      type: object
+      description: An Experience Cloud site template
+      properties:
+        developerName:
+          type: string
+          description: Developer name of the template
+        id:
+          type: string
+          description: Template ID
+        label:
+          type: string
+          description: Display label for the template
+        publisher:
+          type: string
+          description: Publisher of the template (e.g., Salesforce)
+        templateCategory:
+          type: string
+          description: Category of the template
+          enum:
+          - LWR
+          - Aura
+        templateType:
+          type: string
+          description: Type of template
+          enum:
+          - Build Your Own (LWR)
+          - Microsite (LWR)
+          - Customer Account Portal
+          - Customer Service
+          - Partner Central
+          - Build Your Own (Aura)
+          - Help Center
+        description:
+          type: string
+          description: Description of the template
+        iconUrl:
+          type: string
+          format: uri
+          description: URL of the template icon
+        previewUrl:
+          type: string
+          format: uri
+          description: URL to preview the template
+    TemplateCollection:
+      type: object
+      description: Collection of site templates
+      properties:
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template'
+        total:
+          type: integer
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            content: Manage CMS content
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow
