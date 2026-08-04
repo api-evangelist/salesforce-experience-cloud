@@ -1,0 +1,1070 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Salesforce Connect REST API (Communities)
+  description: >-
+    Access community data, feeds, topics, and user engagement features. The
+    Connect REST API provides endpoints for social collaboration, content
+    sharing, and community management within Experience Cloud sites. Includes
+    feed operations, topic management, and member engagement.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+  - url: https://{instance}.salesforce.com/services/data/v59.0/connect
+    description: Salesforce Instance
+    variables:
+      instance:
+        default: yourInstance
+        description: Your Salesforce instance name or custom domain
+security:
+  - oauth2: []
+  - bearerAuth: []
+tags:
+  - name: Feeds
+    description: Feed and feed item operations
+  - name: Knowledge
+    description: Knowledge article operations within communities
+  - name: Members
+    description: Community member operations
+  - name: Moderation
+    description: Content moderation operations
+  - name: Topics
+    description: Topic management and assignments
+paths:
+  /communities/{communityId}/chatter/feeds/news/me/feed-elements:
+    get:
+      operationId: getNewsFeed
+      summary: Salesforce Experience Cloud Get News Feed
+      description: >-
+        Returns the news feed for the context user within the specified
+        Experience Cloud site. Includes feed items from people and records
+        the user follows, groups the user is a member of, and site-wide posts.
+      tags:
+        - Feeds
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageToken'
+        - name: sort
+          in: query
+          description: Sort order of feed elements
+          schema:
+            type: string
+            enum:
+              - CreatedDateDesc
+              - LastModifiedDateDesc
+      responses:
+        '200':
+          description: Successfully retrieved news feed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedElementPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: postFeedElement
+      summary: Salesforce Experience Cloud Post a Feed Element
+      description: >-
+        Creates a new feed element (post) on the news feed of the specified
+        Experience Cloud site. Supports text posts, link posts, and content
+        posts with mentions and hashtags.
+      tags:
+        - Feeds
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedElementInput'
+      responses:
+        '201':
+          description: Feed element created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedElement'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /communities/{communityId}/chatter/feed-elements/{feedElementId}:
+    get:
+      operationId: getFeedElement
+      summary: Salesforce Experience Cloud Get a Feed Element
+      description: >-
+        Returns a specific feed element by its ID within the specified
+        Experience Cloud site, including the body, comments, and likes.
+      tags:
+        - Feeds
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/FeedElementId'
+      responses:
+        '200':
+          description: Successfully retrieved the feed element
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedElement'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteFeedElement
+      summary: Salesforce Experience Cloud Delete a Feed Element
+      description: >-
+        Deletes the specified feed element from the Experience Cloud site.
+        Requires ownership of the feed element or moderation permissions.
+      tags:
+        - Feeds
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/FeedElementId'
+      responses:
+        '204':
+          description: Feed element deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/chatter/feed-elements/{feedElementId}/capabilities/comments/items:
+    get:
+      operationId: getFeedElementComments
+      summary: Salesforce Experience Cloud Get Comments on a Feed Element
+      description: >-
+        Returns the comments on a specific feed element within the
+        Experience Cloud site.
+      tags:
+        - Feeds
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/FeedElementId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageToken'
+      responses:
+        '200':
+          description: Successfully retrieved comments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: postComment
+      summary: Salesforce Experience Cloud Post a Comment
+      description: >-
+        Creates a new comment on the specified feed element within the
+        Experience Cloud site.
+      tags:
+        - Feeds
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/FeedElementId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentInput'
+      responses:
+        '201':
+          description: Comment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /communities/{communityId}/chatter/feed-elements/{feedElementId}/capabilities/chatter-likes/items:
+    get:
+      operationId: getFeedElementLikes
+      summary: Salesforce Experience Cloud Get Likes on a Feed Element
+      description: >-
+        Returns the likes on a specific feed element within the Experience
+        Cloud site.
+      tags:
+        - Feeds
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/FeedElementId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageToken'
+      responses:
+        '200':
+          description: Successfully retrieved likes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikePage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: likeFeedElement
+      summary: Salesforce Experience Cloud Like a Feed Element
+      description: >-
+        Adds a like to the specified feed element in the Experience Cloud site
+        on behalf of the context user.
+      tags:
+        - Feeds
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/FeedElementId'
+      responses:
+        '201':
+          description: Like added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Like'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /communities/{communityId}/topics:
+    get:
+      operationId: getTopics
+      summary: Salesforce Experience Cloud List Topics
+      description: >-
+        Returns a list of topics in the specified Experience Cloud site.
+        Topics organize content and enable community members to find
+        relevant discussions and knowledge.
+      tags:
+        - Topics
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageToken'
+        - name: q
+          in: query
+          description: Search term to filter topics by name
+          schema:
+            type: string
+        - name: exactMatch
+          in: query
+          description: Whether to match the search term exactly
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successfully retrieved topics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createTopic
+      summary: Salesforce Experience Cloud Create a Topic
+      description: >-
+        Creates a new topic in the specified Experience Cloud site.
+      tags:
+        - Topics
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopicInput'
+      responses:
+        '201':
+          description: Topic created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /communities/{communityId}/topics/{topicId}:
+    get:
+      operationId: getTopic
+      summary: Salesforce Experience Cloud Get a Topic
+      description: >-
+        Returns details about a specific topic in the Experience Cloud site,
+        including name, description, and related feed items.
+      tags:
+        - Topics
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - name: topicId
+          in: path
+          required: true
+          description: The ID of the topic
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved topic
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateTopic
+      summary: Salesforce Experience Cloud Update a Topic
+      description: >-
+        Updates the name or description of an existing topic in the
+        Experience Cloud site.
+      tags:
+        - Topics
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - name: topicId
+          in: path
+          required: true
+          description: The ID of the topic
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopicInput'
+      responses:
+        '200':
+          description: Topic updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTopic
+      summary: Salesforce Experience Cloud Delete a Topic
+      description: >-
+        Deletes the specified topic from the Experience Cloud site. Requires
+        appropriate moderation permissions.
+      tags:
+        - Topics
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - name: topicId
+          in: path
+          required: true
+          description: The ID of the topic
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Topic deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/chatter/users/me:
+    get:
+      operationId: getCurrentUser
+      summary: Salesforce Experience Cloud Get Current User
+      description: >-
+        Returns information about the context user in the specified
+        Experience Cloud site, including profile details, reputation,
+        and community membership information.
+      tags:
+        - Members
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved current user info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityUser'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /communities/{communityId}/chatter/users:
+    get:
+      operationId: getCommunityMembers
+      summary: Salesforce Experience Cloud List Community Members
+      description: >-
+        Returns a list of users in the specified Experience Cloud site.
+        Supports pagination and filtering.
+      tags:
+        - Members
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageToken'
+        - name: q
+          in: query
+          description: Search term to filter members by name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved community members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/chatter/users/{userId}/reputation:
+    get:
+      operationId: getUserReputation
+      summary: Salesforce Experience Cloud Get User Reputation
+      description: >-
+        Returns the reputation score and level for a specific user within
+        the Experience Cloud site.
+      tags:
+        - Members
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - name: userId
+          in: path
+          required: true
+          description: The ID of the user
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved user reputation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reputation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/managed-content/delivery:
+    get:
+      operationId: getKnowledgeArticles
+      summary: Salesforce Experience Cloud Get Knowledge Articles
+      description: >-
+        Returns knowledge articles published to the specified Experience
+        Cloud site. Supports filtering by category and language.
+      tags:
+        - Knowledge
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageToken'
+        - name: language
+          in: query
+          description: Language code to filter articles
+          schema:
+            type: string
+        - name: managedContentType
+          in: query
+          description: Content type to filter by
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved knowledge articles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedContentDeliveryPage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /communities/{communityId}/moderation/flagged-elements:
+    get:
+      operationId: getFlaggedElements
+      summary: Salesforce Experience Cloud Get Flagged Elements
+      description: >-
+        Returns content that has been flagged for moderation within the
+        Experience Cloud site. Requires moderation permissions.
+      tags:
+        - Moderation
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageToken'
+        - name: visibility
+          in: query
+          description: Filter by flagged element visibility
+          schema:
+            type: string
+            enum:
+              - ModeratorOnly
+              - SelfOnly
+      responses:
+        '200':
+          description: Successfully retrieved flagged elements
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModerationFlagCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+            chatter_api: Manage Chatter data
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    FeedElementId:
+      name: feedElementId
+      in: path
+      required: true
+      description: The ID of the feed element
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
+  schemas:
+    FeedElementPage:
+      type: object
+      description: Paginated list of feed elements
+      properties:
+        currentPageToken:
+          type: string
+          description: Token for the current page
+        currentPageUrl:
+          type: string
+          format: uri
+          description: URL for the current page
+        elements:
+          type: array
+          description: Feed elements on this page
+          items:
+            $ref: '#/components/schemas/FeedElement'
+        isModifiedToken:
+          type: string
+        isModifiedUrl:
+          type: string
+          format: uri
+        nextPageToken:
+          type: string
+          description: Token for the next page
+        nextPageUrl:
+          type: string
+          format: uri
+          description: URL for the next page
+        updatesToken:
+          type: string
+        updatesUrl:
+          type: string
+          format: uri
+    FeedElement:
+      type: object
+      description: A feed element such as a post or announcement
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the feed element
+        body:
+          $ref: '#/components/schemas/MessageBody'
+        capabilities:
+          $ref: '#/components/schemas/FeedElementCapabilities'
+        createdDate:
+          type: string
+          format: date-time
+          description: When the feed element was created
+        feedElementType:
+          type: string
+          description: Type of feed element
+          enum:
+            - FeedItem
+            - Bundle
+            - Recommendation
+        header:
+          $ref: '#/components/schemas/MessageBody'
+        modifiedDate:
+          type: string
+          format: date-time
+          description: When the feed element was last modified
+        parent:
+          $ref: '#/components/schemas/ActorReference'
+        actor:
+          $ref: '#/components/schemas/ActorReference'
+        url:
+          type: string
+          format: uri
+          description: API resource URL
+    FeedElementInput:
+      type: object
+      description: Input for creating a feed element
+      required:
+        - body
+        - feedElementType
+        - subjectId
+      properties:
+        body:
+          $ref: '#/components/schemas/MessageBodyInput'
+        feedElementType:
+          type: string
+          description: Type of feed element to create
+          enum:
+            - FeedItem
+        subjectId:
+          type: string
+          description: ID of the parent record for the post
+    FeedElementCapabilities:
+      type: object
+      description: Capabilities available on a feed element
+      properties:
+        comments:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/CommentPage'
+        chatterLikes:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/LikePage'
+            myLike:
+              $ref: '#/components/schemas/Like'
+    MessageBody:
+      type: object
+      description: Rich text body of a feed element or comment
+      properties:
+        isRichText:
+          type: boolean
+        messageSegments:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageSegment'
+        text:
+          type: string
+    MessageBodyInput:
+      type: object
+      description: Input for a message body
+      properties:
+        messageSegments:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageSegmentInput'
+    MessageSegment:
+      type: object
+      description: A segment of a message body
+      properties:
+        text:
+          type: string
+        type:
+          type: string
+          enum:
+            - Text
+            - Mention
+            - Hashtag
+            - Link
+            - MarkupBegin
+            - MarkupEnd
+    MessageSegmentInput:
+      type: object
+      description: Input for a message segment
+      properties:
+        text:
+          type: string
+        type:
+          type: string
+          enum:
+            - Text
+            - Mention
+            - Hashtag
+    CommentPage:
+      type: object
+      description: Paginated list of comments
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+    Comment:
+      type: object
+      description: A comment on a feed element
+      properties:
+        id:
+          type: string
+        body:
+          $ref: '#/components/schemas/MessageBody'
+        createdDate:
+          type: string
+          format: date-time
+        feedElement:
+          $ref: '#/components/schemas/ActorReference'
+        likes:
+          $ref: '#/components/schemas/LikePage'
+        user:
+          $ref: '#/components/schemas/ActorReference'
+        url:
+          type: string
+          format: uri
+    CommentInput:
+      type: object
+      description: Input for creating a comment
+      required:
+        - body
+      properties:
+        body:
+          $ref: '#/components/schemas/MessageBodyInput'
+    LikePage:
+      type: object
+      description: Paginated list of likes
+      properties:
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        likes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Like'
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+    Like:
+      type: object
+      description: A like on a feed element or comment
+      properties:
+        id:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        url:
+          type: string
+          format: uri
+        user:
+          $ref: '#/components/schemas/ActorReference'
+    ActorReference:
+      type: object
+      description: Reference to a user or record
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+          format: uri
+    TopicCollection:
+      type: object
+      description: Collection of topics
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+    Topic:
+      type: object
+      description: A topic within an Experience Cloud site
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the topic
+        createdDate:
+          type: string
+          format: date-time
+        description:
+          type: string
+        images:
+          type: object
+          properties:
+            coverImageUrl:
+              type: string
+              format: uri
+        name:
+          type: string
+          description: Name of the topic
+        talkingAbout:
+          type: integer
+          description: Number of people currently talking about this topic
+        url:
+          type: string
+          format: uri
+    TopicInput:
+      type: object
+      description: Input for creating or updating a topic
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Name of the topic
+        description:
+          type: string
+          description: Description of the topic
+    CommunityUser:
+      type: object
+      description: A user within an Experience Cloud site
+      properties:
+        id:
+          type: string
+        communityNickname:
+          type: string
+        companyName:
+          type: string
+        displayName:
+          type: string
+        email:
+          type: string
+          format: email
+        firstName:
+          type: string
+        lastName:
+          type: string
+        name:
+          type: string
+        photo:
+          type: object
+          properties:
+            fullEmailPhotoUrl:
+              type: string
+              format: uri
+            largePhotoUrl:
+              type: string
+              format: uri
+            smallPhotoUrl:
+              type: string
+              format: uri
+            standardEmailPhotoUrl:
+              type: string
+              format: uri
+        reputation:
+          $ref: '#/components/schemas/Reputation'
+        title:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+          format: uri
+        username:
+          type: string
+    UserPage:
+      type: object
+      description: Paginated list of community users
+      properties:
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommunityUser'
+    Reputation:
+      type: object
+      description: User reputation information
+      properties:
+        reputationLevel:
+          type: object
+          properties:
+            levelLabel:
+              type: string
+            levelNumber:
+              type: integer
+        reputationPoints:
+          type: number
+    ManagedContentDeliveryPage:
+      type: object
+      description: Paginated managed content delivery results
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              contentKey:
+                type: string
+              contentUrlName:
+                type: string
+              language:
+                type: string
+              managedContentId:
+                type: string
+              publishedDate:
+                type: string
+                format: date-time
+              title:
+                type: string
+              type:
+                type: string
+              typeLabel:
+                type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    ModerationFlagCollection:
+      type: object
+      description: Collection of flagged elements for moderation
+      properties:
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        flaggedElements:
+          type: array
+          items:
+            type: object
+            properties:
+              flagCount:
+                type: integer
+              flaggedDate:
+                type: string
+                format: date-time
+              feedElement:
+                $ref: '#/components/schemas/FeedElement'
+              moderationFlags:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    type:
+                      type: string
+                      enum:
+                        - FeedItemFlaggedAsSpam
+                        - FeedItemFlaggedAsInappropriate
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+  responses:
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'

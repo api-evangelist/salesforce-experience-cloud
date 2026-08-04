@@ -1,0 +1,479 @@
+openapi: 3.1.0
+info:
+  title: Salesforce Experience Cloud Templates API
+  description: >-
+    Retrieve and manage Experience Cloud site templates including Build Your
+    Own and Microsite LWR templates. Supports programmatic theme and branding
+    configuration for digital experience portals. Templates define the
+    structure, navigation, and default styling for Experience Cloud sites.
+  version: 59.0.0
+  contact:
+    name: Salesforce Developer Support
+    url: https://developer.salesforce.com/
+  license:
+    name: Salesforce Master Subscription Agreement
+    url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
+servers:
+  - url: https://{instance}.salesforce.com/services/data/v59.0
+    description: Salesforce Instance
+    variables:
+      instance:
+        default: yourInstance
+        description: Your Salesforce instance name or custom domain
+security:
+  - oauth2: []
+  - bearerAuth: []
+tags:
+  - name: Branding Sets
+    description: Branding set management
+  - name: Templates
+    description: Site template management
+  - name: Themes
+    description: Theme and branding configuration
+paths:
+  /connect/communities/templates:
+    get:
+      operationId: listSiteTemplates
+      summary: Salesforce Experience Cloud List Site Templates
+      description: >-
+        Returns a list of available Experience Cloud site templates that
+        can be used when creating new sites. Includes both standard
+        Salesforce templates (Build Your Own, Customer Service, Partner
+        Central, etc.) and LWR-based templates.
+      tags:
+        - Templates
+      parameters:
+        - name: templateCategory
+          in: query
+          description: Filter templates by category
+          schema:
+            type: string
+            enum:
+              - LWR
+              - Aura
+              - All
+      responses:
+        '200':
+          description: Successfully retrieved site templates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /connect/communities/{communityId}/template:
+    get:
+      operationId: getSiteTemplate
+      summary: Salesforce Experience Cloud Get Site Template
+      description: >-
+        Returns the template currently used by the specified Experience
+        Cloud site, including template type, version, and default
+        configuration.
+      tags:
+        - Templates
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved site template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connect/communities/{communityId}/themes:
+    get:
+      operationId: listSiteThemes
+      summary: Salesforce Experience Cloud List Site Themes
+      description: >-
+        Returns the themes available for the specified Experience Cloud
+        site. Themes control the visual appearance including colors,
+        fonts, spacing, and component styling.
+      tags:
+        - Themes
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved themes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connect/communities/{communityId}/themes/active:
+    get:
+      operationId: getActiveTheme
+      summary: Salesforce Experience Cloud Get Active Theme
+      description: >-
+        Returns the currently active theme for the specified Experience
+        Cloud site with all its branding properties.
+      tags:
+        - Themes
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved active theme
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: setActiveTheme
+      summary: Salesforce Experience Cloud Set Active Theme
+      description: >-
+        Sets the active theme for the specified Experience Cloud site.
+        Changes take effect on the next publish.
+      tags:
+        - Themes
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                themeId:
+                  type: string
+                  description: ID of the theme to activate
+      responses:
+        '200':
+          description: Active theme set successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connect/communities/{communityId}/branding-sets:
+    get:
+      operationId: listBrandingSets
+      summary: Salesforce Experience Cloud List Branding Sets
+      description: >-
+        Returns the branding sets configured for the specified Experience
+        Cloud site. Branding sets define reusable visual property groups
+        for colors, fonts, and images.
+      tags:
+        - Branding Sets
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+      responses:
+        '200':
+          description: Successfully retrieved branding sets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingSetCollection'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /connect/communities/{communityId}/branding-sets/{brandingSetId}:
+    get:
+      operationId: getBrandingSet
+      summary: Salesforce Experience Cloud Get a Branding Set
+      description: >-
+        Returns the details of a specific branding set including all
+        its property values for colors, fonts, and image references.
+      tags:
+        - Branding Sets
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - name: brandingSetId
+          in: path
+          required: true
+          description: The ID of the branding set
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved branding set
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingSet'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateBrandingSet
+      summary: Salesforce Experience Cloud Update a Branding Set
+      description: >-
+        Updates the properties of an existing branding set. Only the
+        properties included in the request are updated.
+      tags:
+        - Branding Sets
+      parameters:
+        - $ref: '#/components/parameters/CommunityId'
+        - name: brandingSetId
+          in: path
+          required: true
+          description: The ID of the branding set
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandingSetInput'
+      responses:
+        '200':
+          description: Branding set updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingSet'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: Salesforce OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.salesforce.com/services/oauth2/authorize
+          tokenUrl: https://login.salesforce.com/services/oauth2/token
+          scopes:
+            api: Access and manage your data
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: OAuth2
+      description: Bearer token obtained through OAuth 2.0 flow
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
+  schemas:
+    TemplateCollection:
+      type: object
+      description: Collection of site templates
+      properties:
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template'
+        total:
+          type: integer
+    Template:
+      type: object
+      description: An Experience Cloud site template
+      properties:
+        developerName:
+          type: string
+          description: Developer name of the template
+        id:
+          type: string
+          description: Template ID
+        label:
+          type: string
+          description: Display label for the template
+        publisher:
+          type: string
+          description: Publisher of the template (e.g., Salesforce)
+        templateCategory:
+          type: string
+          description: Category of the template
+          enum:
+            - LWR
+            - Aura
+        templateType:
+          type: string
+          description: Type of template
+          enum:
+            - Build Your Own (LWR)
+            - Microsite (LWR)
+            - Customer Account Portal
+            - Customer Service
+            - Partner Central
+            - Build Your Own (Aura)
+            - Help Center
+        description:
+          type: string
+          description: Description of the template
+        iconUrl:
+          type: string
+          format: uri
+          description: URL of the template icon
+        previewUrl:
+          type: string
+          format: uri
+          description: URL to preview the template
+    ThemeCollection:
+      type: object
+      description: Collection of themes
+      properties:
+        themes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Theme'
+        total:
+          type: integer
+    Theme:
+      type: object
+      description: A site theme configuration
+      properties:
+        id:
+          type: string
+          description: Theme ID
+        name:
+          type: string
+          description: Name of the theme
+        description:
+          type: string
+          description: Description of the theme
+        isActive:
+          type: boolean
+          description: Whether this is the currently active theme
+        themeType:
+          type: string
+          description: Type of theme
+        properties:
+          type: array
+          description: Theme property values
+          items:
+            $ref: '#/components/schemas/ThemeProperty'
+    ThemeProperty:
+      type: object
+      description: A property within a theme
+      properties:
+        name:
+          type: string
+          description: Property name
+        type:
+          type: string
+          description: Property type
+          enum:
+            - Color
+            - Font
+            - Image
+            - String
+            - Number
+        value:
+          type: string
+          description: Property value
+        group:
+          type: string
+          description: Logical grouping of the property
+    BrandingSetCollection:
+      type: object
+      description: Collection of branding sets
+      properties:
+        brandingSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandingSet'
+        total:
+          type: integer
+    BrandingSet:
+      type: object
+      description: A branding set with visual properties
+      properties:
+        id:
+          type: string
+          description: Branding set ID
+        name:
+          type: string
+          description: Name of the branding set
+        description:
+          type: string
+          description: Description of the branding set
+        properties:
+          type: array
+          description: Branding properties
+          items:
+            $ref: '#/components/schemas/BrandingProperty'
+    BrandingProperty:
+      type: object
+      description: A property within a branding set
+      properties:
+        name:
+          type: string
+          description: Property name (e.g., primaryColor, headerFont)
+        type:
+          type: string
+          description: Property type
+          enum:
+            - Color
+            - Font
+            - Image
+            - String
+        value:
+          type: string
+          description: Property value
+    BrandingSetInput:
+      type: object
+      description: Input for updating a branding set
+      properties:
+        name:
+          type: string
+          description: Updated name
+        description:
+          type: string
+          description: Updated description
+        properties:
+          type: array
+          description: Updated properties
+          items:
+            $ref: '#/components/schemas/BrandingProperty'
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
