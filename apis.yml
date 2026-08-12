@@ -2804,10 +2804,6 @@ common:
   url: json-schema/salesforce-experience-cloud-sobject-record-schema.json
 - type: SpectralRules
   url: rules/salesforce-experience-cloud-rules.yml
-- type: Capabilities
-  url: capabilities/site-management.yaml
-- type: Capabilities
-  url: capabilities/community-engagement.yaml
 - type: JSONStructure
   url: json-structure/salesforce-experience-cloud-structure.json
 - type: Vocabulary
