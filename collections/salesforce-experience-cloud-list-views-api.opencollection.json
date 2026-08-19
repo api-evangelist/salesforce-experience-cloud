@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions List Views API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get List View Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/list-ui/:listViewId",
+            "params": [
+              {
+                "name": "listViewId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the list view"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Additional fields to include in list view records"
+              },
+              {
+                "name": "optionalFields",
+                "value": "",
+                "type": "query",
+                "description": "Optional fields to include if accessible"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for the next page of records"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "Field API name to sort by"
+              }
+            ]
+          },
+          "docs": "Returns the records and metadata for a specific list view including columns, sorting, filtering, and the record data. Used to render list views in custom UIs."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get List Views for Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/list-ui/:objectApiName",
+            "params": [
+              {
+                "name": "objectApiName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Salesforce object (e.g., Account, Contact)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of list views per page"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for the next page"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search term to filter list views by name"
+              }
+            ]
+          },
+          "docs": "Returns all available list views for the specified object type. Includes list view ID, label, and developer name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Favorites API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Favorites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/favorites"
+          },
+          "docs": "Returns the list of favorites for the context user, including records, list views, and other favorited items."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Add a Favorite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/favorites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a record, list view, or other item to the user's favorites."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Remove a Favorite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/favorites/:favoriteId",
+            "params": [
+              {
+                "name": "favoriteId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the favorite to remove"
+              }
+            ]
+          },
+          "docs": "Removes the specified item from the user's favorites."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Record Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/actions/record/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character Salesforce record ID"
+              },
+              {
+                "name": "formFactor",
+                "value": "",
+                "type": "query",
+                "description": "Form factor for filtering actions"
+              },
+              {
+                "name": "sections",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of action sections"
+              }
+            ]
+          },
+          "docs": "Returns the actions available for a specific record based on the current user's permissions and the record's state."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

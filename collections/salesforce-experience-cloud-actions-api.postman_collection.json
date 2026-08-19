@@ -1,0 +1,330 @@
+{
+  "item": [
+    {
+      "id": "5c69e64f-380f-4614-a483-e740fafcdf94",
+      "name": "Actions",
+      "description": {
+        "content": "Available actions for records and objects",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f0782516-d189-41da-bbc1-5bd7b8720a34",
+          "name": "Salesforce Experience Cloud Get Record Actions",
+          "request": {
+            "name": "Salesforce Experience Cloud Get Record Actions",
+            "description": {
+              "content": "Returns the actions available for a specific record based on the current user's permissions and the record's state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "actions",
+                "record",
+                ":recordId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "formFactor",
+                  "value": "<string>",
+                  "description": "Form factor for filtering actions"
+                },
+                {
+                  "disabled": false,
+                  "key": "sections",
+                  "value": "<string>",
+                  "description": "Comma-separated list of action sections"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recordId",
+                  "description": "(Required) The 18-character Salesforce record ID"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea00ed97-9220-4b1c-9880-cc7dc4555b1c",
+              "name": "Successfully retrieved record actions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "actions",
+                    "record",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formFactor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sections",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) The 18-character Salesforce record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": {\n    \"key_0\": {\n      \"actions\": [\n        {\n          \"actionListContext\": \"string\",\n          \"actionTarget\": \"https://bCQhyAhNEBUimOJYxVqdKTNRfQG.niKdoghazzRuR4.ns6yRgMBT13VJlcGy6Ugdcw.5i5ZOCdCohV0yGkrNbOtvFc.baYQYXTGwh\",\n          \"actionTargetType\": \"string\",\n          \"apiName\": \"string\",\n          \"externalAction\": false,\n          \"iconUrl\": \"https://NovmjBoCJos.ied-8soUwK,Pn2aQ2FFfEEuHPiXhRm,HfdjKfQF9\",\n          \"id\": \"string\",\n          \"isMassAction\": false,\n          \"label\": \"string\",\n          \"primary\": true,\n          \"relatedListRecordId\": \"string\",\n          \"relatedSourceObject\": \"string\",\n          \"subtype\": \"string\",\n          \"targetObject\": \"string\",\n          \"targetUrl\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"actionListContext\": \"string\",\n          \"actionTarget\": \"https://MdGSWQkfwZx.wpdu4s26PVr.BxjG5b4tjMkrKARtI\",\n          \"actionTargetType\": \"string\",\n          \"apiName\": \"string\",\n          \"externalAction\": false,\n          \"iconUrl\": \"http://FWXYxApPfObYNzf.tloeJ0X+94RmvcbpK5s0KosZ3bNXzNlRbmRE6efVO83m1SWxDMqD0+CAHGXNUb,\",\n          \"id\": \"string\",\n          \"isMassAction\": false,\n          \"label\": \"string\",\n          \"primary\": false,\n          \"relatedListRecordId\": \"string\",\n          \"relatedSourceObject\": \"string\",\n          \"subtype\": \"string\",\n          \"targetObject\": \"string\",\n          \"targetUrl\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"actions\": [\n        {\n          \"actionListContext\": \"string\",\n          \"actionTarget\": \"http://mwhpqLFqyochStXfDImMiQaXKNUkIJ.ixaySYnVr5qewRpOhX,SfgxzDhnLC.11FvF,\",\n          \"actionTargetType\": \"string\",\n          \"apiName\": \"string\",\n          \"externalAction\": false,\n          \"iconUrl\": \"https://Xa.cfkfUuFmeGlTPoOYFMvCao5tkm8IpVpOGfYePdOJYi\",\n          \"id\": \"string\",\n          \"isMassAction\": true,\n          \"label\": \"string\",\n          \"primary\": true,\n          \"relatedListRecordId\": \"string\",\n          \"relatedSourceObject\": \"string\",\n          \"subtype\": \"string\",\n          \"targetObject\": \"string\",\n          \"targetUrl\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"actionListContext\": \"string\",\n          \"actionTarget\": \"https://trMrM.pun-zP7T1F\",\n          \"actionTargetType\": \"string\",\n          \"apiName\": \"string\",\n          \"externalAction\": true,\n          \"iconUrl\": \"https://wnzwupMzjMJixetsFsQYSyFbfpQBR.ekIiV-HrRDT0jQurxobXwqEWElDdHxabadaMeYi.ZnvmVPStdhTQ2UxXvPbHWJ.V,\",\n          \"id\": \"string\",\n          \"isMassAction\": false,\n          \"label\": \"string\",\n          \"primary\": false,\n          \"relatedListRecordId\": \"string\",\n          \"relatedSourceObject\": \"string\",\n          \"subtype\": \"string\",\n          \"targetObject\": \"string\",\n          \"targetUrl\": \"string\",\n          \"type\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a920a2d4-9344-4de7-800a-a3396a8141d0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "actions",
+                    "record",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formFactor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sections",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) The 18-character Salesforce record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ff49e3f-8d7e-4ce6-97e2-d98dbc0c1015",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "actions",
+                    "record",
+                    ":recordId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formFactor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sections",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recordId",
+                      "description": "(Required) The 18-character Salesforce record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance name or custom domain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect/cms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api content"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bd4a08b0-0d94-4bb5-b3d5-7de1515fe478",
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

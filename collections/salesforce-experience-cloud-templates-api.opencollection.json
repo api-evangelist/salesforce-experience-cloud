@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Templates API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List Site Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/templates",
+            "params": [
+              {
+                "name": "templateCategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter templates by category"
+              }
+            ]
+          },
+          "docs": "Returns a list of available Experience Cloud site templates that can be used when creating new sites. Includes both standard Salesforce templates (Build Your Own, Customer Service, Partner Central, etc.) and LWR-based templates."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Site Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/:communityId/template",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ]
+          },
+          "docs": "Returns the template currently used by the specified Experience Cloud site, including template type, version, and default configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Media Delivery API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media Delivery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Content Binary Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/channels/:channelId/contents/:contentKeyOrId/binary",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "contentKeyOrId",
+                "value": "",
+                "type": "path",
+                "description": "Content key or managed content record ID"
+              }
+            ]
+          },
+          "docs": "Returns the binary stream of published managed content such as images, documents, or videos. Used for downloading or streaming media files associated with CMS content."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

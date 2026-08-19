@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Themes API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Themes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Site Themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/:communityId/themes",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              }
+            ]
+          },
+          "docs": "Returns the available themes for the specified Experience Cloud site including branding properties, colors, fonts, and images."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Active Theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/:communityId/themes/active",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ]
+          },
+          "docs": "Returns the currently active theme for the specified Experience Cloud site with all its branding properties."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Set Active Theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/:communityId/themes/active",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the active theme for the specified Experience Cloud site. Changes take effect on the next publish."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

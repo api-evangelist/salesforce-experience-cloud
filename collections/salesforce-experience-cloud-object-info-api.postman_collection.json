@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "9b6cd335-141c-4ad4-84fe-b65bcc616c2e",
+      "name": "Object Info",
+      "description": {
+        "content": "Object metadata for UI rendering",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "816d560b-e350-4f0a-92d1-a0ff7856d4e6",
+          "name": "Salesforce Experience Cloud Get Object Info",
+          "request": {
+            "name": "Salesforce Experience Cloud Get Object Info",
+            "description": {
+              "content": "Returns metadata about the specified object including fields, record types, child relationships, and theme information. Provides the information needed for metadata-driven UI construction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "object-info",
+                ":objectApiName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectApiName",
+                  "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3c76b64-20ca-402f-bccc-f07a1d40e4ce",
+              "name": "Successfully retrieved object info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "object-info",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiName\": \"string\",\n  \"associateEntityType\": \"string\",\n  \"associateParentEntity\": \"string\",\n  \"childRelationships\": [\n    {\n      \"childObjectApiName\": \"string\",\n      \"fieldName\": \"string\",\n      \"junctionIdListNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"junctionReferenceTo\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relationshipName\": \"string\"\n    },\n    {\n      \"childObjectApiName\": \"string\",\n      \"fieldName\": \"string\",\n      \"junctionIdListNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"junctionReferenceTo\": [\n        \"string\",\n        \"string\"\n      ],\n      \"relationshipName\": \"string\"\n    }\n  ],\n  \"createable\": true,\n  \"custom\": false,\n  \"defaultRecordTypeId\": \"string\",\n  \"deletable\": false,\n  \"feedEnabled\": true,\n  \"fields\": {\n    \"key_0\": {\n      \"apiName\": \"string\",\n      \"compound\": true,\n      \"compoundComponentName\": \"string\",\n      \"compoundFieldName\": \"string\",\n      \"controllerName\": \"string\",\n      \"controllingFields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createable\": true,\n      \"custom\": true,\n      \"dataType\": \"string\",\n      \"extraTypeInfo\": \"string\",\n      \"filterable\": false,\n      \"filteredLookupInfo\": {},\n      \"highScaleNumber\": false,\n      \"htmlFormatted\": false,\n      \"inlineHelpText\": \"string\",\n      \"label\": \"string\",\n      \"length\": 6768,\n      \"nameField\": false,\n      \"polymorphicForeignKey\": true,\n      \"precision\": 2559,\n      \"reference\": false,\n      \"referenceTargetField\": \"string\",\n      \"relationshipName\": \"string\",\n      \"required\": true,\n      \"scale\": 4256,\n      \"searchPrefilterable\": true,\n      \"sortable\": true,\n      \"unique\": true,\n      \"updateable\": false\n    },\n    \"key_1\": {\n      \"apiName\": \"string\",\n      \"compound\": false,\n      \"compoundComponentName\": \"string\",\n      \"compoundFieldName\": \"string\",\n      \"controllerName\": \"string\",\n      \"controllingFields\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createable\": false,\n      \"custom\": false,\n      \"dataType\": \"string\",\n      \"extraTypeInfo\": \"string\",\n      \"filterable\": true,\n      \"filteredLookupInfo\": {},\n      \"highScaleNumber\": false,\n      \"htmlFormatted\": false,\n      \"inlineHelpText\": \"string\",\n      \"label\": \"string\",\n      \"length\": 85,\n      \"nameField\": false,\n      \"polymorphicForeignKey\": true,\n      \"precision\": 9843,\n      \"reference\": false,\n      \"referenceTargetField\": \"string\",\n      \"relationshipName\": \"string\",\n      \"required\": true,\n      \"scale\": 88,\n      \"searchPrefilterable\": true,\n      \"sortable\": true,\n      \"unique\": false,\n      \"updateable\": true\n    }\n  },\n  \"keyPrefix\": \"string\",\n  \"label\": \"string\",\n  \"labelPlural\": \"string\",\n  \"layoutable\": true,\n  \"mruEnabled\": false,\n  \"nameFields\": [\n    \"string\",\n    \"string\"\n  ],\n  \"queryable\": false,\n  \"recordTypeInfos\": {\n    \"key_0\": {\n      \"available\": false,\n      \"defaultRecordTypeMapping\": true,\n      \"master\": true,\n      \"name\": \"string\",\n      \"recordTypeId\": \"string\"\n    },\n    \"key_1\": {\n      \"available\": false,\n      \"defaultRecordTypeMapping\": true,\n      \"master\": true,\n      \"name\": \"string\",\n      \"recordTypeId\": \"string\"\n    },\n    \"key_2\": {\n      \"available\": false,\n      \"defaultRecordTypeMapping\": true,\n      \"master\": false,\n      \"name\": \"string\",\n      \"recordTypeId\": \"string\"\n    }\n  },\n  \"searchable\": true,\n  \"themeInfo\": {\n    \"color\": \"string\",\n    \"iconUrl\": \"https://vMy.vqxqsvYzqls5Y,IKmkql98,WahZBUOvmGDzGWUWOdGRh9ZT6arJa\"\n  },\n  \"updateable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aaee8801-0c5c-41dd-a1c0-dbf5399215ec",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "object-info",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc4e54c4-51db-4058-a91c-abb27fa54fec",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "object-info",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance name or custom domain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect/cms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api content"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8ed23752-32a7-47ef-922c-6aedb9a993f3",
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Object Info API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

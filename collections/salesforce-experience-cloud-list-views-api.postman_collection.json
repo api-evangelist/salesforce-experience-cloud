@@ -1,0 +1,662 @@
+{
+  "item": [
+    {
+      "id": "2af689e9-e8c9-4742-a6af-9570dc9eb5cc",
+      "name": "List Views",
+      "description": {
+        "content": "List view data and metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53c827bd-5f56-43f3-b8d3-7f774c6e0025",
+          "name": "Salesforce Experience Cloud Get List View Data",
+          "request": {
+            "name": "Salesforce Experience Cloud Get List View Data",
+            "description": {
+              "content": "Returns the records and metadata for a specific list view including columns, sorting, filtering, and the record data. Used to render list views in custom UIs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list-ui",
+                ":listViewId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Additional fields to include in list view records"
+                },
+                {
+                  "disabled": false,
+                  "key": "optionalFields",
+                  "value": "<string>",
+                  "description": "Optional fields to include if accessible"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "50",
+                  "description": "Number of records per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token for the next page of records"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<string>",
+                  "description": "Field API name to sort by"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "listViewId",
+                  "description": "(Required) The ID of the list view"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2f43122-93b9-4580-bf6a-4eea86387192",
+              "name": "Successfully retrieved list view data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-ui",
+                    ":listViewId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "optionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "listViewId",
+                      "description": "(Required) The ID of the list view"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1543,\n  \"currentPageToken\": \"string\",\n  \"currentPageUrl\": \"http://gJlemFdLLUIIqnojyiseGhXHffKrPuzF.enprc0AbiL-ob8ibX6,bbopOYvf7USL+ZOX94XaK4uNk\",\n  \"info\": {\n    \"cloneable\": false,\n    \"createable\": true,\n    \"deletable\": true,\n    \"displayColumns\": [\n      {\n        \"fieldApiName\": \"string\",\n        \"label\": \"string\",\n        \"sortable\": true\n      },\n      {\n        \"fieldApiName\": \"string\",\n        \"label\": \"string\",\n        \"sortable\": true\n      }\n    ],\n    \"eTag\": \"string\",\n    \"filterLogicString\": \"string\",\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"listReference\": {\n      \"id\": \"string\",\n      \"listViewApiName\": \"string\",\n      \"objectApiName\": \"string\",\n      \"type\": \"string\"\n    },\n    \"orderedByInfo\": [\n      {\n        \"fieldApiName\": \"string\",\n        \"isAscending\": false,\n        \"label\": \"string\"\n      },\n      {\n        \"fieldApiName\": \"string\",\n        \"isAscending\": true,\n        \"label\": \"string\"\n      }\n    ],\n    \"updateable\": false,\n    \"visibility\": \"Private\"\n  },\n  \"nextPageToken\": \"string\",\n  \"nextPageUrl\": \"https://JT.emTS6ABffx\",\n  \"previousPageToken\": \"string\",\n  \"previousPageUrl\": \"https://hUUQGDlXOeGmjTRBL.qdihhqfeRof-,BVaprppa+cCBx0EACssBs\",\n  \"records\": [\n    {\n      \"apiName\": \"string\",\n      \"childRelationships\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"eTag\": \"string\",\n      \"fields\": {\n        \"key_0\": {\n          \"displayValue\": \"string\",\n          \"value\": {}\n        }\n      },\n      \"id\": \"string\",\n      \"lastModifiedById\": \"string\",\n      \"lastModifiedDate\": \"1960-03-16T15:53:08.535Z\",\n      \"recordTypeId\": \"string\",\n      \"recordTypeInfo\": {\n        \"available\": false,\n        \"defaultRecordTypeMapping\": true,\n        \"master\": true,\n        \"name\": \"string\",\n        \"recordTypeId\": \"string\"\n      },\n      \"systemModstamp\": \"2018-08-04T00:44:49.214Z\",\n      \"weakEtag\": 6266\n    },\n    {\n      \"apiName\": \"string\",\n      \"childRelationships\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"eTag\": \"string\",\n      \"fields\": {\n        \"key_0\": {\n          \"displayValue\": \"string\",\n          \"value\": {}\n        }\n      },\n      \"id\": \"string\",\n      \"lastModifiedById\": \"string\",\n      \"lastModifiedDate\": \"2013-08-20T13:45:37.037Z\",\n      \"recordTypeId\": \"string\",\n      \"recordTypeInfo\": {\n        \"available\": false,\n        \"defaultRecordTypeMapping\": true,\n        \"master\": false,\n        \"name\": \"string\",\n        \"recordTypeId\": \"string\"\n      },\n      \"systemModstamp\": \"2020-09-27T11:26:19.082Z\",\n      \"weakEtag\": 6469\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "705edf6b-acfd-42f7-b20e-f962321d1b57",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-ui",
+                    ":listViewId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "optionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "listViewId",
+                      "description": "(Required) The ID of the list view"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "daad8e51-25a0-465b-8bd9-c2cd0d1927fe",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-ui",
+                    ":listViewId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "optionalFields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "listViewId",
+                      "description": "(Required) The ID of the list view"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "044b6b67-5bdc-42c2-b703-c3b6ede543bd",
+          "name": "Salesforce Experience Cloud Get List Views for Object",
+          "request": {
+            "name": "Salesforce Experience Cloud Get List Views for Object",
+            "description": {
+              "content": "Returns all available list views for the specified object type. Includes list view ID, label, and developer name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list-ui",
+                ":objectApiName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of list views per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token for the next page"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search term to filter list views by name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectApiName",
+                  "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d9ae6be-9853-4462-9ebf-51ca5cb741fc",
+              "name": "Successfully retrieved list views",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-ui",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 8648,\n  \"currentPageToken\": \"string\",\n  \"currentPageUrl\": \"https://AfbdpLlohL.jqinLW6yf8pNep-c0h2HfLtlJOqP\",\n  \"lists\": [\n    {\n      \"apiName\": \"string\",\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"listUiUrl\": \"http://AGPwwMBwOp.gliAUjF.Kia9qq7CQ-6JYv2Wn,a9s+cOb7ygXeZ.DdduYLX3bAA+4-o-CPj6Q\"\n    },\n    {\n      \"apiName\": \"string\",\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"listUiUrl\": \"https://EJapvHIWaAcl.eohssWWWafhPKDH4AXzsgC1AFC7NWsQ-YeazzFdNsEnDcQfChA\"\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"nextPageUrl\": \"http://IQQBrUlDboxqPxnnKRTE.zvuuH5pFoMkKURdeFozRbGRCrZgTHt\",\n  \"objectApiName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ba8e276-6c9d-45be-8035-8a5ff77835f6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-ui",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9760dc34-6aaf-4c11-82f7-745b37c5a14b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-ui",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance name or custom domain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect/cms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api content"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "32060b83-3364-437e-a2bf-161d5e96bf17",
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions List Views API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Layouts API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Layouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Record Layout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/layout/:objectApiName",
+            "params": [
+              {
+                "name": "objectApiName",
+                "value": "",
+                "type": "path",
+                "description": "The API name of the Salesforce object (e.g., Account, Contact)"
+              },
+              {
+                "name": "formFactor",
+                "value": "",
+                "type": "query",
+                "description": "Form factor for the layout"
+              },
+              {
+                "name": "layoutType",
+                "value": "",
+                "type": "query",
+                "description": "Type of layout to retrieve"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Mode for the layout"
+              },
+              {
+                "name": "recordTypeId",
+                "value": "",
+                "type": "query",
+                "description": "Record type ID for the layout"
+              }
+            ]
+          },
+          "docs": "Returns layout metadata for the specified object type including sections, fields, and their display properties. Used to render record forms dynamically."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

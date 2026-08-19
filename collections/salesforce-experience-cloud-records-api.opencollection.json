@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Records API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Record UI",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/record-ui/:recordIds",
+            "params": [
+              {
+                "name": "recordIds",
+                "value": "",
+                "type": "path",
+                "description": "One or more record IDs (comma-separated for multiple records, up to 200)"
+              },
+              {
+                "name": "childRelationships",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of child relationship names to include"
+              },
+              {
+                "name": "formFactor",
+                "value": "",
+                "type": "query",
+                "description": "Form factor for the layout"
+              },
+              {
+                "name": "layoutTypes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated layout types to return"
+              },
+              {
+                "name": "modes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated modes for the layout"
+              },
+              {
+                "name": "optionalFields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of optional fields to include"
+              }
+            ]
+          },
+          "docs": "Returns layout information, field data, and object metadata for one or more records. Provides everything needed to render a record detail page including layout sections, field values, and display properties."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/records/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character Salesforce record ID"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field API names to return"
+              },
+              {
+                "name": "layoutTypes",
+                "value": "",
+                "type": "query",
+                "description": "Layout type whose fields to include"
+              },
+              {
+                "name": "modes",
+                "value": "",
+                "type": "query",
+                "description": "Layout mode"
+              },
+              {
+                "name": "optionalFields",
+                "value": "",
+                "type": "query",
+                "description": "Optional fields to include if accessible"
+              }
+            ]
+          },
+          "docs": "Returns field values and metadata for a specific record. Supports requesting specific fields or all fields from a layout. Returns both raw values and display-formatted values."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Update a Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/records/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character Salesforce record ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the specified record with the provided field values. Returns the updated record representation including the new field values."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Delete a Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/records/:recordId",
+            "params": [
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "The 18-character Salesforce record ID"
+              }
+            ]
+          },
+          "docs": "Deletes the specified record. The record is moved to the Recycle Bin."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Create a Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new record of the specified sObject type. Returns the created record representation with all field values."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

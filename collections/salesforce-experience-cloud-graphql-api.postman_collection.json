@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "58dd73ba-e988-4dfe-b774-f36f87e11414",
+      "name": "GraphQL",
+      "description": {
+        "content": "GraphQL query and mutation operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "212594e4-efd8-4fbd-beb6-9583ed7a8f47",
+          "name": "Salesforce Experience Cloud Execute a GraphQL Query or Mutation",
+          "request": {
+            "name": "Salesforce Experience Cloud Execute a GraphQL Query or Mutation",
+            "description": {
+              "content": "Executes a GraphQL query or mutation against the Salesforce UIAPI schema. The UIAPI schema provides access to records, object metadata, list views, and related data. Supports standard GraphQL features including variables, fragments, and operation names. Queries are scoped to the UIAPI namespace which provides formatted field values, layout-aware data access, and respects sharing rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "graphql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": true,\n    \"key_1\": 6539.137148725699,\n    \"key_2\": 7063\n  },\n  \"operationName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e837ede7-64e0-4d08-bfa8-938b794f63be",
+              "name": "GraphQL query executed successfully. Note that GraphQL always returns HTTP 200, even when there are errors in the query. Check the errors array in the response body for any issues.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query accounts {\\n  uiapi {\\n    query {\\n      Account(first: 10) {\\n        edges {\\n          node {\\n            Id\\n            Name { value displayValue }\\n            Industry { value displayValue }\\n          }\\n        }\\n        totalCount\\n      }\\n    }\\n  }\\n}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"uiapi\": {\n      \"query\": {\n        \"key_0\": {\n          \"edges\": [\n            {\n              \"cursor\": \"string\",\n              \"node\": {\n                \"Id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"key_0\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"cursor\": \"string\",\n              \"node\": {\n                \"Id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"key_0\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"pageInfo\": {\n            \"hasNextPage\": false,\n            \"hasPreviousPage\": true,\n            \"startCursor\": \"string\",\n            \"endCursor\": \"string\"\n          },\n          \"totalCount\": 6227\n        },\n        \"key_1\": {\n          \"edges\": [\n            {\n              \"cursor\": \"string\",\n              \"node\": {\n                \"Id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"cursor\": \"string\",\n              \"node\": {\n                \"Id\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"key_0\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"pageInfo\": {\n            \"hasNextPage\": true,\n            \"hasPreviousPage\": true,\n            \"startCursor\": \"string\",\n            \"endCursor\": \"string\"\n          },\n          \"totalCount\": 19\n        }\n      }\n    }\n  },\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"locations\": [\n        {\n          \"line\": 4870,\n          \"column\": 8173\n        },\n        {\n          \"line\": 6454,\n          \"column\": 6396\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {\n        \"errorCode\": \"string\",\n        \"classification\": \"string\",\n        \"key_0\": 7215.449778949999,\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"message\": \"string\",\n      \"locations\": [\n        {\n          \"line\": 7214,\n          \"column\": 1612\n        },\n        {\n          \"line\": 7431,\n          \"column\": 2561\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {\n        \"errorCode\": \"string\",\n        \"classification\": \"string\",\n        \"key_0\": false\n      }\n    }\n  ],\n  \"extensions\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2955b319-caf5-4917-9830-a98d51b8b148",
+              "name": "Malformed request (invalid JSON or missing query field)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query accounts {\\n  uiapi {\\n    query {\\n      Account(first: 10) {\\n        edges {\\n          node {\\n            Id\\n            Name { value displayValue }\\n            Industry { value displayValue }\\n          }\\n        }\\n        totalCount\\n      }\\n    }\\n  }\\n}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bca1e8b0-3349-4f07-9751-2acfb1c22ba5",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query accounts {\\n  uiapi {\\n    query {\\n      Account(first: 10) {\\n        edges {\\n          node {\\n            Id\\n            Name { value displayValue }\\n            Industry { value displayValue }\\n          }\\n        }\\n        totalCount\\n      }\\n    }\\n  }\\n}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance name or custom domain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect/cms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api content"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ab47e1e9-7272-410a-9a63-38b889d4a962",
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions GraphQL API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

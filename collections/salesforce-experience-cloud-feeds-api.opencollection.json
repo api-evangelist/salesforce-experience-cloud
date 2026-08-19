@@ -1,0 +1,268 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Feeds API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Feeds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get News Feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/communities/:communityId/chatter/feeds/news/me/feed-elements",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page (default 25, max 100)"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for retrieving the next page of results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order of feed elements"
+              }
+            ]
+          },
+          "docs": "Returns the news feed for the context user within the specified Experience Cloud site. Includes feed items from people and records the user follows, groups the user is a member of, and site-wide posts."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Post a Feed Element",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/communities/:communityId/chatter/feeds/news/me/feed-elements",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new feed element (post) on the news feed of the specified Experience Cloud site. Supports text posts, link posts, and content posts with mentions and hashtags."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Feed Element",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/communities/:communityId/chatter/feed-elements/:feedElementId",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              },
+              {
+                "name": "feedElementId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the feed element"
+              }
+            ]
+          },
+          "docs": "Returns a specific feed element by its ID within the specified Experience Cloud site, including the body, comments, and likes."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Delete a Feed Element",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/communities/:communityId/chatter/feed-elements/:feedElementId",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              },
+              {
+                "name": "feedElementId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the feed element"
+              }
+            ]
+          },
+          "docs": "Deletes the specified feed element from the Experience Cloud site. Requires ownership of the feed element or moderation permissions."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Comments on a Feed Element",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/communities/:communityId/chatter/feed-elements/:feedElementId/capabilities/comments/items",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              },
+              {
+                "name": "feedElementId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the feed element"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page (default 25, max 100)"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for retrieving the next page of results"
+              }
+            ]
+          },
+          "docs": "Returns the comments on a specific feed element within the Experience Cloud site."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Post a Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/communities/:communityId/chatter/feed-elements/:feedElementId/capabilities/comments/items",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              },
+              {
+                "name": "feedElementId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the feed element"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new comment on the specified feed element within the Experience Cloud site."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Likes on a Feed Element",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/communities/:communityId/chatter/feed-elements/:feedElementId/capabilities/chatter-likes/items",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              },
+              {
+                "name": "feedElementId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the feed element"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page (default 25, max 100)"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for retrieving the next page of results"
+              }
+            ]
+          },
+          "docs": "Returns the likes on a specific feed element within the Experience Cloud site."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Like a Feed Element",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/communities/:communityId/chatter/feed-elements/:feedElementId/capabilities/chatter-likes/items",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              },
+              {
+                "name": "feedElementId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the feed element"
+              }
+            ]
+          },
+          "docs": "Adds a like to the specified feed element in the Experience Cloud site on behalf of the context user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

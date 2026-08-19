@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Navigation API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Navigation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get Navigation Menu Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/:communityId/navigation-menu/navigation-menu-items",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site (community)"
+              },
+              {
+                "name": "navigationLinkSetId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the navigation link set to retrieve"
+              },
+              {
+                "name": "menuItemTypesToSkip",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of menu item types to exclude"
+              },
+              {
+                "name": "publishStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by publish status of the navigation menu"
+              }
+            ]
+          },
+          "docs": "Returns the navigation menu items configured for the specified Experience Cloud site. Includes menu labels, target URLs, access restrictions, and hierarchy structure."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

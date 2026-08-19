@@ -1,0 +1,362 @@
+{
+  "item": [
+    {
+      "id": "d27b1d2b-d122-4137-a91f-2e6a8b6d5bb6",
+      "name": "Layouts",
+      "description": {
+        "content": "Page layout metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "099750d1-3dcf-4ee7-b3cd-af8b51c0cff2",
+          "name": "Salesforce Experience Cloud Get Record Layout",
+          "request": {
+            "name": "Salesforce Experience Cloud Get Record Layout",
+            "description": {
+              "content": "Returns layout metadata for the specified object type including sections, fields, and their display properties. Used to render record forms dynamically.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "layout",
+                ":objectApiName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "formFactor",
+                  "value": "<string>",
+                  "description": "Form factor for the layout"
+                },
+                {
+                  "disabled": false,
+                  "key": "layoutType",
+                  "value": "<string>",
+                  "description": "Type of layout to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Mode for the layout"
+                },
+                {
+                  "disabled": false,
+                  "key": "recordTypeId",
+                  "value": "<string>",
+                  "description": "Record type ID for the layout"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "objectApiName",
+                  "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4eec9ca3-765f-46e0-9b8c-e51046d84654",
+              "name": "Successfully retrieved record layout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "layout",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formFactor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "layoutType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordTypeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"layoutType\": \"Full\",\n  \"mode\": \"Edit\",\n  \"sections\": [\n    {\n      \"collapsible\": true,\n      \"columns\": 5545,\n      \"heading\": \"string\",\n      \"id\": \"string\",\n      \"layoutRows\": [\n        {\n          \"layoutItems\": [\n            {\n              \"editableForNew\": true,\n              \"editableForUpdate\": false,\n              \"label\": \"string\",\n              \"layoutComponents\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"lookupIdApiName\": \"string\",\n              \"required\": false,\n              \"sortable\": false\n            },\n            {\n              \"editableForNew\": false,\n              \"editableForUpdate\": false,\n              \"label\": \"string\",\n              \"layoutComponents\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"lookupIdApiName\": \"string\",\n              \"required\": false,\n              \"sortable\": false\n            }\n          ]\n        },\n        {\n          \"layoutItems\": [\n            {\n              \"editableForNew\": true,\n              \"editableForUpdate\": false,\n              \"label\": \"string\",\n              \"layoutComponents\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"lookupIdApiName\": \"string\",\n              \"required\": false,\n              \"sortable\": true\n            },\n            {\n              \"editableForNew\": false,\n              \"editableForUpdate\": false,\n              \"label\": \"string\",\n              \"layoutComponents\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"lookupIdApiName\": \"string\",\n              \"required\": false,\n              \"sortable\": false\n            }\n          ]\n        }\n      ],\n      \"rows\": 4180,\n      \"useHeading\": true\n    },\n    {\n      \"collapsible\": true,\n      \"columns\": 2056,\n      \"heading\": \"string\",\n      \"id\": \"string\",\n      \"layoutRows\": [\n        {\n          \"layoutItems\": [\n            {\n              \"editableForNew\": true,\n              \"editableForUpdate\": true,\n              \"label\": \"string\",\n              \"layoutComponents\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"lookupIdApiName\": \"string\",\n              \"required\": true,\n              \"sortable\": false\n            },\n            {\n              \"editableForNew\": false,\n              \"editableForUpdate\": true,\n              \"label\": \"string\",\n              \"layoutComponents\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"lookupIdApiName\": \"string\",\n              \"required\": true,\n              \"sortable\": false\n            }\n          ]\n        },\n        {\n          \"layoutItems\": [\n            {\n              \"editableForNew\": true,\n              \"editableForUpdate\": true,\n              \"label\": \"string\",\n              \"layoutComponents\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"lookupIdApiName\": \"string\",\n              \"required\": true,\n              \"sortable\": true\n            },\n            {\n              \"editableForNew\": false,\n              \"editableForUpdate\": true,\n              \"label\": \"string\",\n              \"layoutComponents\": [\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              ],\n              \"lookupIdApiName\": \"string\",\n              \"required\": false,\n              \"sortable\": true\n            }\n          ]\n        }\n      ],\n      \"rows\": 4618,\n      \"useHeading\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5dab9f7c-0630-4db8-aba4-bd350d2fbe88",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "layout",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formFactor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "layoutType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordTypeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7018c941-73b9-4140-bb5c-8f8414df8c2f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "layout",
+                    ":objectApiName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formFactor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "layoutType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recordTypeId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "objectApiName",
+                      "description": "(Required) The API name of the Salesforce object (e.g., Account, Contact)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance name or custom domain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect/cms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api content"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4ea5f5e9-6b7f-4d1c-bd1b-2e65bbf12464",
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Layouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

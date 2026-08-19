@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Collections API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List Content Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/channels/:channelId/collections",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page (default 25, max 250)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (0-indexed)"
+              }
+            ]
+          },
+          "docs": "Returns a list of published content collections available in the specified delivery channel. Collections group related content items for organized delivery."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Content Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/channels/:channelId/collections/:collectionKeyOrId",
+            "params": [
+              {
+                "name": "channelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the CMS delivery channel"
+              },
+              {
+                "name": "collectionKeyOrId",
+                "value": "",
+                "type": "path",
+                "description": "Collection key or record ID"
+              },
+              {
+                "name": "language",
+                "value": "",
+                "type": "query",
+                "description": "Language variant to retrieve"
+              },
+              {
+                "name": "showAbsoluteUrl",
+                "value": "",
+                "type": "query",
+                "description": "Whether to return absolute URLs"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific content collection and its items from the delivery channel. Returns the collection metadata and all content items within the collection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

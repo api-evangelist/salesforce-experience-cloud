@@ -1,0 +1,2387 @@
+{
+  "item": [
+    {
+      "id": "cc00dfce-9db2-4c12-ab5f-99612404f256",
+      "name": "Feeds",
+      "description": {
+        "content": "Feed and feed item operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f05bd480-6bd4-4682-bc97-2990ad0bb4ce",
+          "name": "Salesforce Experience Cloud Get News Feed",
+          "request": {
+            "name": "Salesforce Experience Cloud Get News Feed",
+            "description": {
+              "content": "Returns the news feed for the context user within the specified Experience Cloud site. Includes feed items from people and records the user follows, groups the user is a member of, and site-wide posts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "communities",
+                ":communityId",
+                "chatter",
+                "feeds",
+                "news",
+                "me",
+                "feed-elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Number of items to return per page (default 25, max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token for retrieving the next page of results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort order of feed elements"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03d923fd-1f6e-455a-adc1-aba78f853856",
+              "name": "Successfully retrieved news feed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feeds",
+                    "news",
+                    "me",
+                    "feed-elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentPageToken\": \"string\",\n  \"currentPageUrl\": \"http://xzI.jzeGEG.wHJ5zbHwLFlp9NqhJcvlgcY5OUljZQOr\",\n  \"elements\": [\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"isRichText\": true,\n        \"messageSegments\": [\n          {\n            \"text\": \"string\",\n            \"type\": \"Mention\"\n          },\n          {\n            \"text\": \"string\",\n            \"type\": \"MarkupEnd\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"capabilities\": {\n        \"comments\": {\n          \"page\": {\n            \"comments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"currentPageToken\": \"string\",\n            \"currentPageUrl\": \"https://DeZSfdYqJzfNyWNOLOxUfNzZSM.xfnn-aaSz3bJ4we3\",\n            \"nextPageToken\": \"string\",\n            \"nextPageUrl\": \"https://wZuQVlLobGdRxmRuSheMtABPG.biv9hNLeoxEMBpL-QPGYfDcw76P8WKLYW3n7xo6DYghR00GGfoRvzhvsF4n\",\n            \"total\": 9463\n          }\n        },\n        \"chatterLikes\": {\n          \"page\": {\n            \"currentPageToken\": \"string\",\n            \"currentPageUrl\": \"http://ZZeOzImABvWKFGIwSlYNoQiFinaS.etjucteTck+y5HX9kXI0I4L-3wqVJPgFQNFSQvNqE+yyGDXUTeOBR4fA0UqcLCg,yfYLftaLpjPEzwKsS9oiDca\",\n            \"likes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"nextPageToken\": \"string\",\n            \"nextPageUrl\": \"http://qgiZDNigo.satHlz9ZBE23WpTyZPZiuepokYlhTWskfExXYS.QPpr-yfNOl36wK,Qlb8\",\n            \"total\": 6781\n          },\n          \"myLike\": {\n            \"id\": \"string\",\n            \"createdDate\": \"2019-05-16T02:45:09.912Z\",\n            \"url\": \"https://UDriwTXvlvJEUPedvYGEBId.nza9w0u8pfPRmkwpuraVsbRsCU,v\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"createdDate\": \"1995-04-13T10:41:33.997Z\",\n      \"feedElementType\": \"FeedItem\",\n      \"header\": {\n        \"isRichText\": true,\n        \"messageSegments\": [\n          {\n            \"text\": \"string\",\n            \"type\": \"Link\"\n          },\n          {\n            \"text\": \"string\",\n            \"type\": \"Text\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"modifiedDate\": \"1975-12-09T11:49:21.446Z\",\n      \"parent\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"https://ICo.rtkwtL117Cer63zSEo1Sps4uCofscZALXiH3xuB\"\n      },\n      \"actor\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"https://goexDsRIHoR.lihqmXJqN,NW3XxlCuPn6\"\n      },\n      \"url\": \"https://IJvnrfbSlYKOhN.ttuB-QSXUCX7iwdof+Jbt\"\n    },\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"isRichText\": true,\n        \"messageSegments\": [\n          {\n            \"text\": \"string\",\n            \"type\": \"Hashtag\"\n          },\n          {\n            \"text\": \"string\",\n            \"type\": \"Mention\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"capabilities\": {\n        \"comments\": {\n          \"page\": {\n            \"comments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"currentPageToken\": \"string\",\n            \"currentPageUrl\": \"https://euDREcagBCjhnNqnsWLxWqqPMPU.sahgxiCqR22EaDyRZg3l8lqEFnmhSjUAcypt.naK3s.bcD096vQNt.aKAKO9iXstR\",\n            \"nextPageToken\": \"string\",\n            \"nextPageUrl\": \"https://blgrNHyOSVFYUfaC.ujZtCw01PZOV8ARdw0tQJZe0aZ++wbdXcnV,2nm7UbLd+de2I5ydqqm9hJn.Vk,NpbsnX\",\n            \"total\": 9723\n          }\n        },\n        \"chatterLikes\": {\n          \"page\": {\n            \"currentPageToken\": \"string\",\n            \"currentPageUrl\": \"https://COYuxXCbxUJllghuLBMQ.mqffq23hKDLiuAju0Lq1fIlsZGQzBR23tE0.HlAG7\",\n            \"likes\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"nextPageToken\": \"string\",\n            \"nextPageUrl\": \"https://BWZCaWEIpVgJ.uhzgwHdgLGQ6dUJ+8lO+RGUZb-K+06fqclX.pbL,D3vZRYkIa1cRxet8ao3pWddTASa3M\",\n            \"total\": 5620\n          },\n          \"myLike\": {\n            \"id\": \"string\",\n            \"createdDate\": \"1967-08-17T10:55:22.392Z\",\n            \"url\": \"http://LKCfQrKeNWfUnaRoCmS.udftIdvP28exGE9UT7tEpSld6o-OB\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"createdDate\": \"1996-05-15T01:24:00.057Z\",\n      \"feedElementType\": \"FeedItem\",\n      \"header\": {\n        \"isRichText\": false,\n        \"messageSegments\": [\n          {\n            \"text\": \"string\",\n            \"type\": \"Text\"\n          },\n          {\n            \"text\": \"string\",\n            \"type\": \"Text\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"modifiedDate\": \"2020-05-21T04:43:49.348Z\",\n      \"parent\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"http://yqeIJzTaeLzLc.ikoqsQR7vpV2yhcnHkcZPHZ0gEUE-nUXAWWXg+fsOeGL\"\n      },\n      \"actor\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"https://GBKrhzFI.zpymJh,zP-0K6fQZvRq\"\n      },\n      \"url\": \"https://xbPUdXppRgDIQ.iaglexLP1mXVmqU3q2YCk.HYaWSHGwWEoQ\"\n    }\n  ],\n  \"isModifiedToken\": \"string\",\n  \"isModifiedUrl\": \"https://sfilepnyUgEGpJilO.zkPBRSczEIPn,mk-\",\n  \"nextPageToken\": \"string\",\n  \"nextPageUrl\": \"https://uLohLawvn.ejvnl\",\n  \"updatesToken\": \"string\",\n  \"updatesUrl\": \"http://xPQs.fscST2JNIQkF+7nKQtX7fHxur3Cccn-fWih3L7MiE22J\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcb7c5f6-2970-43a8-9458-6d55801ee35b",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feeds",
+                    "news",
+                    "me",
+                    "feed-elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0c3ddd6-4a05-4eda-908e-6ef92919b2de",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feeds",
+                    "news",
+                    "me",
+                    "feed-elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02f1b6f8-333f-4de9-9640-a3fd9cee11ff",
+          "name": "Salesforce Experience Cloud Post a Feed Element",
+          "request": {
+            "name": "Salesforce Experience Cloud Post a Feed Element",
+            "description": {
+              "content": "Creates a new feed element (post) on the news feed of the specified Experience Cloud site. Supports text posts, link posts, and content posts with mentions and hashtags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "communities",
+                ":communityId",
+                "chatter",
+                "feeds",
+                "news",
+                "me",
+                "feed-elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"text\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  },\n  \"feedElementType\": \"<string>\",\n  \"subjectId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8e651ff-70a5-4a4a-bc29-593d7eac2e0d",
+              "name": "Feed element created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feeds",
+                    "news",
+                    "me",
+                    "feed-elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"Mention\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Hashtag\"\n      }\n    ]\n  },\n  \"feedElementType\": \"<string>\",\n  \"subjectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"body\": {\n    \"isRichText\": false,\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"MarkupBegin\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"MarkupBegin\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"capabilities\": {\n    \"comments\": {\n      \"page\": {\n        \"comments\": [\n          {\n            \"id\": \"string\",\n            \"body\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": \"1998-05-17T01:01:03.444Z\",\n            \"feedElement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"likes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"url\": \"http://sFqljfFgPnCxnWvALoZvqvXCQ.fuevLzg,cleshTD1A6BQwtamyuYoXbtu8r.PWtdjaoGeCzm8gAzTDrj\"\n          },\n          {\n            \"id\": \"string\",\n            \"body\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": \"2016-08-19T14:00:35.045Z\",\n            \"feedElement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"likes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"url\": \"http://ixereMeABsffpDRettfaCx.fxeccdykaNvN.gohCfRGzGZmJ\"\n          }\n        ],\n        \"currentPageToken\": \"string\",\n        \"currentPageUrl\": \"http://BfODdjUjBLozPfpcvrQnGGEJDsue.wyyKTT\",\n        \"nextPageToken\": \"string\",\n        \"nextPageUrl\": \"http://fjDOZmWU.pwaaf3cs++Z04N\",\n        \"total\": 543\n      }\n    },\n    \"chatterLikes\": {\n      \"page\": {\n        \"currentPageToken\": \"string\",\n        \"currentPageUrl\": \"https://LceMHyUzFIPVyhsIjqscdvWRxbQ.acoLc0iwv0s,s3eWXT\",\n        \"likes\": [\n          {\n            \"id\": \"string\",\n            \"createdDate\": \"2025-12-16T02:11:57.614Z\",\n            \"url\": \"http://zynRDnFjOYCLSZPTQYpEvM.owkpYExb9SL0iGRphL1nUoPtDuMmBmIzwBrUdkYXZh\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"createdDate\": \"1969-12-06T06:49:00.995Z\",\n            \"url\": \"http://kZIZCTPGTSqNdV.dmrvYA0pIfUSKtr-FjfylVrpCmrRVYsmWoXaoOcQZ2IEThWOKZp6EIefBTGwNYDQulOdJNEvD-pUlwcLPwt-X-ZD6FFHv2cPQL\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"nextPageToken\": \"string\",\n        \"nextPageUrl\": \"https://ETwCwxrbuPFyEAnzWMfjUudWH.bryiI7dTrWTy--OWVkzSBWMvIkSlDh6z4XZ+YqydbBQny1ysZ0xpmMe1eiGqZBzBR\",\n        \"total\": 9013\n      },\n      \"myLike\": {\n        \"id\": \"string\",\n        \"createdDate\": \"1947-08-09T14:41:46.843Z\",\n        \"url\": \"http://c.plfMBvXT2zEOF.4Dt4n2H1xe1IdVL9QLRiNlO1VlVjdjCNCqoeon9elAK1f\",\n        \"user\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"url\": \"https://CaRjCPaHK.juW+CY5xvbg7k0X4rdPibH-MIOd7XMtTQJIJpe+\"\n        }\n      }\n    }\n  },\n  \"createdDate\": \"2020-01-05T19:08:55.569Z\",\n  \"feedElementType\": \"FeedItem\",\n  \"header\": {\n    \"isRichText\": true,\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"MarkupBegin\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Mention\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"modifiedDate\": \"2021-12-30T22:13:27.931Z\",\n  \"parent\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"https://sqkqKKWJQEmKhVGebejq.mhqjNhyE8,Ijg0jgisispc8-v+UxKmBf6gyPjH5XFMC\"\n  },\n  \"actor\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"http://IHq.jjdvqxc1-0r5nRSHX46o7VwXSABF1wZeoi-RZ9Le8Yga0aBtci9sp9wFkUO,sjEBUGqOmzsSC\"\n  },\n  \"url\": \"https://EmwnWML.rhgAxwZ3hCkTpgGewRq7cqR,BJS3sitC6JFFaUiwyGQE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25ffb85d-f8ed-4ea7-80a8-22e30c67e29a",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feeds",
+                    "news",
+                    "me",
+                    "feed-elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"Mention\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Hashtag\"\n      }\n    ]\n  },\n  \"feedElementType\": \"<string>\",\n  \"subjectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "456280d4-0f3e-4822-8d50-59ddd616c541",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feeds",
+                    "news",
+                    "me",
+                    "feed-elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"Mention\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Hashtag\"\n      }\n    ]\n  },\n  \"feedElementType\": \"<string>\",\n  \"subjectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24e419f0-2c40-4738-8995-ca64d15232cd",
+          "name": "Salesforce Experience Cloud Get a Feed Element",
+          "request": {
+            "name": "Salesforce Experience Cloud Get a Feed Element",
+            "description": {
+              "content": "Returns a specific feed element by its ID within the specified Experience Cloud site, including the body, comments, and likes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "communities",
+                ":communityId",
+                "chatter",
+                "feed-elements",
+                ":feedElementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) The ID of the feed element"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "efc94d2a-9049-4e4f-9ec5-37914f38e4d1",
+              "name": "Successfully retrieved the feed element",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"body\": {\n    \"isRichText\": false,\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"MarkupBegin\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"MarkupBegin\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"capabilities\": {\n    \"comments\": {\n      \"page\": {\n        \"comments\": [\n          {\n            \"id\": \"string\",\n            \"body\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": \"1998-05-17T01:01:03.444Z\",\n            \"feedElement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"likes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"url\": \"http://sFqljfFgPnCxnWvALoZvqvXCQ.fuevLzg,cleshTD1A6BQwtamyuYoXbtu8r.PWtdjaoGeCzm8gAzTDrj\"\n          },\n          {\n            \"id\": \"string\",\n            \"body\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": \"2016-08-19T14:00:35.045Z\",\n            \"feedElement\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"likes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"url\": \"http://ixereMeABsffpDRettfaCx.fxeccdykaNvN.gohCfRGzGZmJ\"\n          }\n        ],\n        \"currentPageToken\": \"string\",\n        \"currentPageUrl\": \"http://BfODdjUjBLozPfpcvrQnGGEJDsue.wyyKTT\",\n        \"nextPageToken\": \"string\",\n        \"nextPageUrl\": \"http://fjDOZmWU.pwaaf3cs++Z04N\",\n        \"total\": 543\n      }\n    },\n    \"chatterLikes\": {\n      \"page\": {\n        \"currentPageToken\": \"string\",\n        \"currentPageUrl\": \"https://LceMHyUzFIPVyhsIjqscdvWRxbQ.acoLc0iwv0s,s3eWXT\",\n        \"likes\": [\n          {\n            \"id\": \"string\",\n            \"createdDate\": \"2025-12-16T02:11:57.614Z\",\n            \"url\": \"http://zynRDnFjOYCLSZPTQYpEvM.owkpYExb9SL0iGRphL1nUoPtDuMmBmIzwBrUdkYXZh\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"createdDate\": \"1969-12-06T06:49:00.995Z\",\n            \"url\": \"http://kZIZCTPGTSqNdV.dmrvYA0pIfUSKtr-FjfylVrpCmrRVYsmWoXaoOcQZ2IEThWOKZp6EIefBTGwNYDQulOdJNEvD-pUlwcLPwt-X-ZD6FFHv2cPQL\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"nextPageToken\": \"string\",\n        \"nextPageUrl\": \"https://ETwCwxrbuPFyEAnzWMfjUudWH.bryiI7dTrWTy--OWVkzSBWMvIkSlDh6z4XZ+YqydbBQny1ysZ0xpmMe1eiGqZBzBR\",\n        \"total\": 9013\n      },\n      \"myLike\": {\n        \"id\": \"string\",\n        \"createdDate\": \"1947-08-09T14:41:46.843Z\",\n        \"url\": \"http://c.plfMBvXT2zEOF.4Dt4n2H1xe1IdVL9QLRiNlO1VlVjdjCNCqoeon9elAK1f\",\n        \"user\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"url\": \"https://CaRjCPaHK.juW+CY5xvbg7k0X4rdPibH-MIOd7XMtTQJIJpe+\"\n        }\n      }\n    }\n  },\n  \"createdDate\": \"2020-01-05T19:08:55.569Z\",\n  \"feedElementType\": \"FeedItem\",\n  \"header\": {\n    \"isRichText\": true,\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"MarkupBegin\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Mention\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"modifiedDate\": \"2021-12-30T22:13:27.931Z\",\n  \"parent\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"https://sqkqKKWJQEmKhVGebejq.mhqjNhyE8,Ijg0jgisispc8-v+UxKmBf6gyPjH5XFMC\"\n  },\n  \"actor\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"http://IHq.jjdvqxc1-0r5nRSHX46o7VwXSABF1wZeoi-RZ9Le8Yga0aBtci9sp9wFkUO,sjEBUGqOmzsSC\"\n  },\n  \"url\": \"https://EmwnWML.rhgAxwZ3hCkTpgGewRq7cqR,BJS3sitC6JFFaUiwyGQE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4102413-40c2-4d33-a858-c0139dd41076",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6198a2b-a2ff-4c7c-a193-410cdab42a96",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caedf634-b936-4faf-8d5f-d3e7e93b76a8",
+          "name": "Salesforce Experience Cloud Delete a Feed Element",
+          "request": {
+            "name": "Salesforce Experience Cloud Delete a Feed Element",
+            "description": {
+              "content": "Deletes the specified feed element from the Experience Cloud site. Requires ownership of the feed element or moderation permissions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "communities",
+                ":communityId",
+                "chatter",
+                "feed-elements",
+                ":feedElementId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) The ID of the feed element"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9df44f16-840b-4c8d-a4f8-afaf811c8091",
+              "name": "Feed element deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f329b38-4e46-4860-ac1b-37b3f9e0041f",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc69058d-183f-4580-a15a-a9ceee3a4208",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "960abbfb-036e-4bd1-af6d-92f0852cc8d6",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcf1cdf6-5f18-468f-89eb-d645e21a9ce4",
+          "name": "Salesforce Experience Cloud Get Comments on a Feed Element",
+          "request": {
+            "name": "Salesforce Experience Cloud Get Comments on a Feed Element",
+            "description": {
+              "content": "Returns the comments on a specific feed element within the Experience Cloud site.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "communities",
+                ":communityId",
+                "chatter",
+                "feed-elements",
+                ":feedElementId",
+                "capabilities",
+                "comments",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Number of items to return per page (default 25, max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token for retrieving the next page of results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) The ID of the feed element"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c587768-05cb-4659-b891-fb3debb7224c",
+              "name": "Successfully retrieved comments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comments\": [\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"isRichText\": true,\n        \"messageSegments\": [\n          {\n            \"text\": \"string\",\n            \"type\": \"Mention\"\n          },\n          {\n            \"text\": \"string\",\n            \"type\": \"Link\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"createdDate\": \"1987-06-04T23:15:01.606Z\",\n      \"feedElement\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"http://SNaEjaigR.nbzgdypcSrGWeS.iBpy28DPyqnN\"\n      },\n      \"likes\": {\n        \"currentPageToken\": \"string\",\n        \"currentPageUrl\": \"http://zMKYaUacJVXDW.qunp9p0Pvk5Ax88h,uWFXF97fS4QgXuBhJQoxFjXe9hbD8vwHw56+MONZI3wuYjzgsU\",\n        \"likes\": [\n          {\n            \"id\": \"string\",\n            \"createdDate\": \"1994-01-29T04:50:55.436Z\",\n            \"url\": \"https://yHV.dfdZrHNAp,o+lPg.-CF\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"createdDate\": \"1991-04-17T17:30:44.429Z\",\n            \"url\": \"http://DiLEZinmLRZZpekByMjeVmTjlCQeQhcb.bifgsTo87lI3VYBiXjLUwODN0f3S.vKTrM\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"nextPageToken\": \"string\",\n        \"nextPageUrl\": \"https://mlVyaIMnXioUxiiSiGZfVX.dhszOuAt+OThUWPMn5Xs\",\n        \"total\": 144\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"http://ISKXpRvDDPiBBPjX.jjddPVHtdhhHystnfz4448D3JDXI-wLyV2Lkqblz1c.,8UTlR\"\n      },\n      \"url\": \"https://bYrpHaQmZPCSBwriEtQgpXJX.vofP\"\n    },\n    {\n      \"id\": \"string\",\n      \"body\": {\n        \"isRichText\": true,\n        \"messageSegments\": [\n          {\n            \"text\": \"string\",\n            \"type\": \"Hashtag\"\n          },\n          {\n            \"text\": \"string\",\n            \"type\": \"MarkupEnd\"\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"createdDate\": \"2006-09-19T13:38:57.058Z\",\n      \"feedElement\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"http://ucQaCmWrYDxfgsVrSCHYBVgegJDuBSFZw.lcxe\"\n      },\n      \"likes\": {\n        \"currentPageToken\": \"string\",\n        \"currentPageUrl\": \"https://yZFMfBEKpfqk.voospXRf2,L\",\n        \"likes\": [\n          {\n            \"id\": \"string\",\n            \"createdDate\": \"1981-11-22T17:08:05.412Z\",\n            \"url\": \"http://CQ.vfGajPdNSxzyWkupYmUVnkUCey4M\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"createdDate\": \"1986-11-05T15:26:27.535Z\",\n            \"url\": \"https://sVWCMnQNzhScnsfLcVJNChjgsyVookEm.iogkx4sePSHZjNWZTq8cmWoSdgUsdWXAjHqd\",\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"nextPageToken\": \"string\",\n        \"nextPageUrl\": \"https://UZlCo.pjulhmcpUCkHOfeRFcZ7u.Sd5n7BTxf8NzvabZ3TBMGK1KYG1ciYZY6PsJo0-\",\n        \"total\": 2267\n      },\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"https://uRHhAklTECwKxqIiuBgDd.rrbhHYgRkQOjBu-CJYrURQfja\"\n      },\n      \"url\": \"https://hbjQYTlQBZLhHJVjuuiXf.genBC.PSvU-NhLr7-6M,7B0Hrhy.Y8bfQW\"\n    }\n  ],\n  \"currentPageToken\": \"string\",\n  \"currentPageUrl\": \"https://keTkqdAPsqMVkQGvkGmpxUNLPMXZMbb.keqqI5tVI72B6WpT9iLxxWUTBP6ZvCbbAKJ,cYYqA3bBwg0XKMFL2\",\n  \"nextPageToken\": \"string\",\n  \"nextPageUrl\": \"https://nbFWAPUAIBQGeToHVTb.bkiVqG,fdjNp1uGsHYvs0U3,SBrwMUxv7VsBAmzpKIleZDUzv7,5L1J4gubQp-IST\",\n  \"total\": 4229\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43d2ae6e-802f-4074-b912-43170a87fc1d",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "598cff99-ada0-4f5f-a963-200c0d169f29",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93c65fb0-6cc4-4b98-ac4a-32849753dc04",
+          "name": "Salesforce Experience Cloud Post a Comment",
+          "request": {
+            "name": "Salesforce Experience Cloud Post a Comment",
+            "description": {
+              "content": "Creates a new comment on the specified feed element within the Experience Cloud site.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "communities",
+                ":communityId",
+                "chatter",
+                "feed-elements",
+                ":feedElementId",
+                "capabilities",
+                "comments",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) The ID of the feed element"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"text\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"text\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e53db43-121e-4001-ab13-d86220e394a0",
+              "name": "Comment created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"Hashtag\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Mention\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"body\": {\n    \"isRichText\": false,\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"MarkupEnd\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Hashtag\"\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"createdDate\": \"1970-06-11T20:26:50.940Z\",\n  \"feedElement\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"http://jaK.appr37Q\"\n  },\n  \"likes\": {\n    \"currentPageToken\": \"string\",\n    \"currentPageUrl\": \"http://oDBjJtUlqlzZOwDWmIseZNPjQtv.tpssvTICjgSs7i5.JkPr5.Grwt3vOS8nU\",\n    \"likes\": [\n      {\n        \"id\": \"string\",\n        \"createdDate\": \"2003-10-16T22:48:44.805Z\",\n        \"url\": \"https://hBzxsBfXnugx.gopoQTVIxKRwEiW-E2W,TFsH,GSghbYixKxgq5woYClb3B6z-UcQgBF213xSjIY3KCD-ze9\",\n        \"user\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"url\": \"http://ZIghDCyDTsgISQQTlEpHILm.irsyN9ummevLoK7TL9aHPl5CchZ8+fxzzclRpltUNKAWMvYuo\"\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"createdDate\": \"1986-09-26T08:08:39.024Z\",\n        \"url\": \"https://DJMjwMLEpKeqlKK.ulglMoKyL0u7T1X49ncuWSgLAgx3l4vZ7enipFjnEmK-Lk3F\",\n        \"user\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"url\": \"http://nFXJhlxIeeJnTYhdaGXD.wznFq7+-MYC7QEjx8ejbKhYnYIXE6jOQX-tsVuxnZsWm-ZQLuXmLgiInpQMA9hv+\"\n        }\n      }\n    ],\n    \"nextPageToken\": \"string\",\n    \"nextPageUrl\": \"https://UOZSAvUtTmjZYkLDjInYkSGsrK.lxlq1IgJoPiXUXIsPfvieMAQCjlnVHTyfRQC.hfXMeVEEerbLZJPArcOZP\",\n    \"total\": 1881\n  },\n  \"user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"https://xAKJeTvGcOJteopADnVWtIxzSSO.iwoak1ajHe5NhTWpxadXeXERHt+Qy.fG7jY00awv1sRn\"\n  },\n  \"url\": \"http://KFTmiaTaXUUwDyYjaoayRy.bdsynVjMZgtPEox45NklZGkoBYKfiyFKQeFLj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6d0ba7d-8d11-4b40-a07b-c0d11b5e62da",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"Hashtag\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Mention\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7b6f71c-e548-469f-921f-6e90f2fdf4e9",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "comments",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": {\n    \"messageSegments\": [\n      {\n        \"text\": \"string\",\n        \"type\": \"Hashtag\"\n      },\n      {\n        \"text\": \"string\",\n        \"type\": \"Mention\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3407fde-62cc-45ca-b671-9def0a48aaef",
+          "name": "Salesforce Experience Cloud Get Likes on a Feed Element",
+          "request": {
+            "name": "Salesforce Experience Cloud Get Likes on a Feed Element",
+            "description": {
+              "content": "Returns the likes on a specific feed element within the Experience Cloud site.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "communities",
+                ":communityId",
+                "chatter",
+                "feed-elements",
+                ":feedElementId",
+                "capabilities",
+                "chatter-likes",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Number of items to return per page (default 25, max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token for retrieving the next page of results"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) The ID of the feed element"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ea2b6fa-9074-4764-8c66-7b958925f2eb",
+              "name": "Successfully retrieved likes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "chatter-likes",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentPageToken\": \"string\",\n  \"currentPageUrl\": \"http://cunRGPJrIJoAz.ljkyrxJYtQQDWQ9F.S6k\",\n  \"likes\": [\n    {\n      \"id\": \"string\",\n      \"createdDate\": \"2009-03-17T22:12:56.898Z\",\n      \"url\": \"http://zTVopoS.tkQEdkfKIS2\",\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"https://GlUlAxdylQYtqPyC.gnlNrU7u0VLT2QcPEw13a6aVUJk3FwwQdwoyfLEojz8WZRh0+nzH6bO-iK.T9T0ZY5V6\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"createdDate\": \"2002-05-21T17:32:25.220Z\",\n      \"url\": \"https://fnWjnLDgCuHGGBWhTzUyGpJNV.sgftiUhzPgTNk4wizxZRt,6x6l5C4Ge+WKszJ20nmPRiSVnDioCi-4Cpn3JGU9udxZusCkt\",\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"url\": \"http://vRxhPCGEVh.eqfc5,+is1F6.TtdKbOZI7Dddi,.YpurvTEobiUCkQac84+s\"\n      }\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"nextPageUrl\": \"https://nddk.xvypiHAcbOpR+iQxbkPEuehMRRK\",\n  \"total\": 9270\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12d01616-d31f-49bd-841b-1fd9411298ad",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "chatter-likes",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7804e26-a9b3-4947-a09d-c0c97e78c6b4",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "chatter-likes",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41712ab9-8473-4f80-82a5-187addb80493",
+          "name": "Salesforce Experience Cloud Like a Feed Element",
+          "request": {
+            "name": "Salesforce Experience Cloud Like a Feed Element",
+            "description": {
+              "content": "Adds a like to the specified feed element in the Experience Cloud site on behalf of the context user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "communities",
+                ":communityId",
+                "chatter",
+                "feed-elements",
+                ":feedElementId",
+                "capabilities",
+                "chatter-likes",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "communityId",
+                  "description": "(Required) The ID of the Experience Cloud site (community)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feedElementId",
+                  "description": "(Required) The ID of the feed element"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef9a659a-d1f4-4bc5-b42a-37380c9bbaab",
+              "name": "Like added successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "chatter-likes",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createdDate\": \"2009-01-17T10:44:30.702Z\",\n  \"url\": \"https://VyLtMUfguHOwzRGGWRTnhjNRTIryJZ.sxjaClKGBPjQR+H4LKA+jBrMoqsOjf85GLHfjEZJcVjRtbciZ.lOlBH\",\n  \"user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"url\": \"http://LLpVUkIxpgZilUkiVJYNrtS.ehntUa\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "418118f8-f59f-4255-b8d3-6fc22c3d5e82",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "communities",
+                    ":communityId",
+                    "chatter",
+                    "feed-elements",
+                    ":feedElementId",
+                    "capabilities",
+                    "chatter-likes",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "communityId",
+                      "description": "(Required) The ID of the Experience Cloud site (community)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feedElementId",
+                      "description": "(Required) The ID of the feed element"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance name or custom domain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect/cms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api content"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "337ae911-4c4e-47d9-a7c6-600645caae71",
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Feeds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

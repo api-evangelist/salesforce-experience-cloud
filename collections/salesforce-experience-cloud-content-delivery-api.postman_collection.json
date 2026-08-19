@@ -1,0 +1,1264 @@
+{
+  "item": [
+    {
+      "id": "912b250c-da34-4221-99e2-042fcdfbe7ab",
+      "name": "Content Delivery",
+      "description": {
+        "content": "Content delivery operations for headless consumption",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "429babb0-a578-4eb5-b561-93b4eedc88da",
+          "name": "Salesforce Experience Cloud Query Delivery Content by Channel",
+          "request": {
+            "name": "Salesforce Experience Cloud Query Delivery Content by Channel",
+            "description": {
+              "content": "Retrieves published CMS content from the specified delivery channel. Returns content items matching the specified content type and optional filters. Used for headless content delivery to external applications and decoupled frontends.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "channels",
+                ":channelId",
+                "contents",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "managedContentType",
+                  "value": "<string>",
+                  "description": "(Required) Developer name of the content type (e.g., news, cms_image, cms_document, custom content types)"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Language code for content variant (e.g., en_US, fr, de)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contentKeys",
+                  "value": "<string>",
+                  "description": "Comma-separated list of content keys to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "managedContentIds",
+                  "value": "<string>",
+                  "description": "Comma-separated list of managed content record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "topics",
+                  "value": "<string>",
+                  "description": "Comma-separated list of topic names to filter content"
+                },
+                {
+                  "disabled": false,
+                  "key": "showAbsoluteUrl",
+                  "value": "false",
+                  "description": "Whether to return absolute URLs for media references"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Number of items per page (default 25, max 250)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number (0-indexed)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channelId",
+                  "description": "(Required) The ID of the CMS delivery channel"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88507c7d-92b1-4f67-ac4c-5ba4727fa600",
+              "name": "Successfully retrieved delivery content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentKeys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managedContentIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "topics",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentPageUrl\": \"https://JZwNeDcfL.tdvFnSizO.X8oguHNPqPj4BAosHW3ccrxY+EtzL8zhdYhHRUKW\",\n  \"items\": [\n    {\n      \"contentKey\": \"string\",\n      \"contentNodes\": {\n        \"key_0\": {\n          \"altText\": \"string\",\n          \"contentKey\": \"string\",\n          \"fileName\": \"string\",\n          \"mediaType\": \"string\",\n          \"mimeType\": \"string\",\n          \"nodeType\": \"Url\",\n          \"referenceId\": \"string\",\n          \"title\": \"string\",\n          \"unauthenticatedUrl\": \"https://zjN.iqgeYtxv.Aoj1PK1F2eznG\",\n          \"url\": \"https://R.pioQ-tA3EF0GKJqcxImCJP2KehAPL\",\n          \"value\": \"string\"\n        },\n        \"key_1\": {\n          \"altText\": \"string\",\n          \"contentKey\": \"string\",\n          \"fileName\": \"string\",\n          \"mediaType\": \"string\",\n          \"mimeType\": \"string\",\n          \"nodeType\": \"Url\",\n          \"referenceId\": \"string\",\n          \"title\": \"string\",\n          \"unauthenticatedUrl\": \"http://UNffUWSdUCuIAaTXBotbyDAwOB.vsthAxbkcrUbmz+iYY,,\",\n          \"url\": \"http://ZUjFwSTucguPFZGRYhi.cghTXy-yKTA4f1gQWzwMZW\",\n          \"value\": \"string\"\n        },\n        \"key_2\": {\n          \"altText\": \"string\",\n          \"contentKey\": \"string\",\n          \"fileName\": \"string\",\n          \"mediaType\": \"string\",\n          \"mimeType\": \"string\",\n          \"nodeType\": \"RichText\",\n          \"referenceId\": \"string\",\n          \"title\": \"string\",\n          \"unauthenticatedUrl\": \"http://oTnVHVkdYk.rvtJ8zuYwn6LZILurb9ImmbIuvZ6cXTQqsPVr1GAlu7jfvNqDc9\",\n          \"url\": \"https://lTMCpDoLbTlOxGzfwFXbWMlhxXP.dxuhM+rF,wUMXdfmd8gXjfSAZVcjGBHf\",\n          \"value\": \"string\"\n        }\n      },\n      \"contentUrlName\": \"string\",\n      \"language\": \"string\",\n      \"managedContentId\": \"string\",\n      \"publishedDate\": \"2005-01-13T21:08:01.146Z\",\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"typeLabel\": \"string\",\n      \"unauthenticatedUrl\": \"http://piNIdTdMHsapaXkZBBwncFZvbcAUUzKtd.rclpg6VHap+eFle7jnh-63w.tXg7N5T7.n04IYTy1q5aglpa7T1OVj+yJ4W--\"\n    },\n    {\n      \"contentKey\": \"string\",\n      \"contentNodes\": {\n        \"key_0\": {\n          \"altText\": \"string\",\n          \"contentKey\": \"string\",\n          \"fileName\": \"string\",\n          \"mediaType\": \"string\",\n          \"mimeType\": \"string\",\n          \"nodeType\": \"MediaSource\",\n          \"referenceId\": \"string\",\n          \"title\": \"string\",\n          \"unauthenticatedUrl\": \"https://IDkJiiTSgmZoldQepeOHRRjxvEvDE.coqMvJVw0+WEmb1MINqUXQjd+a9Zxm26ZhY3qBr1zG2B6XklgzM5GXlk.lp1OiZBkQgaUmgL\",\n          \"url\": \"http://IBOYeIbNcy.bpctO25C2xEnzmtekmkwID0ZzUblAxuKg3LxBNdyDIRkj9uSabN32Lzv-dRD4oDkT\",\n          \"value\": \"string\"\n        }\n      },\n      \"contentUrlName\": \"string\",\n      \"language\": \"string\",\n      \"managedContentId\": \"string\",\n      \"publishedDate\": \"1951-02-20T22:21:45.121Z\",\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"typeLabel\": \"string\",\n      \"unauthenticatedUrl\": \"http://qPezyNszRviwHwLRbxcxBFRorrvwa.yaAnC\"\n    }\n  ],\n  \"managedContentTypes\": {\n    \"key_0\": {\n      \"developerName\": \"string\",\n      \"label\": \"string\"\n    },\n    \"key_1\": {\n      \"developerName\": \"string\",\n      \"label\": \"string\"\n    },\n    \"key_2\": {\n      \"developerName\": \"string\",\n      \"label\": \"string\"\n    }\n  },\n  \"nextPageUrl\": \"http://ffCuMfzWnz.iyssZQtSJ.t6jFd9n2CAgpzIswB3zOYU\",\n  \"total\": 8007,\n  \"totalCount\": 1829\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "579a2b9c-25f5-43b8-892f-f39dfa3788e2",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentKeys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managedContentIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "topics",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc0a957a-9c26-4303-b2e6-f138cad2a896",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentKeys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managedContentIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "topics",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fae03cce-8360-43d8-8a88-8d3985b611bd",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contentKeys",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managedContentIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "topics",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cde0070-681e-447a-a4ec-148f1ce6d934",
+          "name": "Salesforce Experience Cloud Search Delivery Content",
+          "request": {
+            "name": "Salesforce Experience Cloud Search Delivery Content",
+            "description": {
+              "content": "Searches published CMS content in the specified delivery channel using a full-text search term. Returns matching content items with relevance-based ordering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "channels",
+                ":channelId",
+                "contents",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Full-text search term"
+                },
+                {
+                  "disabled": false,
+                  "key": "managedContentType",
+                  "value": "<string>",
+                  "description": "Filter results to a specific content type"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Language code for content filtering"
+                },
+                {
+                  "disabled": false,
+                  "key": "showAbsoluteUrl",
+                  "value": "false",
+                  "description": "Whether to return absolute URLs"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "Number of items per page (default 25, max 250)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number (0-indexed)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channelId",
+                  "description": "(Required) The ID of the CMS delivery channel"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4caffea8-0ba1-40a5-a2f4-8966fd1c4e19",
+              "name": "Successfully searched delivery content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentPageUrl\": \"https://JZwNeDcfL.tdvFnSizO.X8oguHNPqPj4BAosHW3ccrxY+EtzL8zhdYhHRUKW\",\n  \"items\": [\n    {\n      \"contentKey\": \"string\",\n      \"contentNodes\": {\n        \"key_0\": {\n          \"altText\": \"string\",\n          \"contentKey\": \"string\",\n          \"fileName\": \"string\",\n          \"mediaType\": \"string\",\n          \"mimeType\": \"string\",\n          \"nodeType\": \"Url\",\n          \"referenceId\": \"string\",\n          \"title\": \"string\",\n          \"unauthenticatedUrl\": \"https://zjN.iqgeYtxv.Aoj1PK1F2eznG\",\n          \"url\": \"https://R.pioQ-tA3EF0GKJqcxImCJP2KehAPL\",\n          \"value\": \"string\"\n        },\n        \"key_1\": {\n          \"altText\": \"string\",\n          \"contentKey\": \"string\",\n          \"fileName\": \"string\",\n          \"mediaType\": \"string\",\n          \"mimeType\": \"string\",\n          \"nodeType\": \"Url\",\n          \"referenceId\": \"string\",\n          \"title\": \"string\",\n          \"unauthenticatedUrl\": \"http://UNffUWSdUCuIAaTXBotbyDAwOB.vsthAxbkcrUbmz+iYY,,\",\n          \"url\": \"http://ZUjFwSTucguPFZGRYhi.cghTXy-yKTA4f1gQWzwMZW\",\n          \"value\": \"string\"\n        },\n        \"key_2\": {\n          \"altText\": \"string\",\n          \"contentKey\": \"string\",\n          \"fileName\": \"string\",\n          \"mediaType\": \"string\",\n          \"mimeType\": \"string\",\n          \"nodeType\": \"RichText\",\n          \"referenceId\": \"string\",\n          \"title\": \"string\",\n          \"unauthenticatedUrl\": \"http://oTnVHVkdYk.rvtJ8zuYwn6LZILurb9ImmbIuvZ6cXTQqsPVr1GAlu7jfvNqDc9\",\n          \"url\": \"https://lTMCpDoLbTlOxGzfwFXbWMlhxXP.dxuhM+rF,wUMXdfmd8gXjfSAZVcjGBHf\",\n          \"value\": \"string\"\n        }\n      },\n      \"contentUrlName\": \"string\",\n      \"language\": \"string\",\n      \"managedContentId\": \"string\",\n      \"publishedDate\": \"2005-01-13T21:08:01.146Z\",\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"typeLabel\": \"string\",\n      \"unauthenticatedUrl\": \"http://piNIdTdMHsapaXkZBBwncFZvbcAUUzKtd.rclpg6VHap+eFle7jnh-63w.tXg7N5T7.n04IYTy1q5aglpa7T1OVj+yJ4W--\"\n    },\n    {\n      \"contentKey\": \"string\",\n      \"contentNodes\": {\n        \"key_0\": {\n          \"altText\": \"string\",\n          \"contentKey\": \"string\",\n          \"fileName\": \"string\",\n          \"mediaType\": \"string\",\n          \"mimeType\": \"string\",\n          \"nodeType\": \"MediaSource\",\n          \"referenceId\": \"string\",\n          \"title\": \"string\",\n          \"unauthenticatedUrl\": \"https://IDkJiiTSgmZoldQepeOHRRjxvEvDE.coqMvJVw0+WEmb1MINqUXQjd+a9Zxm26ZhY3qBr1zG2B6XklgzM5GXlk.lp1OiZBkQgaUmgL\",\n          \"url\": \"http://IBOYeIbNcy.bpctO25C2xEnzmtekmkwID0ZzUblAxuKg3LxBNdyDIRkj9uSabN32Lzv-dRD4oDkT\",\n          \"value\": \"string\"\n        }\n      },\n      \"contentUrlName\": \"string\",\n      \"language\": \"string\",\n      \"managedContentId\": \"string\",\n      \"publishedDate\": \"1951-02-20T22:21:45.121Z\",\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"typeLabel\": \"string\",\n      \"unauthenticatedUrl\": \"http://qPezyNszRviwHwLRbxcxBFRorrvwa.yaAnC\"\n    }\n  ],\n  \"managedContentTypes\": {\n    \"key_0\": {\n      \"developerName\": \"string\",\n      \"label\": \"string\"\n    },\n    \"key_1\": {\n      \"developerName\": \"string\",\n      \"label\": \"string\"\n    },\n    \"key_2\": {\n      \"developerName\": \"string\",\n      \"label\": \"string\"\n    }\n  },\n  \"nextPageUrl\": \"http://ffCuMfzWnz.iyssZQtSJ.t6jFd9n2CAgpzIswB3zOYU\",\n  \"total\": 8007,\n  \"totalCount\": 1829\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62bd549a-ba62-48a8-bc84-6795f6d0e762",
+              "name": "Bad request - invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8561791-3920-49db-a8c5-80633761f0d0",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80698e59-cde0-4bcb-968f-87120bececcf",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managedContentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5024eb35-70cb-471a-89f0-36a7998d902e",
+          "name": "Salesforce Experience Cloud Get a Delivery Content Item",
+          "request": {
+            "name": "Salesforce Experience Cloud Get a Delivery Content Item",
+            "description": {
+              "content": "Retrieves a specific published content item from the delivery channel by its content key or managed content ID. Returns all content nodes and metadata for the item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "channels",
+                ":channelId",
+                "contents",
+                ":contentKeyOrId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>",
+                  "description": "Language variant to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "showAbsoluteUrl",
+                  "value": "false",
+                  "description": "Whether to return absolute URLs"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "channelId",
+                  "description": "(Required) The ID of the CMS delivery channel"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contentKeyOrId",
+                  "description": "(Required) Content key or managed content record ID"
+                },
+                {
+                  "description": "Your Salesforce instance name or custom domain",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09b8d6f8-0b71-4750-be90-4169146a449e",
+              "name": "Successfully retrieved content item",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    ":contentKeyOrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentKeyOrId",
+                      "description": "(Required) Content key or managed content record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contentKey\": \"string\",\n  \"contentNodes\": {\n    \"key_0\": {\n      \"altText\": \"string\",\n      \"contentKey\": \"string\",\n      \"fileName\": \"string\",\n      \"mediaType\": \"string\",\n      \"mimeType\": \"string\",\n      \"nodeType\": \"MediaSource\",\n      \"referenceId\": \"string\",\n      \"title\": \"string\",\n      \"unauthenticatedUrl\": \"http://aJIJJTJJhm.ciUFQI9+a1wYhVpNUQb.X8n7k\",\n      \"url\": \"https://JWhlKkGbxZadAXLTNwKt.tjucmo2G9Yg.5pNGzs0V3toVqj9OyDW-EXkgVQ3cO0Ux0jd4+sBRzd\",\n      \"value\": \"string\"\n    },\n    \"key_1\": {\n      \"altText\": \"string\",\n      \"contentKey\": \"string\",\n      \"fileName\": \"string\",\n      \"mediaType\": \"string\",\n      \"mimeType\": \"string\",\n      \"nodeType\": \"Text\",\n      \"referenceId\": \"string\",\n      \"title\": \"string\",\n      \"unauthenticatedUrl\": \"https://wCl.lmumo+eS\",\n      \"url\": \"http://fBJgrVHyj.oxmchsja1\",\n      \"value\": \"string\"\n    },\n    \"key_2\": {\n      \"altText\": \"string\",\n      \"contentKey\": \"string\",\n      \"fileName\": \"string\",\n      \"mediaType\": \"string\",\n      \"mimeType\": \"string\",\n      \"nodeType\": \"Media\",\n      \"referenceId\": \"string\",\n      \"title\": \"string\",\n      \"unauthenticatedUrl\": \"http://XiUvjCfUDV.aydgnFcRXbBEZ,Qj1dz7Ja2HrjTajid\",\n      \"url\": \"http://oIBHVE.lkhcvsYcN9,9,TGibSzzs+i\",\n      \"value\": \"string\"\n    },\n    \"key_3\": {\n      \"altText\": \"string\",\n      \"contentKey\": \"string\",\n      \"fileName\": \"string\",\n      \"mediaType\": \"string\",\n      \"mimeType\": \"string\",\n      \"nodeType\": \"RichText\",\n      \"referenceId\": \"string\",\n      \"title\": \"string\",\n      \"unauthenticatedUrl\": \"https://GddHyCfbdKGFnuTqq.xigS\",\n      \"url\": \"http://TqTRcrWswkuqQCPgR.wwxKwHFoLO0zCo9ezvdvNxjsM5pXtQKVZ\",\n      \"value\": \"string\"\n    },\n    \"key_4\": {\n      \"altText\": \"string\",\n      \"contentKey\": \"string\",\n      \"fileName\": \"string\",\n      \"mediaType\": \"string\",\n      \"mimeType\": \"string\",\n      \"nodeType\": \"Url\",\n      \"referenceId\": \"string\",\n      \"title\": \"string\",\n      \"unauthenticatedUrl\": \"http://T.gmPaBLWdriI-dZh+B0yM6Ls+7N9dn5w+VhnoVLhycQuYlZ+cwdDGxXz1L--wjKOh\",\n      \"url\": \"https://MWuXSCNglynhNsZtlFx.beEsigDuUAfPJsHhptWbfH3bBgZ3tDtZc-ZwIuJC.kgJfX3-Ae\",\n      \"value\": \"string\"\n    }\n  },\n  \"contentUrlName\": \"string\",\n  \"language\": \"string\",\n  \"managedContentId\": \"string\",\n  \"publishedDate\": \"2013-08-17T08:29:57.954Z\",\n  \"title\": \"string\",\n  \"type\": \"string\",\n  \"typeLabel\": \"string\",\n  \"unauthenticatedUrl\": \"https://plC.iem-jMG33EI\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c57ef907-65c4-448b-bc06-f7d94d3c686e",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    ":contentKeyOrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentKeyOrId",
+                      "description": "(Required) Content key or managed content record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc28e09b-dee5-4d95-a899-51f767cb5bff",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":channelId",
+                    "contents",
+                    ":contentKeyOrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "showAbsoluteUrl",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "channelId",
+                      "description": "(Required) The ID of the CMS delivery channel"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contentKeyOrId",
+                      "description": "(Required) Content key or managed content record ID"
+                    },
+                    {
+                      "description": "Your Salesforce instance name or custom domain",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  },\n  {\n    \"errorCode\": \"string\",\n    \"message\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Salesforce instance name or custom domain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourInstance",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}.salesforce.com/services/data/v59.0/connect/cms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "api content"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://login.salesforce.com/services/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.salesforce.com/services/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "20e21cab-ba1b-420b-90cb-bc509c8c165a",
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Content Delivery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.\n\nContact Support:\n Name: Salesforce Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

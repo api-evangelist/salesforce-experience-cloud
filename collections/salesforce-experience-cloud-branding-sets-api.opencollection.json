@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Branding Sets API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Branding Sets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud List Branding Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/:communityId/branding-sets",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              }
+            ]
+          },
+          "docs": "Returns the branding sets configured for the specified Experience Cloud site. Branding sets define reusable visual property groups for colors, fonts, and images."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Get a Branding Set",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/:communityId/branding-sets/:brandingSetId",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              },
+              {
+                "name": "brandingSetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the branding set"
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific branding set including all its property values for colors, fonts, and image references."
+        },
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Update a Branding Set",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/connect/communities/:communityId/branding-sets/:brandingSetId",
+            "params": [
+              {
+                "name": "communityId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Experience Cloud site"
+              },
+              {
+                "name": "brandingSetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the branding set"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the properties of an existing branding set. Only the properties included in the request are updated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

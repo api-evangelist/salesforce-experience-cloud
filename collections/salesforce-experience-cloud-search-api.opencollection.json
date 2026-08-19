@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Salesforce Experience Cloud Salesforce CMS Connect Actions Search API",
+    "version": "59.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://login.salesforce.com/services/oauth2/authorize",
+      "accessTokenUrl": "https://login.salesforce.com/services/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Salesforce Experience Cloud Execute a SOSL Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}.salesforce.com/services/data/v59.0/connect/cms/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "FIND {test} IN ALL FIELDS RETURNING Account(Id, Name)",
+                "type": "query",
+                "description": "The SOSL search string to execute"
+              }
+            ]
+          },
+          "docs": "Executes a SOSL search query and returns matching records across multiple objects. SOSL supports full-text search with wildcard and phrase matching."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
