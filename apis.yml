@@ -1,8 +1,7 @@
 aid: salesforce-experience-cloud
 name: Salesforce Experience Cloud
-description: >-
-  APIs for building and managing Salesforce Experience Cloud sites, communities, and digital experiences including
-  content management, theming, navigation, and Lightning Web Runtime powered portals.
+description: APIs for building and managing Salesforce Experience Cloud sites, communities, and digital experiences
+  including content management, theming, navigation, and Lightning Web Runtime powered portals.
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -21,17 +20,14 @@ url: https://raw.githubusercontent.com/api-evangelist/salesforce-experience-clou
 type: Index
 kind: company
 created: '2024'
-modified: '2026-05-19'
+modified: '2026-08-21'
 specificationVersion: '0.23'
 apis:
 - name: Metadata API (Experience Cloud)
-  description: >-
-    Deploy and retrieve Experience Cloud site configurations, navigation menus, and digital experience
-    bundles. Enables programmatic management of ExperienceBundle and Network metadata types for CI/CD
-    workflows.
+  description: Deploy and retrieve Experience Cloud site configurations, navigation menus, and digital experience
+    bundles. Enables programmatic management of ExperienceBundle and Network metadata types for CI/CD workflows.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
-  humanURL: >-
-    https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm
   baseURL: https://yourInstance.salesforce.com/services/Soap/m/59.0
   tags:
   - CI/CD
@@ -43,24 +39,18 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_intro.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_digitalexperiencebundle.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_digitalexperiencebundle.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_network.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_network.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_types_list.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_types_list.htm
 - name: LWR Sites API
-  description: >-
-    Build and customize Lightning Web Runtime sites for Experience Cloud. Provides documentation for creating
-    LWR-based digital experiences with custom components, page layouts, and theme configurations.
+  description: Build and customize Lightning Web Runtime sites for Experience Cloud. Provides documentation for
+    creating LWR-based digital experiences with custom components, page layouts, and theme configurations.
   image: https://www.salesforce.com/content/dam/web/en_us/www/images/nav/salesforce-logo.svg
-  humanURL: >-
-    https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm
+  humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0
   tags:
   - Components
@@ -70,14 +60,11 @@ apis:
   - Sites
   properties:
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_navigation.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_navigation.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-actions-api
   name: Salesforce Experience Cloud Actions API
   description: Available actions for records and objects
@@ -91,67 +78,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-branding-sets-api
   name: Salesforce Experience Cloud Branding Sets API
   description: Branding set management
@@ -165,67 +136,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-channels-api
   name: Salesforce Experience Cloud Channels API
   description: CMS channel management
@@ -239,67 +194,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-collections-api
   name: Salesforce Experience Cloud Collections API
   description: Content collection delivery operations
@@ -315,67 +254,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-content-api
   name: Salesforce Experience Cloud Content API
   description: CMS content management operations
@@ -389,67 +312,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-content-delivery-api
   name: Salesforce Experience Cloud Content Delivery API
   description: Content delivery operations for headless consumption
@@ -463,67 +370,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-content-types-api
   name: Salesforce Experience Cloud Content Types API
   description: CMS content type operations
@@ -537,67 +428,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-delivery-channels-api
   name: Salesforce Experience Cloud Delivery Channels API
   description: Managed content delivery channel operations
@@ -611,67 +486,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-describe-api
   name: Salesforce Experience Cloud Describe API
   description: Object and field metadata
@@ -685,67 +544,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-favorites-api
   name: Salesforce Experience Cloud Favorites API
   description: User favorites management
@@ -759,67 +602,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-feeds-api
   name: Salesforce Experience Cloud Feeds API
   description: Feed and feed item operations
@@ -833,67 +660,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-folders-api
   name: Salesforce Experience Cloud Folders API
   description: CMS folder management
@@ -907,67 +718,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-graphql-api
   name: Salesforce Experience Cloud GraphQL API
   description: GraphQL query and mutation operations
@@ -981,67 +776,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-knowledge-api
   name: Salesforce Experience Cloud Knowledge API
   description: Knowledge article operations within communities
@@ -1055,67 +834,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-layouts-api
   name: Salesforce Experience Cloud Layouts API
   description: Page layout metadata
@@ -1129,67 +892,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-limits-api
   name: Salesforce Experience Cloud Limits API
   description: API usage limits and quotas
@@ -1203,67 +950,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-list-views-api
   name: Salesforce Experience Cloud List Views API
   description: List view data and metadata
@@ -1277,67 +1008,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-managed-content-api
   name: Salesforce Experience Cloud Managed Content API
   description: Managed content retrieval and search
@@ -1351,67 +1066,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-media-api
   name: Salesforce Experience Cloud Media API
   description: CMS media file operations
@@ -1425,67 +1124,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-media-delivery-api
   name: Salesforce Experience Cloud Media Delivery API
   description: Media content delivery operations
@@ -1499,67 +1182,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-members-api
   name: Salesforce Experience Cloud Members API
   description: Community member operations
@@ -1573,67 +1240,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-moderation-api
   name: Salesforce Experience Cloud Moderation API
   description: Content moderation operations
@@ -1647,67 +1298,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-navigation-api
   name: Salesforce Experience Cloud Navigation API
   description: Site navigation menu operations
@@ -1721,67 +1356,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-object-info-api
   name: Salesforce Experience Cloud Object Info API
   description: Object metadata for UI rendering
@@ -1795,67 +1414,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-publish-api
   name: Salesforce Experience Cloud Publish API
   description: Site publishing operations
@@ -1869,67 +1472,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-query-api
   name: Salesforce Experience Cloud Query API
   description: SOQL query execution
@@ -1943,67 +1530,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-records-api
   name: Salesforce Experience Cloud Records API
   description: Record data and UI operations
@@ -2017,67 +1588,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-resources-api
   name: Salesforce Experience Cloud Resources API
   description: Available REST resources
@@ -2091,67 +1646,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-search-api
   name: Salesforce Experience Cloud Search API
   description: SOSL search execution
@@ -2165,67 +1704,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-sites-api
   name: Salesforce Experience Cloud Sites API
   description: Experience Cloud site management operations
@@ -2239,67 +1762,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-sobjects-api
   name: Salesforce Experience Cloud sObjects API
   description: Salesforce object operations
@@ -2315,67 +1822,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-templates-api
   name: Salesforce Experience Cloud Templates API
   description: Site template management
@@ -2389,67 +1880,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-themes-api
   name: Salesforce Experience Cloud Themes API
   description: Site theme and branding operations
@@ -2463,67 +1938,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-topics-api
   name: Salesforce Experience Cloud Topics API
   description: Topic management and assignments
@@ -2537,67 +1996,51 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 - aid: salesforce-experience-cloud:salesforce-experience-cloud-versions-api
   name: Salesforce Experience Cloud Versions API
   description: API version discovery
@@ -2611,68 +2054,57 @@ apis:
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   - type: Authentication
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/
   - type: PostmanCollection
     url: https://www.postman.com/salesforce-developers/workspace/salesforce-developers
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm
   - type: Documentation
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: Schema
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/
   - type: GraphQL
     url: graphql/salesforce-experience-cloud-graphql.md
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
+    url: https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm
   - type: Documentation
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
   - type: Reference
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm
   - type: GettingStarted
-    url: >-
-      https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
+    url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/salesforce/
+  name: Salesforce
+  x-relationship: product
+  x-generated-by: salesforce-family:2026-08-21
 - type: AgenticAccess
   url: agentic-access/salesforce-experience-cloud-agentic-access.yml
 - type: DomainSecurity
@@ -2753,8 +2185,7 @@ common:
 - type: Documentation
   url: https://developer.salesforce.com/docs
 - type: GettingStarted
-  url: >-
-    https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
+  url: https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm
 - type: Authentication
   url: https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
 - type: Blog
@@ -2780,8 +2211,7 @@ common:
 - type: Signup
   url: https://developer.salesforce.com/signup
 - type: RateLimits
-  url: >-
-    https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/
+  url: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/
 - type: SDKs
   url: https://developer.salesforce.com/developer-centers/lightning-web-components
 - type: Trailhead Learning
@@ -2823,3 +2253,5 @@ tags:
 - Digital Experience
 - Experience Cloud
 - Partner Portal
+x-parent: salesforce
+x-relationship: product
