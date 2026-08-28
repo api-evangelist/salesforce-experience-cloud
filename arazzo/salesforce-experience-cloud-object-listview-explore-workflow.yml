@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: userInterfaceApi
-  url: ../openapi/salesforce-experience-cloud-user-interface-openapi.yml
+- name: listViewsApi
+  url: ../openapi/salesforce-experience-cloud-list-views-api-openapi.yml
+  type: openapi
+- name: objectInfoApi
+  url: ../openapi/salesforce-experience-cloud-object-info-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: object-listview-explore

@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: restApi
-  url: ../openapi/salesforce-experience-cloud-rest-api-openapi.yml
+- name: queryApi
+  url: ../openapi/salesforce-experience-cloud-query-api-openapi.yml
+  type: openapi
+- name: sobjectsApi
+  url: ../openapi/salesforce-experience-cloud-sobjects-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: case-escalation

@@ -10,8 +10,8 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: templatesApi
-  url: ../openapi/salesforce-experience-cloud-templates-openapi.yml
+- name: brandingSetsApi
+  url: ../openapi/salesforce-experience-cloud-branding-sets-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: branding-set-revise

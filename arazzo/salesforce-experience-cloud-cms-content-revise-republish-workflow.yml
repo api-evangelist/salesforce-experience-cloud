@@ -10,8 +10,8 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: cmsConnectApi
-  url: ../openapi/salesforce-experience-cloud-cms-connect-openapi.yml
+- name: contentApi
+  url: ../openapi/salesforce-experience-cloud-content-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: cms-content-revise-republish

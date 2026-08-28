@@ -10,8 +10,8 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: connectCommunitiesApi
-  url: ../openapi/salesforce-experience-cloud-connect-communities-openapi.yml
+- name: feedsApi
+  url: ../openapi/salesforce-experience-cloud-feeds-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: feed-post-comment

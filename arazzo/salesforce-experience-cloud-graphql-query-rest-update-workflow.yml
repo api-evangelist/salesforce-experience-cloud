@@ -13,10 +13,10 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: graphqlApi
-  url: ../openapi/salesforce-experience-cloud-graphql-openapi.yml
+  url: ../openapi/salesforce-experience-cloud-graphql-api-openapi.yml
   type: openapi
-- name: restApi
-  url: ../openapi/salesforce-experience-cloud-rest-api-openapi.yml
+- name: sobjectsApi
+  url: ../openapi/salesforce-experience-cloud-sobjects-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: graphql-query-rest-update

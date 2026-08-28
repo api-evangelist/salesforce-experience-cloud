@@ -11,8 +11,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: cmsManagedContentApi
-  url: ../openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml
+- name: deliveryChannelsApi
+  url: ../openapi/salesforce-experience-cloud-delivery-channels-api-openapi.yml
+  type: openapi
+- name: managedContentApi
+  url: ../openapi/salesforce-experience-cloud-managed-content-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: headless-content-delivery

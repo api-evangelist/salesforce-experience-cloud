@@ -10,8 +10,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: userInterfaceApi
-  url: ../openapi/salesforce-experience-cloud-user-interface-openapi.yml
+- name: favoritesApi
+  url: ../openapi/salesforce-experience-cloud-favorites-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: favorite-lifecycle

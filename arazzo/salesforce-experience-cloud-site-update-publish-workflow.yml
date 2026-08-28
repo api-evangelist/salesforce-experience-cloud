@@ -10,8 +10,11 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
+- name: publishApi
+  url: ../openapi/salesforce-experience-cloud-publish-api-openapi.yml
+  type: openapi
 - name: sitesApi
-  url: ../openapi/salesforce-experience-cloud-sites-openapi.yml
+  url: ../openapi/salesforce-experience-cloud-sites-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: site-update-publish

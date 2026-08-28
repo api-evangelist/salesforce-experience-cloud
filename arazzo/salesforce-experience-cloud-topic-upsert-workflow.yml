@@ -10,8 +10,8 @@ info:
     and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: connectCommunitiesApi
-  url: ../openapi/salesforce-experience-cloud-connect-communities-openapi.yml
+- name: topicsApi
+  url: ../openapi/salesforce-experience-cloud-topics-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: topic-upsert
