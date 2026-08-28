@@ -1,0 +1,27 @@
+slug: salesforce-experience-cloud
+provider: Salesforce Experience Cloud
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Content
+  spec_file: salesforce-experience-cloud-content-api-openapi.yml
+  capability_id: BC-400.70
+  capability_id_l1: BC-400
+  capability_name: Content Marketing Management
+  confidence: 0.7
+  evidence: POST /contents createCmsContent 'Create CMS Content'; POST /contents/{contentId}/publish publishCmsContent;
+    POST /contents/{contentId}/unpublish
+  reason: Full authoring, update and publish/unpublish lifecycle of managed marketing/site content in
+    a CMS — content production and distribution. Chosen over knowledge management because the context
+    is site publishing and channel delivery.

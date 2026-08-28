@@ -2,6 +2,18 @@ aid: salesforce-experience-cloud
 name: Salesforce Experience Cloud
 description: APIs for building and managing Salesforce Experience Cloud sites, communities, and digital experiences
   including content management, theming, navigation, and Lightning Web Runtime powered portals.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -2100,6 +2112,9 @@ apis:
   - type: GettingStarted
     url: https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 common:
+- type: CapabilityMap
+  url: capabilities/salesforce-experience-cloud-capability-edges.yml
+  name: Salesforce Experience Cloud Business Capability Map
 - type: ParentCompany
   url: https://apis.io/providers/salesforce/
   name: Salesforce
