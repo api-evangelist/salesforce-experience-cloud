@@ -12,11 +12,11 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: templatesApi
-  url: ../openapi/salesforce-experience-cloud-templates-openapi.yml
+- name: publishApi
+  url: ../openapi/salesforce-experience-cloud-publish-api-openapi.yml
   type: openapi
-- name: sitesApi
-  url: ../openapi/salesforce-experience-cloud-sites-openapi.yml
+- name: themesApi
+  url: ../openapi/salesforce-experience-cloud-themes-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: site-theme-activate-publish
@@ -43,7 +43,7 @@ workflows:
   steps:
   - stepId: listThemes
     description: List the themes available for the site to confirm the chosen theme is present.
-    operationId: $sourceDescriptions.templatesApi.listSiteThemes
+    operationId: $sourceDescriptions.themesApi.getSiteThemes
     parameters:
     - name: Authorization
       in: header
@@ -57,7 +57,7 @@ workflows:
       firstThemeId: $response.body#/themes/0/id
   - stepId: setTheme
     description: Set the chosen theme as the active theme for the site.
-    operationId: $sourceDescriptions.templatesApi.setActiveTheme
+    operationId: $sourceDescriptions.themesApi.setActiveTheme
     parameters:
     - name: Authorization
       in: header
@@ -75,7 +75,7 @@ workflows:
       activeThemeId: $response.body#/id
   - stepId: publishSite
     description: Publish the site so the newly activated theme takes effect.
-    operationId: $sourceDescriptions.sitesApi.publishExperienceCloudSite
+    operationId: $sourceDescriptions.publishApi.publishExperienceCloudSite
     parameters:
     - name: Authorization
       in: header
