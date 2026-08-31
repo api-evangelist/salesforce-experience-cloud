@@ -1825,7 +1825,7 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0
   tags:
-  - SObjects
+  - sObjects
   tags_raw:
   - sObjects
   properties:
