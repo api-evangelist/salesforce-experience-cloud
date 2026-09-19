@@ -837,6 +837,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0
   tags:
+  - Feed
+  tags_raw:
   - Feeds
   properties:
   - type: OpenAPI
@@ -2391,6 +2393,8 @@ apis:
   humanURL: https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/
   baseURL: https://yourInstance.salesforce.com/services/data/v59.0
   tags:
+  - Topic
+  tags_raw:
   - Topics
   properties:
   - type: OpenAPI
@@ -2540,6 +2544,8 @@ apis:
     https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm
   baseURL: https://yourInstance.salesforce.com/services/Soap/m/59.0
   tags:
+  - GraphQL
+  tags_raw:
   - Graph QL
   properties:
   - type: OpenAPI
