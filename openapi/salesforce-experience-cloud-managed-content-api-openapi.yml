@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Managed Content API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  title: Salesforce Experience Cloud Salesforce CMS Managed Content…
+  description: Retrieve and search published managed content versions for Experience Cloud sites. Provides endpoints for querying managed content delivery channels and searching content across workspaces. Part of the Salesforce Connect REST API.
   version: 59.0.0
   contact:
     name: Salesforce Developer Support
@@ -10,7 +10,7 @@ info:
     name: Salesforce Master Subscription Agreement
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect
   description: Salesforce Instance
   variables:
     instance:
@@ -256,6 +256,52 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ManagedContentVersion:
+      type: object
+      description: A published managed content version
+      properties:
+        contentKey:
+          type: string
+          description: Unique content key
+        contentNodes:
+          type: object
+          description: Map of field names to content nodes containing the content field values
+          additionalProperties:
+            $ref: '#/components/schemas/ContentNode'
+        contentUrlName:
+          type: string
+          description: URL-friendly name for the content
+        language:
+          type: string
+          description: Language code of this content version
+        managedContentId:
+          type: string
+          description: Salesforce record ID of the managed content
+        publishedDate:
+          type: string
+          format: date-time
+          description: When this version was published
+        title:
+          type: string
+          description: Title of the content
+        type:
+          type: string
+          description: Content type developer name
+        typeLabel:
+          type: string
+          description: Content type display label
+        unauthenticatedUrl:
+          type: string
+          format: uri
+          description: Public URL for unauthenticated access
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
     ManagedContentVersionCollection:
       type: object
       description: Collection of managed content versions
@@ -333,63 +379,17 @@ components:
         value:
           type: string
           description: Text or value content of the node
-    ManagedContentVersion:
-      type: object
-      description: A published managed content version
-      properties:
-        contentKey:
-          type: string
-          description: Unique content key
-        contentNodes:
-          type: object
-          description: Map of field names to content nodes containing the content field values
-          additionalProperties:
-            $ref: '#/components/schemas/ContentNode'
-        contentUrlName:
-          type: string
-          description: URL-friendly name for the content
-        language:
-          type: string
-          description: Language code of this content version
-        managedContentId:
-          type: string
-          description: Salesforce record ID of the managed content
-        publishedDate:
-          type: string
-          format: date-time
-          description: When this version was published
-        title:
-          type: string
-          description: Title of the content
-        type:
-          type: string
-          description: Content type developer name
-        typeLabel:
-          type: string
-          description: Content type display label
-        unauthenticatedUrl:
-          type: string
-          format: uri
-          description: Public URL for unauthenticated access
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
       content:
         application/json:
           schema:
@@ -405,13 +405,6 @@ components:
             items:
               $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    PageParam:
-      name: page
-      in: query
-      description: Page number to retrieve (0-indexed)
-      schema:
-        type: integer
-        default: 0
     PageSize:
       name: pageSize
       in: query
@@ -420,6 +413,13 @@ components:
         type: integer
         default: 25
         maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
     ChannelId:
       name: channelId
       in: path
@@ -437,7 +437,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your data
-            content: Manage CMS content
     bearerAuth:
       type: http
       scheme: bearer

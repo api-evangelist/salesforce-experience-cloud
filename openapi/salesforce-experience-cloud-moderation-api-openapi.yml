@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Moderation API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  title: Salesforce Experience Cloud Salesforce Connect REST API…
+  description: Access community data, feeds, topics, and user engagement features. The Connect REST API provides endpoints for social collaboration, content sharing, and community management within Experience Cloud sites. Includes feed operations, topic management, and member engagement.
   version: 59.0.0
   contact:
     name: Salesforce Developer Support
@@ -10,7 +10,7 @@ info:
     name: Salesforce Master Subscription Agreement
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect
   description: Salesforce Instance
   variables:
     instance:
@@ -71,7 +71,44 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
   schemas:
+    MessageSegment:
+      type: object
+      description: A segment of a message body
+      properties:
+        text:
+          type: string
+        type:
+          type: string
+          enum:
+          - Text
+          - Mention
+          - Hashtag
+          - Link
+          - MarkupBegin
+          - MarkupEnd
     CommentPage:
       type: object
       description: Paginated list of comments
@@ -92,6 +129,20 @@ components:
           format: uri
         total:
           type: integer
+    Like:
+      type: object
+      description: A like on a feed element or comment
+      properties:
+        id:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        url:
+          type: string
+          format: uri
+        user:
+          $ref: '#/components/schemas/ActorReference'
     ActorReference:
       type: object
       description: Reference to a user or record
@@ -105,82 +156,16 @@ components:
         url:
           type: string
           format: uri
-    LikePage:
+    ErrorResponse:
       type: object
-      description: Paginated list of likes
+      description: Standard Salesforce API error response
       properties:
-        currentPageToken:
+        errorCode:
           type: string
-        currentPageUrl:
+          description: Salesforce error code
+        message:
           type: string
-          format: uri
-        likes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Like'
-        nextPageToken:
-          type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        total:
-          type: integer
-    Comment:
-      type: object
-      description: A comment on a feed element
-      properties:
-        id:
-          type: string
-        body:
-          $ref: '#/components/schemas/MessageBody'
-        createdDate:
-          type: string
-          format: date-time
-        feedElement:
-          $ref: '#/components/schemas/ActorReference'
-        likes:
-          $ref: '#/components/schemas/LikePage'
-        user:
-          $ref: '#/components/schemas/ActorReference'
-        url:
-          type: string
-          format: uri
-    FeedElement:
-      type: object
-      description: A feed element such as a post or announcement
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the feed element
-        body:
-          $ref: '#/components/schemas/MessageBody'
-        capabilities:
-          $ref: '#/components/schemas/FeedElementCapabilities'
-        createdDate:
-          type: string
-          format: date-time
-          description: When the feed element was created
-        feedElementType:
-          type: string
-          description: Type of feed element
-          enum:
-          - FeedItem
-          - Bundle
-          - Recommendation
-        header:
-          $ref: '#/components/schemas/MessageBody'
-        modifiedDate:
-          type: string
-          format: date-time
-          description: When the feed element was last modified
-        parent:
-          $ref: '#/components/schemas/ActorReference'
-        actor:
-          $ref: '#/components/schemas/ActorReference'
-        url:
-          type: string
-          format: uri
-          description: API resource URL
+          description: Human-readable error message
     MessageBody:
       type: object
       description: Rich text body of a feed element or comment
@@ -193,32 +178,6 @@ components:
             $ref: '#/components/schemas/MessageSegment'
         text:
           type: string
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
-    FeedElementCapabilities:
-      type: object
-      description: Capabilities available on a feed element
-      properties:
-        comments:
-          type: object
-          properties:
-            page:
-              $ref: '#/components/schemas/CommentPage'
-        chatterLikes:
-          type: object
-          properties:
-            page:
-              $ref: '#/components/schemas/LikePage'
-            myLike:
-              $ref: '#/components/schemas/Like'
     ModerationFlagCollection:
       type: object
       description: Collection of flagged elements for moderation
@@ -257,57 +216,98 @@ components:
         nextPageUrl:
           type: string
           format: uri
-    MessageSegment:
+    LikePage:
       type: object
-      description: A segment of a message body
+      description: Paginated list of likes
       properties:
-        text:
+        currentPageToken:
           type: string
-        type:
+        currentPageUrl:
           type: string
-          enum:
-          - Text
-          - Mention
-          - Hashtag
-          - Link
-          - MarkupBegin
-          - MarkupEnd
-    Like:
+          format: uri
+        likes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Like'
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+    FeedElement:
       type: object
-      description: A like on a feed element or comment
+      description: A feed element such as a post or announcement
       properties:
         id:
           type: string
+          description: Unique identifier of the feed element
+        body:
+          $ref: '#/components/schemas/MessageBody'
+        capabilities:
+          $ref: '#/components/schemas/FeedElementCapabilities'
         createdDate:
           type: string
           format: date-time
+          description: When the feed element was created
+        feedElementType:
+          type: string
+          description: Type of feed element
+          enum:
+          - FeedItem
+          - Bundle
+          - Recommendation
+        header:
+          $ref: '#/components/schemas/MessageBody'
+        modifiedDate:
+          type: string
+          format: date-time
+          description: When the feed element was last modified
+        parent:
+          $ref: '#/components/schemas/ActorReference'
+        actor:
+          $ref: '#/components/schemas/ActorReference'
         url:
           type: string
           format: uri
+          description: API resource URL
+    FeedElementCapabilities:
+      type: object
+      description: Capabilities available on a feed element
+      properties:
+        comments:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/CommentPage'
+        chatterLikes:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/LikePage'
+            myLike:
+              $ref: '#/components/schemas/Like'
+    Comment:
+      type: object
+      description: A comment on a feed element
+      properties:
+        id:
+          type: string
+        body:
+          $ref: '#/components/schemas/MessageBody'
+        createdDate:
+          type: string
+          format: date-time
+        feedElement:
+          $ref: '#/components/schemas/ActorReference'
+        likes:
+          $ref: '#/components/schemas/LikePage'
         user:
           $ref: '#/components/schemas/ActorReference'
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items to return per page (default 25, max 100)
-      schema:
-        type: integer
-        default: 25
-        maximum: 100
-    PageToken:
-      name: pageToken
-      in: query
-      description: Token for retrieving the next page of results
-      schema:
-        type: string
+        url:
+          type: string
+          format: uri
   securitySchemes:
     oauth2:
       type: oauth2
@@ -318,7 +318,7 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your data
-            content: Manage CMS content
+            chatter_api: Manage Chatter data
     bearerAuth:
       type: http
       scheme: bearer

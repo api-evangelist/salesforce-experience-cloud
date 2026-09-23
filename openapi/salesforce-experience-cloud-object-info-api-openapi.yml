@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Object Info API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  title: Salesforce Experience Cloud Salesforce User Interface…
+  description: Access record data, layouts, list views, and navigation items for building custom user interfaces. Powers Lightning web components in Experience Cloud sites with metadata-driven UI rendering. Returns both data and metadata in a single response.
   version: 59.0.0
   contact:
     name: Salesforce Developer Support
@@ -10,7 +10,7 @@ info:
     name: Salesforce Master Subscription Agreement
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+- url: https://{instance}.salesforce.com/services/data/v59.0/ui-api
   description: Salesforce Instance
   variables:
     instance:
@@ -62,14 +62,6 @@ components:
             items:
               $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     ObjectInfoRepresentation:
       type: object
       description: Object metadata for UI rendering
@@ -223,6 +215,14 @@ components:
               format: uri
         updateable:
           type: boolean
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
   parameters:
     ObjectApiName:
       name: objectApiName
@@ -241,7 +241,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your data
-            content: Manage CMS content
     bearerAuth:
       type: http
       scheme: bearer

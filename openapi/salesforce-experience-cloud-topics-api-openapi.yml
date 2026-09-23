@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Topics API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  title: Salesforce Experience Cloud Salesforce Connect REST API…
+  description: Access community data, feeds, topics, and user engagement features. The Connect REST API provides endpoints for social collaboration, content sharing, and community management within Experience Cloud sites. Includes feed operations, topic management, and member engagement.
   version: 59.0.0
   contact:
     name: Salesforce Developer Support
@@ -10,7 +10,7 @@ info:
     name: Salesforce Master Subscription Agreement
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect
   description: Salesforce Instance
   variables:
     instance:
@@ -172,16 +172,16 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
       content:
         application/json:
           schema:
@@ -219,42 +219,6 @@ components:
       schema:
         type: string
   schemas:
-    TopicCollection:
-      type: object
-      description: Collection of topics
-      properties:
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        topics:
-          type: array
-          items:
-            $ref: '#/components/schemas/Topic'
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
-    TopicInput:
-      type: object
-      description: Input for creating or updating a topic
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Name of the topic
-        description:
-          type: string
-          description: Description of the topic
     Topic:
       type: object
       description: A topic within an Experience Cloud site
@@ -282,6 +246,42 @@ components:
         url:
           type: string
           format: uri
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    TopicInput:
+      type: object
+      description: Input for creating or updating a topic
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Name of the topic
+        description:
+          type: string
+          description: Description of the topic
+    TopicCollection:
+      type: object
+      description: Collection of topics
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
   securitySchemes:
     oauth2:
       type: oauth2
@@ -292,7 +292,7 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your data
-            content: Manage CMS content
+            chatter_api: Manage Chatter data
     bearerAuth:
       type: http
       scheme: bearer

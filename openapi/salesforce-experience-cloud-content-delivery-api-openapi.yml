@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Content Delivery API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  title: Salesforce Experience Cloud Salesforce CMS Delivery Content…
+  description: Delivers CMS content to external applications and headless frontends. Enables content retrieval by channel, content type, and content key for building decoupled digital experiences. Part of the Salesforce Connect REST API.
   version: 59.0.0
   contact:
     name: Salesforce Developer Support
@@ -10,7 +10,7 @@ info:
     name: Salesforce Master Subscription Agreement
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms/delivery
   description: Salesforce Instance
   variables:
     instance:
@@ -163,7 +163,91 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
   schemas:
+    DeliveryContentCollection:
+      type: object
+      description: Collection of delivered content items
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryContentItem'
+        managedContentTypes:
+          type: object
+          description: Map of content type names to type metadata
+          additionalProperties:
+            type: object
+            properties:
+              developerName:
+                type: string
+              label:
+                type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+        totalCount:
+          type: integer
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
     ContentNode:
       type: object
       description: A content node representing a field value
@@ -250,90 +334,6 @@ components:
           type: string
           format: uri
           description: Public URL for unauthenticated access
-    DeliveryContentCollection:
-      type: object
-      description: Collection of delivered content items
-      properties:
-        currentPageUrl:
-          type: string
-          format: uri
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryContentItem'
-        managedContentTypes:
-          type: object
-          description: Map of content type names to type metadata
-          additionalProperties:
-            type: object
-            properties:
-              developerName:
-                type: string
-              label:
-                type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        total:
-          type: integer
-        totalCount:
-          type: integer
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-  parameters:
-    PageParam:
-      name: page
-      in: query
-      description: Page number (0-indexed)
-      schema:
-        type: integer
-        default: 0
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
-    ChannelId:
-      name: channelId
-      in: path
-      required: true
-      description: The ID of the CMS delivery channel
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2
@@ -344,7 +344,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your data
-            content: Manage CMS content
     bearerAuth:
       type: http
       scheme: bearer

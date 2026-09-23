@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Templates API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  title: Salesforce Experience Cloud Templates API
+  description: Retrieve and manage Experience Cloud site templates including Build Your Own and Microsite LWR templates. Supports programmatic theme and branding configuration for digital experience portals. Templates define the structure, navigation, and default styling for Experience Cloud sites.
   version: 59.0.0
   contact:
     name: Salesforce Developer Support
@@ -10,7 +10,7 @@ info:
     name: Salesforce Master Subscription Agreement
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+- url: https://{instance}.salesforce.com/services/data/v59.0
   description: Salesforce Instance
   variables:
     instance:
@@ -70,6 +70,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
   responses:
     Unauthorized:
       description: Unauthorized
@@ -87,15 +95,17 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site
-      schema:
-        type: string
   schemas:
+    TemplateCollection:
+      type: object
+      description: Collection of site templates
+      properties:
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template'
+        total:
+          type: integer
     ErrorResponse:
       type: object
       description: Standard error response
@@ -148,16 +158,6 @@ components:
           type: string
           format: uri
           description: URL to preview the template
-    TemplateCollection:
-      type: object
-      description: Collection of site templates
-      properties:
-        templates:
-          type: array
-          items:
-            $ref: '#/components/schemas/Template'
-        total:
-          type: integer
   securitySchemes:
     oauth2:
       type: oauth2
@@ -168,7 +168,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your data
-            content: Manage CMS content
     bearerAuth:
       type: http
       scheme: bearer

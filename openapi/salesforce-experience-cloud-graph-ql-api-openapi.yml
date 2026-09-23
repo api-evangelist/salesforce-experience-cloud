@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions GraphQL API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  title: Salesforce Experience Cloud Salesforce Graph QL API
+  description: Query Salesforce data using GraphQL for Experience Cloud. Offers a flexible query language for retrieving exactly the data needed, reducing over-fetching and improving performance for digital experiences. Supports queries and mutations against the UIAPI schema.
   version: 59.0.0
   contact:
     name: Salesforce Developer Support
@@ -10,7 +10,7 @@ info:
     name: Salesforce Master Subscription Agreement
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+- url: https://{instance}.salesforce.com/services/data/v59.0
   description: Salesforce Instance
   variables:
     instance:
@@ -20,7 +20,7 @@ security:
 - oauth2: []
 - bearerAuth: []
 tags:
-- name: GraphQL
+- name: Graph QL
   description: GraphQL query and mutation operations
 paths:
   /graphql:
@@ -29,7 +29,7 @@ paths:
       summary: Salesforce Experience Cloud Execute a GraphQL Query or Mutation
       description: Executes a GraphQL query or mutation against the Salesforce UIAPI schema. The UIAPI schema provides access to records, object metadata, list views, and related data. Supports standard GraphQL features including variables, fragments, and operation names. Queries are scoped to the UIAPI namespace which provides formatted field values, layout-aware data access, and respects sharing rules.
       tags:
-      - GraphQL
+      - Graph QL
       requestBody:
         required: true
         content:
@@ -66,16 +66,44 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    GraphQLConnection:
+      type: object
+      description: A Relay-style connection containing edges (records) and pagination information
+      properties:
+        edges:
+          type: array
+          description: List of edges containing record nodes
+          items:
+            $ref: '#/components/schemas/GraphQLEdge'
+        pageInfo:
+          type: object
+          description: Pagination information
+          properties:
+            hasNextPage:
+              type: boolean
+              description: Whether more pages are available
+            hasPreviousPage:
+              type: boolean
+              description: Whether previous pages exist
+            startCursor:
+              type: string
+              description: Cursor for the first edge
+            endCursor:
+              type: string
+              description: Cursor for the last edge
+        totalCount:
+          type: integer
+          description: Total number of matching records
+    GraphQLFieldValue:
+      type: object
+      description: A field value in a GraphQL response, providing both raw value and locale-formatted display value
+      properties:
+        value:
+          description: Raw field value
+        displayValue:
+          type: string
+          description: Formatted display value (locale-aware)
     GraphQLRequest:
       type: object
       description: A GraphQL request containing the query and optional parameters
@@ -92,42 +120,6 @@ components:
         operationName:
           type: string
           description: Name of the operation to execute when the query document contains multiple operations.
-    GraphQLFieldValue:
-      type: object
-      description: A field value in a GraphQL response, providing both raw value and locale-formatted display value
-      properties:
-        value:
-          description: Raw field value
-        displayValue:
-          type: string
-          description: Formatted display value (locale-aware)
-    GraphQLResponse:
-      type: object
-      description: Response from a GraphQL query execution
-      properties:
-        data:
-          type: object
-          description: The data returned by the query. Structure mirrors the query shape. Contains a uiapi root object with query results.
-          properties:
-            uiapi:
-              type: object
-              description: Root UIAPI namespace
-              properties:
-                query:
-                  type: object
-                  description: Contains the query results keyed by object name. Each object result uses Relay-style pagination with edges and nodes.
-                  additionalProperties:
-                    $ref: '#/components/schemas/GraphQLConnection'
-          additionalProperties: true
-        errors:
-          type: array
-          description: Errors encountered during query execution. Present alongside data if some fields failed but others succeeded.
-          items:
-            $ref: '#/components/schemas/GraphQLError'
-        extensions:
-          type: object
-          description: Extension data provided by the server, including query cost and performance metrics.
-          additionalProperties: true
     GraphQLEdge:
       type: object
       description: An edge in a Relay-style connection containing a node
@@ -175,6 +167,33 @@ components:
             classification:
               type: string
           additionalProperties: true
+    GraphQLResponse:
+      type: object
+      description: Response from a GraphQL query execution
+      properties:
+        data:
+          type: object
+          description: The data returned by the query. Structure mirrors the query shape. Contains a uiapi root object with query results.
+          properties:
+            uiapi:
+              type: object
+              description: Root UIAPI namespace
+              properties:
+                query:
+                  type: object
+                  description: Contains the query results keyed by object name. Each object result uses Relay-style pagination with edges and nodes.
+                  additionalProperties:
+                    $ref: '#/components/schemas/GraphQLConnection'
+          additionalProperties: true
+        errors:
+          type: array
+          description: Errors encountered during query execution. Present alongside data if some fields failed but others succeeded.
+          items:
+            $ref: '#/components/schemas/GraphQLError'
+        extensions:
+          type: object
+          description: Extension data provided by the server, including query cost and performance metrics.
+          additionalProperties: true
     ErrorResponse:
       type: object
       description: Standard Salesforce REST API error
@@ -183,34 +202,15 @@ components:
           type: string
         message:
           type: string
-    GraphQLConnection:
-      type: object
-      description: A Relay-style connection containing edges (records) and pagination information
-      properties:
-        edges:
-          type: array
-          description: List of edges containing record nodes
-          items:
-            $ref: '#/components/schemas/GraphQLEdge'
-        pageInfo:
-          type: object
-          description: Pagination information
-          properties:
-            hasNextPage:
-              type: boolean
-              description: Whether more pages are available
-            hasPreviousPage:
-              type: boolean
-              description: Whether previous pages exist
-            startCursor:
-              type: string
-              description: Cursor for the first edge
-            endCursor:
-              type: string
-              description: Cursor for the last edge
-        totalCount:
-          type: integer
-          description: Total number of matching records
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2
@@ -221,7 +221,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your data
-            content: Manage CMS content
     bearerAuth:
       type: http
       scheme: bearer

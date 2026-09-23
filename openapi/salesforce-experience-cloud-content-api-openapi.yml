@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Content API
+  title: Salesforce Experience Cloud Salesforce CMS Connect Content…
   description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
   version: 59.0.0
   contact:
@@ -219,6 +219,31 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   schemas:
     PublishResult:
       type: object
@@ -236,34 +261,14 @@ components:
                 type: string
               message:
                 type: string
-    ContentNode:
+    ErrorResponse:
       type: object
-      description: A content node representing a field value
+      description: Standard Salesforce API error response
       properties:
-        nodeType:
+        errorCode:
           type: string
-          description: Type of the content node
-          enum:
-          - Media
-          - MultilineText
-          - RichText
-          - Text
-          - Url
-          - DateTime
-          - NameField
-        value:
+        message:
           type: string
-          description: Text value of the node
-        url:
-          type: string
-          format: uri
-          description: URL value of the node (for Media and Url types)
-        altText:
-          type: string
-          description: Alternative text (for Media type)
-        title:
-          type: string
-          description: Title of the node
     Content:
       type: object
       description: A CMS content item
@@ -309,30 +314,6 @@ components:
           description: Content nodes containing field values
           additionalProperties:
             $ref: '#/components/schemas/ContentNode'
-    ContentCollection:
-      type: object
-      description: Collection of CMS content items
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Content'
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        totalCount:
-          type: integer
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     ContentInput:
       type: object
       description: Input for creating or updating CMS content
@@ -356,32 +337,59 @@ components:
         urlName:
           type: string
           description: URL-friendly name for the content
-  responses:
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
+    ContentCollection:
+      type: object
+      description: Collection of CMS content items
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    ContentNode:
+      type: object
+      description: A content node representing a field value
+      properties:
+        nodeType:
+          type: string
+          description: Type of the content node
+          enum:
+          - Media
+          - MultilineText
+          - RichText
+          - Text
+          - Url
+          - DateTime
+          - NameField
+        value:
+          type: string
+          description: Text value of the node
+        url:
+          type: string
+          format: uri
+          description: URL value of the node (for Media and Url types)
+        altText:
+          type: string
+          description: Alternative text (for Media type)
+        title:
+          type: string
+          description: Title of the node
   parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
     PageParam:
       name: page
       in: query
@@ -396,14 +404,6 @@ components:
       description: The ID of the CMS content item
       schema:
         type: string
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
   securitySchemes:
     oauth2:
       type: oauth2

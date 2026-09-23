@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Records API
-  description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
+  title: Salesforce Experience Cloud Salesforce User Interface…
+  description: Access record data, layouts, list views, and navigation items for building custom user interfaces. Powers Lightning web components in Experience Cloud sites with metadata-driven UI rendering. Returns both data and metadata in a single response.
   version: 59.0.0
   contact:
     name: Salesforce Developer Support
@@ -10,7 +10,7 @@ info:
     name: Salesforce Master Subscription Agreement
     url: https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/
 servers:
-- url: https://{instance}.salesforce.com/services/data/v59.0/connect/cms
+- url: https://{instance}.salesforce.com/services/data/v59.0/ui-api
   description: Salesforce Instance
   variables:
     instance:
@@ -199,15 +199,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    FieldValueRepresentation:
-      type: object
-      description: Field value with display formatting
-      properties:
-        displayValue:
-          type: string
-          description: Formatted display value (locale-aware)
-        value:
-          description: Raw field value
     RecordUiRepresentation:
       type: object
       description: Complete UI representation for one or more records
@@ -231,17 +222,6 @@ components:
           description: Map of record IDs to record representations
           additionalProperties:
             $ref: '#/components/schemas/RecordRepresentation'
-    RecordInput:
-      type: object
-      description: Input for creating or updating a record
-      properties:
-        apiName:
-          type: string
-          description: API name of the sObject type (required for create)
-        fields:
-          type: object
-          description: Map of field API names to values
-          additionalProperties: true
     RecordRepresentation:
       type: object
       description: Representation of a record with field values
@@ -289,14 +269,6 @@ components:
           format: date-time
         weakEtag:
           type: integer
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     ObjectInfoRepresentation:
       type: object
       description: Object metadata for UI rendering
@@ -450,25 +422,45 @@ components:
               format: uri
         updateable:
           type: boolean
-  parameters:
-    RecordId:
-      name: recordId
-      in: path
-      required: true
-      description: The 18-character Salesforce record ID
-      schema:
-        type: string
+    FieldValueRepresentation:
+      type: object
+      description: Field value with display formatting
+      properties:
+        displayValue:
+          type: string
+          description: Formatted display value (locale-aware)
+        value:
+          description: Raw field value
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    RecordInput:
+      type: object
+      description: Input for creating or updating a record
+      properties:
+        apiName:
+          type: string
+          description: API name of the sObject type (required for create)
+        fields:
+          type: object
+          description: Map of field API names to values
+          additionalProperties: true
   responses:
-    Unauthorized:
-      description: Unauthorized
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
@@ -483,6 +475,14 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    RecordId:
+      name: recordId
+      in: path
+      required: true
+      description: The 18-character Salesforce record ID
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
@@ -493,7 +493,6 @@ components:
           tokenUrl: https://login.salesforce.com/services/oauth2/token
           scopes:
             api: Access and manage your data
-            content: Manage CMS content
     bearerAuth:
       type: http
       scheme: bearer

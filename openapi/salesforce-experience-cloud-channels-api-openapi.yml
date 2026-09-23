@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce CMS Connect Actions Channels API
+  title: Salesforce Experience Cloud Salesforce CMS Connect Channels…
   description: Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing. Part of the Salesforce Connect REST API.
   version: 59.0.0
   contact:
@@ -120,6 +120,14 @@ components:
           format: uri
         totalCount:
           type: integer
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
     Channel:
       type: object
       description: A CMS delivery channel
@@ -148,14 +156,6 @@ components:
         isSearchable:
           type: boolean
           description: Whether content in this channel is searchable
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2
