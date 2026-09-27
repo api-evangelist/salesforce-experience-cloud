@@ -113,16 +113,16 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
       content:
         application/json:
           schema:
@@ -149,6 +149,20 @@ components:
         totalSize:
           type: integer
           description: Total number of matching records
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        fields:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message
     SObjectRecord:
       type: object
       description: A Salesforce sObject record with field values
@@ -167,20 +181,6 @@ components:
           type: string
           description: The 18-character record ID
       additionalProperties: true
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        fields:
-          type: array
-          items:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message
   securitySchemes:
     oauth2:
       type: oauth2

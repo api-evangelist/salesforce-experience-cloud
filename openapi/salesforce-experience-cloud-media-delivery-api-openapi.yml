@@ -68,6 +68,14 @@ components:
           type: string
         message:
           type: string
+  parameters:
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
   responses:
     NotFound:
       description: Resource not found
@@ -85,14 +93,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    ChannelId:
-      name: channelId
-      in: path
-      required: true
-      description: The ID of the CMS delivery channel
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

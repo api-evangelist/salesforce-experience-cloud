@@ -164,6 +164,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Bad request - invalid input parameters
       content:
@@ -180,37 +188,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
-    PageParam:
-      name: page
-      in: query
-      description: Page number (0-indexed)
-      schema:
-        type: integer
-        default: 0
-    ChannelId:
-      name: channelId
-      in: path
-      required: true
-      description: The ID of the CMS delivery channel
-      schema:
-        type: string
   schemas:
     DeliveryContentCollection:
       type: object
@@ -240,6 +217,44 @@ components:
           type: integer
         totalCount:
           type: integer
+    DeliveryContentItem:
+      type: object
+      description: A delivered CMS content item
+      properties:
+        contentKey:
+          type: string
+          description: Unique content key for the item
+        contentNodes:
+          type: object
+          description: Content field values organized as nodes
+          additionalProperties:
+            $ref: '#/components/schemas/ContentNode'
+        contentUrlName:
+          type: string
+          description: URL-safe name for the content
+        language:
+          type: string
+          description: Language code of this content version
+        managedContentId:
+          type: string
+          description: Salesforce record ID
+        publishedDate:
+          type: string
+          format: date-time
+          description: When this content was published
+        title:
+          type: string
+          description: Title of the content
+        type:
+          type: string
+          description: Content type developer name
+        typeLabel:
+          type: string
+          description: Content type display label
+        unauthenticatedUrl:
+          type: string
+          format: uri
+          description: Public URL for unauthenticated access
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -296,44 +311,29 @@ components:
         value:
           type: string
           description: Text or value content
-    DeliveryContentItem:
-      type: object
-      description: A delivered CMS content item
-      properties:
-        contentKey:
-          type: string
-          description: Unique content key for the item
-        contentNodes:
-          type: object
-          description: Content field values organized as nodes
-          additionalProperties:
-            $ref: '#/components/schemas/ContentNode'
-        contentUrlName:
-          type: string
-          description: URL-safe name for the content
-        language:
-          type: string
-          description: Language code of this content version
-        managedContentId:
-          type: string
-          description: Salesforce record ID
-        publishedDate:
-          type: string
-          format: date-time
-          description: When this content was published
-        title:
-          type: string
-          description: Title of the content
-        type:
-          type: string
-          description: Content type developer name
-        typeLabel:
-          type: string
-          description: Content type display label
-        unauthenticatedUrl:
-          type: string
-          format: uri
-          description: Public URL for unauthenticated access
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -111,24 +111,39 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ListViewSummaryCollection:
+      type: object
+      description: Collection of list view summaries
+      properties:
+        count:
+          type: integer
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        lists:
+          type: array
+          items:
+            type: object
+            properties:
+              apiName:
+                type: string
+              id:
+                type: string
+              label:
+                type: string
+              listUiUrl:
+                type: string
+                format: uri
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        objectApiName:
+          type: string
     ListViewInfo:
       type: object
       description: Metadata about a list view
@@ -191,6 +206,50 @@ components:
           enum:
           - Private
           - Public
+    FieldValueRepresentation:
+      type: object
+      description: Field value with display formatting
+      properties:
+        displayValue:
+          type: string
+          description: Formatted display value (locale-aware)
+        value:
+          description: Raw field value
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    ListViewRepresentation:
+      type: object
+      description: List view data and metadata
+      properties:
+        count:
+          type: integer
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        info:
+          $ref: '#/components/schemas/ListViewInfo'
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        previousPageToken:
+          type: string
+        previousPageUrl:
+          type: string
+          format: uri
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordRepresentation'
     RecordRepresentation:
       type: object
       description: Representation of a record with field values
@@ -238,82 +297,23 @@ components:
           format: date-time
         weakEtag:
           type: integer
-    FieldValueRepresentation:
-      type: object
-      description: Field value with display formatting
-      properties:
-        displayValue:
-          type: string
-          description: Formatted display value (locale-aware)
-        value:
-          description: Raw field value
-    ListViewSummaryCollection:
-      type: object
-      description: Collection of list view summaries
-      properties:
-        count:
-          type: integer
-        currentPageToken:
-          type: string
-        currentPageUrl:
-          type: string
-          format: uri
-        lists:
-          type: array
-          items:
-            type: object
-            properties:
-              apiName:
-                type: string
-              id:
-                type: string
-              label:
-                type: string
-              listUiUrl:
-                type: string
-                format: uri
-        nextPageToken:
-          type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        objectApiName:
-          type: string
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-    ListViewRepresentation:
-      type: object
-      description: List view data and metadata
-      properties:
-        count:
-          type: integer
-        currentPageToken:
-          type: string
-        currentPageUrl:
-          type: string
-          format: uri
-        info:
-          $ref: '#/components/schemas/ListViewInfo'
-        nextPageToken:
-          type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        previousPageToken:
-          type: string
-        previousPageUrl:
-          type: string
-          format: uri
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecordRepresentation'
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   parameters:
     ObjectApiName:
       name: objectApiName

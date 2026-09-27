@@ -71,15 +71,6 @@ components:
         message:
           type: string
           description: Human-readable error message
-    SearchResult:
-      type: object
-      description: Result of a SOSL search
-      properties:
-        searchRecords:
-          type: array
-          description: Matching records from the search
-          items:
-            $ref: '#/components/schemas/SObjectRecord'
     SObjectRecord:
       type: object
       description: A Salesforce sObject record with field values
@@ -98,6 +89,15 @@ components:
           type: string
           description: The 18-character record ID
       additionalProperties: true
+    SearchResult:
+      type: object
+      description: Result of a SOSL search
+      properties:
+        searchRecords:
+          type: array
+          description: Matching records from the search
+          items:
+            $ref: '#/components/schemas/SObjectRecord'
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token

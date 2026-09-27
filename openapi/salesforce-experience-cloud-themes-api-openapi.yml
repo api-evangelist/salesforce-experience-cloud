@@ -128,6 +128,15 @@ components:
           description: Theme properties including colors, fonts, and images
           additionalProperties:
             type: string
+    ThemeCollection:
+      type: object
+      description: Collection of site themes
+      properties:
+        themes:
+          type: array
+          description: List of available themes
+          items:
+            $ref: '#/components/schemas/Theme'
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -138,15 +147,6 @@ components:
         message:
           type: string
           description: Human-readable error message
-    ThemeCollection:
-      type: object
-      description: Collection of site themes
-      properties:
-        themes:
-          type: array
-          description: List of available themes
-          items:
-            $ref: '#/components/schemas/Theme'
     Theme_2:
       type: object
       description: A site theme configuration
@@ -193,14 +193,6 @@ components:
         group:
           type: string
           description: Logical grouping of the property
-    ErrorResponse_2:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     ThemeCollection_2:
       type: object
       description: Collection of themes
@@ -211,30 +203,15 @@ components:
             $ref: '#/components/schemas/Theme_2'
         total:
           type: integer
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
-    CommunityId_2:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site
-      schema:
-        type: string
+    ErrorResponse_2:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Resource not found
       content:
@@ -243,6 +220,22 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound_2:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse_2'
     BadRequest:
       description: Bad request
       content:
@@ -259,14 +252,21 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse_2'
-    NotFound_2:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse_2'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    CommunityId_2:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

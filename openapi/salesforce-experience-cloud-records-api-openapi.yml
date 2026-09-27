@@ -198,77 +198,57 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    RecordId:
+      name: recordId
+      in: path
+      required: true
+      description: The 18-character Salesforce record ID
+      schema:
+        type: string
   schemas:
-    RecordUiRepresentation:
+    FieldValueRepresentation:
       type: object
-      description: Complete UI representation for one or more records
+      description: Field value with display formatting
       properties:
-        layoutUserStates:
-          type: object
-          additionalProperties:
-            type: object
-        layouts:
-          type: object
-          description: Map of object API names to layout representations
-          additionalProperties:
-            type: object
-        objectInfos:
-          type: object
-          description: Map of object API names to object info
-          additionalProperties:
-            $ref: '#/components/schemas/ObjectInfoRepresentation'
-        records:
-          type: object
-          description: Map of record IDs to record representations
-          additionalProperties:
-            $ref: '#/components/schemas/RecordRepresentation'
-    RecordRepresentation:
+        displayValue:
+          type: string
+          description: Formatted display value (locale-aware)
+        value:
+          description: Raw field value
+    ErrorResponse:
       type: object
-      description: Representation of a record with field values
+      description: Standard error response
       properties:
-        apiName:
+        errorCode:
           type: string
-          description: API name of the sObject type
-        childRelationships:
-          type: object
-          additionalProperties:
-            type: object
-        eTag:
+        message:
           type: string
-          description: Entity tag for optimistic concurrency
-        fields:
-          type: object
-          description: Map of field API names to field values
-          additionalProperties:
-            $ref: '#/components/schemas/FieldValueRepresentation'
-        id:
-          type: string
-          description: Record ID
-        lastModifiedById:
-          type: string
-        lastModifiedDate:
-          type: string
-          format: date-time
-        recordTypeId:
-          type: string
-        recordTypeInfo:
-          type: object
-          properties:
-            available:
-              type: boolean
-            defaultRecordTypeMapping:
-              type: boolean
-            master:
-              type: boolean
-            name:
-              type: string
-            recordTypeId:
-              type: string
-        systemModstamp:
-          type: string
-          format: date-time
-        weakEtag:
-          type: integer
     ObjectInfoRepresentation:
       type: object
       description: Object metadata for UI rendering
@@ -422,23 +402,6 @@ components:
               format: uri
         updateable:
           type: boolean
-    FieldValueRepresentation:
-      type: object
-      description: Field value with display formatting
-      properties:
-        displayValue:
-          type: string
-          description: Formatted display value (locale-aware)
-        value:
-          description: Raw field value
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     RecordInput:
       type: object
       description: Input for creating or updating a record
@@ -450,39 +413,76 @@ components:
           type: object
           description: Map of field API names to values
           additionalProperties: true
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    RecordId:
-      name: recordId
-      in: path
-      required: true
-      description: The 18-character Salesforce record ID
-      schema:
-        type: string
+    RecordUiRepresentation:
+      type: object
+      description: Complete UI representation for one or more records
+      properties:
+        layoutUserStates:
+          type: object
+          additionalProperties:
+            type: object
+        layouts:
+          type: object
+          description: Map of object API names to layout representations
+          additionalProperties:
+            type: object
+        objectInfos:
+          type: object
+          description: Map of object API names to object info
+          additionalProperties:
+            $ref: '#/components/schemas/ObjectInfoRepresentation'
+        records:
+          type: object
+          description: Map of record IDs to record representations
+          additionalProperties:
+            $ref: '#/components/schemas/RecordRepresentation'
+    RecordRepresentation:
+      type: object
+      description: Representation of a record with field values
+      properties:
+        apiName:
+          type: string
+          description: API name of the sObject type
+        childRelationships:
+          type: object
+          additionalProperties:
+            type: object
+        eTag:
+          type: string
+          description: Entity tag for optimistic concurrency
+        fields:
+          type: object
+          description: Map of field API names to field values
+          additionalProperties:
+            $ref: '#/components/schemas/FieldValueRepresentation'
+        id:
+          type: string
+          description: Record ID
+        lastModifiedById:
+          type: string
+        lastModifiedDate:
+          type: string
+          format: date-time
+        recordTypeId:
+          type: string
+        recordTypeInfo:
+          type: object
+          properties:
+            available:
+              type: boolean
+            defaultRecordTypeMapping:
+              type: boolean
+            master:
+              type: boolean
+            name:
+              type: string
+            recordTypeId:
+              type: string
+        systemModstamp:
+          type: string
+          format: date-time
+        weakEtag:
+          type: integer
   securitySchemes:
     oauth2:
       type: oauth2

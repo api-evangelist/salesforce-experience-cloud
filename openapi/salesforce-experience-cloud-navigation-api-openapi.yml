@@ -63,6 +63,18 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    NavigationMenuItemCollection:
+      type: object
+      description: Collection of navigation menu items
+      properties:
+        menuItems:
+          type: array
+          description: List of navigation menu items
+          items:
+            $ref: '#/components/schemas/NavigationMenuItem'
+        totalMenuItems:
+          type: integer
+          description: Total number of menu items
     NavigationMenuItem:
       type: object
       description: A navigation menu item in an Experience Cloud site
@@ -97,18 +109,6 @@ components:
           description: Nested submenu items
           items:
             $ref: '#/components/schemas/NavigationMenuItem'
-    NavigationMenuItemCollection:
-      type: object
-      description: Collection of navigation menu items
-      properties:
-        menuItems:
-          type: array
-          description: List of navigation menu items
-          items:
-            $ref: '#/components/schemas/NavigationMenuItem'
-        totalMenuItems:
-          type: integer
-          description: Total number of menu items
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -119,23 +119,7 @@ components:
         message:
           type: string
           description: Human-readable error message
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
   responses:
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Resource not found
       content:
@@ -144,6 +128,22 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -172,6 +172,14 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Bad request - invalid input parameters
       content:
@@ -188,22 +196,7 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
     PageSize:
       name: pageSize
       in: query
@@ -212,6 +205,13 @@ components:
         type: integer
         default: 25
         maximum: 100
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
     PageToken:
       name: pageToken
       in: query
@@ -246,6 +246,20 @@ components:
         url:
           type: string
           format: uri
+    TopicCollection:
+      type: object
+      description: Collection of topics
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -268,20 +282,6 @@ components:
         description:
           type: string
           description: Description of the topic
-    TopicCollection:
-      type: object
-      description: Collection of topics
-      properties:
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        topics:
-          type: array
-          items:
-            $ref: '#/components/schemas/Topic'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -127,6 +127,14 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Bad request - invalid input parameters
       content:
@@ -143,32 +151,7 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    UpdateCommunityInput:
-      type: object
-      description: Input for updating an Experience Cloud site
-      properties:
-        description:
-          type: string
-          description: Updated description for the site
-        name:
-          type: string
-          description: Updated name for the site
-        status:
-          type: string
-          description: Updated status for the site
-          enum:
-          - Live
-          - Inactive
-          - DownForMaintenance
     CreateCommunityInput:
       type: object
       description: Input for creating a new Experience Cloud site
@@ -189,6 +172,45 @@ components:
         urlPathPrefix:
           type: string
           description: URL path prefix for the site
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    UpdateCommunityInput:
+      type: object
+      description: Input for updating an Experience Cloud site
+      properties:
+        description:
+          type: string
+          description: Updated description for the site
+        name:
+          type: string
+          description: Updated name for the site
+        status:
+          type: string
+          description: Updated status for the site
+          enum:
+          - Live
+          - Inactive
+          - DownForMaintenance
+    CommunityListResponse:
+      type: object
+      description: Response containing a list of Experience Cloud sites
+      properties:
+        communities:
+          type: array
+          description: List of Experience Cloud sites
+          items:
+            $ref: '#/components/schemas/Community'
+        total:
+          type: integer
+          description: Total number of sites available
     Community:
       type: object
       description: Represents an Experience Cloud site (community)
@@ -258,28 +280,6 @@ components:
         urlPathPrefix:
           type: string
           description: URL path prefix for the site
-    CommunityListResponse:
-      type: object
-      description: Response containing a list of Experience Cloud sites
-      properties:
-        communities:
-          type: array
-          description: List of Experience Cloud sites
-          items:
-            $ref: '#/components/schemas/Community'
-        total:
-          type: integer
-          description: Total number of sites available
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
   parameters:
     CommunityId:
       name: communityId

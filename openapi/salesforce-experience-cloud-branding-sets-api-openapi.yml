@@ -103,40 +103,40 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
   schemas:
-    BrandingSetInput:
-      type: object
-      description: Input for updating a branding set
-      properties:
-        name:
-          type: string
-          description: Updated name
-        description:
-          type: string
-          description: Updated description
-        properties:
-          type: array
-          description: Updated properties
-          items:
-            $ref: '#/components/schemas/BrandingProperty'
-    BrandingSet:
-      type: object
-      description: A branding set with visual properties
-      properties:
-        id:
-          type: string
-          description: Branding set ID
-        name:
-          type: string
-          description: Name of the branding set
-        description:
-          type: string
-          description: Description of the branding set
-        properties:
-          type: array
-          description: Branding properties
-          items:
-            $ref: '#/components/schemas/BrandingProperty'
     BrandingProperty:
       type: object
       description: A property within a branding set
@@ -163,6 +163,24 @@ components:
           type: string
         message:
           type: string
+    BrandingSet:
+      type: object
+      description: A branding set with visual properties
+      properties:
+        id:
+          type: string
+          description: Branding set ID
+        name:
+          type: string
+          description: Name of the branding set
+        description:
+          type: string
+          description: Description of the branding set
+        properties:
+          type: array
+          description: Branding properties
+          items:
+            $ref: '#/components/schemas/BrandingProperty'
     BrandingSetCollection:
       type: object
       description: Collection of branding sets
@@ -173,39 +191,21 @@ components:
             $ref: '#/components/schemas/BrandingSet'
         total:
           type: integer
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
+    BrandingSetInput:
+      type: object
+      description: Input for updating a branding set
+      properties:
+        name:
+          type: string
+          description: Updated name
+        description:
+          type: string
+          description: Updated description
+        properties:
+          type: array
+          description: Updated properties
+          items:
+            $ref: '#/components/schemas/BrandingProperty'
   securitySchemes:
     oauth2:
       type: oauth2

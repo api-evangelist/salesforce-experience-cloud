@@ -2544,8 +2544,6 @@ apis:
     https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm
   baseURL: https://yourInstance.salesforce.com/services/Soap/m/59.0
   tags:
-  - GraphQL
-  tags_raw:
   - Graph QL
   properties:
   - type: OpenAPI
@@ -2839,6 +2837,14 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 tags:
+- CMS
+- Community
+- CRM
+- Customer Portal
+- Digital Experience
+- Experience Cloud
+- Partner Portal
+tags_raw:
 - CMS
 - Communities
 - CRM

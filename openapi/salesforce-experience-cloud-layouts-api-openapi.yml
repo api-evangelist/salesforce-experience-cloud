@@ -76,6 +76,28 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    RecordLayoutRepresentation:
+      type: object
+      description: Layout metadata for an object
+      properties:
+        id:
+          type: string
+          description: Layout ID
+        layoutType:
+          type: string
+          enum:
+          - Compact
+          - Full
+        mode:
+          type: string
+          enum:
+          - Create
+          - Edit
+          - View
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/LayoutSection'
     LayoutSection:
       type: object
       description: A section within a layout
@@ -101,28 +123,6 @@ components:
           type: integer
         useHeading:
           type: boolean
-    RecordLayoutRepresentation:
-      type: object
-      description: Layout metadata for an object
-      properties:
-        id:
-          type: string
-          description: Layout ID
-        layoutType:
-          type: string
-          enum:
-          - Compact
-          - Full
-        mode:
-          type: string
-          enum:
-          - Create
-          - Edit
-          - View
-        sections:
-          type: array
-          items:
-            $ref: '#/components/schemas/LayoutSection'
     ErrorResponse:
       type: object
       description: Standard error response
@@ -159,16 +159,16 @@ components:
         sortable:
           type: boolean
   responses:
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:

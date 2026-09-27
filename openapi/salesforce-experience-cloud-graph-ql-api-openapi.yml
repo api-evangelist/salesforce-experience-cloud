@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Salesforce Experience Cloud Salesforce Graph QL API
+  title: Salesforce Experience Cloud Salesforce GraphQL API
   description: Query Salesforce data using GraphQL for Experience Cloud. Offers a flexible query language for retrieving exactly the data needed, reducing over-fetching and improving performance for digital experiences. Supports queries and mutations against the UIAPI schema.
   version: 59.0.0
   contact:
@@ -67,34 +67,22 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    GraphQLConnection:
+    GraphQLEdge:
       type: object
-      description: A Relay-style connection containing edges (records) and pagination information
+      description: An edge in a Relay-style connection containing a node
       properties:
-        edges:
-          type: array
-          description: List of edges containing record nodes
-          items:
-            $ref: '#/components/schemas/GraphQLEdge'
-        pageInfo:
+        cursor:
+          type: string
+          description: Cursor for this edge (used for pagination)
+        node:
           type: object
-          description: Pagination information
+          description: The record node containing field values. Each field returns an object with value and optional displayValue properties.
           properties:
-            hasNextPage:
-              type: boolean
-              description: Whether more pages are available
-            hasPreviousPage:
-              type: boolean
-              description: Whether previous pages exist
-            startCursor:
+            Id:
               type: string
-              description: Cursor for the first edge
-            endCursor:
-              type: string
-              description: Cursor for the last edge
-        totalCount:
-          type: integer
-          description: Total number of matching records
+              description: Record ID
+          additionalProperties:
+            $ref: '#/components/schemas/GraphQLFieldValue'
     GraphQLFieldValue:
       type: object
       description: A field value in a GraphQL response, providing both raw value and locale-formatted display value
@@ -120,22 +108,14 @@ components:
         operationName:
           type: string
           description: Name of the operation to execute when the query document contains multiple operations.
-    GraphQLEdge:
+    ErrorResponse:
       type: object
-      description: An edge in a Relay-style connection containing a node
+      description: Standard Salesforce REST API error
       properties:
-        cursor:
+        errorCode:
           type: string
-          description: Cursor for this edge (used for pagination)
-        node:
-          type: object
-          description: The record node containing field values. Each field returns an object with value and optional displayValue properties.
-          properties:
-            Id:
-              type: string
-              description: Record ID
-          additionalProperties:
-            $ref: '#/components/schemas/GraphQLFieldValue'
+        message:
+          type: string
     GraphQLError:
       type: object
       description: A GraphQL error
@@ -167,6 +147,34 @@ components:
             classification:
               type: string
           additionalProperties: true
+    GraphQLConnection:
+      type: object
+      description: A Relay-style connection containing edges (records) and pagination information
+      properties:
+        edges:
+          type: array
+          description: List of edges containing record nodes
+          items:
+            $ref: '#/components/schemas/GraphQLEdge'
+        pageInfo:
+          type: object
+          description: Pagination information
+          properties:
+            hasNextPage:
+              type: boolean
+              description: Whether more pages are available
+            hasPreviousPage:
+              type: boolean
+              description: Whether previous pages exist
+            startCursor:
+              type: string
+              description: Cursor for the first edge
+            endCursor:
+              type: string
+              description: Cursor for the last edge
+        totalCount:
+          type: integer
+          description: Total number of matching records
     GraphQLResponse:
       type: object
       description: Response from a GraphQL query execution
@@ -194,14 +202,6 @@ components:
           type: object
           description: Extension data provided by the server, including query cost and performance metrics.
           additionalProperties: true
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce REST API error
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token
