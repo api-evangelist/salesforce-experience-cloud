@@ -220,13 +220,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    ContentId:
-      name: contentId
-      in: path
-      required: true
-      description: The ID of the CMS content item
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
       schema:
-        type: string
+        type: integer
+        default: 0
     PageSize:
       name: pageSize
       in: query
@@ -235,14 +235,105 @@ components:
         type: integer
         default: 25
         maximum: 250
-    PageParam:
-      name: page
-      in: query
-      description: Page number to retrieve (0-indexed)
+    ContentId:
+      name: contentId
+      in: path
+      required: true
+      description: The ID of the CMS content item
       schema:
-        type: integer
-        default: 0
+        type: string
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    ContentNode:
+      type: object
+      description: A content node representing a field value
+      properties:
+        nodeType:
+          type: string
+          description: Type of the content node
+          enum:
+          - Media
+          - MultilineText
+          - RichText
+          - Text
+          - Url
+          - DateTime
+          - NameField
+        value:
+          type: string
+          description: Text value of the node
+        url:
+          type: string
+          format: uri
+          description: URL value of the node (for Media and Url types)
+        altText:
+          type: string
+          description: Alternative text (for Media type)
+        title:
+          type: string
+          description: Title of the node
+    PublishResult:
+      type: object
+      description: Result of a publish or unpublish operation
+      properties:
+        isSuccess:
+          type: boolean
+          description: Whether the operation succeeded
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              errorCode:
+                type: string
+              message:
+                type: string
+    ContentCollection:
+      type: object
+      description: Collection of CMS content items
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    ContentInput:
+      type: object
+      description: Input for creating or updating CMS content
+      required:
+      - title
+      - contentType
+      properties:
+        title:
+          type: string
+          description: Title for the content
+        contentType:
+          type: string
+          description: Developer name of the content type
+        language:
+          type: string
+          description: Language code (e.g., en_US)
+        contentBody:
+          type: object
+          description: Content body fields as defined by the content type
+          additionalProperties: true
+        urlName:
+          type: string
+          description: URL-friendly name for the content
     Content:
       type: object
       description: A CMS content item
@@ -288,108 +379,17 @@ components:
           description: Content nodes containing field values
           additionalProperties:
             $ref: '#/components/schemas/ContentNode'
-    ContentInput:
-      type: object
-      description: Input for creating or updating CMS content
-      required:
-      - title
-      - contentType
-      properties:
-        title:
-          type: string
-          description: Title for the content
-        contentType:
-          type: string
-          description: Developer name of the content type
-        language:
-          type: string
-          description: Language code (e.g., en_US)
-        contentBody:
-          type: object
-          description: Content body fields as defined by the content type
-          additionalProperties: true
-        urlName:
-          type: string
-          description: URL-friendly name for the content
-    ContentCollection:
-      type: object
-      description: Collection of CMS content items
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Content'
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        totalCount:
-          type: integer
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-    PublishResult:
-      type: object
-      description: Result of a publish or unpublish operation
-      properties:
-        isSuccess:
-          type: boolean
-          description: Whether the operation succeeded
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              errorCode:
-                type: string
-              message:
-                type: string
-    ContentNode:
-      type: object
-      description: A content node representing a field value
-      properties:
-        nodeType:
-          type: string
-          description: Type of the content node
-          enum:
-          - Media
-          - MultilineText
-          - RichText
-          - Text
-          - Url
-          - DateTime
-          - NameField
-        value:
-          type: string
-          description: Text value of the node
-        url:
-          type: string
-          format: uri
-          description: URL value of the node (for Media and Url types)
-        altText:
-          type: string
-          description: Alternative text (for Media type)
-        title:
-          type: string
-          description: Title of the node
   responses:
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

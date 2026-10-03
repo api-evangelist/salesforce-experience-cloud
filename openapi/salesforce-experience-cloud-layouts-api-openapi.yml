@@ -76,28 +76,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    RecordLayoutRepresentation:
-      type: object
-      description: Layout metadata for an object
-      properties:
-        id:
-          type: string
-          description: Layout ID
-        layoutType:
-          type: string
-          enum:
-          - Compact
-          - Full
-        mode:
-          type: string
-          enum:
-          - Create
-          - Edit
-          - View
-        sections:
-          type: array
-          items:
-            $ref: '#/components/schemas/LayoutSection'
     LayoutSection:
       type: object
       description: A section within a layout
@@ -131,6 +109,28 @@ components:
           type: string
         message:
           type: string
+    RecordLayoutRepresentation:
+      type: object
+      description: Layout metadata for an object
+      properties:
+        id:
+          type: string
+          description: Layout ID
+        layoutType:
+          type: string
+          enum:
+          - Compact
+          - Full
+        mode:
+          type: string
+          enum:
+          - Create
+          - Edit
+          - View
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/LayoutSection'
     LayoutItem:
       type: object
       description: A field item within a layout section
@@ -158,6 +158,14 @@ components:
           type: boolean
         sortable:
           type: boolean
+  parameters:
+    ObjectApiName:
+      name: objectApiName
+      in: path
+      required: true
+      description: The API name of the Salesforce object (e.g., Account, Contact)
+      schema:
+        type: string
   responses:
     NotFound:
       description: Not found
@@ -175,14 +183,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    ObjectApiName:
-      name: objectApiName
-      in: path
-      required: true
-      description: The API name of the Salesforce object (e.g., Account, Contact)
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

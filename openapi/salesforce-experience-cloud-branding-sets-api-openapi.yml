@@ -103,31 +103,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   parameters:
     CommunityId:
       name: communityId
@@ -137,6 +112,21 @@ components:
       schema:
         type: string
   schemas:
+    BrandingSetInput:
+      type: object
+      description: Input for updating a branding set
+      properties:
+        name:
+          type: string
+          description: Updated name
+        description:
+          type: string
+          description: Updated description
+        properties:
+          type: array
+          description: Updated properties
+          items:
+            $ref: '#/components/schemas/BrandingProperty'
     BrandingProperty:
       type: object
       description: A property within a branding set
@@ -191,21 +181,31 @@ components:
             $ref: '#/components/schemas/BrandingSet'
         total:
           type: integer
-    BrandingSetInput:
-      type: object
-      description: Input for updating a branding set
-      properties:
-        name:
-          type: string
-          description: Updated name
-        description:
-          type: string
-          description: Updated description
-        properties:
-          type: array
-          description: Updated properties
-          items:
-            $ref: '#/components/schemas/BrandingProperty'
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

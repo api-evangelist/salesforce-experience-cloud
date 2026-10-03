@@ -256,6 +256,35 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ManagedContentVersionCollection:
+      type: object
+      description: Collection of managed content versions
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedContentVersion'
+        managedContentTypes:
+          type: object
+          description: Map of content type developer names to labels
+          additionalProperties:
+            type: object
+            properties:
+              developerName:
+                type: string
+              label:
+                type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+          description: Total number of matching items
+        totalCount:
+          type: integer
     ManagedContentVersion:
       type: object
       description: A published managed content version
@@ -302,35 +331,6 @@ components:
           type: string
         message:
           type: string
-    ManagedContentVersionCollection:
-      type: object
-      description: Collection of managed content versions
-      properties:
-        currentPageUrl:
-          type: string
-          format: uri
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagedContentVersion'
-        managedContentTypes:
-          type: object
-          description: Map of content type developer names to labels
-          additionalProperties:
-            type: object
-            properties:
-              developerName:
-                type: string
-              label:
-                type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        total:
-          type: integer
-          description: Total number of matching items
-        totalCount:
-          type: integer
     ContentNode:
       type: object
       description: A content node representing a field value in managed content
@@ -379,17 +379,40 @@ components:
         value:
           type: string
           description: Text or value content of the node
+  parameters:
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
   responses:
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -404,29 +427,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
-    PageParam:
-      name: page
-      in: query
-      description: Page number to retrieve (0-indexed)
-      schema:
-        type: integer
-        default: 0
-    ChannelId:
-      name: channelId
-      in: path
-      required: true
-      description: The ID of the CMS delivery channel
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

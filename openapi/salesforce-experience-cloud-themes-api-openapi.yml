@@ -109,7 +109,32 @@ paths:
           default: yourInstance
           description: Your Salesforce instance name or custom domain
 components:
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    CommunityId_2:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
     Theme:
       type: object
       description: Theme configuration for an Experience Cloud site
@@ -137,16 +162,36 @@ components:
           description: List of available themes
           items:
             $ref: '#/components/schemas/Theme'
-    ErrorResponse:
+    ThemeProperty:
       type: object
-      description: Standard Salesforce API error response
+      description: A property within a theme
+      properties:
+        name:
+          type: string
+          description: Property name
+        type:
+          type: string
+          description: Property type
+          enum:
+          - Color
+          - Font
+          - Image
+          - String
+          - Number
+        value:
+          type: string
+          description: Property value
+        group:
+          type: string
+          description: Logical grouping of the property
+    ErrorResponse_2:
+      type: object
+      description: Standard error response
       properties:
         errorCode:
           type: string
-          description: Salesforce error code
         message:
           type: string
-          description: Human-readable error message
     Theme_2:
       type: object
       description: A site theme configuration
@@ -171,28 +216,6 @@ components:
           description: Theme property values
           items:
             $ref: '#/components/schemas/ThemeProperty'
-    ThemeProperty:
-      type: object
-      description: A property within a theme
-      properties:
-        name:
-          type: string
-          description: Property name
-        type:
-          type: string
-          description: Property type
-          enum:
-          - Color
-          - Font
-          - Image
-          - String
-          - Number
-        value:
-          type: string
-          description: Property value
-        group:
-          type: string
-          description: Logical grouping of the property
     ThemeCollection_2:
       type: object
       description: Collection of themes
@@ -203,14 +226,6 @@ components:
             $ref: '#/components/schemas/Theme_2'
         total:
           type: integer
-    ErrorResponse_2:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
   responses:
     NotFound:
       description: Resource not found
@@ -228,16 +243,16 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound_2:
-      description: Not found
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse_2'
-    BadRequest:
-      description: Bad request
+    NotFound_2:
+      description: Not found
       content:
         application/json:
           schema:
@@ -252,21 +267,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse_2'
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
-    CommunityId_2:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

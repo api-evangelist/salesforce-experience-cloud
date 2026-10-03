@@ -118,6 +118,25 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    StatusFilter:
+      name: status
+      in: query
+      description: Filter sites by status. Valid values are Live, Inactive, DownForMaintenance, UnderConstruction.
+      schema:
+        type: string
+        enum:
+        - Live
+        - Inactive
+        - DownForMaintenance
+        - UnderConstruction
   responses:
     Forbidden:
       description: Forbidden - insufficient permissions
@@ -127,16 +146,16 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -152,65 +171,6 @@ components:
             items:
               $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    CreateCommunityInput:
-      type: object
-      description: Input for creating a new Experience Cloud site
-      required:
-      - name
-      - templateName
-      - urlPathPrefix
-      properties:
-        description:
-          type: string
-          description: Description for the new site
-        name:
-          type: string
-          description: Name for the new site
-        templateName:
-          type: string
-          description: Template to use for the site
-        urlPathPrefix:
-          type: string
-          description: URL path prefix for the site
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
-    UpdateCommunityInput:
-      type: object
-      description: Input for updating an Experience Cloud site
-      properties:
-        description:
-          type: string
-          description: Updated description for the site
-        name:
-          type: string
-          description: Updated name for the site
-        status:
-          type: string
-          description: Updated status for the site
-          enum:
-          - Live
-          - Inactive
-          - DownForMaintenance
-    CommunityListResponse:
-      type: object
-      description: Response containing a list of Experience Cloud sites
-      properties:
-        communities:
-          type: array
-          description: List of Experience Cloud sites
-          items:
-            $ref: '#/components/schemas/Community'
-        total:
-          type: integer
-          description: Total number of sites available
     Community:
       type: object
       description: Represents an Experience Cloud site (community)
@@ -280,25 +240,65 @@ components:
         urlPathPrefix:
           type: string
           description: URL path prefix for the site
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
-    StatusFilter:
-      name: status
-      in: query
-      description: Filter sites by status. Valid values are Live, Inactive, DownForMaintenance, UnderConstruction.
-      schema:
-        type: string
-        enum:
-        - Live
-        - Inactive
-        - DownForMaintenance
-        - UnderConstruction
+    CreateCommunityInput:
+      type: object
+      description: Input for creating a new Experience Cloud site
+      required:
+      - name
+      - templateName
+      - urlPathPrefix
+      properties:
+        description:
+          type: string
+          description: Description for the new site
+        name:
+          type: string
+          description: Name for the new site
+        templateName:
+          type: string
+          description: Template to use for the site
+        urlPathPrefix:
+          type: string
+          description: URL path prefix for the site
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    UpdateCommunityInput:
+      type: object
+      description: Input for updating an Experience Cloud site
+      properties:
+        description:
+          type: string
+          description: Updated description for the site
+        name:
+          type: string
+          description: Updated name for the site
+        status:
+          type: string
+          description: Updated status for the site
+          enum:
+          - Live
+          - Inactive
+          - DownForMaintenance
+    CommunityListResponse:
+      type: object
+      description: Response containing a list of Experience Cloud sites
+      properties:
+        communities:
+          type: array
+          description: List of Experience Cloud sites
+          items:
+            $ref: '#/components/schemas/Community'
+        total:
+          type: integer
+          description: Total number of sites available
   securitySchemes:
     oauth2:
       type: oauth2

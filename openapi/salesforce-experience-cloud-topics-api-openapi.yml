@@ -163,17 +163,31 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
   responses:
     Forbidden:
       description: Forbidden - insufficient permissions
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
       content:
         application/json:
           schema:
@@ -188,6 +202,14 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token
       content:
@@ -196,28 +218,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items to return per page (default 25, max 100)
-      schema:
-        type: integer
-        default: 25
-        maximum: 100
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
-    PageToken:
-      name: pageToken
-      in: query
-      description: Token for retrieving the next page of results
-      schema:
-        type: string
   schemas:
     Topic:
       type: object
@@ -246,6 +246,16 @@ components:
         url:
           type: string
           format: uri
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
     TopicCollection:
       type: object
       description: Collection of topics
@@ -260,16 +270,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Topic'
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
     TopicInput:
       type: object
       description: Input for creating or updating a topic

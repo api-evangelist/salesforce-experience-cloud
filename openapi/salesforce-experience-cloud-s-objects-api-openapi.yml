@@ -140,6 +140,63 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    SObjectRecord:
+      type: object
+      description: A Salesforce sObject record with field values
+      properties:
+        attributes:
+          type: object
+          properties:
+            type:
+              type: string
+              description: sObject type name
+            url:
+              type: string
+              format: uri
+              description: REST API URL for this record
+        Id:
+          type: string
+          description: The 18-character record ID
+      additionalProperties: true
+    CreateResult:
+      type: object
+      description: Result of a record creation
+      properties:
+        id:
+          type: string
+          description: ID of the created record
+        success:
+          type: boolean
+          description: Whether the creation was successful
+        errors:
+          type: array
+          description: Errors encountered during creation
+          items:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        fields:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message
+    SObjectBasicInfo:
+      type: object
+      description: Basic information about an sObject
+      properties:
+        objectDescribe:
+          $ref: '#/components/schemas/SObjectDescribeBrief'
+        recentItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/SObjectRecord'
     SObjectDescribeBrief:
       type: object
       description: Brief description of an sObject from global describe
@@ -198,63 +255,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        fields:
-          type: array
-          items:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message
-    SObjectRecord:
-      type: object
-      description: A Salesforce sObject record with field values
-      properties:
-        attributes:
-          type: object
-          properties:
-            type:
-              type: string
-              description: sObject type name
-            url:
-              type: string
-              format: uri
-              description: REST API URL for this record
-        Id:
-          type: string
-          description: The 18-character record ID
-      additionalProperties: true
-    CreateResult:
-      type: object
-      description: Result of a record creation
-      properties:
-        id:
-          type: string
-          description: ID of the created record
-        success:
-          type: boolean
-          description: Whether the creation was successful
-        errors:
-          type: array
-          description: Errors encountered during creation
-          items:
-            $ref: '#/components/schemas/ErrorResponse'
-    SObjectBasicInfo:
-      type: object
-      description: Basic information about an sObject
-      properties:
-        objectDescribe:
-          $ref: '#/components/schemas/SObjectDescribeBrief'
-        recentItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/SObjectRecord'
   parameters:
     RecordId:
       name: recordId
@@ -271,16 +271,16 @@ components:
       schema:
         type: string
   responses:
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

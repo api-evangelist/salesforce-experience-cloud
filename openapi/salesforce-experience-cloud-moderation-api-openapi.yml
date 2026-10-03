@@ -54,7 +54,98 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
 components:
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
   schemas:
+    ActorReference:
+      type: object
+      description: Reference to a user or record
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+          format: uri
+    LikePage:
+      type: object
+      description: Paginated list of likes
+      properties:
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        likes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Like'
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+    FeedElementCapabilities:
+      type: object
+      description: Capabilities available on a feed element
+      properties:
+        comments:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/CommentPage'
+        chatterLikes:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/LikePage'
+            myLike:
+              $ref: '#/components/schemas/Like'
+    CommentPage:
+      type: object
+      description: Paginated list of comments
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
     ModerationFlagCollection:
       type: object
       description: Collection of flagged elements for moderation
@@ -93,42 +184,6 @@ components:
         nextPageUrl:
           type: string
           format: uri
-    FeedElementCapabilities:
-      type: object
-      description: Capabilities available on a feed element
-      properties:
-        comments:
-          type: object
-          properties:
-            page:
-              $ref: '#/components/schemas/CommentPage'
-        chatterLikes:
-          type: object
-          properties:
-            page:
-              $ref: '#/components/schemas/LikePage'
-            myLike:
-              $ref: '#/components/schemas/Like'
-    CommentPage:
-      type: object
-      description: Paginated list of comments
-      properties:
-        comments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comment'
-        currentPageToken:
-          type: string
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageToken:
-          type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        total:
-          type: integer
     Like:
       type: object
       description: A like on a feed element or comment
@@ -143,26 +198,6 @@ components:
           format: uri
         user:
           $ref: '#/components/schemas/ActorReference'
-    LikePage:
-      type: object
-      description: Paginated list of likes
-      properties:
-        currentPageToken:
-          type: string
-        currentPageUrl:
-          type: string
-          format: uri
-        likes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Like'
-        nextPageToken:
-          type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        total:
-          type: integer
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -173,66 +208,6 @@ components:
         message:
           type: string
           description: Human-readable error message
-    Comment:
-      type: object
-      description: A comment on a feed element
-      properties:
-        id:
-          type: string
-        body:
-          $ref: '#/components/schemas/MessageBody'
-        createdDate:
-          type: string
-          format: date-time
-        feedElement:
-          $ref: '#/components/schemas/ActorReference'
-        likes:
-          $ref: '#/components/schemas/LikePage'
-        user:
-          $ref: '#/components/schemas/ActorReference'
-        url:
-          type: string
-          format: uri
-    ActorReference:
-      type: object
-      description: Reference to a user or record
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-        url:
-          type: string
-          format: uri
-    MessageSegment:
-      type: object
-      description: A segment of a message body
-      properties:
-        text:
-          type: string
-        type:
-          type: string
-          enum:
-          - Text
-          - Mention
-          - Hashtag
-          - Link
-          - MarkupBegin
-          - MarkupEnd
-    MessageBody:
-      type: object
-      description: Rich text body of a feed element or comment
-      properties:
-        isRichText:
-          type: boolean
-        messageSegments:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageSegment'
-        text:
-          type: string
     FeedElement:
       type: object
       description: A feed element such as a post or announcement
@@ -269,6 +244,53 @@ components:
           type: string
           format: uri
           description: API resource URL
+    Comment:
+      type: object
+      description: A comment on a feed element
+      properties:
+        id:
+          type: string
+        body:
+          $ref: '#/components/schemas/MessageBody'
+        createdDate:
+          type: string
+          format: date-time
+        feedElement:
+          $ref: '#/components/schemas/ActorReference'
+        likes:
+          $ref: '#/components/schemas/LikePage'
+        user:
+          $ref: '#/components/schemas/ActorReference'
+        url:
+          type: string
+          format: uri
+    MessageSegment:
+      type: object
+      description: A segment of a message body
+      properties:
+        text:
+          type: string
+        type:
+          type: string
+          enum:
+          - Text
+          - Mention
+          - Hashtag
+          - Link
+          - MarkupBegin
+          - MarkupEnd
+    MessageBody:
+      type: object
+      description: Rich text body of a feed element or comment
+      properties:
+        isRichText:
+          type: boolean
+        messageSegments:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageSegment'
+        text:
+          type: string
   responses:
     Forbidden:
       description: Forbidden - insufficient permissions
@@ -286,28 +308,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items to return per page (default 25, max 100)
-      schema:
-        type: integer
-        default: 25
-        maximum: 100
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
-    PageToken:
-      name: pageToken
-      in: query
-      description: Token for retrieving the next page of results
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

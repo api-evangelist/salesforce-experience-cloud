@@ -67,31 +67,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    GraphQLEdge:
-      type: object
-      description: An edge in a Relay-style connection containing a node
-      properties:
-        cursor:
-          type: string
-          description: Cursor for this edge (used for pagination)
-        node:
-          type: object
-          description: The record node containing field values. Each field returns an object with value and optional displayValue properties.
-          properties:
-            Id:
-              type: string
-              description: Record ID
-          additionalProperties:
-            $ref: '#/components/schemas/GraphQLFieldValue'
-    GraphQLFieldValue:
-      type: object
-      description: A field value in a GraphQL response, providing both raw value and locale-formatted display value
-      properties:
-        value:
-          description: Raw field value
-        displayValue:
-          type: string
-          description: Formatted display value (locale-aware)
     GraphQLRequest:
       type: object
       description: A GraphQL request containing the query and optional parameters
@@ -108,14 +83,15 @@ components:
         operationName:
           type: string
           description: Name of the operation to execute when the query document contains multiple operations.
-    ErrorResponse:
+    GraphQLFieldValue:
       type: object
-      description: Standard Salesforce REST API error
+      description: A field value in a GraphQL response, providing both raw value and locale-formatted display value
       properties:
-        errorCode:
+        value:
+          description: Raw field value
+        displayValue:
           type: string
-        message:
-          type: string
+          description: Formatted display value (locale-aware)
     GraphQLError:
       type: object
       description: A GraphQL error
@@ -147,6 +123,41 @@ components:
             classification:
               type: string
           additionalProperties: true
+    GraphQLResponse:
+      type: object
+      description: Response from a GraphQL query execution
+      properties:
+        data:
+          type: object
+          description: The data returned by the query. Structure mirrors the query shape. Contains a uiapi root object with query results.
+          properties:
+            uiapi:
+              type: object
+              description: Root UIAPI namespace
+              properties:
+                query:
+                  type: object
+                  description: Contains the query results keyed by object name. Each object result uses Relay-style pagination with edges and nodes.
+                  additionalProperties:
+                    $ref: '#/components/schemas/GraphQLConnection'
+          additionalProperties: true
+        errors:
+          type: array
+          description: Errors encountered during query execution. Present alongside data if some fields failed but others succeeded.
+          items:
+            $ref: '#/components/schemas/GraphQLError'
+        extensions:
+          type: object
+          description: Extension data provided by the server, including query cost and performance metrics.
+          additionalProperties: true
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce REST API error
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
     GraphQLConnection:
       type: object
       description: A Relay-style connection containing edges (records) and pagination information
@@ -175,33 +186,22 @@ components:
         totalCount:
           type: integer
           description: Total number of matching records
-    GraphQLResponse:
+    GraphQLEdge:
       type: object
-      description: Response from a GraphQL query execution
+      description: An edge in a Relay-style connection containing a node
       properties:
-        data:
+        cursor:
+          type: string
+          description: Cursor for this edge (used for pagination)
+        node:
           type: object
-          description: The data returned by the query. Structure mirrors the query shape. Contains a uiapi root object with query results.
+          description: The record node containing field values. Each field returns an object with value and optional displayValue properties.
           properties:
-            uiapi:
-              type: object
-              description: Root UIAPI namespace
-              properties:
-                query:
-                  type: object
-                  description: Contains the query results keyed by object name. Each object result uses Relay-style pagination with edges and nodes.
-                  additionalProperties:
-                    $ref: '#/components/schemas/GraphQLConnection'
-          additionalProperties: true
-        errors:
-          type: array
-          description: Errors encountered during query execution. Present alongside data if some fields failed but others succeeded.
-          items:
-            $ref: '#/components/schemas/GraphQLError'
-        extensions:
-          type: object
-          description: Extension data provided by the server, including query cost and performance metrics.
-          additionalProperties: true
+            Id:
+              type: string
+              description: Record ID
+          additionalProperties:
+            $ref: '#/components/schemas/GraphQLFieldValue'
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token

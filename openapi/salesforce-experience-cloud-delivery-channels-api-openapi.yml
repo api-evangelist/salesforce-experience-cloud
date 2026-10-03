@@ -63,32 +63,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
     PageParam:
       name: page
       in: query
@@ -103,7 +78,31 @@ components:
       description: The ID of the CMS delivery channel
       schema:
         type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
   schemas:
+    DeliveryChannelCollection:
+      type: object
+      description: Collection of delivery channels
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryChannel'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -137,22 +136,23 @@ components:
         isSearchable:
           type: boolean
           description: Whether content is searchable
-    DeliveryChannelCollection:
-      type: object
-      description: Collection of delivery channels
-      properties:
-        channels:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryChannel'
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        totalCount:
-          type: integer
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

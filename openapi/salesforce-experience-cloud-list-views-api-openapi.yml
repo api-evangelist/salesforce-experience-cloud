@@ -112,6 +112,33 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ListViewRepresentation:
+      type: object
+      description: List view data and metadata
+      properties:
+        count:
+          type: integer
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        info:
+          $ref: '#/components/schemas/ListViewInfo'
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        previousPageToken:
+          type: string
+        previousPageUrl:
+          type: string
+          format: uri
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordRepresentation'
     ListViewSummaryCollection:
       type: object
       description: Collection of list view summaries
@@ -143,6 +170,14 @@ components:
           type: string
           format: uri
         objectApiName:
+          type: string
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
           type: string
     ListViewInfo:
       type: object
@@ -206,50 +241,6 @@ components:
           enum:
           - Private
           - Public
-    FieldValueRepresentation:
-      type: object
-      description: Field value with display formatting
-      properties:
-        displayValue:
-          type: string
-          description: Formatted display value (locale-aware)
-        value:
-          description: Raw field value
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-    ListViewRepresentation:
-      type: object
-      description: List view data and metadata
-      properties:
-        count:
-          type: integer
-        currentPageToken:
-          type: string
-        currentPageUrl:
-          type: string
-          format: uri
-        info:
-          $ref: '#/components/schemas/ListViewInfo'
-        nextPageToken:
-          type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        previousPageToken:
-          type: string
-        previousPageUrl:
-          type: string
-          format: uri
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecordRepresentation'
     RecordRepresentation:
       type: object
       description: Representation of a record with field values
@@ -297,6 +288,23 @@ components:
           format: date-time
         weakEtag:
           type: integer
+    FieldValueRepresentation:
+      type: object
+      description: Field value with display formatting
+      properties:
+        displayValue:
+          type: string
+          description: Formatted display value (locale-aware)
+        value:
+          description: Raw field value
+  parameters:
+    ObjectApiName:
+      name: objectApiName
+      in: path
+      required: true
+      description: The API name of the Salesforce object (e.g., Account, Contact)
+      schema:
+        type: string
   responses:
     NotFound:
       description: Not found
@@ -314,14 +322,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    ObjectApiName:
-      name: objectApiName
-      in: path
-      required: true
-      description: The API name of the Salesforce object (e.g., Account, Contact)
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

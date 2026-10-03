@@ -84,72 +84,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    FavoritesRepresentation:
-      type: object
-      description: User's favorites
-      properties:
-        favorites:
-          type: array
-          items:
-            $ref: '#/components/schemas/Favorite'
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-    FavoriteInput:
-      type: object
-      description: Input for adding a favorite
-      required:
-      - name
-      - target
-      - targetType
-      properties:
-        name:
-          type: string
-          description: Name of the favorite
-        sortOrder:
-          type: integer
-          description: Sort position
-        target:
-          type: string
-          description: ID or reference of the item to favorite
-        targetType:
-          type: string
-          description: Type of item being favorited
-          enum:
-          - Record
-          - ListView
-          - Object
     Favorite:
       type: object
       description: A user favorite item
@@ -175,6 +110,71 @@ components:
           - Object
           - Dashboard
           - Report
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    FavoritesRepresentation:
+      type: object
+      description: User's favorites
+      properties:
+        favorites:
+          type: array
+          items:
+            $ref: '#/components/schemas/Favorite'
+    FavoriteInput:
+      type: object
+      description: Input for adding a favorite
+      required:
+      - name
+      - target
+      - targetType
+      properties:
+        name:
+          type: string
+          description: Name of the favorite
+        sortOrder:
+          type: integer
+          description: Sort position
+        target:
+          type: string
+          description: ID or reference of the item to favorite
+        targetType:
+          type: string
+          description: Type of item being favorited
+          enum:
+          - Record
+          - ListView
+          - Object
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

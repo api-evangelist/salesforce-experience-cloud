@@ -198,31 +198,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   parameters:
     RecordId:
       name: recordId
@@ -232,15 +207,17 @@ components:
       schema:
         type: string
   schemas:
-    FieldValueRepresentation:
+    RecordInput:
       type: object
-      description: Field value with display formatting
+      description: Input for creating or updating a record
       properties:
-        displayValue:
+        apiName:
           type: string
-          description: Formatted display value (locale-aware)
-        value:
-          description: Raw field value
+          description: API name of the sObject type (required for create)
+        fields:
+          type: object
+          description: Map of field API names to values
+          additionalProperties: true
     ErrorResponse:
       type: object
       description: Standard error response
@@ -402,17 +379,6 @@ components:
               format: uri
         updateable:
           type: boolean
-    RecordInput:
-      type: object
-      description: Input for creating or updating a record
-      properties:
-        apiName:
-          type: string
-          description: API name of the sObject type (required for create)
-        fields:
-          type: object
-          description: Map of field API names to values
-          additionalProperties: true
     RecordUiRepresentation:
       type: object
       description: Complete UI representation for one or more records
@@ -483,6 +449,40 @@ components:
           format: date-time
         weakEtag:
           type: integer
+    FieldValueRepresentation:
+      type: object
+      description: Field value with display formatting
+      properties:
+        displayValue:
+          type: string
+          description: Formatted display value (locale-aware)
+        value:
+          description: Raw field value
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

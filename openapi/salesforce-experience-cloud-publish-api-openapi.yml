@@ -46,6 +46,14 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
   responses:
     Forbidden:
       description: Forbidden - insufficient permissions
@@ -71,25 +79,7 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
   schemas:
-    PublishStatus:
-      type: object
-      description: Status of a publish operation
-      properties:
-        id:
-          type: string
-          description: The ID of the publish operation
-        status:
-          type: string
-          description: Status of the publish operation
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -100,6 +90,16 @@ components:
         message:
           type: string
           description: Human-readable error message
+    PublishStatus:
+      type: object
+      description: Status of a publish operation
+      properties:
+        id:
+          type: string
+          description: The ID of the publish operation
+        status:
+          type: string
+          description: Status of the publish operation
   securitySchemes:
     oauth2:
       type: oauth2

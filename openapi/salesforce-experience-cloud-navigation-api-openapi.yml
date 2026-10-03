@@ -75,6 +75,16 @@ components:
         totalMenuItems:
           type: integer
           description: Total number of menu items
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
     NavigationMenuItem:
       type: object
       description: A navigation menu item in an Experience Cloud site
@@ -109,16 +119,14 @@ components:
           description: Nested submenu items
           items:
             $ref: '#/components/schemas/NavigationMenuItem'
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
   responses:
     NotFound:
       description: Resource not found
@@ -136,14 +144,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2
