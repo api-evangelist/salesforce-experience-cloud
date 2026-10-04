@@ -219,38 +219,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    PageParam:
-      name: page
-      in: query
-      description: Page number to retrieve (0-indexed)
-      schema:
-        type: integer
-        default: 0
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
-    ContentId:
-      name: contentId
-      in: path
-      required: true
-      description: The ID of the CMS content item
-      schema:
-        type: string
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     ContentNode:
       type: object
       description: A content node representing a field value
@@ -279,61 +248,6 @@ components:
         title:
           type: string
           description: Title of the node
-    PublishResult:
-      type: object
-      description: Result of a publish or unpublish operation
-      properties:
-        isSuccess:
-          type: boolean
-          description: Whether the operation succeeded
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              errorCode:
-                type: string
-              message:
-                type: string
-    ContentCollection:
-      type: object
-      description: Collection of CMS content items
-      properties:
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/Content'
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        totalCount:
-          type: integer
-    ContentInput:
-      type: object
-      description: Input for creating or updating CMS content
-      required:
-      - title
-      - contentType
-      properties:
-        title:
-          type: string
-          description: Title for the content
-        contentType:
-          type: string
-          description: Developer name of the content type
-        language:
-          type: string
-          description: Language code (e.g., en_US)
-        contentBody:
-          type: object
-          description: Content body fields as defined by the content type
-          additionalProperties: true
-        urlName:
-          type: string
-          description: URL-friendly name for the content
     Content:
       type: object
       description: A CMS content item
@@ -379,17 +293,103 @@ components:
           description: Content nodes containing field values
           additionalProperties:
             $ref: '#/components/schemas/ContentNode'
+    ContentCollection:
+      type: object
+      description: Collection of CMS content items
+      properties:
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/Content'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    ContentInput:
+      type: object
+      description: Input for creating or updating CMS content
+      required:
+      - title
+      - contentType
+      properties:
+        title:
+          type: string
+          description: Title for the content
+        contentType:
+          type: string
+          description: Developer name of the content type
+        language:
+          type: string
+          description: Language code (e.g., en_US)
+        contentBody:
+          type: object
+          description: Content body fields as defined by the content type
+          additionalProperties: true
+        urlName:
+          type: string
+          description: URL-friendly name for the content
+    PublishResult:
+      type: object
+      description: Result of a publish or unpublish operation
+      properties:
+        isSuccess:
+          type: boolean
+          description: Whether the operation succeeded
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              errorCode:
+                type: string
+              message:
+                type: string
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+  parameters:
+    ContentId:
+      name: contentId
+      in: path
+      required: true
+      description: The ID of the CMS content item
+      schema:
+        type: string
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
   responses:
-    BadRequest:
-      description: Bad request - invalid input parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:

@@ -62,29 +62,15 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
   schemas:
-    NavigationMenuItemCollection:
-      type: object
-      description: Collection of navigation menu items
-      properties:
-        menuItems:
-          type: array
-          description: List of navigation menu items
-          items:
-            $ref: '#/components/schemas/NavigationMenuItem'
-        totalMenuItems:
-          type: integer
-          description: Total number of menu items
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
     NavigationMenuItem:
       type: object
       description: A navigation menu item in an Experience Cloud site
@@ -119,14 +105,28 @@ components:
           description: Nested submenu items
           items:
             $ref: '#/components/schemas/NavigationMenuItem'
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
+    NavigationMenuItemCollection:
+      type: object
+      description: Collection of navigation menu items
+      properties:
+        menuItems:
+          type: array
+          description: List of navigation menu items
+          items:
+            $ref: '#/components/schemas/NavigationMenuItem'
+        totalMenuItems:
+          type: integer
+          description: Total number of menu items
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
   responses:
     NotFound:
       description: Resource not found

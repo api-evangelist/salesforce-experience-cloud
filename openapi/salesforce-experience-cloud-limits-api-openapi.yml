@@ -41,6 +41,18 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    OrgLimits:
+      type: object
+      description: Organization API limits
+      additionalProperties:
+        type: object
+        properties:
+          Max:
+            type: integer
+            description: Maximum allowed value
+          Remaining:
+            type: integer
+            description: Remaining allowance
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -55,18 +67,6 @@ components:
         message:
           type: string
           description: Human-readable error message
-    OrgLimits:
-      type: object
-      description: Organization API limits
-      additionalProperties:
-        type: object
-        properties:
-          Max:
-            type: integer
-            description: Maximum allowed value
-          Remaining:
-            type: integer
-            description: Remaining allowance
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token

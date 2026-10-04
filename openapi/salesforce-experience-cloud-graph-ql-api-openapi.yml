@@ -67,6 +67,43 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    GraphQLConnection:
+      type: object
+      description: A Relay-style connection containing edges (records) and pagination information
+      properties:
+        edges:
+          type: array
+          description: List of edges containing record nodes
+          items:
+            $ref: '#/components/schemas/GraphQLEdge'
+        pageInfo:
+          type: object
+          description: Pagination information
+          properties:
+            hasNextPage:
+              type: boolean
+              description: Whether more pages are available
+            hasPreviousPage:
+              type: boolean
+              description: Whether previous pages exist
+            startCursor:
+              type: string
+              description: Cursor for the first edge
+            endCursor:
+              type: string
+              description: Cursor for the last edge
+        totalCount:
+          type: integer
+          description: Total number of matching records
+    GraphQLFieldValue:
+      type: object
+      description: A field value in a GraphQL response, providing both raw value and locale-formatted display value
+      properties:
+        value:
+          description: Raw field value
+        displayValue:
+          type: string
+          description: Formatted display value (locale-aware)
     GraphQLRequest:
       type: object
       description: A GraphQL request containing the query and optional parameters
@@ -83,15 +120,22 @@ components:
         operationName:
           type: string
           description: Name of the operation to execute when the query document contains multiple operations.
-    GraphQLFieldValue:
+    GraphQLEdge:
       type: object
-      description: A field value in a GraphQL response, providing both raw value and locale-formatted display value
+      description: An edge in a Relay-style connection containing a node
       properties:
-        value:
-          description: Raw field value
-        displayValue:
+        cursor:
           type: string
-          description: Formatted display value (locale-aware)
+          description: Cursor for this edge (used for pagination)
+        node:
+          type: object
+          description: The record node containing field values. Each field returns an object with value and optional displayValue properties.
+          properties:
+            Id:
+              type: string
+              description: Record ID
+          additionalProperties:
+            $ref: '#/components/schemas/GraphQLFieldValue'
     GraphQLError:
       type: object
       description: A GraphQL error
@@ -123,6 +167,14 @@ components:
             classification:
               type: string
           additionalProperties: true
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce REST API error
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
     GraphQLResponse:
       type: object
       description: Response from a GraphQL query execution
@@ -150,58 +202,6 @@ components:
           type: object
           description: Extension data provided by the server, including query cost and performance metrics.
           additionalProperties: true
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce REST API error
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-    GraphQLConnection:
-      type: object
-      description: A Relay-style connection containing edges (records) and pagination information
-      properties:
-        edges:
-          type: array
-          description: List of edges containing record nodes
-          items:
-            $ref: '#/components/schemas/GraphQLEdge'
-        pageInfo:
-          type: object
-          description: Pagination information
-          properties:
-            hasNextPage:
-              type: boolean
-              description: Whether more pages are available
-            hasPreviousPage:
-              type: boolean
-              description: Whether previous pages exist
-            startCursor:
-              type: string
-              description: Cursor for the first edge
-            endCursor:
-              type: string
-              description: Cursor for the last edge
-        totalCount:
-          type: integer
-          description: Total number of matching records
-    GraphQLEdge:
-      type: object
-      description: An edge in a Relay-style connection containing a node
-      properties:
-        cursor:
-          type: string
-          description: Cursor for this edge (used for pagination)
-        node:
-          type: object
-          description: The record node containing field values. Each field returns an object with value and optional displayValue properties.
-          properties:
-            Id:
-              type: string
-              description: Record ID
-          additionalProperties:
-            $ref: '#/components/schemas/GraphQLFieldValue'
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token

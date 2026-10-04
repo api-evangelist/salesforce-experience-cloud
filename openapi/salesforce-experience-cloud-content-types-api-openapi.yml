@@ -87,13 +87,6 @@ components:
         message:
           type: string
   parameters:
-    PageParam:
-      name: page
-      in: query
-      description: Page number to retrieve (0-indexed)
-      schema:
-        type: integer
-        default: 0
     PageSize:
       name: pageSize
       in: query
@@ -102,6 +95,13 @@ components:
         type: integer
         default: 25
         maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token

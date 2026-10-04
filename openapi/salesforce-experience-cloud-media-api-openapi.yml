@@ -127,31 +127,23 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    PageParam:
-      name: page
-      in: query
-      description: Page number to retrieve (0-indexed)
-      schema:
-        type: integer
-        default: 0
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
   schemas:
-    ErrorResponse:
+    MediaCollection:
       type: object
-      description: Standard Salesforce API error response
+      description: Collection of CMS media files
       properties:
-        errorCode:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaFile'
+        currentPageUrl:
           type: string
-        message:
+          format: uri
+        nextPageUrl:
           type: string
+          format: uri
+        totalCount:
+          type: integer
     MediaFile:
       type: object
       description: A CMS media file
@@ -185,33 +177,41 @@ components:
           type: string
           format: uri
           description: URL to access the media file
-    MediaCollection:
+    ErrorResponse:
       type: object
-      description: Collection of CMS media files
+      description: Standard Salesforce API error response
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/MediaFile'
-        currentPageUrl:
+        errorCode:
           type: string
-          format: uri
-        nextPageUrl:
+        message:
           type: string
-          format: uri
-        totalCount:
-          type: integer
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
   responses:
-    BadRequest:
-      description: Bad request - invalid input parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:

@@ -57,20 +57,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        fields:
-          type: array
-          items:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message
     SObjectRecord:
       type: object
       description: A Salesforce sObject record with field values
@@ -89,6 +75,20 @@ components:
           type: string
           description: The 18-character record ID
       additionalProperties: true
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        fields:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message
     SearchResult:
       type: object
       description: Result of a SOSL search

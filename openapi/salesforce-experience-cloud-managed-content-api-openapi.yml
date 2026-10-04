@@ -256,81 +256,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    ManagedContentVersionCollection:
-      type: object
-      description: Collection of managed content versions
-      properties:
-        currentPageUrl:
-          type: string
-          format: uri
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagedContentVersion'
-        managedContentTypes:
-          type: object
-          description: Map of content type developer names to labels
-          additionalProperties:
-            type: object
-            properties:
-              developerName:
-                type: string
-              label:
-                type: string
-        nextPageUrl:
-          type: string
-          format: uri
-        total:
-          type: integer
-          description: Total number of matching items
-        totalCount:
-          type: integer
-    ManagedContentVersion:
-      type: object
-      description: A published managed content version
-      properties:
-        contentKey:
-          type: string
-          description: Unique content key
-        contentNodes:
-          type: object
-          description: Map of field names to content nodes containing the content field values
-          additionalProperties:
-            $ref: '#/components/schemas/ContentNode'
-        contentUrlName:
-          type: string
-          description: URL-friendly name for the content
-        language:
-          type: string
-          description: Language code of this content version
-        managedContentId:
-          type: string
-          description: Salesforce record ID of the managed content
-        publishedDate:
-          type: string
-          format: date-time
-          description: When this version was published
-        title:
-          type: string
-          description: Title of the content
-        type:
-          type: string
-          description: Content type developer name
-        typeLabel:
-          type: string
-          description: Content type display label
-        unauthenticatedUrl:
-          type: string
-          format: uri
-          description: Public URL for unauthenticated access
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     ContentNode:
       type: object
       description: A content node representing a field value in managed content
@@ -379,21 +304,82 @@ components:
         value:
           type: string
           description: Text or value content of the node
+    ManagedContentVersion:
+      type: object
+      description: A published managed content version
+      properties:
+        contentKey:
+          type: string
+          description: Unique content key
+        contentNodes:
+          type: object
+          description: Map of field names to content nodes containing the content field values
+          additionalProperties:
+            $ref: '#/components/schemas/ContentNode'
+        contentUrlName:
+          type: string
+          description: URL-friendly name for the content
+        language:
+          type: string
+          description: Language code of this content version
+        managedContentId:
+          type: string
+          description: Salesforce record ID of the managed content
+        publishedDate:
+          type: string
+          format: date-time
+          description: When this version was published
+        title:
+          type: string
+          description: Title of the content
+        type:
+          type: string
+          description: Content type developer name
+        typeLabel:
+          type: string
+          description: Content type display label
+        unauthenticatedUrl:
+          type: string
+          format: uri
+          description: Public URL for unauthenticated access
+    ManagedContentVersionCollection:
+      type: object
+      description: Collection of managed content versions
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedContentVersion'
+        managedContentTypes:
+          type: object
+          description: Map of content type developer names to labels
+          additionalProperties:
+            type: object
+            properties:
+              developerName:
+                type: string
+              label:
+                type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+          description: Total number of matching items
+        totalCount:
+          type: integer
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
   parameters:
-    ChannelId:
-      name: channelId
-      in: path
-      required: true
-      description: The ID of the CMS delivery channel
-      schema:
-        type: string
-    PageParam:
-      name: page
-      in: query
-      description: Page number to retrieve (0-indexed)
-      schema:
-        type: integer
-        default: 0
     PageSize:
       name: pageSize
       in: query
@@ -402,17 +388,31 @@ components:
         type: integer
         default: 25
         maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
   responses:
-    BadRequest:
-      description: Bad request - invalid input parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:

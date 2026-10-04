@@ -113,6 +113,25 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    QueryResult:
+      type: object
+      description: Result of a SOQL query
+      properties:
+        done:
+          type: boolean
+          description: Whether all results have been returned
+        nextRecordsUrl:
+          type: string
+          format: uri
+          description: URL for the next page of results (if done is false)
+        records:
+          type: array
+          description: Matching records
+          items:
+            $ref: '#/components/schemas/SObjectRecord'
+        totalSize:
+          type: integer
+          description: Total number of matching records
     SObjectRecord:
       type: object
       description: A Salesforce sObject record with field values
@@ -145,25 +164,6 @@ components:
         message:
           type: string
           description: Human-readable error message
-    QueryResult:
-      type: object
-      description: Result of a SOQL query
-      properties:
-        done:
-          type: boolean
-          description: Whether all results have been returned
-        nextRecordsUrl:
-          type: string
-          format: uri
-          description: URL for the next page of results (if done is false)
-        records:
-          type: array
-          description: Matching records
-          items:
-            $ref: '#/components/schemas/SObjectRecord'
-        totalSize:
-          type: integer
-          description: Total number of matching records
   responses:
     NotFound:
       description: Resource not found

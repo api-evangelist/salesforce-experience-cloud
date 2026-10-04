@@ -43,22 +43,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    PageParam:
-      name: page
-      in: query
-      description: Page number to retrieve (0-indexed)
-      schema:
-        type: integer
-        default: 0
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
   schemas:
     FolderCollection:
       type: object
@@ -70,14 +54,6 @@ components:
             $ref: '#/components/schemas/Folder'
         totalCount:
           type: integer
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     Folder:
       type: object
       description: A CMS workspace folder
@@ -91,6 +67,30 @@ components:
         parentFolderId:
           type: string
           description: ID of the parent folder
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    PageParam:
+      name: page
+      in: query
+      description: Page number to retrieve (0-indexed)
+      schema:
+        type: integer
+        default: 0
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token

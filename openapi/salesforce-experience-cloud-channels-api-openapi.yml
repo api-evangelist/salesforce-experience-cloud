@@ -64,6 +64,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
     PageParam:
       name: page
       in: query
@@ -78,39 +86,7 @@ components:
       description: The ID of the CMS channel
       schema:
         type: string
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
   schemas:
-    ChannelCollection:
-      type: object
-      description: Collection of CMS channels
-      properties:
-        channels:
-          type: array
-          items:
-            $ref: '#/components/schemas/Channel'
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        totalCount:
-          type: integer
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     Channel:
       type: object
       description: A CMS delivery channel
@@ -139,6 +115,30 @@ components:
         isSearchable:
           type: boolean
           description: Whether content in this channel is searchable
+    ChannelCollection:
+      type: object
+      description: Collection of CMS channels
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
   responses:
     NotFound:
       description: Resource not found

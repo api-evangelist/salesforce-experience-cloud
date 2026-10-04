@@ -85,6 +85,30 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    FavoriteInput:
+      type: object
+      description: Input for adding a favorite
+      required:
+      - name
+      - target
+      - targetType
+      properties:
+        name:
+          type: string
+          description: Name of the favorite
+        sortOrder:
+          type: integer
+          description: Sort position
+        target:
+          type: string
+          description: ID or reference of the item to favorite
+        targetType:
+          type: string
+          description: Type of item being favorited
+          enum:
+          - Record
+          - ListView
+          - Object
     Favorite:
       type: object
       description: A user favorite item
@@ -110,14 +134,6 @@ components:
           - Object
           - Dashboard
           - Report
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     FavoritesRepresentation:
       type: object
       description: User's favorites
@@ -126,41 +142,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Favorite'
-    FavoriteInput:
+    ErrorResponse:
       type: object
-      description: Input for adding a favorite
-      required:
-      - name
-      - target
-      - targetType
+      description: Standard error response
       properties:
-        name:
+        errorCode:
           type: string
-          description: Name of the favorite
-        sortOrder:
-          type: integer
-          description: Sort position
-        target:
+        message:
           type: string
-          description: ID or reference of the item to favorite
-        targetType:
-          type: string
-          description: Type of item being favorited
-          enum:
-          - Record
-          - ListView
-          - Object
   responses:
-    BadRequest:
-      description: Bad request
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

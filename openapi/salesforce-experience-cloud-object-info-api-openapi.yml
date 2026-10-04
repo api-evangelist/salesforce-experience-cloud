@@ -45,14 +45,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     ObjectInfoRepresentation:
       type: object
       description: Object metadata for UI rendering
@@ -206,14 +198,14 @@ components:
               format: uri
         updateable:
           type: boolean
-  parameters:
-    ObjectApiName:
-      name: objectApiName
-      in: path
-      required: true
-      description: The API name of the Salesforce object (e.g., Account, Contact)
-      schema:
-        type: string
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
   responses:
     NotFound:
       description: Not found
@@ -231,6 +223,14 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    ObjectApiName:
+      name: objectApiName
+      in: path
+      required: true
+      description: The API name of the Salesforce object (e.g., Account, Contact)
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

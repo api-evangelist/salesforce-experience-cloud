@@ -103,14 +103,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site
-      schema:
-        type: string
   schemas:
     BrandingSetInput:
       type: object
@@ -145,14 +137,16 @@ components:
         value:
           type: string
           description: Property value
-    ErrorResponse:
+    BrandingSetCollection:
       type: object
-      description: Standard error response
+      description: Collection of branding sets
       properties:
-        errorCode:
-          type: string
-        message:
-          type: string
+        brandingSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandingSet'
+        total:
+          type: integer
     BrandingSet:
       type: object
       description: A branding set with visual properties
@@ -171,27 +165,33 @@ components:
           description: Branding properties
           items:
             $ref: '#/components/schemas/BrandingProperty'
-    BrandingSetCollection:
+    ErrorResponse:
       type: object
-      description: Collection of branding sets
+      description: Standard error response
       properties:
-        brandingSets:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandingSet'
-        total:
-          type: integer
+        errorCode:
+          type: string
+        message:
+          type: string
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
   responses:
-    BadRequest:
-      description: Bad request
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not found
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:

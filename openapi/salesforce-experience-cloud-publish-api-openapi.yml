@@ -55,8 +55,8 @@ components:
       schema:
         type: string
   responses:
-    Forbidden:
-      description: Forbidden - insufficient permissions
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
       content:
         application/json:
           schema:
@@ -71,8 +71,8 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
+    Forbidden:
+      description: Forbidden - insufficient permissions
       content:
         application/json:
           schema:

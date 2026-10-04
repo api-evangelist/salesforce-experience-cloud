@@ -209,6 +209,81 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    CommentInput:
+      type: object
+      description: Input for creating a comment
+      required:
+      - body
+      properties:
+        body:
+          $ref: '#/components/schemas/MessageBodyInput'
+    MessageBody:
+      type: object
+      description: Rich text body of a feed element or comment
+      properties:
+        isRichText:
+          type: boolean
+        messageSegments:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageSegment'
+        text:
+          type: string
+    MessageSegmentInput:
+      type: object
+      description: Input for a message segment
+      properties:
+        text:
+          type: string
+        type:
+          type: string
+          enum:
+          - Text
+          - Mention
+          - Hashtag
+    MessageSegment:
+      type: object
+      description: A segment of a message body
+      properties:
+        text:
+          type: string
+        type:
+          type: string
+          enum:
+          - Text
+          - Mention
+          - Hashtag
+          - Link
+          - MarkupBegin
+          - MarkupEnd
+    CommentPage:
+      type: object
+      description: Paginated list of comments
+      properties:
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        total:
+          type: integer
+    MessageBodyInput:
+      type: object
+      description: Input for a message body
+      properties:
+        messageSegments:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageSegmentInput'
     LikePage:
       type: object
       description: Paginated list of likes
@@ -229,83 +304,6 @@ components:
           format: uri
         total:
           type: integer
-    FeedElementPage:
-      type: object
-      description: Paginated list of feed elements
-      properties:
-        currentPageToken:
-          type: string
-          description: Token for the current page
-        currentPageUrl:
-          type: string
-          format: uri
-          description: URL for the current page
-        elements:
-          type: array
-          description: Feed elements on this page
-          items:
-            $ref: '#/components/schemas/FeedElement'
-        isModifiedToken:
-          type: string
-        isModifiedUrl:
-          type: string
-          format: uri
-        nextPageToken:
-          type: string
-          description: Token for the next page
-        nextPageUrl:
-          type: string
-          format: uri
-          description: URL for the next page
-        updatesToken:
-          type: string
-        updatesUrl:
-          type: string
-          format: uri
-    CommentInput:
-      type: object
-      description: Input for creating a comment
-      required:
-      - body
-      properties:
-        body:
-          $ref: '#/components/schemas/MessageBodyInput'
-    MessageSegmentInput:
-      type: object
-      description: Input for a message segment
-      properties:
-        text:
-          type: string
-        type:
-          type: string
-          enum:
-          - Text
-          - Mention
-          - Hashtag
-    FeedElementCapabilities:
-      type: object
-      description: Capabilities available on a feed element
-      properties:
-        comments:
-          type: object
-          properties:
-            page:
-              $ref: '#/components/schemas/CommentPage'
-        chatterLikes:
-          type: object
-          properties:
-            page:
-              $ref: '#/components/schemas/LikePage'
-            myLike:
-              $ref: '#/components/schemas/Like'
-    MessageBodyInput:
-      type: object
-      description: Input for a message body
-      properties:
-        messageSegments:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageSegmentInput'
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -316,39 +314,6 @@ components:
         message:
           type: string
           description: Human-readable error message
-    Comment:
-      type: object
-      description: A comment on a feed element
-      properties:
-        id:
-          type: string
-        body:
-          $ref: '#/components/schemas/MessageBody'
-        createdDate:
-          type: string
-          format: date-time
-        feedElement:
-          $ref: '#/components/schemas/ActorReference'
-        likes:
-          $ref: '#/components/schemas/LikePage'
-        user:
-          $ref: '#/components/schemas/ActorReference'
-        url:
-          type: string
-          format: uri
-    ActorReference:
-      type: object
-      description: Reference to a user or record
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-        url:
-          type: string
-          format: uri
     FeedElement:
       type: object
       description: A feed element such as a post or announcement
@@ -385,6 +350,56 @@ components:
           type: string
           format: uri
           description: API resource URL
+    Like:
+      type: object
+      description: A like on a feed element or comment
+      properties:
+        id:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        url:
+          type: string
+          format: uri
+        user:
+          $ref: '#/components/schemas/ActorReference'
+    Comment:
+      type: object
+      description: A comment on a feed element
+      properties:
+        id:
+          type: string
+        body:
+          $ref: '#/components/schemas/MessageBody'
+        createdDate:
+          type: string
+          format: date-time
+        feedElement:
+          $ref: '#/components/schemas/ActorReference'
+        likes:
+          $ref: '#/components/schemas/LikePage'
+        user:
+          $ref: '#/components/schemas/ActorReference'
+        url:
+          type: string
+          format: uri
+    FeedElementCapabilities:
+      type: object
+      description: Capabilities available on a feed element
+      properties:
+        comments:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/CommentPage'
+        chatterLikes:
+          type: object
+          properties:
+            page:
+              $ref: '#/components/schemas/LikePage'
+            myLike:
+              $ref: '#/components/schemas/Like'
     FeedElementInput:
       type: object
       description: Input for creating a feed element
@@ -403,86 +418,55 @@ components:
         subjectId:
           type: string
           description: ID of the parent record for the post
-    CommentPage:
+    ActorReference:
       type: object
-      description: Paginated list of comments
+      description: Reference to a user or record
       properties:
-        comments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comment'
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+          format: uri
+    FeedElementPage:
+      type: object
+      description: Paginated list of feed elements
+      properties:
         currentPageToken:
           type: string
+          description: Token for the current page
         currentPageUrl:
+          type: string
+          format: uri
+          description: URL for the current page
+        elements:
+          type: array
+          description: Feed elements on this page
+          items:
+            $ref: '#/components/schemas/FeedElement'
+        isModifiedToken:
+          type: string
+        isModifiedUrl:
           type: string
           format: uri
         nextPageToken:
           type: string
+          description: Token for the next page
         nextPageUrl:
           type: string
           format: uri
-        total:
-          type: integer
-    Like:
-      type: object
-      description: A like on a feed element or comment
-      properties:
-        id:
+          description: URL for the next page
+        updatesToken:
           type: string
-        createdDate:
-          type: string
-          format: date-time
-        url:
+        updatesUrl:
           type: string
           format: uri
-        user:
-          $ref: '#/components/schemas/ActorReference'
-    MessageSegment:
-      type: object
-      description: A segment of a message body
-      properties:
-        text:
-          type: string
-        type:
-          type: string
-          enum:
-          - Text
-          - Mention
-          - Hashtag
-          - Link
-          - MarkupBegin
-          - MarkupEnd
-    MessageBody:
-      type: object
-      description: Rich text body of a feed element or comment
-      properties:
-        isRichText:
-          type: boolean
-        messageSegments:
-          type: array
-          items:
-            $ref: '#/components/schemas/MessageSegment'
-        text:
-          type: string
   responses:
     Forbidden:
       description: Forbidden - insufficient permissions
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:
@@ -497,12 +481,28 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    FeedElementId:
-      name: feedElementId
+    CommunityId:
+      name: communityId
       in: path
       required: true
-      description: The ID of the feed element
+      description: The ID of the Experience Cloud site (community)
       schema:
         type: string
     PageToken:
@@ -519,11 +519,11 @@ components:
         type: integer
         default: 25
         maximum: 100
-    CommunityId:
-      name: communityId
+    FeedElementId:
+      name: feedElementId
       in: path
       required: true
-      description: The ID of the Experience Cloud site (community)
+      description: The ID of the feed element
       schema:
         type: string
   securitySchemes:
