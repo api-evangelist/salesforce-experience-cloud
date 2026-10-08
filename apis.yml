@@ -2688,6 +2688,10 @@ apis:
     url: >-
       https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm
 common:
+- type: Plans
+  url: plans/salesforce-experience-cloud-plans-pricing.yml
+- type: FinOps
+  url: finops/salesforce-experience-cloud-finops.yml
 - type: CapabilityMap
   url: capabilities/salesforce-experience-cloud-capability-edges.yml
   name: Salesforce Experience Cloud Business Capability Map
