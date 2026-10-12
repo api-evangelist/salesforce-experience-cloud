@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/salesforce-experience-cloud/integrations
+- https://n8n.io/integrations/salesforce-experience-cloud/
+- https://composio.dev/toolkits/salesforce-experience-cloud
+- https://monid.ai/tools/salesforce-experience-cloud
+checked:
+- https://composio.dev/toolkits/salesforce-experience-cloud
+- https://monid.ai/tools/salesforce-experience-cloud
+- https://n8n.io/integrations/salesforce-experience-cloud/
+- https://zapier.com/apps/salesforce-experience-cloud/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
