@@ -2,11 +2,11 @@
   "repo": "salesforce-experience-cloud",
   "feeds": [
     {
-      "source": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm",
+      "source": "https://developer.salesforce.com/blogs",
       "error": "HTTPError"
     }
   ],
-  "fetched": "2026-10-03T12:30:02Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 16,
   "agent_pulled": "2026-06-27",
   "feed_nature": "vendor-blog",
