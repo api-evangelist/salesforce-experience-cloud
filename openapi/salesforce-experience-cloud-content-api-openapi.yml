@@ -220,34 +220,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    ContentNode:
+    ErrorResponse:
       type: object
-      description: A content node representing a field value
+      description: Standard Salesforce API error response
       properties:
-        nodeType:
+        errorCode:
           type: string
-          description: Type of the content node
-          enum:
-          - Media
-          - MultilineText
-          - RichText
-          - Text
-          - Url
-          - DateTime
-          - NameField
-        value:
+        message:
           type: string
-          description: Text value of the node
-        url:
-          type: string
-          format: uri
-          description: URL value of the node (for Media and Url types)
-        altText:
-          type: string
-          description: Alternative text (for Media type)
-        title:
-          type: string
-          description: Title of the node
     Content:
       type: object
       description: A CMS content item
@@ -309,6 +289,22 @@ components:
           format: uri
         totalCount:
           type: integer
+    PublishResult:
+      type: object
+      description: Result of a publish or unpublish operation
+      properties:
+        isSuccess:
+          type: boolean
+          description: Whether the operation succeeded
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              errorCode:
+                type: string
+              message:
+                type: string
     ContentInput:
       type: object
       description: Input for creating or updating CMS content
@@ -332,38 +328,60 @@ components:
         urlName:
           type: string
           description: URL-friendly name for the content
-    PublishResult:
+    ContentNode:
       type: object
-      description: Result of a publish or unpublish operation
+      description: A content node representing a field value
       properties:
-        isSuccess:
-          type: boolean
-          description: Whether the operation succeeded
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              errorCode:
-                type: string
-              message:
-                type: string
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
+        nodeType:
           type: string
-        message:
+          description: Type of the content node
+          enum:
+          - Media
+          - MultilineText
+          - RichText
+          - Text
+          - Url
+          - DateTime
+          - NameField
+        value:
           type: string
+          description: Text value of the node
+        url:
+          type: string
+          format: uri
+          description: URL value of the node (for Media and Url types)
+        altText:
+          type: string
+          description: Alternative text (for Media type)
+        title:
+          type: string
+          description: Title of the node
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request - invalid input parameters
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    ContentId:
-      name: contentId
-      in: path
-      required: true
-      description: The ID of the CMS content item
-      schema:
-        type: string
     PageSize:
       name: pageSize
       in: query
@@ -379,31 +397,13 @@ components:
       schema:
         type: integer
         default: 0
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
+    ContentId:
+      name: contentId
+      in: path
+      required: true
+      description: The ID of the CMS content item
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

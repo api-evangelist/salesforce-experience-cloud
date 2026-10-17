@@ -76,31 +76,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    LayoutSection:
+    ErrorResponse:
       type: object
-      description: A section within a layout
+      description: Standard error response
       properties:
-        collapsible:
-          type: boolean
-        columns:
-          type: integer
-        heading:
+        errorCode:
           type: string
-        id:
+        message:
           type: string
-        layoutRows:
-          type: array
-          items:
-            type: object
-            properties:
-              layoutItems:
-                type: array
-                items:
-                  $ref: '#/components/schemas/LayoutItem'
-        rows:
-          type: integer
-        useHeading:
-          type: boolean
     LayoutItem:
       type: object
       description: A field item within a layout section
@@ -128,6 +111,31 @@ components:
           type: boolean
         sortable:
           type: boolean
+    LayoutSection:
+      type: object
+      description: A section within a layout
+      properties:
+        collapsible:
+          type: boolean
+        columns:
+          type: integer
+        heading:
+          type: string
+        id:
+          type: string
+        layoutRows:
+          type: array
+          items:
+            type: object
+            properties:
+              layoutItems:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LayoutItem'
+        rows:
+          type: integer
+        useHeading:
+          type: boolean
     RecordLayoutRepresentation:
       type: object
       description: Layout metadata for an object
@@ -150,25 +158,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LayoutSection'
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
   responses:
-    NotFound:
-      description: Not found
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:

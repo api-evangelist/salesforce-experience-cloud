@@ -46,14 +46,27 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
+    PublishStatus:
+      type: object
+      description: Status of a publish operation
+      properties:
+        id:
+          type: string
+          description: The ID of the publish operation
+        status:
+          type: string
+          description: Status of the publish operation
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token
@@ -79,27 +92,14 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-  schemas:
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
-    PublishStatus:
-      type: object
-      description: Status of a publish operation
-      properties:
-        id:
-          type: string
-          description: The ID of the publish operation
-        status:
-          type: string
-          description: Status of the publish operation
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

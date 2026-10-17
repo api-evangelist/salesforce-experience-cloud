@@ -113,6 +113,38 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        fields:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message
+    SObjectRecord:
+      type: object
+      description: A Salesforce sObject record with field values
+      properties:
+        attributes:
+          type: object
+          properties:
+            type:
+              type: string
+              description: sObject type name
+            url:
+              type: string
+              format: uri
+              description: REST API URL for this record
+        Id:
+          type: string
+          description: The 18-character record ID
+      additionalProperties: true
     QueryResult:
       type: object
       description: Result of a SOQL query
@@ -132,49 +164,17 @@ components:
         totalSize:
           type: integer
           description: Total number of matching records
-    SObjectRecord:
-      type: object
-      description: A Salesforce sObject record with field values
-      properties:
-        attributes:
-          type: object
-          properties:
-            type:
-              type: string
-              description: sObject type name
-            url:
-              type: string
-              format: uri
-              description: REST API URL for this record
-        Id:
-          type: string
-          description: The 18-character record ID
-      additionalProperties: true
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        fields:
-          type: array
-          items:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:

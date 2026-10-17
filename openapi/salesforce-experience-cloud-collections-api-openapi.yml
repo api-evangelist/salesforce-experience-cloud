@@ -84,6 +84,102 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+    DeliveryContentItem:
+      type: object
+      description: A delivered CMS content item
+      properties:
+        contentKey:
+          type: string
+          description: Unique content key for the item
+        contentNodes:
+          type: object
+          description: Content field values organized as nodes
+          additionalProperties:
+            $ref: '#/components/schemas/ContentNode'
+        contentUrlName:
+          type: string
+          description: URL-safe name for the content
+        language:
+          type: string
+          description: Language code of this content version
+        managedContentId:
+          type: string
+          description: Salesforce record ID
+        publishedDate:
+          type: string
+          format: date-time
+          description: When this content was published
+        title:
+          type: string
+          description: Title of the content
+        type:
+          type: string
+          description: Content type developer name
+        typeLabel:
+          type: string
+          description: Content type display label
+        unauthenticatedUrl:
+          type: string
+          format: uri
+          description: Public URL for unauthenticated access
+    DeliveryCollection:
+      type: object
+      description: A content collection with its items
+      properties:
+        collectionKey:
+          type: string
+        collectionType:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryContentItem'
+        label:
+          type: string
+        name:
+          type: string
+        totalCount:
+          type: integer
+    CollectionList:
+      type: object
+      description: List of content collections
+      properties:
+        collections:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionSummary'
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        totalCount:
+          type: integer
+    CollectionSummary:
+      type: object
+      description: Summary of a content collection
+      properties:
+        collectionKey:
+          type: string
+          description: Unique key for the collection
+        collectionType:
+          type: string
+          description: Type of collection
+        label:
+          type: string
+          description: Display label
+        name:
+          type: string
+          description: Developer name
     ContentNode:
       type: object
       description: A content node representing a field value
@@ -132,125 +228,6 @@ components:
         value:
           type: string
           description: Text or value content
-    DeliveryCollection:
-      type: object
-      description: A content collection with its items
-      properties:
-        collectionKey:
-          type: string
-        collectionType:
-          type: string
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryContentItem'
-        label:
-          type: string
-        name:
-          type: string
-        totalCount:
-          type: integer
-    DeliveryContentItem:
-      type: object
-      description: A delivered CMS content item
-      properties:
-        contentKey:
-          type: string
-          description: Unique content key for the item
-        contentNodes:
-          type: object
-          description: Content field values organized as nodes
-          additionalProperties:
-            $ref: '#/components/schemas/ContentNode'
-        contentUrlName:
-          type: string
-          description: URL-safe name for the content
-        language:
-          type: string
-          description: Language code of this content version
-        managedContentId:
-          type: string
-          description: Salesforce record ID
-        publishedDate:
-          type: string
-          format: date-time
-          description: When this content was published
-        title:
-          type: string
-          description: Title of the content
-        type:
-          type: string
-          description: Content type developer name
-        typeLabel:
-          type: string
-          description: Content type display label
-        unauthenticatedUrl:
-          type: string
-          format: uri
-          description: Public URL for unauthenticated access
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-    CollectionList:
-      type: object
-      description: List of content collections
-      properties:
-        collections:
-          type: array
-          items:
-            $ref: '#/components/schemas/CollectionSummary'
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        totalCount:
-          type: integer
-    CollectionSummary:
-      type: object
-      description: Summary of a content collection
-      properties:
-        collectionKey:
-          type: string
-          description: Unique key for the collection
-        collectionType:
-          type: string
-          description: Type of collection
-        label:
-          type: string
-          description: Display label
-        name:
-          type: string
-          description: Developer name
-  parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page (default 25, max 250)
-      schema:
-        type: integer
-        default: 25
-        maximum: 250
-    PageParam:
-      name: page
-      in: query
-      description: Page number (0-indexed)
-      schema:
-        type: integer
-        default: 0
-    ChannelId:
-      name: channelId
-      in: path
-      required: true
-      description: The ID of the CMS delivery channel
-      schema:
-        type: string
   responses:
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token
@@ -268,6 +245,29 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page (default 25, max 250)
+      schema:
+        type: integer
+        default: 25
+        maximum: 250
+    ChannelId:
+      name: channelId
+      in: path
+      required: true
+      description: The ID of the CMS delivery channel
+      schema:
+        type: string
+    PageParam:
+      name: page
+      in: query
+      description: Page number (0-indexed)
+      schema:
+        type: integer
+        default: 0
   securitySchemes:
     oauth2:
       type: oauth2

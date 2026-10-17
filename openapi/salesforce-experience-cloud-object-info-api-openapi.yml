@@ -207,16 +207,16 @@ components:
         message:
           type: string
   responses:
-    NotFound:
-      description: Not found
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:

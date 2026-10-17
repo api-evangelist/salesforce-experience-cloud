@@ -112,53 +112,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    RecordRepresentation:
+    ErrorResponse:
       type: object
-      description: Representation of a record with field values
+      description: Standard error response
       properties:
-        apiName:
+        errorCode:
           type: string
-          description: API name of the sObject type
-        childRelationships:
-          type: object
-          additionalProperties:
-            type: object
-        eTag:
+        message:
           type: string
-          description: Entity tag for optimistic concurrency
-        fields:
-          type: object
-          description: Map of field API names to field values
-          additionalProperties:
-            $ref: '#/components/schemas/FieldValueRepresentation'
-        id:
-          type: string
-          description: Record ID
-        lastModifiedById:
-          type: string
-        lastModifiedDate:
-          type: string
-          format: date-time
-        recordTypeId:
-          type: string
-        recordTypeInfo:
-          type: object
-          properties:
-            available:
-              type: boolean
-            defaultRecordTypeMapping:
-              type: boolean
-            master:
-              type: boolean
-            name:
-              type: string
-            recordTypeId:
-              type: string
-        systemModstamp:
-          type: string
-          format: date-time
-        weakEtag:
-          type: integer
     ListViewRepresentation:
       type: object
       description: List view data and metadata
@@ -186,6 +147,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RecordRepresentation'
+    ListViewSummaryCollection:
+      type: object
+      description: Collection of list view summaries
+      properties:
+        count:
+          type: integer
+        currentPageToken:
+          type: string
+        currentPageUrl:
+          type: string
+          format: uri
+        lists:
+          type: array
+          items:
+            type: object
+            properties:
+              apiName:
+                type: string
+              id:
+                type: string
+              label:
+                type: string
+              listUiUrl:
+                type: string
+                format: uri
+        nextPageToken:
+          type: string
+        nextPageUrl:
+          type: string
+          format: uri
+        objectApiName:
+          type: string
     ListViewInfo:
       type: object
       description: Metadata about a list view
@@ -248,38 +241,53 @@ components:
           enum:
           - Private
           - Public
-    ListViewSummaryCollection:
+    RecordRepresentation:
       type: object
-      description: Collection of list view summaries
+      description: Representation of a record with field values
       properties:
-        count:
-          type: integer
-        currentPageToken:
+        apiName:
           type: string
-        currentPageUrl:
-          type: string
-          format: uri
-        lists:
-          type: array
-          items:
+          description: API name of the sObject type
+        childRelationships:
+          type: object
+          additionalProperties:
             type: object
-            properties:
-              apiName:
-                type: string
-              id:
-                type: string
-              label:
-                type: string
-              listUiUrl:
-                type: string
-                format: uri
-        nextPageToken:
+        eTag:
           type: string
-        nextPageUrl:
+          description: Entity tag for optimistic concurrency
+        fields:
+          type: object
+          description: Map of field API names to field values
+          additionalProperties:
+            $ref: '#/components/schemas/FieldValueRepresentation'
+        id:
           type: string
-          format: uri
-        objectApiName:
+          description: Record ID
+        lastModifiedById:
           type: string
+        lastModifiedDate:
+          type: string
+          format: date-time
+        recordTypeId:
+          type: string
+        recordTypeInfo:
+          type: object
+          properties:
+            available:
+              type: boolean
+            defaultRecordTypeMapping:
+              type: boolean
+            master:
+              type: boolean
+            name:
+              type: string
+            recordTypeId:
+              type: string
+        systemModstamp:
+          type: string
+          format: date-time
+        weakEtag:
+          type: integer
     FieldValueRepresentation:
       type: object
       description: Field value with display formatting
@@ -289,25 +297,17 @@ components:
           description: Formatted display value (locale-aware)
         value:
           description: Raw field value
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
   responses:
-    NotFound:
-      description: Not found
+    Unauthorized:
+      description: Unauthorized
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:

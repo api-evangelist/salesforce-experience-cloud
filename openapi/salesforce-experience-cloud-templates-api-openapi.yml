@@ -71,6 +71,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
     Template:
       type: object
       description: An Experience Cloud site template
@@ -125,31 +133,7 @@ components:
             $ref: '#/components/schemas/Template'
         total:
           type: integer
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site
-      schema:
-        type: string
   responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Unauthorized
       content:
@@ -158,6 +142,22 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

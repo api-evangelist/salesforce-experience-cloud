@@ -104,6 +104,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
     BrandingSetInput:
       type: object
       description: Input for updating a branding set
@@ -137,16 +145,6 @@ components:
         value:
           type: string
           description: Property value
-    BrandingSetCollection:
-      type: object
-      description: Collection of branding sets
-      properties:
-        brandingSets:
-          type: array
-          items:
-            $ref: '#/components/schemas/BrandingSet'
-        total:
-          type: integer
     BrandingSet:
       type: object
       description: A branding set with visual properties
@@ -165,23 +163,25 @@ components:
           description: Branding properties
           items:
             $ref: '#/components/schemas/BrandingProperty'
-    ErrorResponse:
+    BrandingSetCollection:
       type: object
-      description: Standard error response
+      description: Collection of branding sets
       properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-  parameters:
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site
-      schema:
-        type: string
+        brandingSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandingSet'
+        total:
+          type: integer
   responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Not found
       content:
@@ -198,14 +198,14 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

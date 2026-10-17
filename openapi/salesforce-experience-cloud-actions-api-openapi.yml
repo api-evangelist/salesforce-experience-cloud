@@ -59,6 +59,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
     RecordActionsRepresentation:
       type: object
       description: Available actions for a record
@@ -107,31 +115,7 @@ components:
                       type: string
                     type:
                       type: string
-    ErrorResponse:
-      type: object
-      description: Standard error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-  parameters:
-    RecordId:
-      name: recordId
-      in: path
-      required: true
-      description: The 18-character Salesforce record ID
-      schema:
-        type: string
   responses:
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Unauthorized
       content:
@@ -140,6 +124,22 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    RecordId:
+      name: recordId
+      in: path
+      required: true
+      description: The 18-character Salesforce record ID
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

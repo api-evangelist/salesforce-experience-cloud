@@ -163,43 +163,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    PageToken:
-      name: pageToken
-      in: query
-      description: Token for retrieving the next page of results
-      schema:
-        type: string
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items to return per page (default 25, max 100)
-      schema:
-        type: integer
-        default: 25
-        maximum: 100
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
   schemas:
-    TopicCollection:
-      type: object
-      description: Collection of topics
-      properties:
-        currentPageUrl:
-          type: string
-          format: uri
-        nextPageUrl:
-          type: string
-          format: uri
-        topics:
-          type: array
-          items:
-            $ref: '#/components/schemas/Topic'
     ErrorResponse:
       type: object
       description: Standard Salesforce API error response
@@ -210,18 +174,6 @@ components:
         message:
           type: string
           description: Human-readable error message
-    TopicInput:
-      type: object
-      description: Input for creating or updating a topic
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Name of the topic
-        description:
-          type: string
-          description: Description of the topic
     Topic:
       type: object
       description: A topic within an Experience Cloud site
@@ -249,17 +201,43 @@ components:
         url:
           type: string
           format: uri
+    TopicCollection:
+      type: object
+      description: Collection of topics
+      properties:
+        currentPageUrl:
+          type: string
+          format: uri
+        nextPageUrl:
+          type: string
+          format: uri
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+    TopicInput:
+      type: object
+      description: Input for creating or updating a topic
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Name of the topic
+        description:
+          type: string
+          description: Description of the topic
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request - invalid input parameters
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -274,14 +252,36 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
+    BadRequest:
+      description: Bad request - invalid input parameters
       content:
         application/json:
           schema:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -56,46 +56,17 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items to return per page (default 25, max 100)
-      schema:
-        type: integer
-        default: 25
-        maximum: 100
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
-    PageToken:
-      name: pageToken
-      in: query
-      description: Token for retrieving the next page of results
-      schema:
-        type: string
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
     ManagedContentDeliveryPage:
       type: object
       description: Paginated managed content delivery results
@@ -130,16 +101,45 @@ components:
           format: uri
         totalCount:
           type: integer
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

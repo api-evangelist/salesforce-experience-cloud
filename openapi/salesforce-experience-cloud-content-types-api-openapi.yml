@@ -44,16 +44,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ContentTypeCollection:
+    ErrorResponse:
       type: object
-      description: Collection of content types
+      description: Standard Salesforce API error response
       properties:
-        contentTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentType'
-        totalCount:
-          type: integer
+        errorCode:
+          type: string
+        message:
+          type: string
     ContentType:
       type: object
       description: A CMS content type definition
@@ -78,14 +76,25 @@ components:
                 type: boolean
               label:
                 type: string
-    ErrorResponse:
+    ContentTypeCollection:
       type: object
-      description: Standard Salesforce API error response
+      description: Collection of content types
       properties:
-        errorCode:
-          type: string
-        message:
-          type: string
+        contentTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentType'
+        totalCount:
+          type: integer
+  responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
   parameters:
     PageSize:
       name: pageSize
@@ -102,15 +111,6 @@ components:
       schema:
         type: integer
         default: 0
-  responses:
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

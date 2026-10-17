@@ -140,6 +140,48 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard Salesforce API error response
+      properties:
+        errorCode:
+          type: string
+          description: Salesforce error code
+        fields:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+          description: Human-readable error message
+    SObjectRecord:
+      type: object
+      description: A Salesforce sObject record with field values
+      properties:
+        attributes:
+          type: object
+          properties:
+            type:
+              type: string
+              description: sObject type name
+            url:
+              type: string
+              format: uri
+              description: REST API URL for this record
+        Id:
+          type: string
+          description: The 18-character record ID
+      additionalProperties: true
+    SObjectBasicInfo:
+      type: object
+      description: Basic information about an sObject
+      properties:
+        objectDescribe:
+          $ref: '#/components/schemas/SObjectDescribeBrief'
+        recentItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/SObjectRecord'
     CreateResult:
       type: object
       description: Result of a record creation
@@ -213,64 +255,15 @@ components:
           type: object
           additionalProperties:
             type: string
-    SObjectBasicInfo:
-      type: object
-      description: Basic information about an sObject
-      properties:
-        objectDescribe:
-          $ref: '#/components/schemas/SObjectDescribeBrief'
-        recentItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/SObjectRecord'
-    SObjectRecord:
-      type: object
-      description: A Salesforce sObject record with field values
-      properties:
-        attributes:
-          type: object
-          properties:
-            type:
-              type: string
-              description: sObject type name
-            url:
-              type: string
-              format: uri
-              description: REST API URL for this record
-        Id:
-          type: string
-          description: The 18-character record ID
-      additionalProperties: true
-    ErrorResponse:
-      type: object
-      description: Standard Salesforce API error response
-      properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        fields:
-          type: array
-          items:
-            type: string
-        message:
-          type: string
-          description: Human-readable error message
-  parameters:
-    RecordId:
-      name: recordId
-      in: path
-      required: true
-      description: The 15 or 18 character Salesforce record ID
-      schema:
-        type: string
-    SObjectName:
-      name: sObjectName
-      in: path
-      required: true
-      description: The API name of the Salesforce object (e.g., Account, Contact)
-      schema:
-        type: string
   responses:
+    Unauthorized:
+      description: Unauthorized - invalid or expired OAuth token
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Resource not found
       content:
@@ -287,14 +280,21 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized - invalid or expired OAuth token
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    SObjectName:
+      name: sObjectName
+      in: path
+      required: true
+      description: The API name of the Salesforce object (e.g., Account, Contact)
+      schema:
+        type: string
+    RecordId:
+      name: recordId
+      in: path
+      required: true
+      description: The 15 or 18 character Salesforce record ID
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

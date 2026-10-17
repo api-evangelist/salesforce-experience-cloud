@@ -95,42 +95,17 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items to return per page (default 25, max 100)
-      schema:
-        type: integer
-        default: 25
-        maximum: 100
-    CommunityId:
-      name: communityId
-      in: path
-      required: true
-      description: The ID of the Experience Cloud site (community)
-      schema:
-        type: string
-    PageToken:
-      name: pageToken
-      in: query
-      description: Token for retrieving the next page of results
-      schema:
-        type: string
   schemas:
-    Reputation:
+    ErrorResponse:
       type: object
-      description: User reputation information
+      description: Standard Salesforce API error response
       properties:
-        reputationLevel:
-          type: object
-          properties:
-            levelLabel:
-              type: string
-            levelNumber:
-              type: integer
-        reputationPoints:
-          type: number
+        errorCode:
+          type: string
+          description: Salesforce error code
+        message:
+          type: string
+          description: Human-readable error message
     CommunityUser:
       type: object
       description: A user within an Experience Cloud site
@@ -196,25 +171,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CommunityUser'
-    ErrorResponse:
+    Reputation:
       type: object
-      description: Standard Salesforce API error response
+      description: User reputation information
       properties:
-        errorCode:
-          type: string
-          description: Salesforce error code
-        message:
-          type: string
-          description: Human-readable error message
+        reputationLevel:
+          type: object
+          properties:
+            levelLabel:
+              type: string
+            levelNumber:
+              type: integer
+        reputationPoints:
+          type: number
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Unauthorized - invalid or expired OAuth token
       content:
@@ -223,6 +193,36 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items to return per page (default 25, max 100)
+      schema:
+        type: integer
+        default: 25
+        maximum: 100
+    PageToken:
+      name: pageToken
+      in: query
+      description: Token for retrieving the next page of results
+      schema:
+        type: string
+    CommunityId:
+      name: communityId
+      in: path
+      required: true
+      description: The ID of the Experience Cloud site (community)
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
