@@ -1,4 +1,4 @@
-# Salesforce Experience Cloud (salesforce-experience-cloud)
+# Salesforce Experience Cloud
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,361 +66,286 @@
 
 APIs for building and managing Salesforce Experience Cloud sites, communities, and digital experiences including content management, theming, navigation, and Lightning Web Runtime powered portals.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/salesforce-experience-cloud/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/salesforce-experience-cloud/refs/heads/main/apis.yml)
+**Areas:** CMS · Community · CRM · Customer Portal · Digital Experience · Experience Cloud · Partner Portal
+
+## Salesforce Experience Cloud on APIs.io
+
+Everything profiled for Salesforce Experience Cloud is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/salesforce-experience-cloud/](https://apis.io/providers/salesforce-experience-cloud/)** — or go straight to one of the APIs or properties below.
+
+### APIs (37)
+
+- [Metadata API (Experience Cloud)](https://apis.io/apis/salesforce-experience-cloud/metadata-api-experience-cloud/) — Deploy and retrieve Experience Cloud site configurations, navigation menus, and digital experience bundles. Enables programmatic management of…
+- [LWR Sites API](https://apis.io/apis/salesforce-experience-cloud/lwr-sites-api/) — Build and customize Lightning Web Runtime sites for Experience Cloud. Provides documentation for creating LWR-based digital experiences with custom…
+- [Salesforce Experience Cloud Actions API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-actions-api/) — Available actions for records and objects
+- [Salesforce Experience Cloud Branding Sets API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-branding-sets-api/) — Branding set management
+- [Salesforce Experience Cloud Channels API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-channels-api/) — CMS channel management
+- [Salesforce Experience Cloud Collections API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-collections-api/) — Content collection delivery operations
+- [Salesforce Experience Cloud Content API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-content-api/) — CMS content management operations
+- [Salesforce Experience Cloud Content Delivery API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-content-delivery-api/) — Content delivery operations for headless consumption
+- [Salesforce Experience Cloud Content Types API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-content-types-api/) — CMS content type operations
+- [Salesforce Experience Cloud Delivery Channels API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-delivery-channels-api/) — Managed content delivery channel operations
+- [Salesforce Experience Cloud Describe API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-describe-api/) — Object and field metadata
+- [Salesforce Experience Cloud Favorites API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-favorites-api/) — User favorites management
+- [Salesforce Experience Cloud Feeds API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-feeds-api/) — Feed and feed item operations
+- [Salesforce Experience Cloud Folders API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-folders-api/) — CMS folder management
+- [Salesforce Experience Cloud Knowledge API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-knowledge-api/) — Knowledge article operations within communities
+- [Salesforce Experience Cloud Layouts API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-layouts-api/) — Page layout metadata
+- [Salesforce Experience Cloud Limits API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-limits-api/) — API usage limits and quotas
+- [Salesforce Experience Cloud List Views API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-list-views-api/) — List view data and metadata
+- [Salesforce Experience Cloud Managed Content API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-managed-content-api/) — Managed content retrieval and search
+- [Salesforce Experience Cloud Media API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-media-api/) — CMS media file operations
+- [Salesforce Experience Cloud Media Delivery API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-media-delivery-api/) — Media content delivery operations
+- [Salesforce Experience Cloud Members API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-members-api/) — Community member operations
+- [Salesforce Experience Cloud Moderation API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-moderation-api/) — Content moderation operations
+- [Salesforce Experience Cloud Navigation API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-navigation-api/) — Site navigation menu operations
+- [Salesforce Experience Cloud Object Info API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-object-info-api/) — Object metadata for UI rendering
+- [Salesforce Experience Cloud Publish API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-publish-api/) — Site publishing operations
+- [Salesforce Experience Cloud Query API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-query-api/) — SOQL query execution
+- [Salesforce Experience Cloud Records API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-records-api/) — Record data and UI operations
+- [Salesforce Experience Cloud Resources API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-resources-api/) — Available REST resources
+- [Salesforce Experience Cloud Search API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-search-api/) — SOSL search execution
+- [Salesforce Experience Cloud Sites API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-sites-api/) — Experience Cloud site management operations
+- [Salesforce Experience Cloud Templates API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-templates-api/) — Site template management
+- [Salesforce Experience Cloud Themes API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-themes-api/) — Site theme and branding operations
+- [Salesforce Experience Cloud Topics API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-topics-api/) — Topic management and assignments
+- [Salesforce Experience Cloud Versions API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-versions-api/) — API version discovery
+- [Salesforce Experience Cloud Graph QL API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-graph-ql-api/) — GraphQL query and mutation operations
+- [Salesforce Experience Cloud s Objects API](https://apis.io/apis/salesforce-experience-cloud/salesforce-experience-cloud-s-objects-api/) — Salesforce object operations
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (21)
+
+Multi-step workflows that chain operations into a business task.
+
+- [Salesforce Experience Cloud Account Contact Case Onboarding](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-account-contact-case-onboarding-workflow/)
+- [Salesforce Experience Cloud Branding Set Revision](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-branding-set-revise-workflow/)
+- [Salesforce Experience Cloud Case Escalation](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-case-escalation-workflow/)
+- [Salesforce Experience Cloud CMS Content Publish](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-cms-content-publish-workflow/)
+- [Salesforce Experience Cloud CMS Content Revise and Republish](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-cms-content-revise-republish-workflow/)
+- [Salesforce Experience Cloud Contact and Case Intake](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-contact-case-intake-workflow/)
+- [Salesforce Experience Cloud Favorite Lifecycle](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-favorite-lifecycle-workflow/)
+- [Salesforce Experience Cloud Feed Element Moderation Delete](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-feed-element-moderation-delete-workflow/)
+- [Salesforce Experience Cloud Feed Post and Comment](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-feed-post-comment-workflow/)
+- [Salesforce Experience Cloud Feed Post and Like](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-feed-post-like-workflow/)
+- [Salesforce Experience Cloud GraphQL Query and REST Update](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-graphql-query-rest-update-workflow/)
+- [Salesforce Experience Cloud Headless Content Delivery](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-headless-content-delivery-workflow/)
+- [Salesforce Experience Cloud Member Reputation Lookup](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-member-reputation-lookup-workflow/)
+- [Salesforce Experience Cloud Object List View Exploration](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-object-listview-explore-workflow/)
+- [Salesforce Experience Cloud Site Provision and Publish](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-site-provision-publish-workflow/)
+- [Salesforce Experience Cloud Site Theme Activate and Publish](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-site-theme-activate-publish-workflow/)
+- [Salesforce Experience Cloud Site Update and Publish](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-site-update-publish-workflow/)
+- [Salesforce Experience Cloud sObject Record Lifecycle](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-sobject-record-lifecycle-workflow/)
+- [Salesforce Experience Cloud SOQL Query and Update](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-soql-query-update-workflow/)
+- [Salesforce Experience Cloud Topic Upsert](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-topic-upsert-workflow/)
+- [Salesforce Experience Cloud UI API Record Lifecycle](https://apis.io/arazzos/salesforce-experience-cloud/salesforce-experience-cloud-ui-record-lifecycle-workflow/)
+
+#### GraphQL (1)
+
+GraphQL schemas.
+
+- [Salesforce Experience Cloud GraphQL API](https://apis.io/graphqls/salesforce-experience-cloud/salesforce-experience-cloud-graphql/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Salesforce Experience Cloud Agentic Access](https://apis.io/agentic-access/salesforce-experience-cloud/salesforce-experience-cloud-agentic-access/)
+
+#### JSON Schema (101)
+
+The data models the API reads and writes.
+
+- [ActorReference](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-actorreference/)
+- [ApiVersion](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-apiversion/)
+- [BrandingProperty](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-brandingproperty/)
+- [BrandingSet](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-brandingset/)
+- [BrandingSetCollection](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-brandingsetcollection/)
+- [BrandingSetInput](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-brandingsetinput/)
+- [Channel](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-channel/)
+- [ChannelCollection](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-channelcollection/)
+- [ChildRelationship](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-childrelationship/)
+- [CMS Channel](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-cms-channel/)
+- [CollectionList](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-collectionlist/)
+- [CollectionSummary](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-collectionsummary/)
+- [Comment](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-comment/)
+- [CommentInput](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-commentinput/)
+- [CommentPage](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-commentpage/)
+- [Community](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-community/)
+- [Community User](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-community-user/)
+- [CommunityListResponse](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-communitylistresponse/)
+- [CommunityUser](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-communityuser/)
+- [Content](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-content/)
+- [ContentCollection](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-contentcollection/)
+- [ContentInput](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-contentinput/)
+- [ContentNode](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-contentnode/)
+- [ContentType](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-contenttype/)
+- [ContentTypeCollection](https://apis.io/schemas/salesforce-experience-cloud/salesforce-experience-cloud-contenttypecollection/)
+- …and 76 more published on APIs.io
 
-## Scope
+#### JSON Structure (1)
 
-- **Type:** Index
+Data models expressed in JSON Structure.
 
-## Tags
+- [Salesforce Experience Cloud Structure](https://apis.io/json-structure/salesforce-experience-cloud/salesforce-experience-cloud-structure/)
 
-- CMS
-- Communities
-- CRM
-- Customer Portal
-- Digital Experience
-- Experience Cloud
-- Partner Portal
+#### JSON-LD (1)
 
-## Timestamps
+Linked-data contexts for the provider's vocabulary.
 
-- **Created:** 2024
-- **Modified:** 2026-05-19
+- [Salesforce Experience Cloud Context](https://apis.io/jsonld/salesforce-experience-cloud/salesforce-experience-cloud-context/)
 
-## APIs
+#### Vocabulary (1)
 
-### Experience Cloud Sites API
+The provider's domain terms, defined.
 
-Manage Experience Cloud sites, themes, and configurations. Provides programmatic access to create, update, and retrieve site settings, branding, and navigation for digital experience portals.
+- [Salesforce Experience Cloud Vocabulary](https://apis.io/vocabularies/salesforce-experience-cloud/salesforce-experience-cloud-vocabulary/)
 
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0`
+#### Examples (3)
 
-#### Tags
+Example requests and responses.
 
-- CMS
-- Communities
-- Configuration
-- Digital Experiences
-- Sites
+- [Salesforce Experience Cloud Cms Content Example](https://apis.io/examples/salesforce-experience-cloud/salesforce-experience-cloud-cms-content-example/)
+- [Salesforce Experience Cloud Create Site Example](https://apis.io/examples/salesforce-experience-cloud/salesforce-experience-cloud-create-site-example/)
+- [Salesforce Experience Cloud Executegraphqlquery Example](https://apis.io/examples/salesforce-experience-cloud/salesforce-experience-cloud-executegraphqlquery-example/)
 
-#### Properties
+#### Collections (53)
 
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/)
-- [OpenAPI](openapi/salesforce-experience-cloud-sites-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-sites.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-sites.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authentication](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm)
-- [Getting Started](https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm)
+Postman and Open Collection request collections.
 
-### Connect REST API (Communities)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-actions-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Branding Sets API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-branding-sets-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Channels API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-channels-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-cms-connect/)
+- [Salesforce Experience Cloud Salesforce CMS Delivery API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-cms-delivery/)
+- [Salesforce Experience Cloud Salesforce CMS Managed Content API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-cms-managed-content/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Collections API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-collections-api/)
+- [Salesforce Experience Cloud Salesforce Connect REST API (Communities)](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-connect-communities/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Content API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-content-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Content Delivery API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-content-delivery-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Content Types API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-content-types-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Delivery Channels API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-delivery-channels-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Describe API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-describe-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Favorites API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-favorites-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Feeds API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-feeds-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Folders API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-folders-api/)
+- [Salesforce Experience Cloud Salesforce GraphQL API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-graphql/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions GraphQL API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-graphql-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Knowledge API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-knowledge-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Layouts API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-layouts-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Limits API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-limits-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions List Views API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-list-views-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Managed Content API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-managed-content-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Media API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-media-api/)
+- [Salesforce Experience Cloud Salesforce CMS Connect Actions Media Delivery API](https://apis.io/collections/salesforce-experience-cloud/open-salesforce-experience-cloud-media-delivery-api/)
+- …and 28 more published on APIs.io
 
-Access community data, feeds, topics, and user engagement features. The Connect REST API provides endpoints for social collaboration, content sharing, and community management within Experience Cloud sites.
+#### Governance rules (2)
 
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0/connect`
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Salesforce Experience Cloud — jsonschema rules](https://apis.io/rules/salesforce-experience-cloud/salesforce-experience-cloud-jsonschema-spectral-rules/)
+- [Salesforce Experience Cloud API Rules](https://apis.io/rules/salesforce-experience-cloud/salesforce-experience-cloud-rules/)
 
-- Chatter
-- Communities
-- Feeds
-- Social
-- Topics
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/)
-- [OpenAPI](openapi/salesforce-experience-cloud-connect-communities-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-connect-communities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-connect-communities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman  Collection](https://www.postman.com/salesforce-developers/workspace/salesforce-developers)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/features_communities.htm)
-- [Getting Started](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/quickstart_dev_org.htm)
+- [Salesforce Experience Cloud Authentication](https://apis.io/security/salesforce-experience-cloud/salesforce-experience-cloud-authentication/)
+- [Salesforce Experience Cloud Domain Security](https://apis.io/security/salesforce-experience-cloud/salesforce-experience-cloud-domain-security/)
 
-### CMS Connect API
+#### OAuth scopes (1)
 
-Manage content, channels, and media in Experience Cloud CMS. Supports creating, updating, and delivering managed content across channels for headless content delivery and site publishing.
+The permissions the API asks for.
 
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0/connect/cms`
+- [Salesforce Experience Cloud Scopes](https://apis.io/scopes/salesforce-experience-cloud/salesforce-experience-cloud-scopes/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Channels
-- CMS
-- Content
-- Media
-- Publishing
+Published plans, tiers and prices.
 
-#### Properties
+- [Salesforce Experience Cloud Plans Pricing](https://apis.io/plans/salesforce-experience-cloud/salesforce-experience-cloud-plans-pricing/)
 
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms.htm)
-- [OpenAPI](openapi/salesforce-experience-cloud-cms-connect-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_content.htm)
-- [Getting Started](https://developer.salesforce.com/docs/platform/cms/guide/cms-developer-guide.html)
+#### Rate limits (1)
 
-### Salesforce REST API
+Published request limits.
 
-Core REST API for accessing Salesforce objects and data. Provides CRUD operations on standard and custom objects, query execution, and metadata access used as the foundation for Experience Cloud data integrations.
+- [Salesforce Experience Cloud Rate Limits](https://apis.io/rate-limits/salesforce-experience-cloud/salesforce-experience-cloud-rate-limits/)
 
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- CRUD
-- Data
-- Objects
-- Platform
-- REST
+- [Salesforce Experience Cloud Finops](https://apis.io/finops/salesforce-experience-cloud/salesforce-experience-cloud-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/)
-- [OpenAPI](openapi/salesforce-experience-cloud-rest-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman  Collection](https://www.postman.com/salesforce-developers/workspace/salesforce-developers)
-- [Authentication](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Experience Cloud Templates API
-
-Retrieve and manage Experience Cloud site templates including Build Your Own and Microsite LWR templates. Supports programmatic theme and branding configuration for digital experience portals.
-
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0`
-
-#### Tags
-
-- Branding
-- Design
-- LWR
-- Templates
-- Themes
-
-#### Properties
-
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_apis.meta/exp_cloud_apis/)
-- [OpenAPI](openapi/salesforce-experience-cloud-templates-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-templates.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-templates.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Getting Started](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/template_overview.htm)
-
-### GraphQL API
-
-Query Salesforce data using GraphQL for Experience Cloud. Offers a flexible query language for retrieving exactly the data needed, reducing over-fetching and improving performance for digital experiences.
-
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/](https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0/graphql`
-
-#### Tags
-
-- Data
-- GraphQL
-- Performance
-- Query
-
-#### Properties
-
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/)
-- [OpenAPI](openapi/salesforce-experience-cloud-graphql-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-graphql.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-graphql.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Schema](https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/graphql_schema.htm)
-- [Getting Started](https://developer.salesforce.com/docs/atlas.en-us.graphql.meta/graphql/)
-
-### CMS Managed Content API
-
-Retrieve and search published managed content versions for Experience Cloud sites. Provides endpoints for querying managed content delivery channels and searching content across workspaces.
-
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0/connect/cms/delivery`
-
-#### Tags
-
-- Channels
-- Content Management
-- Delivery
-- Headless CMS
-- Managed Content
-
-#### Properties
-
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_resources.htm)
-- [OpenAPI](openapi/salesforce-experience-cloud-cms-managed-content-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-managed-content.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-managed-content.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm)
-- [Getting Started](https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-retrieve-cms-content-with-a-connected-app.html)
-
-### CMS Delivery API
-
-Delivers CMS content to external applications and headless frontends. Enables content retrieval by channel, content type, and content key for building decoupled digital experiences.
-
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0/connect/cms/delivery`
-
-#### Tags
-
-- Channels
-- CMS
-- Content Delivery
-- Headless
-
-#### Properties
-
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm)
-- [OpenAPI](openapi/salesforce-experience-cloud-cms-delivery-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-delivery.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-delivery.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_cms_contents.htm)
-
-### User Interface API
-
-Access record data, layouts, list views, and navigation items for building custom user interfaces. Powers Lightning web components in Experience Cloud sites with metadata-driven UI rendering.
-
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm](https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0/ui-api`
-
-#### Tags
-
-- Layouts
-- Lightning
-- Navigation
-- Records
-- User Interface
-
-#### Properties
-
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm)
-- [OpenAPI](openapi/salesforce-experience-cloud-user-interface-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/salesforce-experience-cloud-user-interface.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-user-interface.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_comp_api.htm)
-- [Getting Started](https://developer.salesforce.com/docs/atlas.en-us.uiapi.meta/uiapi/ui_api_get_started.htm)
-
-### Metadata API (Experience Cloud)
-
-Deploy and retrieve Experience Cloud site configurations, navigation menus, and digital experience bundles. Enables programmatic management of ExperienceBundle and Network metadata types for CI/CD workflows.
-
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm)
-- **Base URL:** `https://yourInstance.salesforce.com/services/Soap/m/59.0`
-
-#### Tags
-
-- CI/CD
-- Configuration
-- Deployment
-- DevOps
-- Metadata
-
-#### Properties
-
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_intro.htm)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_experiencebundle.htm)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_digitalexperiencebundle.htm)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_network.htm)
-- [Getting Started](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_types_list.htm)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-delivery.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-delivery.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-managed-content.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-managed-content.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-connect-communities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-connect-communities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-graphql.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-graphql.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-sites.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-sites.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-templates.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-templates.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-user-interface.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-user-interface.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### LWR Sites API
-
-Build and customize Lightning Web Runtime sites for Experience Cloud. Provides documentation for creating LWR-based digital experiences with custom components, page layouts, and theme configurations.
-
-- **Human URL:** [https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm)
-- **Base URL:** `https://yourInstance.salesforce.com/services/data/v59.0`
-
-#### Tags
-
-- Components
-- Lightning Web Runtime
-- LWR
-- Performance
-- Sites
-
-#### Properties
-
-- [Documentation](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/intro.htm)
-- [Getting Started](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started.htm)
-- [Reference](https://developer.salesforce.com/docs/atlas.en-us.exp_cloud_lwr.meta/exp_cloud_lwr/get_started_navigation.htm)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-connect.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-connect.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-delivery.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-delivery.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-cms-managed-content.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-cms-managed-content.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-connect-communities.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-connect-communities.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-graphql.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-graphql.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-rest-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-rest-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-sites.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-sites.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-templates.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-templates.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/salesforce-experience-cloud-user-interface.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/salesforce-experience-cloud-user-interface.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [LinkedIn](https://www.linkedin.com/showcase/salesforce-experience-cloud)
-- [Portal](https://developer.salesforce.com/)
-- [Documentation](https://developer.salesforce.com/docs)
-- [Getting Started](https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm)
-- [Authentication](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm)
-- [Blog](https://developer.salesforce.com/blogs)
-- [Changelog](https://developer.salesforce.com/blogs/2026/01/developers-guide-to-the-spring-26-release)
-- [Status Page](https://status.salesforce.com/)
-- [Support](https://help.salesforce.com/)
-- [Terms of Service](https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/)
-- [Privacy Policy](https://www.salesforce.com/company/privacy/full_privacy/)
-- [GitHub Organization](https://github.com/salesforce)
-- [Community](https://trailhead.salesforce.com/trailblazer-community/topics/salesforcedeveloper)
 - [Website](https://www.salesforce.com/products/experience-cloud/overview/)
-- [Login](https://login.salesforce.com/)
-- [Sign Up](https://developer.salesforce.com/signup)
-- [Rate Limits](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/)
-- [S D Ks](https://developer.salesforce.com/developer-centers/lightning-web-components)
-- [Trailhead  Learning](https://trailhead.salesforce.com/)
-- [Postman  Collection](https://www.postman.com/salesforce-developers/workspace/salesforce-developers)
-- [A P I  Library](https://developer.salesforce.com/docs/apis)
-- [Developer  Center](https://developer.salesforce.com/developer-centers/experience-cloud)
-- [J S O N- L D  Context](json-ld/salesforce-experience-cloud-context.jsonld)
-- [J S O N  Schema](json-schema/salesforce-experience-cloud-site-schema.json)
-- [J S O N  Schema](json-schema/salesforce-experience-cloud-managed-content-schema.json)
-- [J S O N  Schema](json-schema/salesforce-experience-cloud-feed-element-schema.json)
-- [J S O N  Schema](json-schema/salesforce-experience-cloud-community-user-schema.json)
-- [J S O N  Schema](json-schema/salesforce-experience-cloud-cms-channel-schema.json)
-- [J S O N  Schema](json-schema/salesforce-experience-cloud-sobject-record-schema.json)
-- [Spectral Rules](rules/salesforce-experience-cloud-rules.yml)
-- [Capabilities](capabilities/site-management.yaml)
-- [Capabilities](capabilities/community-engagement.yaml)
-- [JSON Structure](json-structure/salesforce-experience-cloud-structure.json)
-- [Vocabulary](vocabulary/salesforce-experience-cloud-vocabulary.yml)
+- [Documentation](https://developer.salesforce.com/docs)
+- [Getting started](https://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_intro_before.htm)
+- [Support](https://help.salesforce.com/)
+- [Changelog](https://developer.salesforce.com/blogs/2026/01/developers-guide-to-the-spring-26-release)
+- [Blog](https://developer.salesforce.com/blogs)
+- [Terms of service](https://www.salesforce.com/company/legal/sfdc-website-terms-of-service/)
+- [Privacy policy](https://www.salesforce.com/company/privacy/full_privacy/)
+- [GitHub](https://github.com/salesforce)
+- [Status](https://status.salesforce.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 51.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 61.0 |
+| Contract governance | 27.3 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 69.0 |
+| Access clarity | 32.9 |
+
+**Agent readiness 29.6** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/salesforce-experience-cloud/](https://apis.io/providers/salesforce-experience-cloud/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Salesforce Experience Cloud: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/salesforce-experience-cloud/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
